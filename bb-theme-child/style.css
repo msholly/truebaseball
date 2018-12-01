@@ -7,28 +7,3 @@ Author: Architk Media Team
 Author URI: http://architkmedia.com
 template: bb-theme
 */
-
-/* WooCommerce Styles */
-
-
-/* General Page Builder Styles */
-/* HEADER */
-@media only screen and (min-width: 992px ){
-    .add-search-icon .fl-module-content .menu {
-        margin-right: 40px;
-    }
-
-    .fl-row-content-wrap .fl-page-nav-search {
-        margin-top: 20px;
-        right: 10px;
-    }
-
-    .fl-row-content-wrap .fl-page-nav-search a {
-        color: #fff;
-    }
-    .fl-page-nav-search a.fa-search {
-      padding: 11px;
-    }
-}
-
-/* Event Page Styles */

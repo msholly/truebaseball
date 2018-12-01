@@ -9,7 +9,7 @@ require_once 'classes/class-fl-child-theme.php';
 
 // Actions
 add_action('wp_enqueue_scripts', 'FLChildTheme::enqueue_scripts', 1000);
-
+add_action( 'wp_enqueue_scripts', 'FLChildTheme::enqueue_js' );
 /**
  * Adding search icon at right side of the menu module
  *
