@@ -1,0 +1,24 @@
+/*!
+Theme Name: True Diamond Science - BB Child Theme
+Theme URI: http://architkmedia.com
+Version: 1.0
+Description: Light at the end of the funnel.
+Author: Architk Media Team
+Author URI: http://architkmedia.com
+template: bb-theme
+*/
+
+// Mixins & Variables.
+@import 'partials/mixins';
+@import 'partials/variables';
+
+// Normalize & Santize.
+// @import 'vendor/normalize';
+// @import 'vendor/sanitize';
+
+// Partials
+@import 'partials/_footer';
+@import 'partials/_global';
+@import 'partials/_header';
+@import 'partials/_pages';
+@import 'partials/_posts';
