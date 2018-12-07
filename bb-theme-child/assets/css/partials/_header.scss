@@ -1,97 +1,87 @@
 /* Custom, iPhone Retina */
-
-@media only screen and (min-width: 320px) {
-}
-
+@media only screen and (min-width: 320px) {}
 /* Extra Small Devices, Phones */
-
-@media only screen and (min-width: 480px) {
-}
-
+@media only screen and (min-width: 480px) {}
 /* Small Devices, Tablets */
-
 @media only screen and (min-width: 768px) {
-  #menu-main-menu .wpmenucart {
-    display: none;
-  }
+	#menu-main-menu .wpmenucart {
+		display: none;
+	}
 }
-
 /* Medium Devices, Desktops */
-
 @media only screen and (min-width: 992px) {
-  .add-search-icon .fl-module-content .menu {
-    margin-right: 40px;
-  }
+	.add-search-icon .fl-module-content .menu {
+		margin-right: 40px;
+	}
 
-  .fl-row-content-wrap .fl-page-nav-search {
-    margin-top: 20px;
-    right: 10px;
+	.fl-row-content-wrap .fl-page-nav-search {
+		margin-top: 20px;
+		right: 10px;
 
-    a {
-      color: #fff;
-    }
-  }
+		a {
+			color: #fff;
+		}
+	}
 
-  .fl-page-nav-search a.fa-search {
-    padding: 10px;
-  }
+	.fl-page-nav-search a.fa-search {
+		padding: 10px;
+	}
 }
 /* HEADER SEARCH FORM */
+
 .fl-page-nav-search form {
-  background-color: transparent;
-  border: none;
+	background-color: transparent;
+	border: none;
 
-  &::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    bottom: 0;
-    transform-origin: left bottom;
-    transform: skewX(-20deg);
-    background-color: #00aeef;
-    margin: 0 30px 0 -30px;
-  }
+	&::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: inherit;
+		z-index: -1;
+		bottom: 0;
+		transform-origin: left bottom;
+		transform: skewX(-20deg);
+		background-color: $color--primary;
+		margin: 0 30px 0 -30px;
+	}
 
-  input.fl-search-input {
-    border-right: none;
-    border-left: none;
-    border-top: none;
-    background-color: transparent;
-    color: #FFF;
+	input.fl-search-input {
+		border-right: none;
+		border-left: none;
+		border-top: none;
+		background-color: transparent;
+		color: #FFF;
 
-    &:focus {
-      color: #FFF;
-    }
+		&:focus {
+			color: #FFF;
+		}
 
-    &::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      color: #FFF;
-    }
+		&::-webkit-input-placeholder {
+			/* Chrome/Opera/Safari */
+			color: #FFF;
+		}
 
-    &::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #FFF;
-    }
+		&::-moz-placeholder {
+			/* Firefox 19+ */
+			color: #FFF;
+		}
 
-    &:-ms-input-placeholder {
-      /* IE 10+ */
-      color: #FFF;
-    }
+		&:-ms-input-placeholder {
+			/* IE 10+ */
+			color: #FFF;
+		}
 
-    &:-moz-placeholder {
-      /* Firefox 18- */
-      color: #FFF;
-    }
-  }
+		&:-moz-placeholder {
+			/* Firefox 18- */
+			color: #FFF;
+		}
+	}
 }
-
 /* Large Devices, Wide Screens */
-
 @media only screen and (min-width: 1200px) {
-  #menu-main-menu .wpmenucart {
-    display: none;
-  }
+	#menu-main-menu .wpmenucart {
+		display: none;
+	}
 }
