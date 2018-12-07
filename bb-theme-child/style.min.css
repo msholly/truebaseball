@@ -22,6 +22,7 @@ header .fl-page-nav-search form input.fl-search-input:-ms-input-placeholder{colo
 header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FFF}
 .lead p{font-size:18px}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1){margin-left:0}
+.woocommerce-page ul.products li.product a img{border:0}
 @media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
 }@media only screen and (min-width:992px){header .add-search-icon .fl-module-content .menu{margin-right:40px}
 header .fl-row-content-wrap .fl-page-nav-search{margin-top:20px;right:10px}
