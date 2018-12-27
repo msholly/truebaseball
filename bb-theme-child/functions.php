@@ -36,3 +36,13 @@ function frame_add_search_icon_themer_header($module)
     }
     return;
 }
+
+add_action('admin_head', 'my_custom_fonts');
+
+function my_custom_fonts() {
+  echo '<style>
+    body.events-cal .ui-autocomplete {
+        font-size: 11px !important;
+    }
+  </style>';
+}
