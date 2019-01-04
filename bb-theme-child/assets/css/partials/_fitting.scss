@@ -19,10 +19,10 @@
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	padding: 10px 30px 10px 50px;
+	padding: 10px 30px 10px 50px !important;
 	line-height: 36px;
 	cursor: pointer;
-	background: none;
+	background: none !important;
 	color: #FFF;
 	font-size: 24px;
 }
@@ -41,7 +41,7 @@
 }
 /* Checked */
 .facetwp-radio.checked {
-	padding-left: 30px;
+	padding-left: 30px !important;
 	color: #fff;
 	margin-right: 30px;
 }
@@ -54,7 +54,7 @@
 }
 
 .noUi-connect {
-	background: #00aeef;
+	background: #00aeef !important;
 }
 /* Transition */
 .facetwp-radio,
