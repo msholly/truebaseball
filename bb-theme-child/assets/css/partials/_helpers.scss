@@ -4,9 +4,9 @@
     helpers.css
 
 -----------------------------------------------------------------------------------*/
-.uppercase { text-transform: uppercase !important; }
+.uppercase, .uppercase .fl-heading { text-transform: uppercase !important; }
 
-.lowercase { text-transform: lowercase !important; }
+.lowercase, .lowercase .fl-heading { text-transform: lowercase !important; }
 
 .capitalize { text-transform: capitalize !important; }
 
