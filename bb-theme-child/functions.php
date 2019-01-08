@@ -48,7 +48,7 @@ function my_custom_fonts() {
 }
 
 function project_dequeue_unnecessary_styles() {
-  wp_dequeue_style( 'common-css' );
-  wp_deregister_style( 'common-css' );
+  wp_dequeue_style( 'common' );
+  wp_deregister_style( 'common' );
 }
 if ( ! is_admin() ) add_action( 'wp_enqueue_scripts', 'project_dequeue_unnecessary_styles' );
