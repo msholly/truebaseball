@@ -11,5 +11,7 @@ var sub = function sub(a, b) {
 "use strict";
 
 jQuery(document).ready(function ($) {
-  $(".wpmenucart-icon-shopping-cart-0").addClass("fas fa-shopping-cart");
+  $(".wpmenucart-icon-shopping-cart-0").load(function () {
+    $(".wpmenucart-icon-shopping-cart-0").addClass("fas fa-shopping-cart");
+  });
 });
