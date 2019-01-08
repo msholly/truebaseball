@@ -1,6 +1,1 @@
-/**
- * Custom JavaScript
- *
- * @since 1.0.0
- */
-const sum = ( a, b ) => a + b;
+$( ".wpmenucart-icon-shopping-cart-0" ).addClass( "fas fa-shopping-cart" );

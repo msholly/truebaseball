@@ -48,6 +48,7 @@ function my_custom_fonts() {
 }
 
 function project_dequeue_unnecessary_styles() {
+  // THE WEIRD BUG LOADING ADMIN COMMON ON THE FRONT END
   wp_dequeue_style( 'common' );
   wp_deregister_style( 'common' );
 }

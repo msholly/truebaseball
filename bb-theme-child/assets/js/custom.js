@@ -10,11 +10,4 @@ var sub = function sub(a, b) {
 };
 "use strict";
 
-/**
- * Custom JavaScript
- *
- * @since 1.0.0
- */
-var sum = function sum(a, b) {
-  return a + b;
-};
+$(".wpmenucart-icon-shopping-cart-0").addClass("fas fa-shopping-cart");
