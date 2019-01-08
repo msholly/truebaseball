@@ -12,6 +12,7 @@ template: bb-theme
 .fl-page-content .fl-builder-content .cta-btn .fl-button-text{letter-spacing:.025em}
 .fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:auto}
 .fl-page-content .fl-heading-text span{color:#00aeef}
+header .wpmenucart-contents::before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:""}
 header .fl-page-nav-search form{background-color:transparent;border:0}
 header .fl-page-nav-search form::after{content:'';width:100%;height:100%;position:absolute;background:inherit;z-index:-1;bottom:0;-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:#00aeef;margin:0 30px 0 -30px}
 header .fl-page-nav-search form input.fl-search-input{border-right:0;border-left:0;border-top:0;background-color:transparent;color:#FFF}
