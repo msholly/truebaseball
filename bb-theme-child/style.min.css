@@ -13,6 +13,8 @@ template: bb-theme
 .fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:auto}
 .fl-page-content .fl-heading-text span{color:#00aeef}
 header .wpmenucart-contents::before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:"";margin-right:3px}
+header #menu-mobile-shop-menu .menu-item a{color:transparent;overflow:hidden;max-height:40px;width:40px}
+header #menu-mobile-shop-menu .menu-item a:before{display:inline-block !important;font-style:normal !important;font-variant:normal !important;text-rendering:auto !important;-webkit-font-smoothing:antialiased !important;font-family:"Font Awesome 5 Free" !important;font-weight:900 !important;content:"" !important;margin-right:3px !important;font-size:32px !important;position:relative !important;top:-10px !important;left:-12px !important;color:#FFF !important}
 header .fl-page-nav-search form{-webkit-box-shadow:none;box-shadow:none}
 header .fl-page-nav-search form{background-color:transparent;border:0}
 header .fl-page-nav-search form::after{content:'';width:100%;height:100%;position:absolute;background:inherit;z-index:-1;bottom:0;-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:#00aeef;margin:0 30px 0 -30px}
