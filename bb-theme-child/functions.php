@@ -62,9 +62,11 @@ function your_custom_menu_item ( $items, $args ) {
     // if the menu is in fact our mobile main menu
     if ($args->menu == 'mobile-main-menu') {
         // get the content of our Beaver Builder Template
-    	$bb_content = do_shortcode('[fl_builder_insert_layout slug="vertical-menu-content-bottom"]');
+    	// $bb_content = do_shortcode('[fl_builder_insert_layout slug="vertical-menu-content-bottom"]');
+      $searchform = '<li>' . get_search_form( false ) . '</li>';
     	// append the content of our Beaver Builder Template to the beginning of our menu
-        $items = $bb_content . $items;
+      $items = $searchform .= $items;
+
     }
     // return our menu + Beaver Builder content ready for output
     return $items;
