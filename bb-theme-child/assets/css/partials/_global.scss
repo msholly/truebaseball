@@ -1,7 +1,7 @@
 .fl-page-content {
   /* BUTTONS */
-  .fl-builder-content .cta-btn, .single_add_to_cart_button {
-  	a.fl-button, a.uabb-button  {
+  .fl-builder-content .cta-btn {
+  	a.fl-button, a.uabb-button, .single_add_to_cart_button  {
   		-ms-transform: skewX(-20deg);
   		-webkit-transform: skewX(-20deg);
   		transform: skewX(-20deg);
