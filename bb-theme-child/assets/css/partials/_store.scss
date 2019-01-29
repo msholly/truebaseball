@@ -1,10 +1,16 @@
 .woocommerce-page {
-  .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1) {
-    margin-left: 0;
-  }
+	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1) {
+		margin-left: 0;
+	}
 
-  ul.products li.product a img {
-    border: none;
-  }
-  
+	ul.products li.product a img {
+		border: none;
+	}
+
+	&.single-product {
+		.technical .fl-row-content-wrap {
+			background-image: linear-gradient(110deg, #000000 30%, #787878 calc(30% + 2px));
+		}
+	}
+
 }
