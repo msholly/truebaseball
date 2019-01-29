@@ -32,7 +32,7 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1){margin-left:0}
 .woocommerce-page ul.products li.product a img{border:0}
 .woocommerce-page.single-product .technical .fl-row-content-wrap{background-image:linear-gradient(110deg,#000 30%,#787878 calc(30% + 2px))}
-.woocommerce-page.single-product.product-cat-bats .summary .quantity,.woocommerce-page.single-product.product-cat-bats .summary .stock{display:none}
+.woocommerce-page.single-product.product-cat-bats .fl-module-fl-woo-cart-button .quantity,.woocommerce-page.single-product.product-cat-bats .fl-module-fl-woo-cart-button .stock{display:none}
 .page-id-426{background-color:#000}
 .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .facetwp-counter,.facetwp-overlay{display:none}
