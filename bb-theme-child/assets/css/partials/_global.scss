@@ -1,53 +1,72 @@
 .fl-page-content {
-  /* BUTTONS */
-  .fl-builder-content .cta-btn {
-  	a.fl-button, a.uabb-button, .single_add_to_cart_button  {
-  		-ms-transform: skewX(-20deg);
-  		-webkit-transform: skewX(-20deg);
-  		transform: skewX(-20deg);
-  		background-color: transparent;
-  		border: 3px solid $color--primary;
-  		border-radius: 0;
-  		font-size: 18px;
-  		padding: 13px 40px;
-  		transition: background 0.3s ease;
 
-  		&:hover {
-  			background-color: $color--primary;
-  			transition: background 0.3s ease;
-  		}
+	/* BUTTONS */
+	.fl-builder-content .cta-btn {
 
-  		span {
-  			-ms-transform: skewX(20deg);
-  			-webkit-transform: skewX(20deg);
-  			transform: skewX(20deg);
-  			display: inline-block;
-  		}
-  	}
+		a.fl-button,
+		a.uabb-button,
+		.single_add_to_cart_button {
+			-ms-transform: skewX(-20deg);
+			-webkit-transform: skewX(-20deg);
+			transform: skewX(-20deg);
+			background-color: transparent;
+			border: 3px solid $color--primary;
+			border-radius: 0;
+			font-size: 18px;
+			padding: 13px 40px;
+			transition: background 0.3s ease;
 
-  	.fl-button-text {
-  		letter-spacing: 0.025em;
-  	}
-  }
+			&:hover {
+				background-color: $color--primary;
+				transition: background 0.3s ease;
+			}
 
-  /* INPUT */
-  input[type=date],
-  input[type=email],
-  input[type=month],
-  input[type=number],
-  input[type=password],
-  input[type=search],
-  input[type=tel],
-  input[type=text],
-  input[type=time],
-  input[type=url],
-  input[type=week] {
-  	height: auto;
-  }
+			span {
+				-ms-transform: skewX(20deg);
+				-webkit-transform: skewX(20deg);
+				transform: skewX(20deg);
+				display: inline-block;
+			}
+		}
 
-  /* TYPOGRAPHY */
-  .fl-heading-text span {
-      color:$color--primary
-  }
+		.fl-button-text {
+			letter-spacing: 0.025em;
+		}
+
+		&.solid {
+
+			a.fl-button,
+			a.uabb-button,
+			.single_add_to_cart_button {
+				background-color: $color--primary;
+
+				&:hover {
+					background-color: transparent;
+				}
+
+			}
+		}
+
+	}
+
+	/* INPUT */
+	input[type=date],
+	input[type=email],
+	input[type=month],
+	input[type=number],
+	input[type=password],
+	input[type=search],
+	input[type=tel],
+	input[type=text],
+	input[type=time],
+	input[type=url],
+	input[type=week] {
+		height: auto;
+	}
+
+	/* TYPOGRAPHY */
+	.fl-heading-text span {
+		color: $color--primary
+	}
 
 }
