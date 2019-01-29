@@ -19,6 +19,7 @@
 			&:hover {
 				background-color: $color--primary;
 				transition: background 0.3s ease;
+				border: 3px solid $color--primary;
 			}
 
 			span {

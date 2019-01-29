@@ -10,7 +10,15 @@
 	&.single-product {
 		.technical .fl-row-content-wrap {
 			background-image: linear-gradient(110deg, #000000 30%, #787878 calc(30% + 2px));
-		}
+    }
+    
+    &.product-cat-bats {
+      .summary {
+        .quantity, .stock {
+          display: none;
+        }
+      }
+    }
 	}
 
 }

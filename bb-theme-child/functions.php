@@ -70,3 +70,18 @@ function your_custom_menu_item ( $items, $args ) {
     }
     return $items;
 }
+
+// ADD CATEOGRY TO BODY
+add_filter( 'body_class', 'wc_product_cats_css_body_class' );
+ 
+function wc_product_cats_css_body_class( $classes ){
+  if( is_singular( 'product' ) ){
+    $custom_terms = get_the_terms(0, 'product_cat');
+    if ($custom_terms) {
+      foreach ($custom_terms as $custom_term) {
+        $classes[] = 'product-cat-' . $custom_term->slug;
+      }
+    }
+  }
+  return $classes;
+}
