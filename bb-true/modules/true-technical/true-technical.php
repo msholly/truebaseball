@@ -15,10 +15,10 @@ class TrueTechnicalModule extends FLBuilderModule {
     public function __construct()
     {
         parent::__construct(array(
-            'name'            => __( 'TRUE Technical', 'fl-builder' ),
-            'description'     => __( 'Displays the Additional Information Tab', 'fl-builder' ),
-            'group'           => __( 'TRUE Modules', 'fl-builder' ),
-            'category'        => __( 'Content Modules', 'fl-builder' ),
+            'name'            => __( 'TRUE Technical', 'fl-theme-builder' ),
+            'description'     => __( 'Displays the Additional Information Tab', 'fl-theme-builder' ),
+            'group'           => __( 'TRUE Modules', 'fl-theme-builder' ),
+            'category'        => __( 'Content Modules', 'fl-theme-builder' ),
             'dir'             => BB_TRUE_DIR . 'modules/true-technical/',
             'url'             => BB_TRUE_URL . 'modules/true-technical/',
             'icon'            => 'button.svg',

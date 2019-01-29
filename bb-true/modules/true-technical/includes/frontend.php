@@ -1,3 +1,7 @@
 <?php
+function get_product_attributes() {
+    global $product;
+    wc_display_product_attributes( $product );
+}
 
-echo TRUEFLPageDataWooCommerce::get_product_attributes();
+echo get_product_attributes();

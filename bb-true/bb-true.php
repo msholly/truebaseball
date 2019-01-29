@@ -13,7 +13,7 @@ define( 'BB_TRUE_URL', plugins_url( '/', __FILE__ ) );
 function true_load_module() {
     if ( class_exists( 'FLBuilder' ) ) {
         // Include your custom modules here.
-        require_once 'classes/class-fl-page-data-woocommerce.php';
+        // require_once 'classes/class-fl-page-data-woocommerce.php';
         require_once 'modules/true-technical/true-technical.php';
     }
 }
