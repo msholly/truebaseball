@@ -28,18 +28,10 @@ class TrueTechnicalModule extends FLBuilderModule {
         ));
     }
 
-    /**
-	 * @since 1.0
-	 * @return string
-	 */
-	// static public function get_product_attributes() {
-	// 	return self::get_template_html( 'wc_display_product_attributes' );
-	// }
 }
 
 /**
  * Register the module and its form settings.
- * We are using a very simple form here with only two options, photo_one and photo_two.
  */
 FLBuilder::register_module( 'TrueTechnicalModule', array() );
 
