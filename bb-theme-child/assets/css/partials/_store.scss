@@ -21,4 +21,20 @@
     }
 	}
 
+	#reviews {
+		#comments {
+			ol.commentlist li .comment-text {
+				margin-left: 0;
+			}
+		}
+		#subscribe_to_replies_field {
+			.input-checkbox {
+				margin: 6px 8px 0 -20px;
+			}
+			label.checkbox {
+				margin-left: 20px;
+			}
+		}
+		
+	}
 }

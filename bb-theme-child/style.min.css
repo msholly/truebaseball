@@ -33,6 +33,9 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page ul.products li.product a img{border:0}
 .woocommerce-page.single-product .technical .fl-row-content-wrap{background-image:linear-gradient(110deg,#000 30%,#787878 calc(30% + 2px))}
 .woocommerce-page.single-product.product-cat-bats .fl-module-fl-woo-cart-button .quantity,.woocommerce-page.single-product.product-cat-bats .fl-module-fl-woo-cart-button .stock{display:none}
+.woocommerce-page #reviews #comments ol.commentlist li .comment-text{margin-left:0}
+.woocommerce-page #reviews #subscribe_to_replies_field .input-checkbox{margin:6px 8px 0 -20px}
+.woocommerce-page #reviews #subscribe_to_replies_field label.checkbox{margin-left:20px}
 .page-id-426{background-color:#000}
 .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .facetwp-counter,.facetwp-overlay{display:none}
