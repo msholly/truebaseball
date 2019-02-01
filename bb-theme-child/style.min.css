@@ -17,7 +17,7 @@ template: bb-theme
 .fl-page-content .fl-heading-text span{color:#00aeef}
 header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase}
 header #menu-main-menu li a:hover,header #menu-main-menu li .fl-has-submenu-container:hover a:hover{background-color:transparent}
-header #menu-main-menu li a:hover:after,header #menu-main-menu li .fl-has-submenu-container:hover a:hover:after{width:100%}
+header #menu-main-menu li a:hover:after,header #menu-main-menu li .fl-has-submenu-container:hover a:hover:after{width:100%;-webkit-transition:width .3s;transition:width .3s}
 header #menu-main-menu li a:after,header #menu-main-menu li .fl-has-submenu-container:hover a:after{content:'';display:block;width:0;height:2px;background:#00aeef;-webkit-transition:width .3s;transition:width .3s}
 header #menu-main-menu li .sub-menu li a:hover{color:#FFF}
 header .wpmenucart-contents::before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:"";margin-right:3px}
