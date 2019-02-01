@@ -3,6 +3,7 @@ header {
 		li {
 			a, .fl-has-submenu-container:hover a {
 				text-transform: uppercase;
+				background-color: transparent;
 				&:hover {
 					background-color: transparent;
 					&:after {

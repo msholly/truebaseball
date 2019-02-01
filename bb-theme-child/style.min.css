@@ -15,7 +15,7 @@ template: bb-theme
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button:hover{background-color:transparent;color:#FFF}
 .fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:auto}
 .fl-page-content .fl-heading-text span{color:#00aeef}
-header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase}
+header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase;background-color:transparent}
 header #menu-main-menu li a:hover,header #menu-main-menu li .fl-has-submenu-container:hover a:hover{background-color:transparent}
 header #menu-main-menu li a:hover:after,header #menu-main-menu li .fl-has-submenu-container:hover a:hover:after{width:100%;-webkit-transition:width .3s;transition:width .3s}
 header #menu-main-menu li a:after,header #menu-main-menu li .fl-has-submenu-container:hover a:after{content:'';display:block;width:0;height:2px;background:#00aeef;-webkit-transition:width .3s;transition:width .3s}
