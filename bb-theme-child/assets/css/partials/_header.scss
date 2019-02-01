@@ -1,4 +1,27 @@
 header {
+	#menu-main-menu {
+		li {
+			a {
+				text-transform: uppercase;
+				&:hover {
+					background-color: transparent;
+					&:after {
+						width: 100%;
+						//transition: width .3s;
+					}
+				}
+				&:after {
+					content: '';
+					display: block;
+					width: 0;
+					height: 2px;
+					background: #000;
+					transition: width .3s;
+				}
+			}
+		}
+		
+	}
 	.wpmenucart-contents::before {
 		display: inline-block;
 		font-style: normal;

@@ -15,6 +15,10 @@ template: bb-theme
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button:hover{background-color:transparent;color:#FFF}
 .fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:auto}
 .fl-page-content .fl-heading-text span{color:#00aeef}
+header #menu-main-menu li a{text-transform:uppercase}
+header #menu-main-menu li a:hover{background-color:transparent}
+header #menu-main-menu li a:hover:after{width:100%}
+header #menu-main-menu li a:after{content:'';display:block;width:0;height:2px;background:#000;-webkit-transition:width .3s;transition:width .3s}
 header .wpmenucart-contents::before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:"";margin-right:3px}
 header .fl-menu .fl-menu-mobile-toggle{color:#fff}
 header .fl-menu .fl-menu-mobile-toggle.hamburger-label{padding:0}
