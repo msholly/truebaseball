@@ -1,7 +1,7 @@
 header {
 	#menu-main-menu {
 		li {
-			a {
+			a, .fl-has-submenu-container:hover a {
 				text-transform: uppercase;
 				&:hover {
 					background-color: transparent;
@@ -15,8 +15,17 @@ header {
 					display: block;
 					width: 0;
 					height: 2px;
-					background: #000;
+					background: $color--primary;
 					transition: width .3s;
+				}
+			}
+			.sub-menu {
+				li {
+					a {
+						&:hover {
+							color: #FFF;
+						}
+					}
 				}
 			}
 		}
