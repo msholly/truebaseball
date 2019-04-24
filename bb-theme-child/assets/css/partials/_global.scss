@@ -20,7 +20,7 @@
 				background-color: $color--primary;
 				transition: background 0.3s ease;
 				border: 3px solid $color--primary;
-				
+
 				span {
 					color: #FFF;
 				}
@@ -74,6 +74,16 @@
 	/* TYPOGRAPHY */
 	.fl-heading-text span {
 		color: $color--primary
+	}
+
+	.true-border-bottom h1,
+	.true-border-bottom h2,
+	.true-border-bottom h3,
+	.true-border-bottom h4,
+	.true-border-bottom h5,
+	.true-border-bottom h6 {
+		border-bottom: 3px solid #00aeef !important;
+		padding-bottom: 5px;
 	}
 
 }

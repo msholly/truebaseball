@@ -37,6 +37,8 @@ function frame_add_search_icon_themer_header($module)
     return;
 }
 
+
+// FIX AFFILIATE SEARCH ON ADMIN 
 add_action('admin_head', 'my_custom_fonts');
 
 function my_custom_fonts() {
@@ -71,6 +73,7 @@ function your_custom_menu_item ( $items, $args ) {
     return $items;
 }
 
+
 // ADD CATEOGRY TO BODY
 add_filter( 'body_class', 'wc_product_cats_css_body_class' );
  
@@ -85,3 +88,58 @@ function wc_product_cats_css_body_class( $classes ){
   }
   return $classes;
 }
+
+/**
+ * Attributes shortcode callback.
+ */
+function woo_attributes_shortcode( $atts ) {
+
+  global $product;
+
+  if( ! is_object( $product ) || ! $product->has_attributes() ){
+      return;
+  }
+
+  // parse the shortcode attributes
+  $args = shortcode_atts( array(
+      'attributes' => array_keys( $product->get_attributes() ), // by default show all attributes
+  ), $atts );
+
+  // is pass an attributes param, turn into array
+  if( is_string( $args['attributes'] ) ){
+      $args['attributes'] = array_map( 'trim', explode( '|' , $args['attributes'] ) );
+  }
+
+  // start with a null string because shortcodes need to return not echo a value
+  $html = '';
+
+  if( ! empty( $args['attributes'] ) ){
+
+      foreach ( $args['attributes'] as $attribute ) {
+
+          // get the WC-standard attribute taxonomy name
+          $taxonomy = strpos( $attribute, 'pa_' ) === false ? wc_attribute_taxonomy_name( $attribute ) : $attribute;
+
+          if( taxonomy_is_product_attribute( $taxonomy ) ){
+
+              // Get the attribute label.
+              $attribute_label = wc_attribute_label( $taxonomy );
+
+              // Build the html string with the label followed by a clickable list of terms.
+              // heads up that in WC2.7 $product->id needs to be $product->get_id()
+              $html .= get_the_term_list( $product->id, $taxonomy, $attribute_label . ': ' , ', ' );                                
+          }
+
+      }
+
+      // if we have anything to display, wrap it in a <ul> for proper markup
+      // OR: delete these lines if you only wish to return the <li> elements
+      // if( $html ){
+      //     $html = '<ul class="product-attributes">' . $html . '</ul>';
+      // }
+
+  }
+
+  return $html;
+}
+add_shortcode( 'display_attributes', 'woo_attributes_shortcode' );
