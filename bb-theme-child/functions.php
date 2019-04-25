@@ -46,6 +46,10 @@ function my_custom_fonts() {
     body.events-cal .ui-autocomplete {
         font-size: 11px !important;
     }
+    .acf-max-width img{
+      max-width: 300px;
+      max-height: 650px;
+    }
   </style>';
 }
 
