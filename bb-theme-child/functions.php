@@ -143,3 +143,26 @@ function woo_attributes_shortcode( $atts ) {
   return $html;
 }
 add_shortcode( 'display_attributes', 'woo_attributes_shortcode' );
+
+/* Move the WooCommerce Notices on the Beaver Themer Singular Product Layout to Anywhere on the layout via a Custom Shortcode */
+
+/**
+ * First, remove WooCommerce Notices box from its default location on the page (somewhere at the top).
+ */
+remove_filter( 'fl_theme_builder_before_render_content', 'FLThemeBuilderWooCommerceSingular::before_render_content' );
+
+/**
+ * Create this shortcode : [fl_woocommerce_notices]
+ * You can embed this anywhere on the Themer Layout via the HTML module.
+ */
+add_shortcode( 'fl_woocommerce_notices', function() {
+    ob_start();
+    if ( function_exists('wc_print_notices') ) {
+    ?>
+      <div class="fl-theme-builder-woo-notices fl-row fl-row-fixed-width">
+      <?php wc_print_notices(); ?>
+      </div>
+    <?php
+   }
+  return ob_get_clean();
+});
