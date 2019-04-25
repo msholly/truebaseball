@@ -22,97 +22,91 @@
 		// 	background-image: linear-gradient(110deg, #000000 30%, #787878 calc(30% + 2px));
 		// }
 
-		&.product-cat-bats {
-
-
-			.fl-module-uabb-image-carousel {
-				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,00152a+100 */
-				background: linear-gradient(45deg, #000000 0%, #00152a 100%);
-				/* Old browsers */
-				/* FF3.6-15 */
-				/* Chrome10-25,Safari5.1-6 */
-				/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00152a', GradientType=1);
-				/* IE6-9 fallback on horizontal gradient */
-			}
-
-			.uabb-background-mask {
-				background: transparent;
-			}
-
-			.fl-module-fl-woo-cart-button {
-
-				.quantity,
-				.stock {
-					display: none;
-				}
-			}
-
-			.variations td.label {
-				width: 30%;
-
-				label {
-					color: #FFF;
-					font-weight: 700 !important;
-					padding-top: 5px;
-				}
-			}
-
-			form.cart {
-				.quantity input.qty {
-					height: 52px;
-					border-radius: 0;
-					padding-right: 50px;
-					width: auto;
-				}
-
-				.single_add_to_cart_button {
-					margin-left: -55px;
-
-					&:hover {
-						background: #000
-					}
-
-				}
-			}
-
-			.iconic-cffv-field__label.iconic-cffv-field__label--above {
-				width: 30%;
-				display: inline-block;
-			}
-
-			.iconic-cffv-field__content {
-				display: inline-block;
-			}
-
-
-			.matchHeight {
-
-				.fl-module-content,
-				.fl-photo,
-				.fl-photo-content,
-				.fl-photo-content img {
-					max-height: inherit;
-				}
-			}
-
-			.technical {
-				.woocommerce-product-attributes {
-
-					th,
-					td {
-						border-bottom: 1px solid #131315;
-					}
-
-					.woocommerce-product-attributes-item__label {
-						color: #00aeef;
-						width: 35%;
-					}
-				}
-			}
-
+		.fl-module-uabb-image-carousel {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,00152a+100 */
+			background: linear-gradient(45deg, #000000 0%, #00152a 100%);
+			/* Old browsers */
+			/* FF3.6-15 */
+			/* Chrome10-25,Safari5.1-6 */
+			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00152a', GradientType=1);
+			/* IE6-9 fallback on horizontal gradient */
 		}
 
+		.uabb-background-mask {
+			background: transparent;
+		}
+
+		.fl-module-fl-woo-cart-button {
+
+			.quantity,
+			.stock {
+				display: none;
+			}
+		}
+
+		.variations td.label {
+			width: 30%;
+
+			label {
+				color: #FFF;
+				font-weight: 700 !important;
+				padding-top: 5px;
+			}
+		}
+
+		form.cart {
+			.quantity input.qty {
+				height: 52px;
+				border-radius: 0;
+				padding-right: 50px;
+				width: auto;
+			}
+
+			.single_add_to_cart_button {
+				margin-left: -55px;
+
+				&:hover {
+					background: #000
+				}
+
+			}
+		}
+
+		.iconic-cffv-field__label.iconic-cffv-field__label--above {
+			width: 30%;
+			display: inline-block;
+		}
+
+		.iconic-cffv-field__content {
+			display: inline-block;
+		}
+
+
+		.matchHeight {
+
+			.fl-module-content,
+			.fl-photo,
+			.fl-photo-content,
+			.fl-photo-content img {
+				max-height: inherit;
+			}
+		}
+
+		.technical {
+			.woocommerce-product-attributes {
+
+				th,
+				td {
+					border-bottom: 1px solid #131315;
+				}
+
+				.woocommerce-product-attributes-item__label {
+					color: #00aeef;
+					width: 35%;
+				}
+			}
+		}
 	}
 
 	#reviews {
@@ -173,6 +167,8 @@
 				background-color: #00aeef;
 				padding: 10px 0;
 				position: relative;
+				line-height: 22px;
+				// transition: all .3s ease;
 
 				&:before {
 					content: "";
@@ -183,9 +179,9 @@
 					width: 0;
 					height: 0;
 					border-style: solid;
-					border-width: 0 0 40px 20px;
+					border-width: 0 0 42px 20px;
 					border-color: transparent transparent #00aeef;
-					transition: border .3s ease;
+					// transition: all .3s ease;
 				}
 
 				&:after {
@@ -198,9 +194,9 @@
 					height: 0;
 					color: #00aeef;
 					border-style: solid;
-					border-width: 40px 20px 0 0;
+					border-width: 42px 20px 0 0;
 					border-color: #00aeef transparent transparent;
-					transition: border .3s ease;
+					// transition: all .3s ease;
 				}
 			}
 		}
@@ -235,6 +231,7 @@
 
 			ol.commentlist li {
 				border-top: 1px solid #000;
+
 				.comment-text {
 					margin-left: 0;
 				}
