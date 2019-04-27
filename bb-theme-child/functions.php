@@ -131,7 +131,7 @@ function woo_attributes_shortcode( $atts ) {
 
               // Build the html string with the label followed by a clickable list of terms.
               // heads up that in WC2.7 $product->id needs to be $product->get_id()
-              $html .= get_the_term_list( $product->id, $taxonomy, $attribute_label . ': ' , ', ' );                                
+              $html .= get_the_term_list( $product->get_id(), $taxonomy, $attribute_label . ': ' , ', ' );                                
           }
 
       }
