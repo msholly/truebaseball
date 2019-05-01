@@ -54,6 +54,7 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page.single-product .variations td.label label{color:#FFF;font-weight:700 !important;padding-top:5px}
 .woocommerce-page.single-product form.cart .quantity input.qty{height:52px;border-radius:0;padding-right:50px;width:auto}
 .woocommerce-page.single-product form.cart .single_add_to_cart_button{margin-left:-55px}
+.woocommerce-page.single-product form.cart .single_add_to_cart_button.disabled{margin-left:0}
 .woocommerce-page.single-product form.cart .single_add_to_cart_button:hover{background:#000 !important}
 .woocommerce-page.single-product .iconic-cffv-field__label.iconic-cffv-field__label--above{width:30%;display:inline-block}
 .woocommerce-page.single-product .iconic-cffv-field__content{display:inline-block}

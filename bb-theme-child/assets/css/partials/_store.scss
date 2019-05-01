@@ -75,6 +75,10 @@
 			.single_add_to_cart_button {
 				margin-left: -55px;
 
+				&.disabled {
+					margin-left: 0;
+				}
+				
 				&:hover {
 					background: #000 !important
 				}
