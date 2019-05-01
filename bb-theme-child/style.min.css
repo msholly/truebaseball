@@ -44,10 +44,11 @@ header .fl-page-nav-search form input.fl-search-input:-ms-input-placeholder{colo
 header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FFF}
 .lead p{font-size:18px}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
-.woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1){margin-left:0}
-.woocommerce-page ul.products li.product a img{border:0}
+.woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
+.woocommerce-page ul.products li.product a img{border:1px solid transparent;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
 .woocommerce-page.single-product .fl-module-uabb-image-carousel,.woocommerce-page.single-product .mfp-figure:after{background:linear-gradient(45deg,#000 0,#00152a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#00152a',GradientType=1)}
 .woocommerce-page.single-product .uabb-background-mask{background:transparent}
+.woocommerce-page.single-product .organization-logo img{opacity:.5}
 .woocommerce-page.single-product .fl-module-fl-woo-cart-button .quantity,.woocommerce-page.single-product .fl-module-fl-woo-cart-button .stock{display:none}
 .woocommerce-page.single-product .variations td.label{width:30%}
 .woocommerce-page.single-product .variations td.label label{color:#FFF;font-weight:700 !important;padding-top:5px}

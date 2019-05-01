@@ -9,12 +9,17 @@
 		background-color: #000
 	}
 
-	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1) {
+	// .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1) {
+	// 	margin-left: 0;
+	// }
+	
+	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product {
 		margin-left: 0;
 	}
 
 	ul.products li.product a img {
-		border: none;
+		border: 1px solid transparent;
+		transition: border-color 0.5s ease;
 	}
 
 	&.single-product {
@@ -35,6 +40,10 @@
 
 		.uabb-background-mask {
 			background: transparent;
+		}
+
+		.organization-logo img {
+			opacity: .5;
 		}
 
 		.fl-module-fl-woo-cart-button {
