@@ -21,7 +21,7 @@
 
 		a.fl-button,
 		.uabb-creative-button-wrap a.uabb-button,
-		.single_add_to_cart_button, .wc-product-reviews-pro-form-submit-row button {
+		.single_add_to_cart_button, .single_add_to_cart_button.disabled, .wc-product-reviews-pro-form-submit-row button {
 			-ms-transform: skewX(-20deg);
 			-webkit-transform: skewX(-20deg);
 			transform: skewX(-20deg);
