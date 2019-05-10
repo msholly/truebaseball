@@ -1,7 +1,7 @@
 .fl-page-content {
 
 	/* BUTTONS */
-	button.button {
+	button.button, input[type=submit] {
 		
 			background-color: transparent;
 			border: 3px solid $color--primary;
@@ -16,6 +16,17 @@
 				border: 3px solid $color--primary;
 				color: #FFF;
 			}			
+	}
+	a.button {
+		background-color: #00aeef;
+		color: #FFF;
+		border: none;
+		border-radius: 0;
+		&:hover {
+			background-color: $color--primary--hover;
+			border: none;
+			color: #FFF;
+		}
 	}
 	.fl-builder-content .cta-btn {
 
@@ -84,7 +95,10 @@
 	input[type=time],
 	input[type=url],
 	input[type=week] {
-		height: auto;
+		// height: auto;
+		height: 42px !important;
+				border-radius: 0 !important;
+				margin-bottom: 20px !important;
 	}
 
 	// GLOBAL SELECT CSS
@@ -129,6 +143,11 @@
 	select option {
 		font-weight:normal;
 	}
+	label {
+		line-height: normal;
+		margin-bottom: 5px;
+	}
+	
 
 	/* TYPOGRAPHY */
 	.fl-heading-text span {

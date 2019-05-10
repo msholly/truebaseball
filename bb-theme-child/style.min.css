@@ -6,8 +6,10 @@ Description: Light at the end of the funnel.
 Author: Architk Media Team
 Author URI: http://architkmedia.com
 template: bb-theme
-*/.fl-page-content button.button{background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:10px 20px;-webkit-transition:background .3s ease;transition:background .3s ease}
-.fl-page-content button.button:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef;color:#FFF}
+*/.fl-page-content button.button,.fl-page-content input[type=submit]{background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:10px 20px;-webkit-transition:background .3s ease;transition:background .3s ease}
+.fl-page-content button.button:hover,.fl-page-content input[type=submit]:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef;color:#FFF}
+.fl-page-content a.button{background-color:#00aeef;color:#FFF;border:0;border-radius:0}
+.fl-page-content a.button:hover{background-color:rgba(0,174,239,0.85);border:0;color:#FFF}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button{-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:13px 30px;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button:hover,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled:hover,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button:hover span,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button:hover span,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button:hover span,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled:hover span,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover span{color:#FFF}
@@ -15,12 +17,13 @@ template: bb-theme
 .fl-page-content .fl-builder-content .cta-btn .fl-button-text{letter-spacing:.025em}
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button{background-color:#00aeef}
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button:hover{background-color:transparent;color:#FFF}
-.fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:auto}
+.fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:42px !important;border-radius:0 !important;margin-bottom:20px !important}
 .fl-page-content select{display:block;font-size:16px;font-family:sans-serif;font-weight:700;color:#444;line-height:1.3;padding:.6em 1.4em .5em .8em;width:100%;max-width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;border:1px solid #aaa;-webkit-box-shadow:0 1px 0 1px rgba(0,0,0,0.04);box-shadow:0 1px 0 1px rgba(0,0,0,0.04);-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#fff;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),-webkit-gradient(linear,left top,left bottom,from(#fff),to(#fff)) !important;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),linear-gradient(to bottom,#fff 0,#fff 100%) !important;background-repeat:no-repeat,repeat;background-position:right .7em top 50%,0 0;background-size:.65em auto,100%}
 .fl-page-content select::-ms-expand{display:none}
 .fl-page-content select:hover{border-color:#888}
 .fl-page-content select:focus{border-color:#aaa;color:#222;outline:0}
 .fl-page-content select option{font-weight:normal}
+.fl-page-content label{line-height:normal;margin-bottom:5px}
 .fl-page-content .fl-heading-text span{color:#00aeef}
 .fl-page-content .true-border-bottom h1,.fl-page-content .true-border-bottom h2,.fl-page-content .true-border-bottom h3,.fl-page-content .true-border-bottom h4,.fl-page-content .true-border-bottom h5,.fl-page-content .true-border-bottom h6{border-bottom:3px solid #00aeef !important;padding-bottom:5px !important}
 header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase;background-color:transparent}
@@ -95,6 +98,34 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .facetwp-radio.checked::before{top:0;width:100%;height:100%;background:#00aeef}
 .noUi-connect{background:#00aeef !important}
 .facetwp-radio,.facetwp-radio::before{-webkit-transition:.25s all ease;transition:.25s all ease}
+.woocommerce-form-register,.woocommerce-form-login{background-color:#14151a;border:none !important;border-radius:0 !important}
+.woocommerce-MyAccount-navigation{padding:0 20px 0 0}
+.woocommerce-MyAccount-navigation ul li{border:none !important;padding:0;position:relative;font-size:18px}
+.woocommerce-MyAccount-navigation ul li.is-active{border:0;background-color:#00aeef}
+.woocommerce-MyAccount-navigation ul li.is-active a{color:#FFF;font-weight:700}
+.woocommerce-MyAccount-navigation ul li.is-active:before,.woocommerce-MyAccount-navigation ul li.is-active:after{content:"";display:inline-block;position:absolute;top:0;width:0;height:0;border-style:solid}
+.woocommerce-MyAccount-navigation ul li.is-active:before{left:-20px;border-width:0 0 46px 20px;border-color:transparent transparent #00aeef}
+.woocommerce-MyAccount-navigation ul li.is-active:after{right:-20px;border-width:46px 20px 0 0;border-color:#00aeef transparent transparent}
+.woocommerce-MyAccount-navigation ul li a{padding-left:10px !important;-webkit-transition:background .3s ease;transition:background .3s ease;text-transform:uppercase}
+.woocommerce-MyAccount-navigation ul li a:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 46px 20px;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-MyAccount-navigation ul li a:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;border-style:solid;border-width:46px 20px 0 0;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-MyAccount-navigation ul li a:hover{background-color:rgba(0,174,239,0.85);color:#FFF;text-decoration:none}
+.woocommerce-MyAccount-navigation ul li a:hover:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 46px 20px;border-color:transparent transparent rgba(0,174,239,0.85);-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-MyAccount-navigation ul li a:hover:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;color:#00aeef;border-style:solid;border-width:46px 20px 0 0;border-color:rgba(0,174,239,0.85) transparent transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-MyAccount-content p,.woocommerce-MyAccount-content table.my_account_orders{font-size:16px;line-height:28px}
+.woocommerce-MyAccount-content .woocommerce-Address,.woocommerce-MyAccount-content .woocommerce-column--billing-address,.woocommerce-MyAccount-content .woocommerce-column--shipping-address{padding:25px !important;background-color:#14151a}
+.woocommerce-MyAccount-content .woocommerce-Address address,.woocommerce-MyAccount-content .woocommerce-column--billing-address address,.woocommerce-MyAccount-content .woocommerce-column--shipping-address address{padding:15px 0;border-radius:0}
+.woocommerce-MyAccount-content table.shop_table{background:#14151a;border:0;border-radius:0;border-collapse:collapse}
+.woocommerce-MyAccount-content table.shop_table th{padding:10px 25px}
+.woocommerce-MyAccount-content table.shop_table thead th{border-bottom:1px solid #e6e6e6}
+.woocommerce-MyAccount-content table.shop_table td{border:0;padding:10px 25px}
+.woocommerce-MyAccount-content mark{color:#000 !important}
+.woocommerce-MyAccount-content .woocommerce-info{color:#000 !important}
+#affwp-register-form,#affwp-login-form{max-width:500px;margin:0 auto;padding:30px}
+#affwp-register-form .affwp-form legend,#affwp-login-form .affwp-form legend{text-transform:uppercase}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs{background-color:#00aeef;padding:25px 35px;text-align:center}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li a{color:#FFF}
+#affwp-affiliate-dashboard .affwp-tab-content{max-width:1100px;margin:0 auto;padding:35px}
 .uppercase,.uppercase .fl-heading{text-transform:uppercase !important}
 .lowercase,.lowercase .fl-heading{text-transform:lowercase !important}
 .capitalize{text-transform:capitalize !important}
