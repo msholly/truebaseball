@@ -8,8 +8,10 @@ Author URI: http://architkmedia.com
 template: bb-theme
 */.fl-page-content button.button,.fl-page-content input[type=submit]{background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:10px 20px;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content button.button:hover,.fl-page-content input[type=submit]:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef;color:#FFF}
-.fl-page-content a.button{background-color:#00aeef;color:#FFF;border:0;border-radius:0}
+.fl-page-content a.button{background-color:#00aeef;color:#FFF;border:0;border-radius:0;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content a.button:hover{background-color:rgba(0,174,239,0.85);border:0;color:#FFF}
+.fl-page-content a.button.checkout-button{color:#FFF;padding:25px 10px;border:0;text-transform:uppercase}
+.fl-page-content a.button.checkout-button:hover{background-color:rgba(0,174,239,0.85);border:0;color:#FFF}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button{-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:13px 30px;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button:hover,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled:hover,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef}
 .fl-page-content .fl-builder-content .cta-btn a.fl-button:hover span,.fl-page-content .fl-builder-content .cta-btn .uabb-creative-button-wrap a.uabb-button:hover span,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button:hover span,.fl-page-content .fl-builder-content .cta-btn .single_add_to_cart_button.disabled:hover span,.fl-page-content .fl-builder-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover span{color:#FFF}
@@ -17,7 +19,7 @@ template: bb-theme
 .fl-page-content .fl-builder-content .cta-btn .fl-button-text{letter-spacing:.025em}
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button{background-color:#00aeef}
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button:hover,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button:hover{background-color:transparent;color:#FFF}
-.fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:42px !important;border-radius:0 !important;margin-bottom:20px !important}
+.fl-page-content input[type=date],.fl-page-content input[type=email],.fl-page-content input[type=month],.fl-page-content input[type=number],.fl-page-content input[type=password],.fl-page-content input[type=search],.fl-page-content input[type=tel],.fl-page-content input[type=text],.fl-page-content input[type=time],.fl-page-content input[type=url],.fl-page-content input[type=week]{height:46px !important;border-radius:0 !important;margin-bottom:20px !important}
 .fl-page-content select{display:block;font-size:16px;font-family:sans-serif;font-weight:700;color:#444;line-height:1.3;padding:.6em 1.4em .5em .8em;width:100%;max-width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;border:1px solid #aaa;-webkit-box-shadow:0 1px 0 1px rgba(0,0,0,0.04);box-shadow:0 1px 0 1px rgba(0,0,0,0.04);-moz-appearance:none;-webkit-appearance:none;appearance:none;background-color:#fff;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),-webkit-gradient(linear,left top,left bottom,from(#fff),to(#fff)) !important;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),linear-gradient(to bottom,#fff 0,#fff 100%) !important;background-repeat:no-repeat,repeat;background-position:right .7em top 50%,0 0;background-size:.65em auto,100%}
 .fl-page-content select::-ms-expand{display:none}
 .fl-page-content select:hover{border-color:#888}
@@ -53,9 +55,10 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page.single-product .uabb-background-mask{background:transparent}
 .woocommerce-page.single-product .organization-logo img{opacity:.5}
 .woocommerce-page.single-product .product_meta{border-top:3px solid #00aeef}
+.woocommerce-page.single-product .product-price .woocommerce-Price-amount{color:#00aeef;font-size:36px;font-weight:700}
 .woocommerce-page.single-product .variations td.label{width:30%}
 .woocommerce-page.single-product .variations td.label label{color:#FFF;font-weight:700 !important;padding-top:5px}
-.woocommerce-page.single-product form.cart .quantity input.qty{height:52px;border-radius:0;padding-right:50px;width:auto}
+.woocommerce-page.single-product form.cart .quantity input.qty{height:52px !important;border-radius:0;padding-right:50px;width:auto}
 .woocommerce-page.single-product form.cart .single_add_to_cart_button{margin-left:-55px}
 .woocommerce-page.single-product form.cart .single_add_to_cart_button.disabled{background:#000 !important;opacity:1 !important}
 .woocommerce-page.single-product form.cart .single_add_to_cart_button.disabled span{opacity:.3}
@@ -72,9 +75,17 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page #reviews .product-rating .product-rating-details .rating-graph .bar{background-color:#FFF !important}
 .woocommerce-page #reviews .product-rating .product-rating-details .rating-count a{text-decoration:none !important}
 .woocommerce-page #reviews .contribution-type-selector{margin:0 19px;width:calc(100% - 38px)}
-.woocommerce-page #reviews .contribution-type-selector>a.active{background-color:#00aeef;padding:10px 0;position:relative;line-height:22px}
-.woocommerce-page #reviews .contribution-type-selector>a.active:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 42px 20px;border-color:transparent transparent #00aeef}
-.woocommerce-page #reviews .contribution-type-selector>a.active:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;color:#00aeef;border-style:solid;border-width:42px 20px 0 0;border-color:#00aeef transparent transparent}
+.woocommerce-page #reviews .contribution-type-selector>a.active{border:0;background-color:#00aeef}
+.woocommerce-page #reviews .contribution-type-selector>a.active a{color:#FFF;font-weight:700}
+.woocommerce-page #reviews .contribution-type-selector>a.active:before,.woocommerce-page #reviews .contribution-type-selector>a.active:after{content:"";display:inline-block;position:absolute;top:0;width:0;height:0;border-style:solid}
+.woocommerce-page #reviews .contribution-type-selector>a.active:before{left:-20px;border-width:0 0 46px 20px;border-color:transparent transparent #00aeef}
+.woocommerce-page #reviews .contribution-type-selector>a.active:after{right:-20px;border-width:46px 20px 0 0;border-color:#00aeef transparent transparent}
+.woocommerce-page #reviews .contribution-type-selector a{padding-left:10px !important;-webkit-transition:background .3s ease;transition:background .3s ease;text-transform:uppercase;position:relative}
+.woocommerce-page #reviews .contribution-type-selector a:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 46px 20px;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-page #reviews .contribution-type-selector a:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;border-style:solid;border-width:46px 20px 0 0;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-page #reviews .contribution-type-selector a:hover{background-color:rgba(0,174,239,0.85);color:#FFF;text-decoration:none}
+.woocommerce-page #reviews .contribution-type-selector a:hover:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 46px 20px;border-color:transparent transparent rgba(0,174,239,0.85);-webkit-transition:border .3s ease;transition:border .3s ease}
+.woocommerce-page #reviews .contribution-type-selector a:hover:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;color:#00aeef;border-style:solid;border-width:46px 20px 0 0;border-color:rgba(0,174,239,0.85) transparent transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
 .woocommerce-page #reviews .contribution-form-wrapper form{border:0;background:rgba(255,255,255,0.2)}
 .woocommerce-page #reviews .contribution-form-wrapper form .star-rating-selector:not(:checked) label.checkbox:hover,.woocommerce-page #reviews .contribution-form-wrapper form .star-rating-selector:not(:checked) label.checkbox:hover ~ label.checkbox{color:#00aeef;-webkit-transition:all .3s ease;transition:all .3s ease}
 .woocommerce-page #reviews .contribution-form-wrapper form .star-rating-selector abbr{margin-right:25px}
@@ -89,6 +100,16 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page #reviews #comments ol.commentlist li .children{padding-left:0}
 .woocommerce-page #reviews #subscribe_to_replies_field .input-checkbox{margin:6px 8px 0 -20px}
 .woocommerce-page #reviews #subscribe_to_replies_field label.checkbox{margin-left:20px}
+.woocommerce-cart .shop_table,.cart_totals .shop_table{border-radius:0 !important;border:none !important;background-color:#14151a !important}
+.woocommerce-cart .shop_table thead th,.cart_totals .shop_table thead th{border-bottom:2px solid #000 !important;padding:10px 10px}
+.woocommerce-cart .shop_table tbody th,.cart_totals .shop_table tbody th{border-bottom:1px solid #000 !important}
+.woocommerce-cart .shop_table tbody td,.cart_totals .shop_table tbody td{border-color:#000 !important}
+.woocommerce-cart .shop_table tbody td.product-remove a,.cart_totals .shop_table tbody td.product-remove a{margin:0 auto;padding:2px 1px 0 0;width:24px;height:24px}
+.woocommerce-cart .shop_table tbody td.product-thumbnail,.cart_totals .shop_table tbody td.product-thumbnail{width:220px;padding:0}
+.woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img{background-color:#FFF}
+.woocommerce-cart .shop_table tbody td.product-name a,.cart_totals .shop_table tbody td.product-name a{font-size:20px;font-weight:700}
+.woocommerce-cart .shop_table tbody td.product-quantity input.qty,.cart_totals .shop_table tbody td.product-quantity input.qty{margin-bottom:0 !important}
+.woocommerce-cart .shop_table tbody td.actions,.cart_totals .shop_table tbody td.actions{background-color:#000;padding-left:0;padding-right:0}
 .page-id-426{background-color:#000}
 .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .facetwp-counter,.facetwp-overlay{display:none}
@@ -221,6 +242,7 @@ span.middot{display:inline-block;margin:0 5px}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form::after{content:'';width:100%;height:100%;position:absolute;background:inherit;z-index:-1;bottom:0;-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:#fff;margin:0 30px 0 -25px;left:20px}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form .fl-search-input{border:0;border-right:0;border-left:0;border-top:0;background-color:transparent;color:#00aeef;margin:20px 0}
 @media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
+}@media(min-width:768px){.woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img{width:200px;max-width:200px !important}
 }@media only screen and (min-width:992px){header .add-search-icon .fl-module-content .menu{margin-right:30px}
 header .fl-row-content-wrap .fl-page-nav-search{margin-top:20px;right:10px}
 header .fl-row-content-wrap .fl-page-nav-search a{color:#fff}

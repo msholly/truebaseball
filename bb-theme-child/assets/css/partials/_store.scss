@@ -12,7 +12,7 @@
 	// .uabb-woo-products-grid .uabb-woo-product__column-3 li.product:nth-child(3n+1) {
 	// 	margin-left: 0;
 	// }
-	
+
 	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product {
 		margin-left: 0;
 	}
@@ -27,7 +27,8 @@
 		// 	background-image: linear-gradient(110deg, #000000 30%, #787878 calc(30% + 2px));
 		// }
 
-		.fl-module-uabb-image-carousel, .mfp-figure:after {
+		.fl-module-uabb-image-carousel,
+		.mfp-figure:after {
 			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,00152a+100 */
 			background: linear-gradient(45deg, #000000 0%, #00152a 100%);
 			/* Old browsers */
@@ -49,13 +50,12 @@
 		.product_meta {
 			border-top: 3px solid #00aeef
 		}
-		// .fl-module-fl-woo-cart-button {
 
-		// 	.quantity,
-		// 	.stock {
-		// 		display: none;
-		// 	}
-		// }
+		.product-price .woocommerce-Price-amount {
+			color: #00aeef;
+			font-size: 36px;
+			font-weight: 700;
+		}
 
 		.variations td.label {
 			width: 30%;
@@ -68,9 +68,9 @@
 		}
 
 		form.cart {
-			
+
 			.quantity input.qty {
-				height: 52px;
+				height: 52px !important;
 				border-radius: 0;
 				padding-right: 50px;
 				width: auto;
@@ -82,6 +82,7 @@
 				&.disabled {
 					background: #000 !important;
 					opacity: 1 !important;
+
 					span {
 						opacity: .3;
 					}
@@ -184,12 +185,52 @@
 			margin: 0 19px;
 			width: calc(100% - 38px);
 
+
+
+			// border: none !important;
+			// padding: 0;
+			// position: relative;
+			// font-size: 18px;
+
 			&>a.active {
-				background-color: #00aeef;
-				padding: 10px 0;
+				border: 0;
+				background-color: $color--primary;
+
+				a {
+					color: #FFF;
+					font-weight: 700;
+				}
+
+				&:before,
+				&:after {
+					content: "";
+					display: inline-block;
+					position: absolute;
+					top: 0;
+					width: 0;
+					height: 0;
+					border-style: solid;
+				}
+
+				&:before {
+					left: -20px;
+					border-width: 0 0 46px 20px;
+					border-color: transparent transparent $color--primary;
+				}
+
+				&:after {
+					right: -20px;
+					border-width: 46px 20px 0 0;
+					border-color: $color--primary transparent transparent;
+				}
+			}
+
+
+			a {
+				padding-left: 10px !important;
+				transition: background .3s ease;
+				text-transform: uppercase;
 				position: relative;
-				line-height: 22px;
-				// transition: all .3s ease;
 
 				&:before {
 					content: "";
@@ -200,9 +241,9 @@
 					width: 0;
 					height: 0;
 					border-style: solid;
-					border-width: 0 0 42px 20px;
-					border-color: transparent transparent #00aeef;
-					// transition: all .3s ease;
+					border-width: 0 0 46px 20px;
+					border-color: transparent;
+					transition: border .3s ease;
 				}
 
 				&:after {
@@ -213,13 +254,89 @@
 					top: 0;
 					width: 0;
 					height: 0;
-					color: #00aeef;
 					border-style: solid;
-					border-width: 42px 20px 0 0;
-					border-color: #00aeef transparent transparent;
-					// transition: all .3s ease;
+					border-width: 46px 20px 0 0;
+					border-color: transparent;
+					transition: border .3s ease;
 				}
+
+				&:hover {
+					background-color: $color--primary--hover;
+					color: #FFF;
+					text-decoration: none;
+
+					&:before {
+						content: "";
+						display: inline-block;
+						position: absolute;
+						left: -20px;
+						top: 0;
+						width: 0;
+						height: 0;
+						border-style: solid;
+						border-width: 0 0 46px 20px;
+						border-color: transparent transparent $color--primary--hover;
+						transition: border .3s ease;
+					}
+
+					&:after {
+						content: "";
+						display: inline-block;
+						position: absolute;
+						right: -20px;
+						top: 0;
+						width: 0;
+						height: 0;
+						color: $color--primary;
+						border-style: solid;
+						border-width: 46px 20px 0 0;
+						border-color: $color--primary--hover transparent transparent;
+						transition: border .3s ease;
+					}
+				}
+
+
+
 			}
+
+
+
+			// &>a.active {
+			// 	background-color: #00aeef;
+			// 	padding: 10px 0;
+			// 	position: relative;
+			// 	line-height: 22px;
+			// 	// transition: all .3s ease;
+
+			// 	&:before {
+			// 		content: "";
+			// 		display: inline-block;
+			// 		position: absolute;
+			// 		left: -20px;
+			// 		top: 0;
+			// 		width: 0;
+			// 		height: 0;
+			// 		border-style: solid;
+			// 		border-width: 0 0 42px 20px;
+			// 		border-color: transparent transparent #00aeef;
+			// 		// transition: all .3s ease;
+			// 	}
+
+			// 	&:after {
+			// 		content: "";
+			// 		display: inline-block;
+			// 		position: absolute;
+			// 		right: -20px;
+			// 		top: 0;
+			// 		width: 0;
+			// 		height: 0;
+			// 		color: #00aeef;
+			// 		border-style: solid;
+			// 		border-width: 42px 20px 0 0;
+			// 		border-color: #00aeef transparent transparent;
+			// 		// transition: all .3s ease;
+			// 	}
+			// }
 		}
 
 		// FORM 
