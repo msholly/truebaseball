@@ -48,6 +48,7 @@ header .fl-page-nav-search form input.fl-search-input::-moz-placeholder{color:#F
 header .fl-page-nav-search form input.fl-search-input:-ms-input-placeholder{color:#FFF}
 header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FFF}
 .lead p{font-size:18px}
+.woocommerce-page .woocommerce-message{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
 .woocommerce-page ul.products li.product a img{border:1px solid transparent;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
@@ -74,13 +75,13 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page #reviews .product-rating h3,.woocommerce-page #reviews .product-rating p{color:#FFF}
 .woocommerce-page #reviews .product-rating .product-rating-details .rating-graph .bar{background-color:#FFF !important}
 .woocommerce-page #reviews .product-rating .product-rating-details .rating-count a{text-decoration:none !important}
-.woocommerce-page #reviews .contribution-type-selector{margin:0 19px;width:calc(100% - 38px)}
+.woocommerce-page #reviews .contribution-type-selector{margin:0 20px;width:calc(100% - 40px)}
 .woocommerce-page #reviews .contribution-type-selector>a.active{border:0;background-color:#00aeef}
 .woocommerce-page #reviews .contribution-type-selector>a.active a{color:#FFF;font-weight:700}
 .woocommerce-page #reviews .contribution-type-selector>a.active:before,.woocommerce-page #reviews .contribution-type-selector>a.active:after{content:"";display:inline-block;position:absolute;top:0;width:0;height:0;border-style:solid}
 .woocommerce-page #reviews .contribution-type-selector>a.active:before{left:-20px;border-width:0 0 46px 20px;border-color:transparent transparent #00aeef}
 .woocommerce-page #reviews .contribution-type-selector>a.active:after{right:-20px;border-width:46px 20px 0 0;border-color:#00aeef transparent transparent}
-.woocommerce-page #reviews .contribution-type-selector a{padding-left:10px !important;-webkit-transition:background .3s ease;transition:background .3s ease;text-transform:uppercase;position:relative}
+.woocommerce-page #reviews .contribution-type-selector a{padding-left:10px !important;-webkit-transition:background .3s ease;transition:background .3s ease;text-transform:uppercase;position:relative;padding:14px;line-height:normal}
 .woocommerce-page #reviews .contribution-type-selector a:before{content:"";display:inline-block;position:absolute;left:-20px;top:0;width:0;height:0;border-style:solid;border-width:0 0 46px 20px;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
 .woocommerce-page #reviews .contribution-type-selector a:after{content:"";display:inline-block;position:absolute;right:-20px;top:0;width:0;height:0;border-style:solid;border-width:46px 20px 0 0;border-color:transparent;-webkit-transition:border .3s ease;transition:border .3s ease}
 .woocommerce-page #reviews .contribution-type-selector a:hover{background-color:rgba(0,174,239,0.85);color:#FFF;text-decoration:none}
@@ -100,7 +101,7 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-page #reviews #comments ol.commentlist li .children{padding-left:0}
 .woocommerce-page #reviews #subscribe_to_replies_field .input-checkbox{margin:6px 8px 0 -20px}
 .woocommerce-page #reviews #subscribe_to_replies_field label.checkbox{margin-left:20px}
-.woocommerce-cart .shop_table,.cart_totals .shop_table{border-radius:0 !important;border:none !important;background-color:#14151a !important}
+.woocommerce-cart .shop_table,.cart_totals .shop_table{border-radius:0 !important;border:none !important;background-color:#14151a !important;margin-bottom:0 !important}
 .woocommerce-cart .shop_table thead th,.cart_totals .shop_table thead th{border-bottom:2px solid #000 !important;padding:10px 10px}
 .woocommerce-cart .shop_table tbody th,.cart_totals .shop_table tbody th{border-bottom:1px solid #000 !important}
 .woocommerce-cart .shop_table tbody td,.cart_totals .shop_table tbody td{border-color:#000 !important}
@@ -110,6 +111,7 @@ header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FF
 .woocommerce-cart .shop_table tbody td.product-name a,.cart_totals .shop_table tbody td.product-name a{font-size:20px;font-weight:700}
 .woocommerce-cart .shop_table tbody td.product-quantity input.qty,.cart_totals .shop_table tbody td.product-quantity input.qty{margin-bottom:0 !important}
 .woocommerce-cart .shop_table tbody td.actions,.cart_totals .shop_table tbody td.actions{background-color:#000;padding-left:0;padding-right:0}
+.woocommerce-cart .wc-proceed-to-checkout,.cart_totals .wc-proceed-to-checkout{padding-top:0}
 .page-id-426{background-color:#000}
 .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .facetwp-counter,.facetwp-overlay{display:none}

@@ -1,5 +1,11 @@
 .woocommerce-page {
 
+	.woocommerce-message {
+		background-color: $on-dark-bg;
+		border: none;
+		color: #FFF;
+	}
+
 	.bat-hero {
 		background-attachment: scroll;
 		background-image: url("assets/img/true-diagram-background.jpg");
@@ -182,8 +188,8 @@
 
 		// LET US KNOW MODULE
 		.contribution-type-selector {
-			margin: 0 19px;
-			width: calc(100% - 38px);
+			margin: 0 20px;
+			width: calc(100% - 40px);
 
 
 
@@ -231,6 +237,8 @@
 				transition: background .3s ease;
 				text-transform: uppercase;
 				position: relative;
+				padding: 14px;
+				line-height: normal;
 
 				&:before {
 					content: "";

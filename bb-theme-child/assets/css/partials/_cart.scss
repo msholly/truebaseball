@@ -3,6 +3,7 @@
         border-radius: 0 !important;
         border: none !important;
         background-color: $on-dark-bg !important;
+        margin-bottom: 0 !important;
         thead {
             th {
                 border-bottom: 2px solid #000 !important;
@@ -53,5 +54,8 @@
                 
             }
         }
+    }
+    .wc-proceed-to-checkout {
+        padding-top: 0;
     }
 }
