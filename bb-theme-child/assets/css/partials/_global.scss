@@ -77,6 +77,11 @@
 				transform: skewX(20deg);
 				display: inline-block;
 				color: #FFF;
+				> span {
+					-ms-transform: none;
+					-webkit-transform: none;
+					transform: none;
+				}
 			}
 		}
 
@@ -94,6 +99,12 @@
 				&:hover {
 					background-color: transparent;
 					color: #FFF;
+				}
+
+				.uabb-marketing-buttons-wrap {
+					.uabb-marketing-title, .uabb-marketing-button-text {
+						color: $color--primary;
+					}
 				}
 
 			}
