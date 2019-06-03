@@ -102,10 +102,7 @@
 					.uabb-marketing-buttons-wrap {
 						.uabb-marketing-title, .uabb-marketing-button-text, .uabb-marketing-button-text span {
 							color: $color--primary;
-							/* Small Devices, Tablets */
-							@media only screen and (max-width: 768px) {
-								line-height: 24px;								
-							}
+							line-height: 24px;								
 						}
 					}
 				}
