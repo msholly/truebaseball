@@ -5,11 +5,11 @@
 
 -----------------------------------------------------------------------------------*/
 .color--primary {
-	color: $color--primary;
+	color: $color--primary !important;
 }
 
 .color--primary-bg {
-	background-color: $color--primary;
+	background-color: $color--primary !important;
 }
 
 .uppercase, .uppercase .fl-heading { text-transform: uppercase !important; }
