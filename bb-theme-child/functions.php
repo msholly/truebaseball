@@ -55,11 +55,11 @@ function my_custom_fonts() {
 
 
 // THE WEIRD BUG LOADING ADMIN COMMON ON THE FRONT END
-function project_dequeue_unnecessary_styles() {
-  wp_dequeue_style( 'common' );
-  wp_deregister_style( 'common' );
-}
-if ( ! is_admin() ) add_action( 'wp_enqueue_scripts', 'project_dequeue_unnecessary_styles' );
+// function project_dequeue_unnecessary_styles() {
+//   wp_dequeue_style( 'common' );
+//   wp_deregister_style( 'common' );
+// }
+// if ( ! is_admin() ) add_action( 'wp_enqueue_scripts', 'project_dequeue_unnecessary_styles' );
 
 
 // Add a Beaver Builder Template to the bottom of the Beaver Builder Theme vertical menu
@@ -197,3 +197,19 @@ function disable_emojis() {
  
  return $urls;
  }
+
+
+ /**
+ * Add product_brand to taxonomies list for variations.
+ * 
+ * @param array $taxonomies
+ *
+ * @return array
+ */
+function iconic_add_brands_to_variations( $taxonomies ) {
+	$taxonomies[] = 'length-in';
+
+	return $taxonomies;
+}
+
+add_filter( 'iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations', 10, 1 );
