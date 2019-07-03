@@ -213,3 +213,16 @@ function iconic_add_brands_to_variations( $taxonomies ) {
 }
 
 add_filter( 'iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations', 10, 1 );
+
+/**
+ * Increase page list for variations on product admin.
+ * 
+ * 
+ *
+ * @return number
+ */
+add_filter( 'woocommerce_admin_meta_boxes_variations_per_page', 'handsome_bearded_guy_increase_variations_per_page' );
+
+function handsome_bearded_guy_increase_variations_per_page() {
+	return 50;
+}

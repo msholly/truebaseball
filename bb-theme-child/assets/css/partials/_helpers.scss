@@ -35,7 +35,10 @@
 	overflow: hidden !important;
 }
 
-
+.disabled {
+	opacity: 0.30;
+	cursor: not-allowed;
+}
 .line,
 .double-line {
 	clear: both;
