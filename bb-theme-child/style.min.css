@@ -116,6 +116,13 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100%;height:300px;-o-object-fit:
 .woocommerce-cart .shop_table tbody td.actions,.cart_totals .shop_table tbody td.actions{background-color:#000;padding-left:0;padding-right:0}
 .woocommerce-cart .wc-proceed-to-checkout,.cart_totals .wc-proceed-to-checkout{padding-top:0}
 .page-id-426{background-color:#000}
+.page-id-426 .fitting-facets .noUi-connects{border-radius:0}
+.page-id-426 .fitting-facets .noUi-target{background:#333;border-radius:0;border:0;-webkit-box-shadow:none;box-shadow:none}
+.page-id-426 .fitting-facets .noUi-handle{border:1px solid #00aeef;border-radius:35px;background:#00aeef;-webkit-box-shadow:none;box-shadow:none;height:35px;width:35px;top:-13px}
+.page-id-426 .fitting-facets .noUi-handle:before,.page-id-426 .fitting-facets .noUi-handle:after{top:9px}
+.page-id-426 .fitting-facets .noUi-horizontal{height:10px}
+.page-id-426 .fitting-facets .noUi-sliderValues{text-align:center;font-size:64px;color:#00aeef !important}
+.page-id-426 .fitting-facets .noUi-value.noUi-value-horizontal{padding-top:3px}
 .page-id-426 .fitting-facets .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .page-id-426 .fitting-facets .facetwp-counter,.page-id-426 .fitting-facets .facetwp-overlay{display:none}
 .page-id-426 .fitting-facets input[type="checkbox"],.page-id-426 .fitting-facets input[type="radio"]{position:absolute;opacity:0;z-index:-1}
