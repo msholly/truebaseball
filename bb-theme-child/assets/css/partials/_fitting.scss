@@ -116,7 +116,7 @@
 			}
 
 			&.usssa {
-				margin-right: 60px;
+				
 
 				img {
 					max-height: 175px;
@@ -145,6 +145,10 @@
 				&.checked::before {
 					top: 0 !important
 				}
+			}
+
+			&.modded:first-child {
+				margin-right: 60px;
 			}
 		}
 
