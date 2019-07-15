@@ -9,6 +9,10 @@
  * License: GPL2
  */
 
+// Debugging
+// include 'php/ChromePhp.php';
+
+
 add_role(
     'affiliate',
     __( 'Affiliate' ),
@@ -34,7 +38,7 @@ add_action( 'affwp_insert_affiliate', 'pw_affwp_set_role_on_registration' );
 
 
 // For ACF Debuggin
-// add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
+add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
 
 /*
@@ -57,6 +61,71 @@ function prefix_wc_api_order_response( $order ) {
 	return $order;
 }
 add_filter( 'woocommerce_api_order_response', 'prefix_wc_api_order_response', 10, 1 );
+
+
+function add_affiliate_info_on_create_order ( $order_id ) {
+
+    $order = new WC_Order( $order_id ); 
+
+    // GET AFWP COOKIE ID
+    $affwp_ref = $_COOKIE['affwp_ref'];
+
+    $affiliate_info = get_userdata($affwp_ref);
+    $affiliate_login_name = $affiliate_info->user_login;
+
+    $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
+    $sales_rep_login_name = $sales_rep_info->user_login;
+
+    // GET ORDER NOTE
+    $customer_note = $order->get_customer_note();
+
+    // IF OLIVER POS
+    if (strpos($customer_note, 'POS') !== false) {
+        $tempOrderType = 'league';
+        update_field('order_type', $tempOrderType, $order_id);
+        update_field('sales_rep', 1, $order_id);
+        update_field('affiliate', $affwp_ref, $order_id);
+        $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
+    }
+    // ELSE WEB ORDER
+    else {
+        // The text for the note
+        $note = __('WEB | N/A | ' . $affiliate_login_name );
+        update_field('order_type', 'web', $order_id);
+        update_field('affiliate', $affwp_ref, $order_id);
+    }
+    
+    // update the customer_note on the order, the WP Post Excerpt
+    $update_excerpt = array(
+        'ID'             => $order_id,
+        'post_excerpt'   => $note,
+    );
+    wp_update_post( $update_excerpt );
+
+    // Add the note
+    $order->add_order_note( $note );
+
+    // Save the data
+    $order->save();
+}
+add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order' );
+
+
+
+// function true_woocommerce_after_checkout_form () {
+//     // TESTING OBJECTS ONLY 
+
+// 	// if(!isset($_COOKIE[$affwp_ref])) {
+//     //     echo "The cookie: '" . $_COOKIE[$affwp_ref] . "' is not set.";
+//     //     } else {
+//     //     echo "The cookie '" . $affwp_ref . "' is set.";
+//     //     echo "Value of cookie: " . $_COOKIE[$affwp_ref];
+//     //     }
+//     $cookieValue = $_COOKIE['affwp_ref'];
+//     echo "The cookie: '" . $cookieValue . "' is set.";
+
+// }
+// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
 
 
 ?>
