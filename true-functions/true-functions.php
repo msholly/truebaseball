@@ -67,51 +67,101 @@ function add_affiliate_info_on_create_order ( $order_id ) {
 
     $order = new WC_Order( $order_id ); 
 
-    // GET AFWP COOKIE ID
-    $affwp_ref = $_COOKIE['affwp_ref'];
-
-    $user_id = affwp_get_affiliate_user_id( $affwp_ref );
-    $affiliate_info = get_userdata($user_id);
-    $affiliate_login_name = $affiliate_info->user_login;
-
-    $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
-    $sales_rep_login_name = $sales_rep_info->user_login;
-
     // GET ORDER NOTE
     $customer_note = $order->get_customer_note();
 
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
+        // $tempOrderType = 'league';
+        // update_field('order_type', $tempOrderType, $order_id);
+        // update_field('sales_rep', 1, $order_id);
+        // update_field('affiliate', $user_id, $order_id);
+        // $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
+    }
+    // ELSE WEB ORDER
+    else {
+
+        // GET AFWP COOKIE ID
+        $affwp_ref = $_COOKIE['affwp_ref'];
+
+        $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+        $affiliate_info = get_userdata($user_id);
+        $affiliate_login_name = $affiliate_info->user_login;
+
+        $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
+        $sales_rep_login_name = $sales_rep_info->user_login;
+        
+        // The text for the note
+        $note = __('WEB | none | ' . $affiliate_login_name );
+        update_field('order_type', 'web', $order_id);
+        update_field('affiliate', $user_id, $order_id);
+
+        // update the customer_note on the order, the WP Post Excerpt
+        $update_excerpt = array(
+            'ID'             => $order_id,
+            'post_excerpt'   => $note,
+        );
+        wp_update_post( $update_excerpt );
+
+        // Add the note
+        $order->add_order_note( $note );
+
+        // Save the data
+        $order->save();
+    }
+    
+    
+}
+add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order', 20 );
+
+
+function add_affiliate_info_on_oliver_create_order ( $order_id ) {
+
+    $order = new WC_Order( $order_id ); 
+
+    // IF OLIVER POS
+    if (strpos($customer_note, 'POS') !== false) {
+
+        // GET AFWP COOKIE ID
+        $affwp_ref = $_COOKIE['affwp_ref'];
+
+        $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+        $affiliate_info = get_userdata($user_id);
+        $affiliate_login_name = $affiliate_info->user_login;
+
+        $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
+        $sales_rep_login_name = $sales_rep_info->user_login;
+
+        // GET ORDER NOTE
+        $customer_note = $order->get_customer_note();
+            
         $tempOrderType = 'league';
         update_field('order_type', $tempOrderType, $order_id);
         update_field('sales_rep', 1, $order_id);
         update_field('affiliate', $user_id, $order_id);
         $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
+
+        // update the customer_note on the order, the WP Post Excerpt
+        $update_excerpt = array(
+            'ID'             => $order_id,
+            'post_excerpt'   => $note,
+        );
+        wp_update_post( $update_excerpt );
+
+        // Add the note
+        $order->add_order_note( $note );
+
+        // Save the data
+        $order->save();
     }
     // ELSE WEB ORDER
     else {
-        // The text for the note
-        $note = __('WEB | none | ' . $affiliate_login_name );
-        update_field('order_type', 'web', $order_id);
-        update_field('affiliate', $user_id, $order_id);
+        // do nothing
     }
     
-    // update the customer_note on the order, the WP Post Excerpt
-    $update_excerpt = array(
-        'ID'             => $order_id,
-        'post_excerpt'   => $note,
-    );
-    wp_update_post( $update_excerpt );
-
-    // Add the note
-    $order->add_order_note( $note );
-
-    // Save the data
-    $order->save();
+    
 }
-add_action( 'woocommerce_payment_complete', 'add_affiliate_info_on_create_order', 20 );
-
-
+add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
 // function true_woocommerce_after_checkout_form () {
 //     // TESTING OBJECTS ONLY 
