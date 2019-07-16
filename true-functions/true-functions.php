@@ -87,9 +87,6 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         $user_id = affwp_get_affiliate_user_id( $affwp_ref );
         $affiliate_info = get_userdata($user_id);
         $affiliate_login_name = $affiliate_info->user_login;
-
-        $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
-        $sales_rep_login_name = $sales_rep_info->user_login;
         
         // The text for the note
         $note = __('WEB | none | ' . $affiliate_login_name );
