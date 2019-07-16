@@ -119,6 +119,9 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
     $order = new WC_Order( $order_id ); 
 
+    // GET ORDER NOTE
+    $customer_note = $order->get_customer_note();
+
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
 
@@ -132,9 +135,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
         $sales_rep_login_name = $sales_rep_info->user_login;
 
-        // GET ORDER NOTE
-        $customer_note = $order->get_customer_note();
-            
+    
         $tempOrderType = 'league';
         update_field('order_type', $tempOrderType, $order_id);
         update_field('sales_rep', 1, $order_id);
