@@ -109,7 +109,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
     // Save the data
     $order->save();
 }
-add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order' );
+add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order', 20 );
 
 
 
