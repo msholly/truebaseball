@@ -70,13 +70,12 @@ function add_affiliate_info_on_create_order ( $order_id ) {
     // GET AFWP COOKIE ID
     $affwp_ref = $_COOKIE['affwp_ref'];
 
-    $affiliate_info = get_userdata($affwp_ref);
+    $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+    $affiliate_info = get_userdata($user_id);
     $affiliate_login_name = $affiliate_info->user_login;
-    ChromePhp::log($affwp_ref);
 
     $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
     $sales_rep_login_name = $sales_rep_info->user_login;
-    ChromePhp::log($sales_rep_info);
 
     // GET ORDER NOTE
     $customer_note = $order->get_customer_note();
@@ -86,15 +85,15 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         $tempOrderType = 'league';
         update_field('order_type', $tempOrderType, $order_id);
         update_field('sales_rep', 1, $order_id);
-        update_field('affiliate', $affwp_ref, $order_id);
+        update_field('affiliate', $user_id, $order_id);
         $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
     }
     // ELSE WEB ORDER
     else {
         // The text for the note
-        $note = __('WEB | N/A | ' . $affiliate_login_name );
+        $note = __('WEB | none | ' . $affiliate_login_name );
         update_field('order_type', 'web', $order_id);
-        update_field('affiliate', $affwp_ref, $order_id);
+        update_field('affiliate', $user_id, $order_id);
     }
     
     // update the customer_note on the order, the WP Post Excerpt
@@ -123,10 +122,22 @@ add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order' );
 //     //     echo "The cookie '" . $affwp_ref . "' is set.";
 //     //     echo "Value of cookie: " . $_COOKIE[$affwp_ref];
 //     //     }
-//     $cookieValue = $_COOKIE['affwp_ref'];
-//     echo "The cookie: '" . $cookieValue . "' is set.";
+
+
+//     // $cookieValue = $_COOKIE['affwp_ref'];
+//     // echo "The cookie: '" . $cookieValue . "' is set.";
+
+//     $affwp_ref = $_COOKIE['affwp_ref'];
+
+//     $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+//     $affiliate_info = get_userdata($user_id);
+//     $affiliate_login_name = $affiliate_info->user_login;
+//     // ChromePhp::log($user_id);
+//     echo "The cookie: '" . $affiliate_login_name . "' is set.";
+
 
 // }
+// add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
 // add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
 
 
