@@ -72,9 +72,11 @@ function add_affiliate_info_on_create_order ( $order_id ) {
 
     $affiliate_info = get_userdata($affwp_ref);
     $affiliate_login_name = $affiliate_info->user_login;
+    ChromePhp::log($affwp_ref);
 
     $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
     $sales_rep_login_name = $sales_rep_info->user_login;
+    ChromePhp::log($sales_rep_info);
 
     // GET ORDER NOTE
     $customer_note = $order->get_customer_note();
