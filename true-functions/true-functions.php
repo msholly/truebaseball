@@ -123,21 +123,26 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
     if (strpos($customer_note, 'POS') !== false) {
 
         // GET AFWP COOKIE ID
-        $affwp_ref = $_COOKIE['affwp_ref'];
+        // $affwp_ref = $_COOKIE['affwp_ref'];
 
-        $user_id = affwp_get_affiliate_user_id( $affwp_ref );
-        $affiliate_info = get_userdata($user_id);
+        // GET custom post meta, including new Oliver data
+        $custom_fields = get_post_custom( $order_id );
+        $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
+        $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
+        $affiliate_wp_userid = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
+        
+        // Get Affiliate's full information
+        // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
+        $affiliate_info = get_userdata($affiliate_wp_userid);
         $affiliate_login_name = $affiliate_info->user_login;
 
-        $sales_rep_info = get_userdata(1); // assume all are mitchell id=1, temporarily
+        $sales_rep_info = get_user_by( 'email', $sales_rep_email ); 
         $sales_rep_login_name = $sales_rep_info->user_login;
 
-    
-        $tempOrderType = 'league';
-        update_field('order_type', $tempOrderType, $order_id);
-        update_field('sales_rep', 1, $order_id);
-        update_field('affiliate', $user_id, $order_id);
-        $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
+        update_field('order_type', $event_type, $order_id);
+        update_field('sales_rep', $sales_rep_info->ID, $order_id);
+        update_field('affiliate', $affiliate_info->ID, $order_id);
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
 
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
@@ -162,26 +167,48 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
 // function true_woocommerce_after_checkout_form () {
-//     // TESTING OBJECTS ONLY 
+    // TESTING OBJECTS ONLY 
 
-// 	// if(!isset($_COOKIE[$affwp_ref])) {
-//     //     echo "The cookie: '" . $_COOKIE[$affwp_ref] . "' is not set.";
-//     //     } else {
-//     //     echo "The cookie '" . $affwp_ref . "' is set.";
-//     //     echo "Value of cookie: " . $_COOKIE[$affwp_ref];
-//     //     }
+	// if(!isset($_COOKIE[$affwp_ref])) {
+    //     echo "The cookie: '" . $_COOKIE[$affwp_ref] . "' is not set.";
+    //     } else {
+    //     echo "The cookie '" . $affwp_ref . "' is set.";
+    //     echo "Value of cookie: " . $_COOKIE[$affwp_ref];
+    //     }
 
 
-//     // $cookieValue = $_COOKIE['affwp_ref'];
-//     // echo "The cookie: '" . $cookieValue . "' is set.";
+    // $cookieValue = $_COOKIE['affwp_ref'];
+    // echo "The cookie: '" . $cookieValue . "' is set.";
 
-//     $affwp_ref = $_COOKIE['affwp_ref'];
+    // $affwp_ref = $_COOKIE['affwp_ref'];
 
-//     $user_id = affwp_get_affiliate_user_id( $affwp_ref );
-//     $affiliate_info = get_userdata($user_id);
-//     $affiliate_login_name = $affiliate_info->user_login;
-//     // ChromePhp::log($user_id);
-//     echo "The cookie: '" . $affiliate_login_name . "' is set.";
+    // $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+    // $affiliate_info = get_userdata($user_id);
+    // $affiliate_login_name = $affiliate_info->user_login;
+    // // ChromePhp::log($user_id);
+    // echo "The cookie: '" . $affiliate_login_name . "' is set.";
+
+    // ChromePhp::log($league);
+    // $order = new WC_Order( $order_id ); 
+
+    // $args = array(
+    //     'created_via' => 'checkout',
+    // );
+    // $orders = wc_get_orders( $args );
+
+    // $order_data = $order->get_meta();
+    
+    // // Oliver Custom Meta testing
+    // $order_id = 2326;
+
+    // $custom_fields = get_post_custom( $order_id );
+    // $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
+    // $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
+    // $affiliate_email = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
+    // ChromePhp::log($event_type);
+    // ChromePhp::log($sales_rep_email);
+    // ChromePhp::log($affiliate_email);
+
 
 
 // }
