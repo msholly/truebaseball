@@ -50,7 +50,7 @@ header .fl-page-nav-search form input.fl-search-input::-moz-placeholder{color:#F
 header .fl-page-nav-search form input.fl-search-input:-ms-input-placeholder{color:#FFF}
 header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FFF}
 body.home .lead p{font-size:18px}
-body.home .uabb-ultb3-box .uabb-ultb3-img{width:100%;height:300px;-o-object-fit:cover;object-fit:cover;overflow:hidden}
+body.home .uabb-ultb3-box .uabb-ultb3-img{width:100% !important;height:300px;-o-object-fit:cover;object-fit:cover;overflow:hidden}
 .woocommerce-page .woocommerce-message{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
@@ -123,22 +123,26 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100%;height:300px;-o-object-fit:
 .page-id-426 .fitting-facets .noUi-horizontal{height:10px}
 .page-id-426 .fitting-facets .noUi-sliderValues{text-align:center;font-size:64px;color:#00aeef !important}
 .page-id-426 .fitting-facets .noUi-value.noUi-value-horizontal{padding-top:3px}
+.page-id-426 .fitting-facets .input-group{background-color:rgba(255,255,255,0.2)}
+.page-id-426 .fitting-facets .input-group>.form-control{border:0;background:transparent;color:#FFF;font-size:18px;margin:0 !important;padding:30px 20px;text-align:center}
+.page-id-426 .fitting-facets .input-group .input-group-addon{line-height:52px;padding:0 20px;background:#000;font-size:18px;border:4px solid rgba(255,255,255,0.2)}
+.page-id-426 .fitting-facets label.error{text-align:center;width:calc(100% - 60px);padding:10px 0 0 0}
 .page-id-426 .fitting-facets .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .page-id-426 .fitting-facets .facetwp-counter,.page-id-426 .fitting-facets .facetwp-overlay{display:none}
 .page-id-426 .fitting-facets input[type="checkbox"],.page-id-426 .fitting-facets input[type="radio"]{position:absolute;opacity:0;z-index:-1}
 .page-id-426 .fitting-facets input[type="radio"]+label::before{border-radius:28px}
 .page-id-426 .fitting-facets input[type="checkbox"]:checked+label,.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff}
 .page-id-426 .fitting-facets input[type="checkbox"]:checked+label:before,.page-id-426 .fitting-facets input[type="radio"]:checked+label:before{top:0;width:100%;height:56px;background:#00aeef !important}
-.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
-.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
-.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.checked{padding-left:30px !important;color:#fff;margin-right:30px}
-.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.checked::before{top:0;width:100%;height:100%;background:#00aeef}
-.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.usssa img{max-height:175px}
-.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.usssa.checked:before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets label.usa{padding-right:0}
-.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets label.usa img{max-height:100px}
-.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets label.usa.checked::before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.modded:first-child{margin-right:60px}
+.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
+.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
+.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked{padding-left:30px !important;color:#fff;margin-right:30px}
+.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.radio.checked::before{top:0;width:100%;height:100%;background:#00aeef}
+.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.radio.usssa img{max-height:175px}
+.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.radio.usssa.checked:before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets label.radio.usa{padding-right:0}
+.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets label.radio.usa img{max-height:100px}
+.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child{margin-right:60px}
 .page-id-426 .fitting-facets .facetwp-facet-league .facetwp-radio::before{top:20% !important}
 .page-id-426 .fitting-facets .noUi-connect{background:#00aeef !important}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label{-webkit-transition:.25s all ease;transition:.25s all ease}
