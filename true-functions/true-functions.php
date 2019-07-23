@@ -72,11 +72,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
 
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
-        // $tempOrderType = 'league';
-        // update_field('order_type', $tempOrderType, $order_id);
-        // update_field('sales_rep', 1, $order_id);
-        // update_field('affiliate', $user_id, $order_id);
-        // $note = __($customer_note . ' | ' . $tempOrderType . ' | ' . $sales_rep_login_name . ' | ' . $affiliate_login_name );
+        // 
     }
     // ELSE WEB ORDER
     else {
@@ -89,7 +85,8 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         $affiliate_login_name = $affiliate_info->user_login;
         
         // The text for the note
-        $note = __('WEB | none | ' . $affiliate_login_name );
+        $note = __('TYPE: Web | SALESREP: none | AFFILIATE: ' . $affiliate_login_name );
+
         update_field('order_type', 'web', $order_id);
         update_field('affiliate', $user_id, $order_id);
 
@@ -122,34 +119,19 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
 
-        // GET AFWP COOKIE ID
-        // $affwp_ref = $_COOKIE['affwp_ref'];
-
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
-        error_log("custom_fields");
-        error_log($custom_fields);
         $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
-        error_log("event_type");
-        error_log($event_type);
         $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
-        error_log("sales_rep_email");
-        error_log($sales_rep_email);
         $affiliate_wp_userid = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
-        error_log("affiliate_wp_userid");
-        error_log($affiliate_wp_userid);
         
-        // Get Affiliate's full information
+        // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
         $affiliate_info = get_userdata($affiliate_wp_userid);
         $affiliate_login_name = $affiliate_info->user_login;
-        error_log("affiliate_login_name");
-        error_log($affiliate_login_name);
 
         $sales_rep_info = get_user_by( 'email', $sales_rep_email ); 
         $sales_rep_login_name = $sales_rep_info->user_login;
-        error_log("sales_rep_login_name");
-        error_log($sales_rep_login_name);
 
         update_field('order_type', $event_type, $order_id);
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
