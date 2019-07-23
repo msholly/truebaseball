@@ -150,6 +150,54 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Save the data
         $order->save();
+        // END ORDER SAVING
+
+
+        $affiliate_payout = number_format(($order->get_subtotal() * .2));
+        if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+            $post_url = 'https://true-diamond-science.local/wp-json/affwp/v1/referrals/';
+            $ssl_verify = false;
+		} else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+            $post_url = 'http://staging.true-baseball.flywheelsites.com/wp-json/affwp/v1/referrals/';
+            $ssl_verify = false;
+		} else {
+            $post_url = 'https://stage.truediamondscience.com/wp-json/affwp/v1/referrals/';
+            $ssl_verify = true;
+        }
+        
+        
+        // BEGIN AFFILAITE TRACKING
+        $request_url = add_query_arg( 
+            array( 
+                'user_id' => $affiliate_info->ID,
+                'amount' => $affiliate_payout,
+                'description' => rawurlencode($note),
+                'reference' => $order_id,
+                'context' => 'pos',
+                'status' => 'unpaid'
+            ), 
+            $post_url 
+        );
+    
+        $auth = get_awp_api_auth();
+        // Send the request, storing the return in $response.<br>
+        $response = wp_remote_post( $request_url, 
+            array(
+                'headers' => array('Authorization' => $auth),
+                'sslverify' => $ssl_verify
+            ) 
+        );
+    
+        // Check for the requisite response code. If 201, retrieve the response body and continue.
+        if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
+            $body = wp_remote_retrieve_body( $response );
+            ChromePhp::log($body);
+        } else {
+            // maybe display an error message
+            ChromePhp::log("REST ERROR");
+            $error_message = $response->get_error_message();
+            ChromePhp::log($error_message);
+        }
     }
     // ELSE WEB ORDER
     else {
@@ -183,7 +231,6 @@ add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_
     // echo "The cookie: '" . $affiliate_login_name . "' is set.";
 
     // ChromePhp::log($league);
-    // $order = new WC_Order( $order_id ); 
 
     // $args = array(
     //     'created_via' => 'checkout',
@@ -191,19 +238,86 @@ add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_
     // $orders = wc_get_orders( $args );
 
     // $order_data = $order->get_meta();
-    
+    ///////////////////
     // // Oliver Custom Meta testing
-    // $order_id = 2326;
+    // $order_id = 2317;
+    // $affiliate_info = get_userdata(14);
+    // $note = 'POS Checkout | league | shollycreativeinc | ';
 
-    // $custom_fields = get_post_custom( $order_id );
+    // $order = new WC_Order( $order_id ); 
+    /////////////////
+
+    // $line_items = $order->get_items();
     // $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
     // $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
     // $affiliate_email = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
-    // ChromePhp::log($event_type);
+    // $affiliate_payout = number_format(($order->get_subtotal() * .2));
+    // ChromePhp::log($affiliate_payout);
+
+    // TO DO FOR EACH PRODUCT PAYOUT AMOUNT
+    // foreach ($order->get_items() as $item_id => $item_data) {
+
+    //     // Get an instance of corresponding the WC_Product object
+    //     $product = $item_data->get_product();
+    //     // $product_cats = get_the_terms( $product, 'product_cat' );
+
+    //     $product_name = $product->get_name(); // Get the product name
+    
+    //     $item_quantity = $item_data->get_quantity(); // Get the item quantity
+    
+    //     $item_price = $product->get_price(); // Get the item line price
+    
+    //     // Displaying this data (to check)
+    //     echo 'Product name: '.$product_name.' | Quantity: '.$item_quantity.' | Item total: '. number_format( $item_price, 2 );
+    // }
+    
     // ChromePhp::log($sales_rep_email);
     // ChromePhp::log($affiliate_email);
 
+    // ChromePhp::log("MAKE REFERRAL");
+    ///////////////////////////
+    // if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+    //     $post_url = 'https://true-diamond-science.local/wp-json/affwp/v1/referrals/';
+    //     $ssl_verify = false;
+    // } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+    //     $post_url = 'http://staging.true-baseball.flywheelsites.com/wp-json/affwp/v1/referrals/';
+    //     $ssl_verify = false;
+    // } else {
+    //     $post_url = 'https://stage.truediamondscience.com/wp-json/affwp/v1/referrals/';
+    //     $ssl_verify = true;
+    // }
 
+    // $request_url = add_query_arg( 
+    //     array( 
+    //         'user_id' => $affiliate_info->ID,
+    //         'amount' => $affiliate_payout,
+    //         'description' => rawurlencode($note),
+    //         'reference' => $order_id,
+    //         'context' => 'pos',
+    //         'status' => 'unpaid'
+    //     ), 
+    //     $post_url
+    // );
+
+    // $auth = get_awp_api_auth();
+    // // Send the request, storing the return in $response.
+    // $response = wp_remote_post( $request_url, 
+    //     array(
+    //         'headers' => array('Authorization' => $auth),
+    //         'sslverify' => $ssl_verify
+    //     ) 
+    // );
+
+    // // Check for the requisite response code. If 201, retrieve the response body and continue.
+    // if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
+    //     $body = wp_remote_retrieve_body( $response );
+    //     ChromePhp::log($body);
+    // } else {
+    //     // maybe display an error message
+    //     ChromePhp::log("REST ERROR");
+    //     $error_message = $response->get_error_message();
+    //     ChromePhp::log($error_message);
+    // }
 
 // }
 // add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
