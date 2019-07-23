@@ -192,11 +192,15 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
             $body = wp_remote_retrieve_body( $response );
             ChromePhp::log($body);
+            error_log("REST WORKS!", 0);
+
         } else {
             // maybe display an error message
             ChromePhp::log("REST ERROR");
-            $error_message = $response->get_error_message();
-            ChromePhp::log($error_message);
+            error_log("REST ERROR!", 0);
+            error_log($response, 0);
+            // $error_message = $response->get_error_message();
+            // ChromePhp::log($error_message);
         }
     }
     // ELSE WEB ORDER
