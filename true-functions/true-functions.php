@@ -173,7 +173,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
                 'amount' => $affiliate_payout,
                 'description' => rawurlencode($note),
                 'reference' => $order_id,
-                'context' => 'pos',
+                'context' => 'woocommerce',
                 'status' => 'unpaid'
             ), 
             $post_url 
@@ -197,10 +197,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         } else {
             // maybe display an error message
             ChromePhp::log("REST ERROR");
-            error_log("REST ERROR!", 0);
-            error_log($response, 0);
-            // $error_message = $response->get_error_message();
-            // ChromePhp::log($error_message);
+            error_log("REST ERROR Creating Referral from Oliver POS!", 0);
         }
     }
     // ELSE WEB ORDER
