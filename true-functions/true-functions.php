@@ -209,7 +209,19 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 }
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
-// function true_woocommerce_after_checkout_form () {
+function true_woocommerce_after_checkout_form () {
+    ChromePhp::log("RUNNING");
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,            'https://calcconnect.vertexsmb.com/vertex-ws/services/CalculateTax70' );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt($ch, CURLOPT_POST,           1 );
+    curl_setopt($ch, CURLOPT_POSTFIELDS,     '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">      <VertexEnvelope xmlns="urn:vertexinc:o-series:tps:7:0">         <Login>            <TrustedId>1347340878853852</TrustedId>         </Login>         <QuotationRequest transactionType="SALE" documentNumber="554739" postingDate="2019-07-29" documentDate="2019-07-29">            <Seller>               <Company>truesports</Company>              <PhysicalOrigin>                  <StreetAddress1>121 N SHIRK RD</StreetAddress1>                  <City>NEW HOLLAND</City>                  <MainDivision>PA</MainDivision>                  <PostalCode>17557-9714</PostalCode>                  <Country>USA</Country>               </PhysicalOrigin>            </Seller>            <Customer>               <CustomerCode>525098</CustomerCode>               <Destination>                  <MainDivision>pa</MainDivision>                  <PostalCode>19142</PostalCode>                  <Country>USA</Country>               </Destination>            </Customer>            <LineItem lineItemNumber="1">               <Product productClass="">bike</Product>               <Freight>10</Freight>               <Quantity unitOfMeasure="EA">1</Quantity>               <ExtendedPrice>1000</ExtendedPrice>            </LineItem>         </QuotationRequest>      </VertexEnvelope>   </soapenv:Body></soapenv:Envelope>' ); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/plain')); 
+
+    $result=curl_exec ($ch);
+    ChromePhp::log($result);
+
     // TESTING OBJECTS ONLY 
 
 	// if(!isset($_COOKIE[$affwp_ref])) {
@@ -320,9 +332,10 @@ add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_
     //     ChromePhp::log($error_message);
     // }
 
-// }
-// add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
-// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
+}
+add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
+add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
+
 
 
 ?>
