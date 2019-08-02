@@ -113,7 +113,7 @@
 		}
 
 		.facetwp-radio,
-		label.radio {
+		label.radio, label.checkbox {
 			position: relative;
 			display: inline-block;
 			margin-right: 10px;
@@ -188,7 +188,9 @@
 				margin-right: 60px;
 			}
 		}
-
+		input[type="checkbox"] + label::before {
+			border-radius: .25em;
+		  }
 		.facetwp-facet-league .facetwp-radio::before {
 			top: 20% !important
 		}

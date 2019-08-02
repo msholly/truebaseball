@@ -133,16 +133,17 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100% !important;height:300px;-o-
 .page-id-426 .fitting-facets input[type="radio"]+label::before{border-radius:28px}
 .page-id-426 .fitting-facets input[type="checkbox"]:checked+label,.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff}
 .page-id-426 .fitting-facets input[type="checkbox"]:checked+label:before,.page-id-426 .fitting-facets input[type="radio"]:checked+label:before{top:0;width:100%;height:56px;background:#00aeef !important}
-.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
-.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
-.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked{padding-left:30px !important;color:#fff;margin-right:30px}
-.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.radio.checked::before{top:0;width:100%;height:100%;background:#00aeef}
-.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.radio.usssa img{max-height:175px}
-.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.radio.usssa.checked:before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets label.radio.usa{padding-right:0}
-.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets label.radio.usa img{max-height:100px}
-.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child{margin-right:60px}
+.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio,.page-id-426 .fitting-facets label.checkbox{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
+.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before,.page-id-426 .fitting-facets label.checkbox::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
+.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked,.page-id-426 .fitting-facets label.checkbox.checked{padding-left:30px !important;color:#fff;margin-right:30px}
+.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.radio.checked::before,.page-id-426 .fitting-facets label.checkbox.checked::before{top:0;width:100%;height:100%;background:#00aeef}
+.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.radio.usssa img,.page-id-426 .fitting-facets label.checkbox.usssa img{max-height:175px}
+.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.radio.usssa.checked:before,.page-id-426 .fitting-facets label.checkbox.usssa.checked:before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets label.radio.usa,.page-id-426 .fitting-facets label.checkbox.usa{padding-right:0}
+.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets label.radio.usa img,.page-id-426 .fitting-facets label.checkbox.usa img{max-height:100px}
+.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before,.page-id-426 .fitting-facets label.checkbox.usa.checked::before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child,.page-id-426 .fitting-facets label.checkbox.modded:first-child{margin-right:60px}
+.page-id-426 .fitting-facets input[type="checkbox"]+label::before{border-radius:.25em}
 .page-id-426 .fitting-facets .facetwp-facet-league .facetwp-radio::before{top:20% !important}
 .page-id-426 .fitting-facets .noUi-connect{background:#00aeef !important}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label{-webkit-transition:.25s all ease;transition:.25s all ease}
