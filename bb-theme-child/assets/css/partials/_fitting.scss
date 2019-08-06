@@ -44,6 +44,10 @@
 			padding-top: 3px;
 		}
 
+		#playerAge {
+			max-width: 400px;
+    		margin: 0 auto;
+		}
 		.input-group {
 			background-color: rgba(255, 255, 255, 0.2);
 
@@ -70,9 +74,6 @@
 			text-align: center;
 			width: calc(100% - 60px);
 			padding: 10px 0 0 0;
-
-
-
 		}
 
 		.facetwp-bb-module h4 {
@@ -172,7 +173,7 @@
 				}
 			}
 
-			&.usa {
+			&.usa, &.tball {
 				padding-right: 0;
 
 				img {
