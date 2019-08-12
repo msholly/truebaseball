@@ -77,6 +77,22 @@ function add_affiliate_info_on_create_order ( $order_id ) {
     // ELSE WEB ORDER
     else {
 
+        // Add shipping to notes
+        $items = $order->get_items(); 
+
+        foreach ( $order->get_items() as $item_id => $item ) {
+            $lineItemId = $item->get_product_id();
+            // ChromePhp::log($item->get_product_id());
+            if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
+                $shipMethod = "2 Day Shipping";
+            }
+
+            if ( $lineItemId == 2496 ) { // product id of Private Next Day Ship
+                $shipMethod = "Next Day Shipping";
+            }
+
+        }
+
         // GET AFWP COOKIE ID
         $affwp_ref = $_COOKIE['affwp_ref'];
 
@@ -92,7 +108,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         
             
         // The text for the note
-        $note = __('TYPE: Web | SALESREP: none | AFFILIATE: ' . $affiliate_login_name );
+        $note = __('TYPE: Web | SALESREP: none | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
 
         update_field('order_type', 'web', $order_id);
 
@@ -129,10 +145,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
 
-        // Add shipping 
-        // Get a new instance of the WC_Order_Item_Shipping Object
-        // $set2DayShipMethod = false;
-        // $setNextDayShipMethod = false;
+        // Add shipping to notes
         $items = $order->get_items(); 
 
         foreach ( $order->get_items() as $item_id => $item ) {
@@ -147,28 +160,6 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             }
 
         }
-
-        // if ($set2DayShipMethod) {
-        //     // $item = new WC_Order_Item_Shipping();
-        //     // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
-        //     $shipMethod = "2 Day Shipping";
-        //     // $item->set_method_title( "2 Day Shipping" );
-        //     // $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
-        //     // $item->set_total( $new_ship_price ); // (optional)
-    
-        //     // $order->add_item( $item );
-        // }
-
-        // if ($setNextDayShipMethod) {
-        //     // $item = new WC_Order_Item_Shipping();
-        //     // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
-        //     $shipMethod = "Next Day Shipping";
-        //     // $item->set_method_title( "Next Day Shipping" );
-        //     // $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
-        //     // $item->set_total( $new_ship_price ); // (optional)
-
-        //     // $order->add_item( $item );
-        // }
 
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
@@ -216,39 +207,40 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $ssl_verify = true;
         }
         
+        if ( $affiliate_info ) {
+            // BEGIN AFFILAITE TRACKING
+            $request_url = add_query_arg( 
+                array( 
+                    'user_id' => $affiliate_info->ID,
+                    'amount' => $affiliate_payout,
+                    'description' => rawurlencode($note),
+                    'reference' => $order_id,
+                    'context' => 'woocommerce',
+                    'status' => 'unpaid'
+                ), 
+                $post_url 
+            );
         
-        // BEGIN AFFILAITE TRACKING
-        $request_url = add_query_arg( 
-            array( 
-                'user_id' => $affiliate_info->ID,
-                'amount' => $affiliate_payout,
-                'description' => rawurlencode($note),
-                'reference' => $order_id,
-                'context' => 'woocommerce',
-                'status' => 'unpaid'
-            ), 
-            $post_url 
-        );
-    
-        $auth = true_get_awp_api_auth();
-        // Send the request, storing the return in $response.<br>
-        $response = wp_remote_post( $request_url, 
-            array(
-                'headers' => array('Authorization' => $auth),
-                'sslverify' => $ssl_verify
-            ) 
-        );
-    
-        // Check for the requisite response code. If 201, retrieve the response body and continue.
-        if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
-            $body = wp_remote_retrieve_body( $response );
-            ChromePhp::log($body);
-            error_log("REST WORKS!", 0);
+            $auth = true_get_awp_api_auth();
+            // Send the request, storing the return in $response.<br>
+            $response = wp_remote_post( $request_url, 
+                array(
+                    'headers' => array('Authorization' => $auth),
+                    'sslverify' => $ssl_verify
+                ) 
+            );
+        
+            // Check for the requisite response code. If 201, retrieve the response body and continue.
+            if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
+                $body = wp_remote_retrieve_body( $response );
+                ChromePhp::log($body);
+                error_log("REST WORKS!", 0);
 
-        } else {
-            // maybe display an error message
-            ChromePhp::log("REST ERROR");
-            error_log("REST ERROR Creating Referral from Oliver POS!", 0);
+            } else {
+                // maybe display an error message
+                ChromePhp::log("REST ERROR");
+                error_log("REST ERROR Creating Referral from Oliver POS!", 0);
+            }
         }
     }
     // ELSE WEB ORDER
