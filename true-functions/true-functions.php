@@ -78,20 +78,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
     else {
 
         // Add shipping to notes
-        $items = $order->get_items(); 
-
-        foreach ( $order->get_items() as $item_id => $item ) {
-            $lineItemId = $item->get_product_id();
-            // ChromePhp::log($item->get_product_id());
-            if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
-                $shipMethod = "2 Day Shipping";
-            }
-
-            if ( $lineItemId == 2496 ) { // product id of Private Next Day Ship
-                $shipMethod = "Next Day Shipping";
-            }
-
-        }
+        $shipMethod = $order->get_shipping_method();
 
         // GET AFWP COOKIE ID
         $affwp_ref = $_COOKIE['affwp_ref'];
