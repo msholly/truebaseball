@@ -6,7 +6,7 @@
  *
  *     [your-theme]/tribe-events/wootickets/tickets.php
  *
- * @version 4.8.3
+ * @version 4.10
  *
  * @var bool $global_stock_enabled
  * @var bool $must_login
@@ -34,7 +34,7 @@ $cart_classes = (array) apply_filters( 'tribe_events_tickets_woo_cart_class', ar
 ?>
 <form
 	id="buy-tickets"
-	action="<?php echo esc_url( wc_get_cart_url() ) ?>"
+	action="<?php echo esc_url( tribe( 'tickets-plus.commerce.woo' )->get_cart_url() ) ?>"
 	class="<?php echo esc_attr( implode( ' ', $cart_classes ) ); ?>"
 	method="post"
 	enctype='multipart/form-data'
@@ -125,8 +125,8 @@ $cart_classes = (array) apply_filters( 'tribe_events_tickets_woo_cart_class', ar
 
 					$input = woocommerce_quantity_input( array(
 						'input_name'  => 'quantity_' . $ticket->ID,
-						'input_value' => 1,
-						'min_value'   => 1,
+						'input_value' => 0,
+						'min_value'   => 0,
 						'max_value'   => $max_quantity,
 					), null, false );
 
@@ -197,8 +197,6 @@ $cart_classes = (array) apply_filters( 'tribe_events_tickets_woo_cart_class', ar
 						</tr>
 						<?php
 					}
-
-					include Tribe__Tickets_Plus__Main::instance()->get_template_hierarchy( 'meta.php' );
 				}
 			}
 

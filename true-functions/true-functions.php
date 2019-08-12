@@ -80,16 +80,23 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         // GET AFWP COOKIE ID
         $affwp_ref = $_COOKIE['affwp_ref'];
 
-        $user_id = affwp_get_affiliate_user_id( $affwp_ref );
-        $affiliate_info = get_userdata($user_id);
-        $affiliate_login_name = $affiliate_info->user_login;
-        
+        $affiliate_login_name = 'N/A';
+
+        if ($affwp_ref) {
+            $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+            $affiliate_info = get_userdata($user_id);
+            $affiliate_login_name = $affiliate_info->user_login;
+        }
+            
         // The text for the note
         $note = __('TYPE: Web | SALESREP: none | AFFILIATE: ' . $affiliate_login_name );
 
         update_field('order_type', 'web', $order_id);
-        update_field('affiliate', $user_id, $order_id);
 
+        if ($user_id) {
+            update_field('affiliate', $user_id, $order_id);
+        }
+        
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
             'ID'             => $order_id,
@@ -118,6 +125,36 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
+
+        // Add shipping 
+        // Get a new instance of the WC_Order_Item_Shipping Object
+        $item = new WC_Order_Item_Shipping();
+
+        foreach ( $order->get_items() as $item_id => $item ) {
+            // ChromePhp::log($item->get_product_id());
+            if ( $item->get_product_id() == 2414 ) { // product id of Private 2 Day Ship
+                // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+
+                $item->set_method_title( "2 Day Shipping" );
+                $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
+                // $item->set_total( $new_ship_price ); // (optional)
+
+                $order->add_item( $item );
+
+            }
+
+            if ( $item->get_product_id() == 2496 ) { // product id of Private Next Day Ship
+                // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
+
+                $item->set_method_title( "Next Day Shipping" );
+                $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
+                // $item->set_total( $new_ship_price ); // (optional)
+
+                $order->add_item( $item );
+
+            }
+
+        }    
 
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
@@ -209,18 +246,18 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 }
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
-function true_woocommerce_after_checkout_form () {
-    ChromePhp::log("RUNNING");
-    $ch = curl_init();
+// function true_woocommerce_after_checkout_form () {
+    // ChromePhp::log("RUNNING");
+    // $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,            'https://calcconnect.vertexsmb.com/vertex-ws/services/CalculateTax70' );
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt($ch, CURLOPT_POST,           1 );
-    curl_setopt($ch, CURLOPT_POSTFIELDS,     '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">      <VertexEnvelope xmlns="urn:vertexinc:o-series:tps:7:0">         <Login>            <TrustedId>1347340878853852</TrustedId>         </Login>         <QuotationRequest transactionType="SALE" documentNumber="554739" postingDate="2019-07-29" documentDate="2019-07-29">            <Seller>               <Company>truesports</Company>              <PhysicalOrigin>                  <StreetAddress1>121 N SHIRK RD</StreetAddress1>                  <City>NEW HOLLAND</City>                  <MainDivision>PA</MainDivision>                  <PostalCode>17557-9714</PostalCode>                  <Country>USA</Country>               </PhysicalOrigin>            </Seller>            <Customer>               <CustomerCode>525098</CustomerCode>               <Destination>                  <MainDivision>pa</MainDivision>                  <PostalCode>19142</PostalCode>                  <Country>USA</Country>               </Destination>            </Customer>            <LineItem lineItemNumber="1">               <Product productClass="">bike</Product>               <Freight>10</Freight>               <Quantity unitOfMeasure="EA">1</Quantity>               <ExtendedPrice>1000</ExtendedPrice>            </LineItem>         </QuotationRequest>      </VertexEnvelope>   </soapenv:Body></soapenv:Envelope>' ); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/plain')); 
+    // curl_setopt($ch, CURLOPT_URL,            'https://calcconnect.vertexsmb.com/vertex-ws/services/CalculateTax70' );
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+    // curl_setopt($ch, CURLOPT_POST,           1 );
+    // curl_setopt($ch, CURLOPT_POSTFIELDS,     '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">      <VertexEnvelope xmlns="urn:vertexinc:o-series:tps:7:0">         <Login>            <TrustedId>1347340878853852</TrustedId>         </Login>         <QuotationRequest transactionType="SALE" documentNumber="554739" postingDate="2019-07-29" documentDate="2019-07-29">            <Seller>               <Company>truesports</Company>              <PhysicalOrigin>                  <StreetAddress1>121 N SHIRK RD</StreetAddress1>                  <City>NEW HOLLAND</City>                  <MainDivision>PA</MainDivision>                  <PostalCode>17557-9714</PostalCode>                  <Country>USA</Country>               </PhysicalOrigin>            </Seller>            <Customer>               <CustomerCode>525098</CustomerCode>               <Destination>                  <MainDivision>pa</MainDivision>                  <PostalCode>19142</PostalCode>                  <Country>USA</Country>               </Destination>            </Customer>            <LineItem lineItemNumber="1">               <Product productClass="">bike</Product>               <Freight>10</Freight>               <Quantity unitOfMeasure="EA">1</Quantity>               <ExtendedPrice>1000</ExtendedPrice>            </LineItem>         </QuotationRequest>      </VertexEnvelope>   </soapenv:Body></soapenv:Envelope>' ); 
+    // curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/plain')); 
 
-    $result=curl_exec ($ch);
-    ChromePhp::log($result);
+    // $result=curl_exec ($ch);
+    // ChromePhp::log($result);
 
     // TESTING OBJECTS ONLY 
 
@@ -327,14 +364,43 @@ function true_woocommerce_after_checkout_form () {
     //     ChromePhp::log($body);
     // } else {
     //     // maybe display an error message
-    //     ChromePhp::log("REST ERROR");
+        // ChromePhp::log("REST ERROR");
     //     $error_message = $response->get_error_message();
     //     ChromePhp::log($error_message);
     // }
+    // $playerHeight = 36;
+    // $playerWeight = 38;
+    // truefit_tball_length($playerHeight,$playerWeight);
+    // $order_id = 2475;
+    // $order = new WC_Order( $order_id ); 
+    // $items = $order->get_items(); 
 
-}
-add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
-add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
+    // $order->get_items();
+    // foreach ( $order->get_items() as $item_id => $item ) {
+    //     ChromePhp::log($item->get_product_id());
+
+    //     // Here you get your data
+    //     // $custom_field = wc_get_order_item_meta( $item_id, '_tmcartepo_data', true ); 
+    
+    //     // To test data output (uncomment the line below)
+    //     // print_r($custom_field);
+    
+    //     // If it is an array of values
+    //     // if( is_array( $custom_field ) ){
+    //     //     echo implode( '<br>', $custom_field ); // one value displayed by line 
+    //     // } 
+    //     // just one value (a string)
+    //     // else {
+    //     //     echo $custom_field;
+    //     // }
+    // }
+    
+
+// }
+// add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
+// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
+
+
 
 
 
