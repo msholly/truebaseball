@@ -216,7 +216,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $post_url 
         );
     
-        $auth = get_awp_api_auth();
+        $auth = true_get_awp_api_auth();
         // Send the request, storing the return in $response.<br>
         $response = wp_remote_post( $request_url, 
             array(
