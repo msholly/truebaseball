@@ -82,11 +82,14 @@ function add_affiliate_info_on_create_order ( $order_id ) {
 
         $affiliate_login_name = 'N/A';
 
-        if ($affwp_ref) {
-            $user_id = affwp_get_affiliate_user_id( $affwp_ref );
-            $affiliate_info = get_userdata($user_id);
-            $affiliate_login_name = $affiliate_info->user_login;
+        if( class_exists( 'Affiliate_WP' ) ) {
+            if ($affwp_ref) {
+                $user_id = affwp_get_affiliate_user_id( $affwp_ref );
+                $affiliate_info = get_userdata($user_id);
+                $affiliate_login_name = $affiliate_info->user_login;
+            }
         }
+        
             
         // The text for the note
         $note = __('TYPE: Web | SALESREP: none | AFFILIATE: ' . $affiliate_login_name );
@@ -128,32 +131,43 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Add shipping 
         // Get a new instance of the WC_Order_Item_Shipping Object
+        $set2DayShipMethod = false;
+        $setNextDayShipMethod = false;
 
         foreach ( $order->get_items() as $item_id => $item ) {
+            $lineItemId = $item->get_product_id();
             // ChromePhp::log($item->get_product_id());
-            if ( $item->get_product_id() == 2414 ) { // product id of Private 2 Day Ship
-                // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
-                $item = new WC_Order_Item_Shipping();
-                $item->set_method_title( "2 Day Shipping" );
-                $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
-                // $item->set_total( $new_ship_price ); // (optional)
-
-                $order->add_item( $item );
-
+            if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
+                $set2DayShipMethod = true;
             }
 
-            if ( $item->get_product_id() == 2496 ) { // product id of Private Next Day Ship
-                // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
-                $item = new WC_Order_Item_Shipping();
-                $item->set_method_title( "Next Day Shipping" );
-                $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
-                // $item->set_total( $new_ship_price ); // (optional)
-
-                $order->add_item( $item );
-
+            if ( $lineItemId == 2496 ) { // product id of Private Next Day Ship
+                $setNextDayShipMethod = true;
             }
 
-        }    
+        }
+
+        if ($set2DayShipMethod) {
+            $item = new WC_Order_Item_Shipping();
+            // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+    
+            $item->set_method_title( "2 Day Shipping" );
+            $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
+            // $item->set_total( $new_ship_price ); // (optional)
+    
+            $order->add_item( $item );
+        }
+
+        if ($setNextDayShipMethod) {
+            $item = new WC_Order_Item_Shipping();
+            // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
+
+            $item->set_method_title( "Next Day Shipping" );
+            $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
+            // $item->set_total( $new_ship_price ); // (optional)
+
+            $order->add_item( $item );
+        }
 
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
@@ -215,7 +229,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $post_url 
         );
     
-        $auth = true_get_awp_api_auth();
+        $auth = get_awp_api_auth();
         // Send the request, storing the return in $response.<br>
         $response = wp_remote_post( $request_url, 
             array(
@@ -245,7 +259,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 }
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
-// function true_woocommerce_after_checkout_form () {
+function true_woocommerce_after_checkout_form () {
     // ChromePhp::log("RUNNING");
     // $ch = curl_init();
 
@@ -370,35 +384,56 @@ add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_
     // $playerHeight = 36;
     // $playerWeight = 38;
     // truefit_tball_length($playerHeight,$playerWeight);
-    // $order_id = 2475;
-    // $order = new WC_Order( $order_id ); 
-    // $items = $order->get_items(); 
+
+
+
+    $order_id = 2475;
+    $order = new WC_Order( $order_id ); 
+    $items = $order->get_items(); 
 
     // $order->get_items();
-    // foreach ( $order->get_items() as $item_id => $item ) {
-    //     ChromePhp::log($item->get_product_id());
+    foreach ( $order->get_items() as $item_id => $item ) {
+        $lineItemId = $item->get_product_id();
 
-    //     // Here you get your data
-    //     // $custom_field = wc_get_order_item_meta( $item_id, '_tmcartepo_data', true ); 
+        if ( $lineItemId == 2414 ) {
+            $set2DayShipMethod = true;
+        }
+        
+
+
+
+        // Here you get your data
+        // $custom_field = wc_get_order_item_meta( $item_id, '_tmcartepo_data', true ); 
     
-    //     // To test data output (uncomment the line below)
-    //     // print_r($custom_field);
+        // To test data output (uncomment the line below)
+        // print_r($custom_field);
     
-    //     // If it is an array of values
-    //     // if( is_array( $custom_field ) ){
-    //     //     echo implode( '<br>', $custom_field ); // one value displayed by line 
-    //     // } 
-    //     // just one value (a string)
-    //     // else {
-    //     //     echo $custom_field;
-    //     // }
-    // }
+        // If it is an array of values
+        // if( is_array( $custom_field ) ){
+        //     echo implode( '<br>', $custom_field ); // one value displayed by line 
+        // } 
+        // just one value (a string)
+        // else {
+        //     echo $custom_field;
+        // }
+    }
+
+    if ($set2DayShipMethod) {
+        ChromePhp::log($lineItemId);
+        // $item = new WC_Order_Item_Shipping();
+        // // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+
+        // $item->set_method_title( "2 Day Shipping" );
+        // $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
+        // // $item->set_total( $new_ship_price ); // (optional)
+
+        // $order->add_item( $item );
+    }
     
 
-// }
+}
 // add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
-// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
-
+add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
 
 
 
