@@ -131,44 +131,44 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Add shipping 
         // Get a new instance of the WC_Order_Item_Shipping Object
-        $set2DayShipMethod = false;
-        $setNextDayShipMethod = false;
+        // $set2DayShipMethod = false;
+        // $setNextDayShipMethod = false;
         $items = $order->get_items(); 
 
         foreach ( $order->get_items() as $item_id => $item ) {
             $lineItemId = $item->get_product_id();
             // ChromePhp::log($item->get_product_id());
             if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
-                $set2DayShipMethod = true;
+                $shipMethod = "2 Day Shipping";
             }
 
             if ( $lineItemId == 2496 ) { // product id of Private Next Day Ship
-                $setNextDayShipMethod = true;
+                $shipMethod = "Next Day Shipping";
             }
 
         }
 
-        if ($set2DayShipMethod) {
-            $item = new WC_Order_Item_Shipping();
-            // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+        // if ($set2DayShipMethod) {
+        //     // $item = new WC_Order_Item_Shipping();
+        //     // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+        //     $shipMethod = "2 Day Shipping";
+        //     // $item->set_method_title( "2 Day Shipping" );
+        //     // $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
+        //     // $item->set_total( $new_ship_price ); // (optional)
     
-            $item->set_method_title( "2 Day Shipping" );
-            $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
-            // $item->set_total( $new_ship_price ); // (optional)
-    
-            $order->add_item( $item );
-        }
+        //     // $order->add_item( $item );
+        // }
 
-        if ($setNextDayShipMethod) {
-            $item = new WC_Order_Item_Shipping();
-            // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
+        // if ($setNextDayShipMethod) {
+        //     // $item = new WC_Order_Item_Shipping();
+        //     // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
+        //     $shipMethod = "Next Day Shipping";
+        //     // $item->set_method_title( "Next Day Shipping" );
+        //     // $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
+        //     // $item->set_total( $new_ship_price ); // (optional)
 
-            $item->set_method_title( "Next Day Shipping" );
-            $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
-            // $item->set_total( $new_ship_price ); // (optional)
-
-            $order->add_item( $item );
-        }
+        //     // $order->add_item( $item );
+        // }
 
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
@@ -187,7 +187,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         update_field('order_type', $event_type, $order_id);
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
-        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod);
 
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
