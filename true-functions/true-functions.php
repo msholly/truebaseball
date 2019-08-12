@@ -128,13 +128,12 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Add shipping 
         // Get a new instance of the WC_Order_Item_Shipping Object
-        $item = new WC_Order_Item_Shipping();
 
         foreach ( $order->get_items() as $item_id => $item ) {
             // ChromePhp::log($item->get_product_id());
             if ( $item->get_product_id() == 2414 ) { // product id of Private 2 Day Ship
                 // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
-
+                $item = new WC_Order_Item_Shipping();
                 $item->set_method_title( "2 Day Shipping" );
                 $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
                 // $item->set_total( $new_ship_price ); // (optional)
@@ -145,7 +144,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
             if ( $item->get_product_id() == 2496 ) { // product id of Private Next Day Ship
                 // $new_ship_price = 60; // Don't set price, becuase we don't want to affect overall cart totals
-
+                $item = new WC_Order_Item_Shipping();
                 $item->set_method_title( "Next Day Shipping" );
                 $item->set_method_id( "flat_rate:6" ); // set an existing Shipping method rate ID
                 // $item->set_total( $new_ship_price ); // (optional)
