@@ -388,48 +388,48 @@ function true_woocommerce_after_checkout_form () {
 
 
 
-    $order_id = 2475;
-    $order = new WC_Order( $order_id ); 
-    $items = $order->get_items(); 
+    // $order_id = 2475;
+    // $order = new WC_Order( $order_id ); 
+    // $items = $order->get_items(); 
 
-    // $order->get_items();
-    foreach ( $order->get_items() as $item_id => $item ) {
-        $lineItemId = $item->get_product_id();
+    // // $order->get_items();
+    // foreach ( $order->get_items() as $item_id => $item ) {
+    //     $lineItemId = $item->get_product_id();
 
-        if ( $lineItemId == 2414 ) {
-            $set2DayShipMethod = true;
-        }
+    //     if ( $lineItemId == 2414 ) {
+    //         $set2DayShipMethod = true;
+    //     }
         
 
 
 
-        // Here you get your data
-        // $custom_field = wc_get_order_item_meta( $item_id, '_tmcartepo_data', true ); 
+    //     // Here you get your data
+    //     // $custom_field = wc_get_order_item_meta( $item_id, '_tmcartepo_data', true ); 
     
-        // To test data output (uncomment the line below)
-        // print_r($custom_field);
+    //     // To test data output (uncomment the line below)
+    //     // print_r($custom_field);
     
-        // If it is an array of values
-        // if( is_array( $custom_field ) ){
-        //     echo implode( '<br>', $custom_field ); // one value displayed by line 
-        // } 
-        // just one value (a string)
-        // else {
-        //     echo $custom_field;
-        // }
-    }
+    //     // If it is an array of values
+    //     // if( is_array( $custom_field ) ){
+    //     //     echo implode( '<br>', $custom_field ); // one value displayed by line 
+    //     // } 
+    //     // just one value (a string)
+    //     // else {
+    //     //     echo $custom_field;
+    //     // }
+    // }
 
-    if ($set2DayShipMethod) {
-        ChromePhp::log($lineItemId);
-        // $item = new WC_Order_Item_Shipping();
-        // // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
+    // if ($set2DayShipMethod) {
+    //     ChromePhp::log($lineItemId);
+    //     // $item = new WC_Order_Item_Shipping();
+    //     // // $new_ship_price = 45; // Don't set price, becuase we don't want to affect overall cart totals
 
-        // $item->set_method_title( "2 Day Shipping" );
-        // $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
-        // // $item->set_total( $new_ship_price ); // (optional)
+    //     // $item->set_method_title( "2 Day Shipping" );
+    //     // $item->set_method_id( "flat_rate:5" ); // set an existing Shipping method rate ID
+    //     // // $item->set_total( $new_ship_price ); // (optional)
 
-        // $order->add_item( $item );
-    }
+    //     // $order->add_item( $item );
+    // }
     
 
 }
