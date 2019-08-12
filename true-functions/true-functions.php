@@ -133,6 +133,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Get a new instance of the WC_Order_Item_Shipping Object
         $set2DayShipMethod = false;
         $setNextDayShipMethod = false;
+        $items = $order->get_items(); 
 
         foreach ( $order->get_items() as $item_id => $item ) {
             $lineItemId = $item->get_product_id();
@@ -229,7 +230,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $post_url 
         );
     
-        $auth = get_awp_api_auth();
+        $auth = true_get_awp_api_auth();
         // Send the request, storing the return in $response.<br>
         $response = wp_remote_post( $request_url, 
             array(
