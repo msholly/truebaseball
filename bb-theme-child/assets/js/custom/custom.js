@@ -51,26 +51,6 @@
 			$('.acf-button, .ticket-data').hide();
 		}
 
-		$("#send-acf-to-oliver").click(function () {
-			var trueTag = Cookies.getJSON('truecustomtags');
-			var thisTicket = $(acf_ticket + " select").select2('data');
-			console.log(thisTicket)
-			if (trueTag.ordertypeVal == '') {
-				if ($(acf_orderType + ' select').val()) {
-					var ordertype = $(acf_orderType + " option:selected").text();
-				} else {
-					var ordertype = '';
-				}
-				var trueTag = {
-					ordertypeVal: $(acf_orderType + ' select').val(),
-					ordertype: ordertype,
-					salesRep: $(acf_salesRep + " select").select2('data'),
-					affiliate: $(acf_affiliate + " select").select2('data')
-				}
-			}
-			sendToOliver(trueTag, thisTicket);
-		});
-
 		$("#clearAllTags").on("click", clearAll);
 
 		$("#refreshPage").on("click", refreshPage);
@@ -105,16 +85,7 @@
                     $("#customtags_button").addClass('disabled');
 				},
 				success: function (response) {
-					// console.log(response)
 					setTicketUI(response)
-					// var bat_length_slug = String(response.bat_length);
-					// FWP.facets['bat_length'] = [bat_length_slug.replace(".", "-")];
-					// FWP.facets['model'] = [response.model];
-					// FWP.facets['drop'] = [response.drop];
-					// FWP.fetch_data();
-
-					// Don't set URL hash
-					// FWP.set_hash();
 				},
 				error: (error) => {
 					console.log(JSON.stringify(error));
@@ -162,63 +133,22 @@
         }
         
         $("#player-name").text(response.attendee_info[0].attendee_meta['players-name'].value);
-    }
-	function sendToOliver(data, ticket) {
-		console.log(ticket)
-		if (data.ordertypeVal == '' || data.salesRep.length == 0) {
-			// RESET EVENT TYPE SINCE THATS THE CHECK FOR ALOT
-			clearAll();
+	}
 
-			alert("Please Enter an Event Type and Sales Rep")
-			return
-		}
-
-		if (data.ordertypeVal === 'league' || data.ordertypeVal === 'facility_event') {
-			console.log("IS LEAGUE")
-			if (data.affiliate.length == 0) {
-				alert("This order type requires an affiliate")
-				return
-			}
-		}
-
-		if (data.ordertypeVal.length > 0) { // if data exist
-			hideOrderType(data.ordertype);
-		} else {
-			// var ordertypeVal = $( acf_orderType + " option:selected").val();
-			// var ordertype = $( acf_orderType + " option:selected").text();
-		}
-
-		if (data.salesRep.length > 0) {
-			hideSalesRep(data.salesRep);
-		} else {
-			// var salesRep = $( acf_salesRep + " select" ).select2('data');
-		}
-
-		// HIDE IF LEFT BLANK, when sending
-		hideAffiliate(data.affiliate)
-		if (data.affiliate.length > 0) {
-
-		} else {
-			// var affiliate = $("#acf-field_5d251671a38b3").select2('data');
-		}
-
-		Cookies.set('truecustomtags', {
-			ordertypeVal: data.ordertypeVal,
-			ordertype: data.ordertype,
-			salesRep: data.salesRep,
-			affiliate: data.affiliate
-		});
+	function clearAll() {
+		initCookies();
+		$(".savedTag").remove();
+		$(".acf-input").show();
+		$(acf_orderType + " select, " + acf_salesRep + " select, " + acf_affiliate + " select, " + acf_ticket + " select").show().val("").trigger('change');
 
 		returnCurrentCookie();
 	}
 
-	function clearAll() {
-		// Cookies.remove('truecustomtags');
+	function clearAllTags() {
 		initCookies();
-		console.log(acf_orderType)
 		$(".savedTag").remove();
 		$(".acf-input").show();
-		$(acf_orderType + " select, " + acf_salesRep + " select, " + acf_affiliate + " select, " + acf_ticket + " select").show().val("").trigger('change');
+		$(acf_orderType + " select, " + acf_salesRep + " select, " + acf_affiliate + " select").show().val("").trigger('change');
 
 		returnCurrentCookie();
 	}
@@ -306,12 +236,6 @@
 		window.parent.postMessage(msg, '*');
 	};
 
-	// var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
-
-	// var oliverEmail = urlParams.get("user");
-	// var salesPersonEmail = document.getElementById("salesPersonEmail");
-	// salesPersonEmail.value = oliverEmail;
-
 	var customtagsButton = document.getElementById('customtags_button');
 	bindEvent(customtagsButton, 'click', function (e) {
         console.log("POC")
@@ -348,7 +272,7 @@
 		}
 		if (trueTag.ordertypeVal == '' || trueTag.salesRep.length == 0) {
 			// RESET EVENT TYPE SINCE THATS THE CHECK FOR ALOT
-			clearAll();
+			clearAllTags();
 
 			alert("Please Enter an Event Type and Sales Rep")
 			return
@@ -415,28 +339,6 @@
 
 		sendMessage(JSON.stringify(jsonMsg));
 	});
-
-	// var ticketnumberButton = document.getElementById('ticketnumber_button');
-	// bindEvent(ticketnumberButton, 'click', function (e) {
-	//     var ticketNumber = document.getElementById("ticketNumber").value;
-
-	//     var jsonMsg = {
-	//         oliverpos:
-	//         {
-	//             event: "addData"
-	//         },
-	//         data:
-	//         {
-	//             ticket:
-	//             {
-	//                 "ticketNumber": ticketNumber
-	//             }
-	//         }
-	//     }
-
-	//     sendMessage(JSON.stringify(jsonMsg));
-	// });
-
 
 	var extensionFinishedButton = document.getElementById('extension_finished');
 	bindEvent(extensionFinishedButton, 'click', function (e) {
