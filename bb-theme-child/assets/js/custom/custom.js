@@ -49,61 +49,63 @@
 
 			$('.acf-fields').addClass("row")
 			$('.acf-button, .ticket-data').hide();
+
+
+			// Get Order Info
+			var $eventSelect = $(acf_ticket + " select");
+
+			$eventSelect.select2();
+			$eventSelect.on("select2:select", function (e) {
+				var thisTicket = $(acf_ticket + " select").select2('data');
+				if (thisTicket[0].id) {
+					var r = /([0-9]+) .*? /;
+					var ticketOrderID = thisTicket[0].text.match(r)[1];
+				}
+				var data = {
+					action: 'get_ticket_info',
+					ticketOrderID: ticketOrderID,
+					ticketID: thisTicket[0].id
+				}
+				console.log(data)
+				$.ajax({
+					url: truefunction.ajax_url,
+					type: 'get',
+					data: data,
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					beforeSend: function () {
+						// Show image container
+						$("#loader").show();
+						$(".ticket-data").hide();
+						$("#customtags_button").addClass('disabled');
+					},
+					success: function (response) {
+						setTicketUI(response)
+					},
+					error: (error) => {
+						console.log(JSON.stringify(error));
+					},
+					complete: function (data) {
+						// Hide image container
+						$("#loader").hide();
+						$("#customtags_button").removeClass('disabled');
+					}
+				});
+
+				return false;
+			});
+			
+			$eventSelect.on("select2:unselect", function (e) {
+				$(".ticket-data").hide();
+				$(".merge").empty();
+			});
 		}
 
 		$("#clearAllTags").on("click", clearAll);
 
 		$("#refreshPage").on("click", refreshPage);
 
-		// Get Order Info
-		var $eventSelect = $(acf_ticket + " select");
-
-		$eventSelect.select2();
-		$eventSelect.on("select2:select", function (e) {
-			var thisTicket = $(acf_ticket + " select").select2('data');
-			if (thisTicket[0].id) {
-				var r = /([0-9]+) .*? /;
-				var ticketOrderID = thisTicket[0].text.match(r)[1];
-			}
-			console.log(ticketOrderID);
-			var data = {
-				action: 'get_ticket_info',
-				ticketOrderID: ticketOrderID,
-				ticketID: thisTicket[0].id
-			}
-			console.log(data)
-			$.ajax({
-				url: truefunction.ajax_url,
-				type: 'get',
-				data: data,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				beforeSend: function () {
-					// Show image container
-                    $("#loader").show();
-                    $(".ticket-data").hide();
-                    $("#customtags_button").addClass('disabled');
-				},
-				success: function (response) {
-					setTicketUI(response)
-				},
-				error: (error) => {
-					console.log(JSON.stringify(error));
-				},
-				complete: function (data) {
-					// Hide image container
-                    $("#loader").hide();
-                    $("#customtags_button").removeClass('disabled');
-				}
-			});
-
-			return false;
-        });
-        
-        $eventSelect.on("select2:unselect", function (e) {
-            $(".ticket-data").hide();
-            $(".merge").empty();
-        });
+		
 
 
 
@@ -228,7 +230,10 @@
     
 	// OLIVER POC
 	function bindEvent(element, eventName, eventHandler) {
-		element.addEventListener(eventName, eventHandler, false);
+		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+			element.addEventListener(eventName, eventHandler, false);
+		}
+		
 	}
 
 	// Send a message to the parent

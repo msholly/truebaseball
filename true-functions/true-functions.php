@@ -266,7 +266,7 @@ function true_get_ticket_info() {
     // }
 
     // ChromePhp::log($ticketID);
-    ChromePhp::log("true_get_ticket_info");
+    // ChromePhp::log("true_get_ticket_info");
     $data = (object) [
         'ticketOrderID' => $ticketOrderID,
         'ticketTotal' => $ticketTotal,
