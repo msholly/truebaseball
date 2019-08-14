@@ -239,6 +239,59 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 }
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
+add_action( 'wp_ajax_nopriv_get_ticket_info', 'true_get_ticket_info' );
+add_action( 'wp_ajax_get_ticket_info', 'true_get_ticket_info' );
+
+function true_get_ticket_info() {
+    $ticketOrderID = $_REQUEST['ticketOrderID'];
+    $ticketID = $_REQUEST['ticketID'];
+
+    // Woo Order Info
+    $order = new WC_Order( $ticketOrderID ); 
+
+    $ticketTotal = $order->get_total();
+    $ticketOrderStatus = $order->get_status();
+
+    // Tribe Ticket Information
+    // $woo_tickets = TribeWooTickets::get_instance();
+    $attendee_metadata = tribe_get_event_meta ( $ticketID );
+    $attendee_info = tribe_tickets_get_attendees( $ticketID );
+    $ticket_event = tribe_events_get_ticket_event( $ticketID );
+
+    $event_ids = tribe_tickets_get_event_ids($ticketOrderID);
+    $event_meta = tribe_events_get_event($event_ids[0]);
+    $event_date = tribe_get_start_date($event_ids[0]);
+    // foreach ( $ticket_ids as $ticket_id ) {
+    //     $ticketTitle = get_the_title( $ticket_id );
+    // }
+
+    // ChromePhp::log($ticketID);
+    ChromePhp::log("true_get_ticket_info");
+    $data = (object) [
+        'ticketOrderID' => $ticketOrderID,
+        'ticketTotal' => $ticketTotal,
+        'ticketOrderStatus' => $ticketOrderStatus,
+        'attendee_metadata' => $attendee_metadata,
+        'attendee_info' => $attendee_info,
+        'ticket_event' => $ticket_event,
+        'event_meta' => $event_meta,
+        'event_date' => $event_date
+    ];
+
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+        wp_send_json($data);
+		die();
+	}
+	else {
+        // TO DO - BUILD FACETWP URL BASED ON PARAMS
+		wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+		exit();
+    }
+
+
+}
+
+
 function true_woocommerce_after_checkout_form () {
     // ChromePhp::log("RUNNING");
     // $ch = curl_init();

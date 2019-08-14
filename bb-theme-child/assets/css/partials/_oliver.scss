@@ -1,0 +1,56 @@
+#oliver-pos {
+
+	.row {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+	.container-fluid, .col-12, .col-6, .col-4, .col-3 {
+		padding: 0 10px;
+	}
+
+	.acf-field {
+		margin: 10px 0;
+	}
+
+	h3 {
+		font-size: 14px;
+		margin: 15px 0 0 0;
+		&#event-title {
+			margin-bottom: 0;
+		}
+	}
+
+	.alert {
+		margin-top: 15px;
+	}
+
+	// TAGS
+	.acf-field {
+		.acf-label {
+			margin-bottom: 0;
+		}
+	}
+
+	.select2-container .select2-selection--single {
+		height: 40px;
+		border-radius: 0;
+		border: 1px solid #aaa;
+	}
+
+	.select2-container--default .select2-selection--single {
+		.select2-selection__rendered {
+			line-height: 38px;
+		}
+
+		.select2-selection__arrow {
+			height: 38px;
+
+			b {
+				border-color: $color--primary transparent transparent transparent;
+				border-width: 6px 6px 0 6px;
+				margin-left: -10px;
+			}
+		}
+	}
+
+}

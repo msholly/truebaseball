@@ -16,6 +16,16 @@
 			border: 3px solid $color--primary;
 			color: #FFF;
 		}
+
+		&.button-secondary {
+			background-color: $g;
+			border: 3px solid $g;
+			color: #FFF;
+			&:hover {
+				background-color: transparent;
+				color: $g;
+			}
+		}
 	}
 
 	a.button {
@@ -24,16 +34,19 @@
 		border: none;
 		border-radius: 0;
 		transition: background 0.3s ease;
+
 		&:hover {
 			background-color: $color--primary--hover;
 			border: none;
 			color: #FFF;
 		}
+
 		&.checkout-button {
 			color: #FFF;
 			padding: 25px 10px;
 			border: none;
 			text-transform: uppercase;
+
 			&:hover {
 				background-color: $color--primary--hover;
 				border: none;
@@ -41,8 +54,6 @@
 			}
 		}
 	}
-
-	
 
 	.fl-builder-content .cta-btn {
 
@@ -77,7 +88,8 @@
 				transform: skewX(20deg);
 				display: inline-block;
 				color: #FFF;
-				> span {
+
+				>span {
 					-ms-transform: none;
 					-webkit-transform: none;
 					transform: none;
@@ -95,15 +107,21 @@
 			a.uabb-button,
 			.single_add_to_cart_button {
 				background-color: $color--primary;
+
 				/* Small Devices, Tablets */
 				@media only screen and (max-width: 768px) {
-					line-height: 24px;								
+					line-height: 24px;
 				}
+
 				&:hover {
 					background-color: transparent;
 					color: #FFF;
+
 					.uabb-marketing-buttons-wrap {
-						.uabb-marketing-title, .uabb-marketing-button-text, .uabb-marketing-button-text span {
+
+						.uabb-marketing-title,
+						.uabb-marketing-button-text,
+						.uabb-marketing-button-text span {
 							color: $color--primary;
 						}
 					}
@@ -112,6 +130,15 @@
 			}
 		}
 
+	}
+
+	button:active,
+	input[type=button]:active,
+	input[type=submit]:active,
+	button:focus,
+	input[type=button]:focus,
+	input[type=submit]:focus {
+		top: auto !important
 	}
 
 	/* INPUT */
