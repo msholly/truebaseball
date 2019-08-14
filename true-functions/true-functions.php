@@ -155,9 +155,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $affiliate_wp_userid = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
         // $oliverTicketID = $custom_fields['_order_oliverpos_tds_ticket'][0];
         $oliverTicketID = 2091;
-        if ( has_action( 'event_tickets_checkin' ) ) {
-            do_action( 'event_tickets_checkin', $attendee_id, false );
-        };
+        true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
@@ -467,13 +465,23 @@ function true_woocommerce_after_checkout_form () {
 
     //     // $order->add_item( $item );
     // }
-    
+
 
 }
 // add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
 add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
 
 
+function true_woo_ticket_checkin ( $attendee_id ) {
+
+	// bail if event tickets plus is not active
+	if ( !class_exists('Tribe__Tickets_Plus__Commerce__WooCommerce__Main') ) return false;
+
+	$tickets_provider = Tribe__Tickets_Plus__Commerce__WooCommerce__Main::get_instance();
+
+	return $tickets_provider->checkin ( $attendee_id );
+
+}
 
 
 ?>
