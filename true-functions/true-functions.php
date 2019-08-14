@@ -153,9 +153,10 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
         $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
         $affiliate_wp_userid = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
+
+        // WORKING AUTO CHECK WHEN TICKET IS APPLIED
         // $oliverTicketID = $custom_fields['_order_oliverpos_tds_ticket'][0];
-        $oliverTicketID = 2091;
-        true_woo_ticket_checkin($oliverTicketID);
+        // true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
