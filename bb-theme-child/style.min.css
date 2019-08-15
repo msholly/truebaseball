@@ -35,6 +35,16 @@ footer #menu-footer-menu li+li:before{content:"/";display:inline-block;position:
 .fl-page-content select:focus{border-color:#aaa;color:#222;outline:0}
 .fl-page-content select option{font-weight:normal}
 .fl-page-content label{line-height:normal;margin-bottom:5px}
+.fl-page-content .cbx{margin:auto;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer}
+.fl-page-content .cbx span{display:inline-block;vertical-align:middle;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+.fl-page-content .cbx span:first-child{position:relative;width:24px;height:24px;border-radius:3px;-webkit-transform:scale(1);transform:scale(1);vertical-align:middle;border:1px solid #00aeef;-webkit-transition:all .2s ease;transition:all .2s ease}
+.fl-page-content .cbx span:first-child svg{position:absolute;top:3px;left:3px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16px;stroke-dashoffset:16px;-webkit-transition:all .3s ease;transition:all .3s ease;-webkit-transition-delay:.1s;transition-delay:.1s;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+.fl-page-content .cbx span:first-child:before{content:"";width:100%;height:100%;background:#00aeef;display:block;-webkit-transform:scale(0);transform:scale(0);opacity:1;border-radius:50%}
+.fl-page-content .cbx span:last-child{padding-left:8px}
+.fl-page-content .cbx:hover span:first-child{border-color:#00aeef}
+.fl-page-content .inp-cbx:checked+.cbx span:first-child{background:#00aeef;border-color:#00aeef;-webkit-animation:wave .4s ease;animation:wave .4s ease}
+.fl-page-content .inp-cbx:checked+.cbx span:first-child svg{stroke-dashoffset:0}
+.fl-page-content .inp-cbx:checked+.cbx span:first-child:before{-webkit-transform:scale(3.5);transform:scale(3.5);opacity:0;-webkit-transition:all .6s ease;transition:all .6s ease}
 .fl-page-content .fl-heading-text span{color:#00aeef}
 .fl-page-content .true-border-bottom h1,.fl-page-content .true-border-bottom h2,.fl-page-content .true-border-bottom h3,.fl-page-content .true-border-bottom h4,.fl-page-content .true-border-bottom h5,.fl-page-content .true-border-bottom h6{border-bottom:3px solid #00aeef !important;padding-bottom:5px !important}
 header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase;background-color:transparent}
@@ -132,27 +142,26 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100% !important;height:300px;-o-
 .page-id-426 .fitting-facets .noUi-sliderValues{text-align:center;font-size:64px;color:#00aeef !important}
 .page-id-426 .fitting-facets .noUi-value.noUi-value-horizontal{padding-top:3px}
 .page-id-426 .fitting-facets #playerAge{max-width:400px;margin:0 auto}
-.page-id-426 .fitting-facets .input-group{background-color:rgba(255,255,255,0.2)}
-.page-id-426 .fitting-facets .input-group>.form-control{border:0;background:transparent;color:#FFF;font-size:18px;margin:0 !important;padding:30px 20px;text-align:center}
-.page-id-426 .fitting-facets .input-group .input-group-addon{line-height:52px;padding:0 20px;background:#000;font-size:18px;border:4px solid rgba(255,255,255,0.2)}
+.page-id-426 .fitting-facets .input-group{background-color:rgba(255,255,255,0)}
+.page-id-426 .fitting-facets .input-group>.form-control{border:2px solid #00aeef;background:transparent;color:#FFF;font-size:18px;margin:0 !important;padding:30px 20px;text-align:center}
+.page-id-426 .fitting-facets .input-group .input-group-addon{line-height:52px;padding:0 20px;background:#000;font-size:18px;border:4px solid #00aeef;border-left-width:3px}
 .page-id-426 .fitting-facets label.error{text-align:center;width:calc(100% - 60px);padding:10px 0 0 0}
 .page-id-426 .fitting-facets .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .page-id-426 .fitting-facets .facetwp-counter,.page-id-426 .fitting-facets .facetwp-overlay{display:none}
-.page-id-426 .fitting-facets input[type="checkbox"],.page-id-426 .fitting-facets input[type="radio"]{position:absolute;opacity:0;z-index:-1}
+.page-id-426 .fitting-facets input[type="radio"]{position:absolute;opacity:0;z-index:-1}
 .page-id-426 .fitting-facets input[type="radio"]+label::before{border-radius:28px}
-.page-id-426 .fitting-facets input[type="checkbox"]:checked+label,.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff}
-.page-id-426 .fitting-facets input[type="checkbox"]:checked+label:before,.page-id-426 .fitting-facets input[type="radio"]:checked+label:before{top:0;width:100%;height:56px;background:#00aeef !important}
-.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio,.page-id-426 .fitting-facets label.checkbox{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
-.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before,.page-id-426 .fitting-facets label.checkbox::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
-.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked,.page-id-426 .fitting-facets label.checkbox.checked{padding-left:30px !important;color:#fff;margin-right:30px}
-.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.radio.checked::before,.page-id-426 .fitting-facets label.checkbox.checked::before{top:0;width:100%;height:100%;background:#00aeef}
-.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.radio.usssa img,.page-id-426 .fitting-facets label.checkbox.usssa img{max-height:175px}
-.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.radio.usssa.checked:before,.page-id-426 .fitting-facets label.checkbox.usssa.checked:before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets .facetwp-radio.tball,.page-id-426 .fitting-facets label.radio.usa,.page-id-426 .fitting-facets label.radio.tball,.page-id-426 .fitting-facets label.checkbox.usa,.page-id-426 .fitting-facets label.checkbox.tball{padding-right:0}
-.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets .facetwp-radio.tball img,.page-id-426 .fitting-facets label.radio.usa img,.page-id-426 .fitting-facets label.radio.tball img,.page-id-426 .fitting-facets label.checkbox.usa img,.page-id-426 .fitting-facets label.checkbox.tball img{max-height:100px}
-.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets .facetwp-radio.tball.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.tball.checked::before,.page-id-426 .fitting-facets label.checkbox.usa.checked::before,.page-id-426 .fitting-facets label.checkbox.tball.checked::before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child,.page-id-426 .fitting-facets label.checkbox.modded:first-child{margin-right:60px}
-.page-id-426 .fitting-facets input[type="checkbox"]+label::before{border-radius:.25em}
+.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff}
+.page-id-426 .fitting-facets input[type="radio"]:checked+label:before{top:0;width:100%;height:56px;background:#00aeef !important}
+.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
+.page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
+.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked{padding-left:30px !important;color:#fff;margin-right:30px}
+.page-id-426 .fitting-facets .facetwp-radio.checked::before,.page-id-426 .fitting-facets label.radio.checked::before{top:0;width:100%;height:100%;background:#00aeef}
+.page-id-426 .fitting-facets .facetwp-radio.usssa img,.page-id-426 .fitting-facets label.radio.usssa img{max-height:175px}
+.page-id-426 .fitting-facets .facetwp-radio.usssa.checked:before,.page-id-426 .fitting-facets label.radio.usssa.checked:before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets .facetwp-radio.tball,.page-id-426 .fitting-facets label.radio.usa,.page-id-426 .fitting-facets label.radio.tball{padding-right:0}
+.page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets .facetwp-radio.tball img,.page-id-426 .fitting-facets label.radio.usa img,.page-id-426 .fitting-facets label.radio.tball img{max-height:100px}
+.page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets .facetwp-radio.tball.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.tball.checked::before{top:0 !important}
+.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child{margin-right:60px}
 .page-id-426 .fitting-facets .facetwp-facet-league .facetwp-radio::before{top:20% !important}
 .page-id-426 .fitting-facets .noUi-connect{background:#00aeef !important}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label{-webkit-transition:.25s all ease;transition:.25s all ease}
@@ -313,4 +322,6 @@ footer .fl-menu-mobile-toggle .hamburger-menu rect{fill:#FFF !important}
 footer .fl-menu-mobile-toggle .fl-menu-mobile-toggle-label{color:#FFF !important}
 .fl-page-content .fl-builder-content .cta-btn.solid a.fl-button,.fl-page-content .fl-builder-content .cta-btn.solid a.uabb-button,.fl-page-content .fl-builder-content .cta-btn.solid .single_add_to_cart_button{line-height:24px}
 }@media(max-width:768px){.uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
+}@-webkit-keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
+}@keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
 }
