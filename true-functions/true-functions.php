@@ -259,8 +259,8 @@ add_action( 'wp_ajax_nopriv_get_ticket_info', 'true_get_ticket_info' );
 add_action( 'wp_ajax_get_ticket_info', 'true_get_ticket_info' );
 
 function true_get_ticket_info() {
-    $ticketOrderID = $_REQUEST['ticketOrderID'];
-    $ticketID = $_REQUEST['ticketID'];
+    $ticketOrderID = sanitize_text_field($_REQUEST['ticketOrderID']);
+    $ticketID = sanitize_text_field($_REQUEST['ticketID']);
 
     // Woo Order Info
     $order = new WC_Order( $ticketOrderID ); 
