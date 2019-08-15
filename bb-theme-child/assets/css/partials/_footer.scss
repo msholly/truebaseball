@@ -1,8 +1,72 @@
 footer {
-  /* Small Devices, Tablets */
-  @media only screen and (max-width: 768px) {
-    .fl-icon-group-right {
-      text-align: center;
+
+	#true-affiliates ul {
+		list-style: none;
+		padding: 0
+	}
+
+	#true-affiliates ul li {
+		display: inline-block;
+		margin-right: 15px
+	}
+
+	#true-affiliates ul li img {
+		height: 30px;
+		width: 30px;
+	}
+
+	@media only screen and (max-width: 992px) {
+		svg {
+			max-width: 280px;
+		}
+
+		.tds-logo,
+		.ts-logo {
+			text-align: right;
+		}
+	}
+
+
+	/* Small Devices, Tablets */
+	@media only screen and (max-width: 768px) {
+
+		.fl-icon-group-left,
+		.fl-icon-group-right {
+			text-align: center;
+		}
+
+		svg {
+			max-width: 280px;
+		}
+
+		.tds-logo,
+		.ts-logo {
+			text-align: center;
+		}
+
+		#true-affiliates {
+      ul {
+        text-align: center;
+        li {
+          img {
+            height: 40px !important;
+            width: 40px !important;
+          }
+        }
+      }
     }
-  }
+
+    .fl-menu-mobile-toggle {
+      .hamburger-menu rect {
+        fill: #FFF !important;
+      }
+      .fl-menu-mobile-toggle-label {
+        color: #FFF !important
+      }
+    }
+
+		
+
+		
+	}
 }
