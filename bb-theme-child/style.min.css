@@ -9,6 +9,7 @@ template: bb-theme
 */footer #true-affiliates ul{list-style:none;padding:0}
 footer #true-affiliates ul li{display:inline-block;margin-right:15px}
 footer #true-affiliates ul li img{height:30px;width:30px}
+footer #menu-footer-menu li+li:before{content:"/";display:inline-block;position:absolute;left:-2px;top:8px;font-weight:900;bottom:0;margin:auto 0;color:#fff}
 .fl-page-content button.button,.fl-page-content input[type=submit]{background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:10px 20px;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content button.button:hover,.fl-page-content input[type=submit]:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef;color:#FFF}
 .fl-page-content button.button.button-secondary,.fl-page-content input[type=submit].button-secondary{background-color:#35ad68;border:3px solid #35ad68;color:#FFF}
@@ -302,7 +303,8 @@ header .fl-page-nav-search a.fa-search{padding:4px}
 }@media only screen and (min-width:1200px){header #menu-main-menu .wpmenucart{display:none}
 }@media only screen and (max-width:992px){footer svg{max-width:280px}
 footer .tds-logo,footer .ts-logo{text-align:right}
-}@media only screen and (max-width:768px){footer .fl-icon-group-left,footer .fl-icon-group-right{text-align:center}
+}@media only screen and (max-width:768px){footer #menu-footer-menu li+li:before{content:""}
+footer .fl-icon-group-left,footer .fl-icon-group-right{text-align:center}
 footer svg{max-width:280px}
 footer .tds-logo,footer .ts-logo{text-align:center}
 footer #true-affiliates ul{text-align:center}
