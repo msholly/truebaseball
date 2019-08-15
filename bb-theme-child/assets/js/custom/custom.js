@@ -88,7 +88,6 @@
 					complete: function (data) {
 						// Hide image container
 						$("#loader").hide();
-						$("#customtags_button").removeClass('disabled');
 					}
 				});
 
@@ -98,6 +97,7 @@
 			$eventSelect.on("select2:unselect", function (e) {
 				$(".ticket-data").hide();
 				$(".merge").empty();
+				$("#customtags_button").removeClass('disabled');
 			});
 		}
 
@@ -125,14 +125,24 @@
         $("#ticket-purchaser").text(response.attendee_info[0].holder_name);
         $("#ticket-cost").text(response.attendee_metadata._paid_price[0]);
         $("#ticket-security").text(response.attendee_info[0].security_code);
+		
+		// IF GOOD ORDER STATUS
+		if ( response.ticketOrderStatus === 'completed' || response.ticketOrderStatus === 'processing') {
+			$("#customtags_button").removeClass('disabled');
+			if (response.attendee_info[0].check_in === ''){
+				$("#ticket-checkin").text('Unused. You can apply this ticket to this order.').parent().addClass("alert-success").removeClass("alert-danger");
+			} else if ( response.attendee_info[0].check_in === '1' ) {
+				$("#ticket-checkin").text('USED. DO NOT APPLY to this order.').parent().addClass("alert-danger").removeClass("alert-success");
+			} else {
+				$("#ticket-checkin").text(response.attendee_info[0].check_in); // FALLBACK
+			}
+
+		} else {
+			// ELSE IF BAD ORDER STATUS
+			$("#ticket-checkin").text('ORDER ' + response.ticketOrderStatus + '. DO NOT APPLY to this order.').parent().addClass("alert-danger").removeClass("alert-success");
+
+		}
         
-        if (response.attendee_info[0].check_in === ''){
-            $("#ticket-checkin").text('Unused. You can apply this ticket to this order.').parent().addClass("alert-success").removeClass("alert-danger");
-        } else if ( response.attendee_info[0].check_in === '1' ) {
-            $("#ticket-checkin").text('USED. DO NOT APPLY to this order.').parent().addClass("alert-danger").removeClass("alert-success");
-        } else {
-            $("#ticket-checkin").text(response.attendee_info[0].check_in);
-        }
         
         $("#player-name").text(response.attendee_info[0].attendee_meta['players-name'].value);
 	}
@@ -245,7 +255,7 @@
 	bindEvent(customtagsButton, 'click', function (e) {
         console.log("POC")
         if ( $(this).hasClass("disabled") ) {
-            //do something it does have the protected class!
+            //bail since something is missing or wrong
             return
         }
 		var ticketID = $( "#ticket-id" ).text();
@@ -341,6 +351,8 @@
 				}
 			}
 		}
+		console.log("----- DATA TO OLIVER EXTENSION -----")
+		console.log(jsonMsg);
 
 		sendMessage(JSON.stringify(jsonMsg));
 	});
