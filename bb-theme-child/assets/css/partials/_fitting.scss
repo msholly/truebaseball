@@ -46,8 +46,9 @@
 
 		#playerAge {
 			max-width: 400px;
-    		margin: 0 auto;
+			margin: 0 auto;
 		}
+
 		.input-group {
 			background-color: rgba(255, 255, 255, 0.0);
 
@@ -90,7 +91,7 @@
 			display: none;
 		}
 
-		
+
 		input[type="radio"] {
 			position: absolute;
 			opacity: 0;
@@ -102,7 +103,7 @@
 		}
 
 		/* Checked */
-		
+
 		input[type="radio"]:checked+label {
 			padding-left: 30px !important;
 			color: #fff;
@@ -175,7 +176,8 @@
 				}
 			}
 
-			&.usa, &.tball {
+			&.usa,
+			&.tball {
 				padding-right: 0;
 
 				img {
@@ -191,7 +193,7 @@
 				margin-right: 60px;
 			}
 		}
-		
+
 		.facetwp-facet-league .facetwp-radio::before {
 			top: 20% !important
 		}
@@ -218,5 +220,48 @@
 		}
 	}
 
+	.results-title-row {
+		.uabb-blog-posts {
+			overflow: visible;
 
+			.uabb-blog-posts-shadow {
+				background: radial-gradient(circle at top center, rgba(74, 74, 74, 1) 0%, rgba(0, 0, 0, 1) 50%);
+				-webkit-box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
+				-moz-box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
+				box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
+
+				.uabb-post-heading {
+					padding: 30px 0 50px 0;
+				}
+
+				.uabb-post-thumbnail {
+					background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 80%), url(https://stage.truediamondscience.com/wp-content/uploads/t1x.png);
+					background-size: 500px 107px;
+					background-position: center top;
+
+					img {
+						object-fit: cover;
+						object-position: center;
+						height: 220px;
+					}
+				}
+
+				.uabb-blog-posts-description {
+					font-size: 18px;
+
+					p {
+						display: inline-block;
+						font-weight: 300;
+					}
+				}
+			}
+		}
+
+
+
+
+
+
+
+	}
 }
