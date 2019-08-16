@@ -193,7 +193,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Add the note
         $order->add_order_note( $note );
 
-        if ( has_shipping_address() ) {
+        if ( !$order->has_shipping_address() ) {
             set_shipping_first_name( $order->get_billing_first_name() );
             set_shipping_last_name( $order->get_billing_last_name() );
             set_shipping_company( $order->get_billing_company() );
