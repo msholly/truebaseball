@@ -193,6 +193,18 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Add the note
         $order->add_order_note( $note );
 
+        if ( !has_shipping_address() ) {
+            set_shipping_first_name( $order->get_billing_first_name() );
+            set_shipping_last_name( $order->get_billing_last_name() );
+            set_shipping_company( $order->get_billing_company() );
+            set_shipping_address_1( $order->get_billing_address_1() );
+            set_shipping_address_2( $order->get_billing_address_2() );
+            set_shipping_city( $order->get_billing_city() );
+            set_shipping_state( $order->get_billing_state() );
+            set_shipping_postcode( $order->get_billing_postcode() );
+            set_shipping_country( $order->get_billing_country() );
+        }
+        
         // Save the data
         $order->save();
         // END ORDER SAVING
