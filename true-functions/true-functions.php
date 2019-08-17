@@ -73,6 +73,87 @@ function prefix_wc_api_order_response( $order ) {
 }
 add_filter( 'woocommerce_api_order_response', 'prefix_wc_api_order_response', 10, 1 );
 
+/**
+ * Register new endpoint to use inside My Account page.
+ *
+ * @see https://developer.wordpress.org/reference/functions/add_rewrite_endpoint/
+ */  
+function true_add_events_endpoint() {
+    add_rewrite_endpoint( 'events', EP_ROOT | EP_PAGES );
+}
+  
+add_action( 'init', 'true_add_events_endpoint' );
+  
+  
+/**
+ * Add new query var.
+ *
+ * @param array $vars
+ * @return array
+ */  
+function true_events_query_vars( $vars ) {
+    $vars[] = 'events';
+    return $vars;
+}
+  
+add_filter( 'query_vars', 'true_events_query_vars', 0 );
+  
+  
+/**
+ * Custom help to add new items into an array after a selected item.
+ *
+ * @param array $items
+ * @param array $new_items
+ * @param string $after
+ * @return array
+ */
+function true_insert_after_helper( $items, $new_items, $after ) {
+	// Search for the item position and +1 since is after the selected item key.
+	$position = array_search( $after, array_keys( $items ) ) + 1;
+
+	// Insert the new item.
+	$array = array_slice( $items, 0, $position, true );
+	$array += $new_items;
+	$array += array_slice( $items, $position, count( $items ) - $position, true );
+
+    return $array;
+}
+
+/**
+ * Insert the new endpoint into the My Account menu.
+ *
+ * @param array $items
+ * @return array
+ */
+  
+function true_add_events_link_my_account( $items ) {
+
+    $new_items = array();
+	$new_items['events'] = __( 'Events', 'woocommerce' );
+
+	// Add the new item after `orders`.
+	return true_insert_after_helper( $items, $new_items, 'orders' );
+    
+}
+  
+add_filter( 'woocommerce_account_menu_items', 'true_add_events_link_my_account' );
+  
+  
+// ------------------
+// 4. Add content to the new endpoint
+  
+function true_events_content() {
+    $myaccount_page_id = get_option( 'woocommerce_myaccount_page_id' );
+    if ( $myaccount_page_id ) {
+    $myaccount_orders_page_url = get_permalink( $myaccount_page_id ) . 'orders';
+    }
+echo '<h3>Your upcoming TRUE Fitting Events</h3><p>Note: You may have multiple tickets per event, and those will be available in the <a href="' . esc_url( $myaccount_orders_page_url ) . '">ORDERS</a> tab.</p>';
+echo do_shortcode( ' [tribe-user-event-confirmations] ' );
+}
+  
+add_action( 'woocommerce_account_events_endpoint', 'true_events_content' );
+// Note: add_action must follow 'woocommerce_account_{your-endpoint-slug}_endpoint' format
+
 
 function add_affiliate_info_on_create_order ( $order_id ) {
 
