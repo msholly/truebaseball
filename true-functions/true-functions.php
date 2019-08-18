@@ -12,6 +12,12 @@
 // Debugging
 // include 'php/ChromePhp.php';
 
+require_once 'php/affiliate-wp/add-address.php';
+require_once 'php/affiliate-wp/add-city.php';
+require_once 'php/affiliate-wp/add-state.php';
+require_once 'php/affiliate-wp/add-zip.php';
+require_once 'php/affiliate-wp/add-program-type.php';
+require_once 'php/affiliate-wp/add-event-date.php';
 
 add_role(
     'affiliate',

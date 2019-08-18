@@ -1,10 +1,11 @@
-#affwp-register-form,#affwp-login-form{
+#affwp-register-form, #affwp-login-form{
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
 
-    .affwp-form legend {
-        text-transform: uppercase;
+    &.affwp-form legend {
+		text-transform: uppercase;
+		font-weight: 700;
     }
 }
 

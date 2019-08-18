@@ -197,7 +197,7 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100% !important;height:300px;-o-
 .woocommerce-MyAccount-content mark{color:#000 !important}
 .woocommerce-MyAccount-content .woocommerce-info{color:#000 !important}
 #affwp-register-form,#affwp-login-form{max-width:500px;margin:0 auto;padding:30px}
-#affwp-register-form .affwp-form legend,#affwp-login-form .affwp-form legend{text-transform:uppercase}
+#affwp-register-form.affwp-form legend,#affwp-login-form.affwp-form legend{text-transform:uppercase;font-weight:700}
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs{background-color:#00aeef;padding:25px 35px;text-align:center}
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li a{color:#FFF}
 #affwp-affiliate-dashboard .affwp-tab-content{max-width:1100px;margin:0 auto;padding:35px}
