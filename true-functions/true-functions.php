@@ -591,7 +591,8 @@ function true_woocommerce_after_checkout_form () {
     $order_id = 2689;
     $custom_fields = get_post_custom( $order_id );
     $oliverData = $custom_fields['_order_oliverpos_extension_data'];
-    ChromePhp::log($oliverData);
+    $oliver_data_array=unserialize($oliverData);
+    ChromePhp::log($oliver_data_array);
 
 
 }
