@@ -591,11 +591,26 @@ function true_woocommerce_after_checkout_form () {
 
     //     // $order->add_item( $item );
     // }
-    $order_id = 2689;
+    $order_id = 2693;
     $custom_fields = get_post_custom( $order_id );
     $oliverData = $custom_fields['_order_oliverpos_extension_data'];
-    $oliver_data_array=unserialize($oliverData[0]);
-    ChromePhp::log($oliver_data_array);
+        $oliver_data_array=unserialize($oliverData[0]);
+        ChromePhp::log($oliver_data_array);
+        $event_type = $oliver_data_array->wordpress->data->customTags->orderType;
+        ChromePhp::log($event_type);
+
+        $sales_rep_id = $oliver_data_array->wordpress->data->customTags->salesRep;
+        ChromePhp::log($sales_rep_id);
+
+        $affiliate_wp_userid = $oliver_data_array->wordpress->data->customTags->affiliateID;
+        ChromePhp::log($affiliate_wp_userid);
+
+
+        // WORKING AUTO CHECK WHEN TICKET IS APPLIED
+        $oliverTicketID = $oliver_data_array->wordpress->data->ticket->ticketNumber;
+        ChromePhp::log($oliverTicketID);
+
+        true_woo_ticket_checkin(2275);
 
 
 }
