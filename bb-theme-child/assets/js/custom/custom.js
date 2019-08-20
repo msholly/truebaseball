@@ -8,9 +8,10 @@
 	var acf_ticket = ".acf-field-5d4a0a0c75c12";
 
 	jQuery(document).ready(function ($) {
+
 		if ($("body").hasClass("single-product")) {
 			// ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
-			$(".single_add_to_cart_button").wrapInner("<span></span>")
+			$(".single_add_to_cart_button").wrapInner("<span></span>");
 		}
 
 		if ($("body").hasClass("term-bats")) {
@@ -20,12 +21,29 @@
 			});
 		}
 
+		if ($("body").hasClass("single-tribe_events")) {
+			// ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
+			$(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center");
+		}
+
 		// AFFILIATE JOIN FORM
 		if ($("body").hasClass("page-id-671")) {
 			$("#affwp-user-login").parent().prepend("<p class='helper'>Please choose a recognizable user name for you or your organization. Do not include any special characters. This CAN NOT be changed later. </p>");
 			$("#affwp-register-form legend").after("<p class='helper'>The TRUE Affiliate program is invite only! To apply, you'll need a referral code that is sent to your email. Please enter that below. </p>");
 		}
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+
+			// URL Params for initial data
+			var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
+
+			var oliverEmail = urlParams.get("userEmail");
+			var oliverTotal = urlParams.get("total");
+			console.log("EMAIL FROM PARAMS")
+			console.log(oliverEmail)
+
+			console.log("Total FROM PARAMS")
+			console.log(oliverEmail)
+
 			// ACF OLIVER
 			var trueTag = Cookies.getJSON('truecustomtags');
 
@@ -244,6 +262,18 @@
     });
     
 	// OLIVER POC
+	window.addEventListener('message', function(e) {
+		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+			let msgData = JSON.parse(e.data);
+			
+			if (msgData.oliverpos.event == "extensionSendCartData") {
+				document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+			}
+
+			console.log("frame page", msgData);
+		}
+	}, false);
+
 	function bindEvent(element, eventName, eventHandler) {
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 			element.addEventListener(eventName, eventHandler, false);
@@ -320,10 +350,10 @@
 
 		// HIDE IF LEFT BLANK, when sending
 		hideAffiliate(trueTag.affiliate)
-		if (trueTag.affiliate.length > 0) {
-
+		if (trueTag.affiliate.length === 0) {
+			var thisAffiliateID = "N/A";
 		} else {
-			// var affiliate = $("#acf-field_5d251671a38b3").select2('data');
+			var thisAffiliateID = trueTag.affiliate[0].id
 		}
 
 		Cookies.set('truecustomtags', {
@@ -340,12 +370,14 @@
 		// var ticketNumber = document.getElementById("ticketNumber").value;
 
 		var jsonMsg = {
-			oliverpos: {
+			oliverpos: 
+			{
 				"event": "addData"
 			},
-			data: {
+			data: 
+			{
 				customTags: {
-					"affiliateID": trueTag.affiliate[0].id,
+					"affiliateID": thisAffiliateID,
 					"salesRep": trueTag.salesRep[0].id,
 					"orderType": trueTag.ordertypeVal
 				},
@@ -370,6 +402,8 @@
 				wordpressAction: "tds_neworder"
 			}
 		}
+		console.log("----- FINISH DATA TO OLIVER EXTENSION -----")
+		console.log(jsonMsg);
 
 		sendMessage(JSON.stringify(jsonMsg));
 	});

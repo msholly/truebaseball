@@ -16,6 +16,11 @@
       $(".uabb-woo-product-category").text(function () {
         return $(this).text().replace("Bats", "TRUE / 2020");
       });
+    }
+
+    if ($("body").hasClass("single-tribe_events")) {
+      // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
+      $(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center");
     } // AFFILIATE JOIN FORM
 
 
@@ -25,7 +30,15 @@
     }
 
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-      // ACF OLIVER
+      // URL Params for initial data
+      var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
+      var oliverEmail = urlParams.get("userEmail");
+      var oliverTotal = urlParams.get("total");
+      console.log("EMAIL FROM PARAMS");
+      console.log(oliverEmail);
+      console.log("Total FROM PARAMS");
+      console.log(oliverEmail); // ACF OLIVER
+
       var trueTag = Cookies.getJSON('truecustomtags');
 
       if (trueTag == undefined) {
@@ -222,6 +235,18 @@
     $('.matchHeight').matchHeight(options);
   }); // OLIVER POC
 
+  window.addEventListener('message', function (e) {
+    if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+      var msgData = JSON.parse(e.data);
+
+      if (msgData.oliverpos.event == "extensionSendCartData") {
+        document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+      }
+
+      console.log("frame page", msgData);
+    }
+  }, false);
+
   function bindEvent(element, eventName, eventHandler) {
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
       element.addEventListener(eventName, eventHandler, false);
@@ -297,7 +322,10 @@
 
     hideAffiliate(trueTag.affiliate);
 
-    if (trueTag.affiliate.length > 0) {} else {// var affiliate = $("#acf-field_5d251671a38b3").select2('data');
+    if (trueTag.affiliate.length === 0) {
+      var thisAffiliateID = "N/A";
+    } else {
+      var thisAffiliateID = trueTag.affiliate[0].id;
     }
 
     Cookies.set('truecustomtags', {
@@ -316,7 +344,7 @@
       },
       data: {
         customTags: {
-          "affiliateID": trueTag.affiliate[0].id,
+          "affiliateID": thisAffiliateID,
           "salesRep": trueTag.salesRep[0].id,
           "orderType": trueTag.ordertypeVal
         },
@@ -339,6 +367,8 @@
         wordpressAction: "tds_neworder"
       }
     };
+    console.log("----- FINISH DATA TO OLIVER EXTENSION -----");
+    console.log(jsonMsg);
     sendMessage(JSON.stringify(jsonMsg));
   });
 })(jQuery);
