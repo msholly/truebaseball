@@ -260,20 +260,23 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // GET custom post meta, including new Oliver data
         $custom_fields = get_post_custom( $order_id );
-        $event_type = $custom_fields['_order_oliverpos_tds_type'][0];
-        $sales_rep_email = $custom_fields['_order_oliverpos_tds_salesrep_email'][0];
-        $affiliate_wp_userid = $custom_fields['_order_oliverpos_tds_affiliate_email'][0];
+        $oliverData = $custom_fields['_order_oliverpos_extension_data'];
+        $oliver_data_array=unserialize($oliverData[0]);
+
+        $event_type = $oliver_data_array->wordpress->data->customTags->orderType;
+        $sales_rep_id = $oliver_data_array->wordpress->data->customTags->salesRep;
+        $affiliate_wp_userid = $oliver_data_array->wordpress->data->customTags->affiliateID;
 
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
-        // $oliverTicketID = $custom_fields['_order_oliverpos_tds_ticket'][0];
-        // true_woo_ticket_checkin($oliverTicketID);
+        $oliverTicketID = $oliver_data_array->wordpress->data->ticket->ticketNumber;
+        true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
         $affiliate_info = get_userdata($affiliate_wp_userid);
         $affiliate_login_name = $affiliate_info->user_login;
 
-        $sales_rep_info = get_user_by( 'email', $sales_rep_email ); 
+        $sales_rep_info = get_user_by( 'ID', $sales_rep_id ); 
         $sales_rep_login_name = $sales_rep_info->user_login;
 
         update_field('order_type', $event_type, $order_id);
