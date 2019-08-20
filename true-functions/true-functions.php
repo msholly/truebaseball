@@ -263,12 +263,12 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $oliverData = $custom_fields['_order_oliverpos_extension_data'];
         $oliver_data_array=unserialize($oliverData[0]);
 
-        $event_type = $oliver_data_array->wordpress->data->customTags->orderType;
-        $sales_rep_id = $oliver_data_array->wordpress->data->customTags->salesRep;
-        $affiliate_wp_userid = $oliver_data_array->wordpress->data->customTags->affiliateID;
+        $event_type = $oliver_data_array['wordpress']['data']['customTags']['orderType'];
+        $sales_rep_id = $oliver_data_array['wordpress']['data']['customTags']['salesRep'];
+        $affiliate_wp_userid = $oliver_data_array['wordpress']['data']['customTags']['affiliateID'];
 
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
-        $oliverTicketID = $oliver_data_array->wordpress->data->ticket->ticketNumber;
+        $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
         true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
@@ -549,7 +549,6 @@ function true_woocommerce_after_checkout_form () {
 
 
 
-    // $order_id = 2475;
     // $order = new WC_Order( $order_id ); 
     // $items = $order->get_items(); 
 
@@ -591,26 +590,26 @@ function true_woocommerce_after_checkout_form () {
 
     //     // $order->add_item( $item );
     // }
-    $order_id = 2693;
-    $custom_fields = get_post_custom( $order_id );
-    $oliverData = $custom_fields['_order_oliverpos_extension_data'];
-        $oliver_data_array=unserialize($oliverData[0]);
-        ChromePhp::log($oliver_data_array);
-        $event_type = $oliver_data_array->wordpress->data->customTags->orderType;
-        ChromePhp::log($event_type);
+    // $order_id = 2693;
+    // $custom_fields = get_post_custom( $order_id );
+    // $oliverData = $custom_fields['_order_oliverpos_extension_data'];
+    //     $oliver_data_array=unserialize($oliverData[0]);
+    //     ChromePhp::log($oliver_data_array['wordpress']);
+    //     $event_type = $oliver_data_array['wordpress']['data']['customTags']['orderType'];
+    //     ChromePhp::log($event_type);
 
-        $sales_rep_id = $oliver_data_array->wordpress->data->customTags->salesRep;
-        ChromePhp::log($sales_rep_id);
+    //     $sales_rep_id = $oliver_data_array['wordpress']['data']['customTags']['salesRep'];
+    //     ChromePhp::log($sales_rep_id);
 
-        $affiliate_wp_userid = $oliver_data_array->wordpress->data->customTags->affiliateID;
-        ChromePhp::log($affiliate_wp_userid);
+    //     $affiliate_wp_userid = $oliver_data_array['wordpress']['data']['customTags']['affiliateID'];
+    //     ChromePhp::log($affiliate_wp_userid);
 
 
-        // WORKING AUTO CHECK WHEN TICKET IS APPLIED
-        $oliverTicketID = $oliver_data_array->wordpress->data->ticket->ticketNumber;
-        ChromePhp::log($oliverTicketID);
+    //     // WORKING AUTO CHECK WHEN TICKET IS APPLIED
+    //     $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
+    //     ChromePhp::log($oliverTicketID);
 
-        true_woo_ticket_checkin(2275);
+    //     true_woo_ticket_checkin(2275);
 
 
 }
