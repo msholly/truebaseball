@@ -46,6 +46,17 @@ add_action( 'affwp_insert_affiliate', 'pw_affwp_set_role_on_registration' );
 // For ACF Debuggin
 add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
+// HIDE ADMIN BAR ON OLIVER POS
+function my_theme_hide_admin_bar($bool) {
+    if ( is_page_template( 'page-oliver-pos.php' ) ) :
+        return false;
+    else :
+        return $bool;
+    endif;
+}
+add_filter('show_admin_bar', 'my_theme_hide_admin_bar');
+
+  
 // Add a Woo Product Category on ticket save
 add_action( 'event_tickets_after_save_ticket', 'tribe_events_add_product_category_to_tickets', 10, 4 );
 
@@ -577,6 +588,10 @@ function true_woocommerce_after_checkout_form () {
 
     //     // $order->add_item( $item );
     // }
+    $order_id = 2689;
+    $custom_fields = get_post_custom( $order_id );
+    $oliverData = $custom_fields['_order_oliverpos_extension_data'];
+    ChromePhp::log($oliverData);
 
 
 }
