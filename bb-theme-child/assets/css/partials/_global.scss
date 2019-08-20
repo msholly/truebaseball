@@ -56,10 +56,11 @@
 		}
 	}
 
-	.fl-builder-content .cta-btn {
+	.cta-btn {
 
 		a.fl-button,
 		a.uabb-button,
+		.tribe-button,
 		.single_add_to_cart_button,
 		.single_add_to_cart_button.disabled,
 		.wc-product-reviews-pro-form-submit-row button {
@@ -79,7 +80,7 @@
 				border: 3px solid $color--primary;
 
 				span {
-					color: #FFF;
+					color: #FFF !important;
 				}
 			}
 
@@ -89,6 +90,7 @@
 				transform: skewX(20deg);
 				display: inline-block;
 				color: #FFF;
+				text-align: center;
 
 				>span {
 					-ms-transform: none;
@@ -106,6 +108,7 @@
 
 			a.fl-button,
 			a.uabb-button,
+			.tribe-button,
 			.single_add_to_cart_button {
 				background-color: $color--primary;
 
@@ -118,6 +121,7 @@
 					background-color: transparent;
 					color: #FFF;
 
+					
 					.uabb-marketing-buttons-wrap {
 
 						.uabb-marketing-title,
@@ -128,6 +132,13 @@
 					}
 				}
 
+			}
+			.tribe-button {
+				min-width: 250px;
+				text-transform: uppercase;
+				&:hover span {
+					color: $color--primary !important;
+				}
 			}
 		}
 

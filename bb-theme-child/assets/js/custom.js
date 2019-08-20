@@ -37,7 +37,7 @@
       console.log("EMAIL FROM PARAMS");
       console.log(oliverEmail);
       console.log("Total FROM PARAMS");
-      console.log(oliverEmail); // ACF OLIVER
+      console.log(oliverTotal); // ACF OLIVER
 
       var trueTag = Cookies.getJSON('truecustomtags');
 
@@ -131,10 +131,9 @@
     $("#ticket-security").text(response.attendee_info[0].security_code); // IF GOOD ORDER STATUS
 
     if (response.ticketOrderStatus === 'completed' || response.ticketOrderStatus === 'processing') {
-      $("#customtags_button").removeClass('disabled');
-
       if (response.attendee_info[0].check_in === '') {
         $("#ticket-checkin").text('Unused. You can apply this ticket to this order.').parent().addClass("alert-success").removeClass("alert-danger");
+        $("#customtags_button").removeClass('disabled');
       } else if (response.attendee_info[0].check_in === '1') {
         $("#ticket-checkin").text('USED. DO NOT APPLY to this order.').parent().addClass("alert-danger").removeClass("alert-success");
       } else {

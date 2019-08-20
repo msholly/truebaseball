@@ -2,12 +2,40 @@ body.home {
 	.lead p {
 		font-size: 18px;
 	}
-	
+
 	.uabb-ultb3-box .uabb-ultb3-img {
 		width: 100% !important;
 		height: 300px;
 		object-fit: cover;
 		overflow: hidden;
 	}
-	
+
+	.uabb-subscribe-form input[type=text],
+	.uabb-subscribe-form input[type=tel],
+	.uabb-subscribe-form input[type=email] {
+		border: 1px solid #fff;
+		padding: 10px 15px;
+		color: #fff;
+		width: 100%;
+		display: inline-block;
+		vertical-align: top;
+		outline: none;
+		background: transparent;
+		font-size: 16px;
+
+		&::-webkit-input-placeholder {
+			/* Edge */
+			color: #fff;
+		}
+
+		&:-ms-input-placeholder {
+			/* Internet Explorer 10-11 */
+			color: #fff;
+		}
+
+		&::placeholder {
+			color: #fff;
+		}
+	}
+
 }
