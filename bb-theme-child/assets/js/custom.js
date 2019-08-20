@@ -237,10 +237,14 @@
 
   window.addEventListener('message', function (e) {
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-      var msgData = JSON.parse(e.data);
+      console.log(e.or);
 
-      if (msgData.oliverpos.event == "extensionSendCartData") {
-        document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+      if (e.origin !== 'https://true-diamond-science.local') {
+        var msgData = JSON.parse(e.data);
+
+        if (msgData.oliverpos.event == "extensionSendCartData") {
+          document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+        }
       }
 
       console.log("frame page", msgData);
