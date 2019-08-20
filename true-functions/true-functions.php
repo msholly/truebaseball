@@ -269,7 +269,6 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
         $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
-        $oliverTicketOrderID = $oliver_data_array['wordpress']['data']['ticket']['ticketOrderID'];
         true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
@@ -283,7 +282,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         update_field('order_type', $event_type, $order_id);
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
-        update_field('event_ticket', $oliverTicketOrderID, $order_id);
+        update_field('event_ticket', $oliverTicketID, $order_id);
         $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
 
         // update the customer_note on the order, the WP Post Excerpt
