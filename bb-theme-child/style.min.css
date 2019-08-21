@@ -75,7 +75,7 @@ body.home .uabb-subscribe-form input[type=text]::-webkit-input-placeholder,body.
 body.home .uabb-subscribe-form input[type=text]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]:-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]::-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
-.woocommerce-page .woocommerce-message{background-color:#14151a;border:0;color:#FFF}
+.woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .woocommerce-error{color:#b84048 !important}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
@@ -336,6 +336,7 @@ footer .fl-menu-mobile-toggle .hamburger-menu rect{fill:#FFF !important}
 footer .fl-menu-mobile-toggle .fl-menu-mobile-toggle-label{color:#FFF !important}
 .fl-page-content .cta-btn.solid a.fl-button,.fl-page-content .cta-btn.solid a.uabb-button,.fl-page-content .cta-btn.solid .tribe-button,.fl-page-content .cta-btn.solid .single_add_to_cart_button{line-height:24px}
 }@media(max-width:768px){.uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
+}@media(max-width:767px){.page-id-426 .loading h1{font-size:40px;margin:0 0 30px}
 }@-webkit-keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
 }@keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
 }
