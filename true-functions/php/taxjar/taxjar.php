@@ -10,7 +10,7 @@ function true_get_tax_info() {
     try {
         // SET VARIABLES BASED ON SERVER ENV
         if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
-            $taxjar_api = getenv('TAXJAR_SANDBOX_API_KEY');
+            $taxjar_api = get_option( 'woocommerce_taxjar-integration_settings' )['api_token'];
         } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelsites') ) {
             $taxjar_api = get_option( 'woocommerce_taxjar-integration_settings' )['api_token'];
         } else {
