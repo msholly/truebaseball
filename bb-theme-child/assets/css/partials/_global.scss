@@ -67,11 +67,11 @@
 			-ms-transform: skewX(-20deg);
 			-webkit-transform: skewX(-20deg);
 			transform: skewX(-20deg);
-			background-color: transparent;
-			border: 3px solid $color--primary;
+			background-color: transparent !important;
+			border: 3px solid $color--primary !important;
 			border-radius: 0;
 			font-size: 18px;
-			padding: 13px 30px;
+			padding: 13px 30px !important;
 			transition: background 0.3s ease;
 
 			&:hover {
@@ -110,7 +110,7 @@
 			a.uabb-button,
 			.tribe-button,
 			.single_add_to_cart_button {
-				background-color: $color--primary;
+				background-color: $color--primary !important;
 
 				/* Small Devices, Tablets */
 				@media only screen and (max-width: 768px) {

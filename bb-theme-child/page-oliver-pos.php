@@ -13,9 +13,17 @@
                 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-                            <button id="clearAllTags" class="noradius color--primary-bg color--white">Clear All</button>
-                            <button id="refreshPage" class="noradius color--primary-bg fright" style="background-color: transparent !important">Refresh</button>
+                        <div class="col-3">
+                            <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button>
+                        </div>
+                        <div class="col-3">
+                            <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Reset</button>
+                        </div>
+                        <div class="col-3">
+                            <button id="custom_fee_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button>
+                        </div>
+                        <div class="col-3">
+                            <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button>
                         </div>
                     </div>
 
@@ -23,6 +31,8 @@
 
                     <div class="row">
                         <div class="col-12">
+                            <input type="hidden" id="customFeeUniqueId" name="customFeeUniqueId" value="extensionCustomFeeId_<?php echo mt_rand(); ?>" class="inp_cont small"/>
+
                             <!-- Image loader -->
                             <div id='loader' style='display: none;'>
                                 <img src="<?php bloginfo('stylesheet_directory');?>/assets/img/ball-loading.gif" />
@@ -84,7 +94,7 @@
                             <tr>
                                 <td>
                                     <h3 class="nomargin text-center">STEP 1</h3>
-                                    <button id="customtags_button" class="button button-primary button-large" style="display: block;width: 100%;">Save to POS Order</button>
+                                    <button id="customtags_button" class="button button-primary button-large" style="display: block;width: 100%;">Save To POS Order</button>
                                 </td>
                                 <td>
                                     <h3 class="nomargin text-center">STEP 2</h3>

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "taxjar/taxjar-php": "^1.8",
+        "vlucas/phpdotenv": "^3.4"
+    }
+}

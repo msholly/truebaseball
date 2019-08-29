@@ -18,13 +18,13 @@ footer #menu-footer-menu li+li:before{content:"/";display:inline-block;position:
 .fl-page-content a.button:hover{background-color:rgba(0,174,239,0.85);border:0;color:#FFF}
 .fl-page-content a.button.checkout-button{color:#FFF;padding:25px 10px;border:0;text-transform:uppercase}
 .fl-page-content a.button.checkout-button:hover{background-color:rgba(0,174,239,0.85);border:0;color:#FFF}
-.fl-page-content .cta-btn a.fl-button,.fl-page-content .cta-btn a.uabb-button,.fl-page-content .cta-btn .tribe-button,.fl-page-content .cta-btn .single_add_to_cart_button,.fl-page-content .cta-btn .single_add_to_cart_button.disabled,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button{-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:transparent;border:3px solid #00aeef;border-radius:0;font-size:18px;padding:13px 30px;-webkit-transition:background .3s ease;transition:background .3s ease}
+.fl-page-content .cta-btn a.fl-button,.fl-page-content .cta-btn a.uabb-button,.fl-page-content .cta-btn .tribe-button,.fl-page-content .cta-btn .single_add_to_cart_button,.fl-page-content .cta-btn .single_add_to_cart_button.disabled,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button{-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:transparent !important;border:3px solid #00aeef !important;border-radius:0;font-size:18px;padding:13px 30px !important;-webkit-transition:background .3s ease;transition:background .3s ease}
 .fl-page-content .cta-btn a.fl-button:hover,.fl-page-content .cta-btn a.uabb-button:hover,.fl-page-content .cta-btn .tribe-button:hover,.fl-page-content .cta-btn .single_add_to_cart_button:hover,.fl-page-content .cta-btn .single_add_to_cart_button.disabled:hover,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover{background-color:#00aeef;-webkit-transition:background .3s ease;transition:background .3s ease;border:3px solid #00aeef}
 .fl-page-content .cta-btn a.fl-button:hover span,.fl-page-content .cta-btn a.uabb-button:hover span,.fl-page-content .cta-btn .tribe-button:hover span,.fl-page-content .cta-btn .single_add_to_cart_button:hover span,.fl-page-content .cta-btn .single_add_to_cart_button.disabled:hover span,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button:hover span{color:#FFF !important}
 .fl-page-content .cta-btn a.fl-button span,.fl-page-content .cta-btn a.uabb-button span,.fl-page-content .cta-btn .tribe-button span,.fl-page-content .cta-btn .single_add_to_cart_button span,.fl-page-content .cta-btn .single_add_to_cart_button.disabled span,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button span{-webkit-transform:skewX(20deg);transform:skewX(20deg);display:inline-block;color:#FFF;text-align:center}
 .fl-page-content .cta-btn a.fl-button span>span,.fl-page-content .cta-btn a.uabb-button span>span,.fl-page-content .cta-btn .tribe-button span>span,.fl-page-content .cta-btn .single_add_to_cart_button span>span,.fl-page-content .cta-btn .single_add_to_cart_button.disabled span>span,.fl-page-content .cta-btn .wc-product-reviews-pro-form-submit-row button span>span{-webkit-transform:none;transform:none}
 .fl-page-content .cta-btn .fl-button-text{letter-spacing:.025em}
-.fl-page-content .cta-btn.solid a.fl-button,.fl-page-content .cta-btn.solid a.uabb-button,.fl-page-content .cta-btn.solid .tribe-button,.fl-page-content .cta-btn.solid .single_add_to_cart_button{background-color:#00aeef}
+.fl-page-content .cta-btn.solid a.fl-button,.fl-page-content .cta-btn.solid a.uabb-button,.fl-page-content .cta-btn.solid .tribe-button,.fl-page-content .cta-btn.solid .single_add_to_cart_button{background-color:#00aeef !important}
 .fl-page-content .cta-btn.solid a.fl-button:hover,.fl-page-content .cta-btn.solid a.uabb-button:hover,.fl-page-content .cta-btn.solid .tribe-button:hover,.fl-page-content .cta-btn.solid .single_add_to_cart_button:hover{background-color:transparent;color:#FFF}
 .fl-page-content .cta-btn.solid a.fl-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-title,.fl-page-content .cta-btn.solid a.fl-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text,.fl-page-content .cta-btn.solid a.fl-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text span,.fl-page-content .cta-btn.solid a.uabb-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-title,.fl-page-content .cta-btn.solid a.uabb-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text,.fl-page-content .cta-btn.solid a.uabb-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text span,.fl-page-content .cta-btn.solid .tribe-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-title,.fl-page-content .cta-btn.solid .tribe-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text,.fl-page-content .cta-btn.solid .tribe-button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text span,.fl-page-content .cta-btn.solid .single_add_to_cart_button:hover .uabb-marketing-buttons-wrap .uabb-marketing-title,.fl-page-content .cta-btn.solid .single_add_to_cart_button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text,.fl-page-content .cta-btn.solid .single_add_to_cart_button:hover .uabb-marketing-buttons-wrap .uabb-marketing-button-text span{color:#00aeef}
 .fl-page-content .cta-btn.solid .tribe-button{min-width:250px;text-transform:uppercase}
@@ -75,9 +75,10 @@ body.home .uabb-subscribe-form input[type=text]::-webkit-input-placeholder,body.
 body.home .uabb-subscribe-form input[type=text]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]:-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]::-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
-.woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info{background-color:#14151a;border:0;color:#FFF}
+.woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info,.woocommerce-page .woocommerce-notices-wrapper .woocommerce-info{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .woocommerce-error{color:#b84048 !important}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
+.woocommerce-page .cart_totals .select2-container--default .select2-selection--single .select2-selection__rendered{color:#444 !important}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
 .woocommerce-page ul.products li.product a img{border:1px solid transparent;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
 .woocommerce-page.single-product .fl-module-uabb-image-carousel,.woocommerce-page.single-product .mfp-figure:after{background:linear-gradient(45deg,#000 0,#00152a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#00152a',GradientType=1)}
@@ -306,17 +307,20 @@ span.middot{display:inline-block;margin:0 5px}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form{background-color:transparent;border:0}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form::after{content:'';width:100%;height:100%;position:absolute;background:inherit;z-index:-1;bottom:0;-webkit-transform-origin:left bottom;transform-origin:left bottom;-webkit-transform:skewX(-20deg);transform:skewX(-20deg);background-color:#fff;margin:0 30px 0 -25px;left:20px}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form .fl-search-input{border:0;border-right:0;border-left:0;border-top:0;background-color:transparent;color:#00aeef;margin:20px 0}
-#oliver-pos .row{margin-left:-10px;margin-right:-10px}
-#oliver-pos .container-fluid,#oliver-pos .col-12,#oliver-pos .col-6,#oliver-pos .col-4,#oliver-pos .col-3{padding:0 10px}
-#oliver-pos .acf-field{margin:10px 0}
-#oliver-pos h3{font-size:14px;margin:15px 0 0 0}
-#oliver-pos h3#event-title{margin-bottom:0}
-#oliver-pos .alert{margin-top:15px}
-#oliver-pos .acf-field .acf-label{margin-bottom:0}
-#oliver-pos .select2-container .select2-selection--single{height:40px;border-radius:0;border:1px solid #aaa}
-#oliver-pos .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:38px}
-#oliver-pos .select2-container--default .select2-selection--single .select2-selection__arrow{height:38px}
-#oliver-pos .select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#00aeef transparent transparent transparent;border-width:6px 6px 0 6px;margin-left:-10px}
+#oliver-pos #content{padding:10px 0 0 0}
+#oliver-pos #content .row{margin-left:-10px;margin-right:-10px}
+#oliver-pos #content .container-fluid,#oliver-pos #content .col-12,#oliver-pos #content .col-6,#oliver-pos #content .col-4,#oliver-pos #content .col-3{padding:0 10px}
+#oliver-pos #content h3{font-size:15px;font-family:"Roboto Condensed",sans-serif;font-weight:bold;margin:15px 0 0 0}
+#oliver-pos #content h3#event-title{margin-bottom:0}
+#oliver-pos #content .alert{margin-top:15px}
+#oliver-pos #content .acf-field .acf-label{margin-bottom:0}
+#oliver-pos #content .savedTag{margin:0}
+#oliver-pos #content .current-taxes h3{margin-bottom:3px}
+#oliver-pos #content .current-taxes p{margin:0}
+#oliver-pos #content .select2-container .select2-selection--single{height:40px;border-radius:0;border:1px solid #aaa}
+#oliver-pos #content .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:38px}
+#oliver-pos #content .select2-container--default .select2-selection--single .select2-selection__arrow{height:38px}
+#oliver-pos #content .select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#00aeef transparent transparent transparent;border-width:6px 6px 0 6px;margin-left:-10px}
 @media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
 }@media(min-width:768px){.woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img{width:200px;max-width:200px !important}
 }@media only screen and (min-width:992px){header .add-search-icon .fl-module-content .menu{margin-right:30px}

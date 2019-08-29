@@ -1,5 +1,7 @@
 "use strict";
 
+var checkoutData;
+
 (function ($) {
   var acf_orderType = ".acf-field-5d25148656536";
   var acf_salesRep = ".acf-field-5d25156b56537";
@@ -33,11 +35,14 @@
       // URL Params for initial data
       var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
       var oliverEmail = urlParams.get("userEmail");
-      var oliverTotal = urlParams.get("total");
+      var oliverLocation = urlParams.get("location");
+      var oliverRegister = urlParams.get("register");
       console.log("EMAIL FROM PARAMS");
       console.log(oliverEmail);
-      console.log("Total FROM PARAMS");
-      console.log(oliverTotal); // ACF OLIVER
+      console.log("Location FROM PARAMS");
+      console.log(oliverLocation);
+      console.log("Register FROM PARAMS");
+      console.log(oliverRegister); // ACF OLIVER
 
       var trueTag = Cookies.getJSON('truecustomtags');
 
@@ -55,15 +60,59 @@
         if (trueTag.affiliate.length > 0) {
           hideAffiliate(trueTag.affiliate);
         }
-      }
+      } // console.log("INITIAL COOKIE")
+      // console.log(trueTag)
 
-      console.log("INITIAL COOKIE");
-      console.log(trueTag);
+
+      var taxUImarkup = '<div class="col-6 current-taxes">' + '<h3>Calculated Taxes</h3>' + '<p>' + '<span id="customFeeKey"></span>: $<span id="customFeeAmount"><span>' + '</p>' + '</div>';
       $('#acf-form').contents().unwrap();
       $('.acf-field-select, .acf-field-user').wrap("<div class='col-4'></div>");
-      $('.acf-field-post-object').wrap("<div class='col-6'></div>");
+      $('.acf-field-post-object').wrap("<div class='event-ticket-search col-6'></div>");
+      $(taxUImarkup).insertAfter('.event-ticket-search');
       $('.acf-fields').addClass("row");
-      $('.acf-button, .ticket-data').hide(); // Get Order Info
+      $('.acf-button, .ticket-data').hide(); // OLIVER TEST SINCE NO MESSAGE FROM PARENT
+
+      if (window.location.hostname === "true-diamond-science.local") {
+        checkoutData = {
+          "oliverpos": {
+            "event": "registerExtension"
+          },
+          "data": {
+            "checkoutData": {
+              "totalTax": "",
+              "cartProducts": [{
+                "amount": 45,
+                "productId": 2414,
+                //2 day ship
+                "variationId": 0
+              }, {
+                "amount": 560,
+                "productId": 1352,
+                // 2 bats
+                "variationId": 1358
+              }, {
+                "amount": 50,
+                "productId": 2053,
+                //fitting
+                "variationId": 0
+              }, {
+                "amount": 80,
+                "productId": 2046,
+                // report
+                "variationId": 0
+              }],
+              "addressLine1": "8275 Tournament Dr.",
+              "addressLine2": "#200",
+              "city": "",
+              "zip": "38125",
+              "country": "",
+              "state": "TN"
+            }
+          }
+        };
+        calculateOliverTaxes();
+      } // Get Order Info
+
 
       var $eventSelect = $(acf_ticket + " select");
       $eventSelect.select2();
@@ -111,10 +160,12 @@
         $(".merge").empty();
         $("#customtags_button").removeClass('disabled');
       });
-    }
+    } // EXTENSION HELPERS 
+
 
     $("#clearAllTags").on("click", clearAll);
     $("#refreshPage").on("click", refreshPage);
+    $("#custom_fee_add_button").on("click", calculateOliverTaxes);
   });
 
   function setTicketUI(response) {
@@ -236,19 +287,59 @@
 
   window.addEventListener('message', function (e) {
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-      console.log(e.or);
-
+      // console.log(e.or)
       if (e.origin !== 'https://true-diamond-science.local') {
         var msgData = JSON.parse(e.data);
 
-        if (msgData.oliverpos.event == "extensionSendCartData") {
-          document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+        if (msgData.oliverpos.event == "registerExtension") {
+          checkoutData = msgData;
+          calculateOliverTaxes(); // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
         }
       }
-
-      console.log("frame page", msgData);
     }
   }, false);
+
+  function calculateOliverTaxes() {
+    var msgData = checkoutData;
+
+    if (msgData.oliverpos.event == "registerExtension") {
+      console.log(msgData.data.checkoutData);
+      var taxdata = {
+        action: 'get_tax_info',
+        checkoutData: msgData.data.checkoutData
+      };
+      $.ajax({
+        url: truefunction.ajax_url,
+        type: 'get',
+        data: taxdata,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function beforeSend() {
+          console.log("REQUESTING TAX");
+          $(".current-taxes p").hide();
+          $("#loader").clone().appendTo(".current-taxes").show();
+          $("#customtags_button").addClass('disabled');
+        },
+        success: function success(response) {
+          console.log(response);
+          setTaxUI(response);
+        },
+        error: function error(_error2) {
+          console.log(JSON.stringify(_error2));
+        },
+        complete: function complete(data) {
+          $(".current-taxes #loader").remove();
+        }
+      });
+    }
+  }
+
+  function setTaxUI(response) {
+    $("#customtags_button").removeClass('disabled');
+    $(".current-taxes p").show();
+    $("#customFeeKey").text(response.jurisdictions.state + " Tax");
+    $("#customFeeAmount").text(response.amount_to_collect);
+  }
 
   function bindEvent(element, eventName, eventHandler) {
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
@@ -261,6 +352,22 @@
     window.parent.postMessage(msg, '*');
   };
 
+  var customFeeDeleteButtom = document.getElementById('custom_fee_remove_button');
+  bindEvent(customFeeDeleteButtom, 'click', function (e) {
+    console.log("DELETE CUSTOM FEE");
+    var customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
+    var jsonMsg = {
+      oliverpos: {
+        event: "deleteCustomFee"
+      },
+      data: {
+        customFee: {
+          "id": customFeeUniqueId
+        }
+      }
+    };
+    sendMessage(JSON.stringify(jsonMsg));
+  });
   var customtagsButton = document.getElementById('customtags_button');
   bindEvent(customtagsButton, 'click', function (e) {
     console.log("POC");
@@ -360,7 +467,26 @@
     };
     console.log("----- DATA TO OLIVER EXTENSION -----");
     console.log(jsonMsg);
-    sendMessage(JSON.stringify(jsonMsg));
+    sendMessage(JSON.stringify(jsonMsg)); // Custom Fee Add
+
+    var customFeeKey = $("#customFeeKey").text();
+    var customFeeAmount = $("#customFeeAmount").text();
+    var customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
+    var feejsonMsg = {
+      oliverpos: {
+        event: "saveCustomFee"
+      },
+      data: {
+        customFee: {
+          "id": customFeeUniqueId,
+          "key": customFeeKey,
+          "amount": customFeeAmount
+        }
+      }
+    };
+    console.log("----- FEE/TAX DATA TO OLIVER EXTENSION -----");
+    console.log(feejsonMsg);
+    sendMessage(JSON.stringify(feejsonMsg));
   });
   var extensionFinishedButton = document.getElementById('extension_finished');
   bindEvent(extensionFinishedButton, 'click', function (e) {

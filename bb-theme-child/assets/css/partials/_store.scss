@@ -1,6 +1,6 @@
 .woocommerce-page {
 
-	.woocommerce-message, .cart-empty.woocommerce-info {
+	.woocommerce-message, .cart-empty.woocommerce-info, .woocommerce-notices-wrapper .woocommerce-info {
 		background-color: $on-dark-bg;
 		border: none;
 		color: #FFF;
@@ -23,6 +23,11 @@
 	// 	margin-left: 0;
 	// }
 
+	.cart_totals {
+		.select2-container--default .select2-selection--single .select2-selection__rendered {
+			color: #444 !important;
+		}
+	}
 	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product {
 		margin-left: 0;
 	}
