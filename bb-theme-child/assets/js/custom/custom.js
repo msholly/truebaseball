@@ -320,8 +320,8 @@ var checkoutData;
 	// OLIVER POC
 	window.addEventListener('message', function (e) {
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-			// console.log(e.or)
-			if (e) {
+			console.log(e)
+			if (e.data) {
 				var msgData = JSON.parse(e.data);
 				console.log(msgData)
 				if (msgData.oliverpos.event == "registerExtension") {
