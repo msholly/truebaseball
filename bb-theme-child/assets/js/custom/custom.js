@@ -31,6 +31,13 @@ var checkoutData;
 		if ($("body").hasClass("single-tribe_events")) {
 			// ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
 			$(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center");
+
+			// ADDS TICKETS REMAINING TO CTA
+			$(".cta-tickets-remaining .uabb-marketing-subheading").text(function () {
+				if ($(".available-stock").length) {
+					return "Only " + $(".available-stock").first().text() + " Spots Available"
+				}
+			});
 		}
 
 		// AFFILIATE JOIN FORM
@@ -54,14 +61,14 @@ var checkoutData;
 
 			console.log("Register FROM PARAMS")
 			console.log(oliverRegister)
-	  
-			window.addEventListener('message', function(e) {
+
+			window.addEventListener('message', function (e) {
 				let msgData = JSON.parse(e.data);
-				
+
 				if (msgData.oliverpos.event == "extensionSendCartData") {
 					document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
 				}
-	
+
 				console.log("frame page", msgData);
 			}, false);
 
@@ -337,13 +344,13 @@ var checkoutData;
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 			console.log(e)
 			// if (e.data) {
-				var msgData = JSON.parse(e.data);
-				console.log(msgData)
-				if (msgData.oliverpos.event == "registerExtension") {
-					checkoutData = msgData;
-					calculateOliverTaxes();
-					// document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-				}
+			var msgData = JSON.parse(e.data);
+			console.log(msgData)
+			if (msgData.oliverpos.event == "registerExtension") {
+				checkoutData = msgData;
+				calculateOliverTaxes();
+				// document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+			}
 			// }
 		}
 	}, false);

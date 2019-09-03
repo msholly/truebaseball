@@ -27,7 +27,13 @@ var checkoutData;
 
     if ($("body").hasClass("single-tribe_events")) {
       // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
-      $(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center");
+      $(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center"); // ADDS TICKETS REMAINING TO CTA
+
+      $(".cta-tickets-remaining .uabb-marketing-subheading").text(function () {
+        if ($(".available-stock").length) {
+          return "Only " + $(".available-stock").first().text() + " Spots Available";
+        }
+      });
     } // AFFILIATE JOIN FORM
 
 
