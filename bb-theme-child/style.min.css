@@ -135,7 +135,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-cart .shop_table tbody th,.cart_totals .shop_table tbody th{border-bottom:1px solid #000 !important}
 .woocommerce-cart .shop_table tbody td,.cart_totals .shop_table tbody td{border-color:#000 !important}
 .woocommerce-cart .shop_table tbody td.product-remove a,.cart_totals .shop_table tbody td.product-remove a{margin:0 auto;padding:2px 1px 0 0;width:24px;height:24px}
-.woocommerce-cart .shop_table tbody td.product-thumbnail,.cart_totals .shop_table tbody td.product-thumbnail{width:220px;padding:0}
+.woocommerce-cart .shop_table tbody td.product-thumbnail,.cart_totals .shop_table tbody td.product-thumbnail{max-width:220px;padding:0}
 .woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img{background-color:#FFF}
 .woocommerce-cart .shop_table tbody td.product-name a,.cart_totals .shop_table tbody td.product-name a{font-size:20px;font-weight:700}
 .woocommerce-cart .shop_table tbody td.product-quantity input.qty,.cart_totals .shop_table tbody td.product-quantity input.qty{margin-bottom:0 !important}

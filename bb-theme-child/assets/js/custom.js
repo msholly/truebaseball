@@ -290,6 +290,7 @@ var checkoutData;
       // console.log(e.or)
       if (e.origin !== 'https://true-diamond-science.local') {
         var msgData = JSON.parse(e.data);
+        console.log(msgData);
 
         if (msgData.oliverpos.event == "registerExtension") {
           checkoutData = msgData;
