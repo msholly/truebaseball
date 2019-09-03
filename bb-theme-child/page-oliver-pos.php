@@ -107,22 +107,126 @@
     
 
                     <?php the_content(); ?>
-				
+                
+                    <div class="oliver_from">
+       <div>
+            <h1>Client Extension</h1>
+            <div id="parentData"></div>
+
+            <div>
+                <input type="hidden" id="customFeeUniqueId" name="customFeeUniqueId" value="extensionCustomFeeId_<?php echo mt_rand(); ?>" class="inp_cont small"/>
+
+                <p>Custom Fee Key:</p>
+                <input type="text" id="customFeeKey" name="customFeeKey" class="inp_cont small"/>
+
+                <p>Custom Fee Amount:</p>
+                <input type="number" id="customFeeAmount" name="customFeeAmount" class="inp_cont small" min="1" />
+
+                <button id="custom_fee_add_button">Push Custom Fee to OliverPOS</button>
+
+                <br>
+                <br>
+
+                <button id="custom_fee_remove_button">Delete Custom Fee from OliverPOS</button>
+            </div>
+
+            <br>
+            <div style="border: 1px solid #fff"></div>
+            <br>
+
+            <button id="extension_finished">Extension Finished</button>
+
+       </div>
+    </div>
 				</div>
 
 			<?php endwhile; ?>
 
             <script>
-                window.addEventListener('message', function(e) {
-                    let msgData = JSON.parse(e.data);
-                    
-                    if (msgData.oliverpos.event == "extensionSendCartData") {
-                        document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                    }
+            window.addEventListener('message', function(e) {
+                let msgData = JSON.parse(e.data);
+                
+                if (msgData.oliverpos.event == "extensionSendCartData") {
+                    document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                }
 
-                    console.log("frame page", msgData);
-                }, false);
-            </script>
+                console.log("frame page", msgData);
+            }, false);
+
+            function bindEvent(element, eventName, eventHandler) {
+                element.addEventListener(eventName, eventHandler, false);
+            }
+
+            // Send a message to the parent
+            var sendMessage = function (msg) {
+                window.parent.postMessage(msg, '*');
+            };
+
+            var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
+
+            var oliverEmail = urlParams.get("user");
+
+            var customFeeAddButtom = document.getElementById('custom_fee_add_button');
+            bindEvent(customFeeAddButtom, 'click', function (e) {
+                let customFeeKey = document.getElementById("customFeeKey").value;
+                let customFeeAmount = document.getElementById("customFeeAmount").value;
+                let customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
+
+                var jsonMsg = {
+                    oliverpos:
+                    {
+                        event: "saveCustomFee"
+                    },
+                    data:
+                    {
+                        customFee:
+                        {
+                            "id": customFeeUniqueId,
+                            "key": customFeeKey,
+                            "amount": Math.abs(customFeeAmount)
+                        }
+                    }
+                }
+
+            sendMessage(JSON.stringify(jsonMsg));
+            });
+
+            var customFeeDeleteButtom = document.getElementById('custom_fee_remove_button');
+            bindEvent(customFeeDeleteButtom, 'click', function (e) {
+                let customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
+
+                var jsonMsg = {
+                    oliverpos:
+                    {
+                        event: "deleteCustomFee"
+                    },
+                    data:
+                    {
+                        customFee:
+                        {
+                            "id": customFeeUniqueId,
+                        }
+                    }
+                }
+
+                sendMessage(JSON.stringify(jsonMsg));
+            });
+
+
+            var extensionFinishedButton = document.getElementById('extension_finished');
+            bindEvent(extensionFinishedButton, 'click', function (e) {
+                var jsonMsg = {
+                    oliverpos:
+                    {
+                        event: "extensionFinished",
+                        wordpressAction: "tds_neworder"
+                    }
+                }
+
+                sendMessage(JSON.stringify(jsonMsg));
+            });
+
+        </script>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
