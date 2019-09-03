@@ -16,6 +16,11 @@ var checkoutData;
 			$(".single_add_to_cart_button").wrapInner("<span></span>");
 		}
 
+		if ($("body").hasClass("woocommerce-page")) {
+			// ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
+			$(".order_details tfoot tr:last-child").remove();
+		}
+
 		if ($("body").hasClass("term-bats")) {
 			// Replaces Prod Cat with TRUE / 2020
 			$(".uabb-woo-product-category").text(function () {
@@ -59,7 +64,7 @@ var checkoutData;
 	
 				console.log("frame page", msgData);
 			}, false);
-			
+
 			// ACF OLIVER
 			var trueTag = Cookies.getJSON('truecustomtags');
 

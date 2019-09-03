@@ -133,13 +133,16 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         // Add shipping to notes
         $shipMethod = $order->get_shipping_method();
 
+        if (!$shipMethod) {
+            $shipMethod = 'N/A';
+        }
         // GET AFWP COOKIE ID
         $affwp_ref = $_COOKIE['affwp_ref'];
 
         // Set Defaults
         $affiliate_login_name = 'N/A';
         $parent_mlm_login_name = 'N/A';
-        $web_order_type = 'eCommerce';
+        $web_order_type = 'Online USD';
         $web_order_slug = 'ecomm';
 
         if( class_exists( 'Affiliate_WP' ) ) {
@@ -153,15 +156,16 @@ function add_affiliate_info_on_create_order ( $order_id ) {
                 $parent_mlm_info = get_userdata($parent_mlm_id);
                 $parent_mlm_login_name = $parent_mlm_info->user_login;
 
-                $web_order_type = 'Online Affiliate';
-                $web_order_slug = 'online_affiliate';
+                $web_order_type = 'Web Affiliate Program';
+                $web_order_slug = 'web';
                 update_field('affiliate', $user_id, $order_id);
                 update_field('sales_rep', $parent_mlm_info->ID, $order_id);
             } 
         }
         
         // The text for the note
-        $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
+        // $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
+        $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
 
         update_field('order_type', $web_order_slug, $order_id);
         
@@ -182,3 +186,37 @@ function add_affiliate_info_on_create_order ( $order_id ) {
     
 }
 add_action( 'woocommerce_new_order', 'add_affiliate_info_on_create_order', 20 );
+
+
+// define the woocommerce_cart_item_thumbnail callback 
+function filter_woocommerce_cart_item_thumbnail( $product_get_image, $cart_item, $cart_item_key ) { 
+    // make filter magic happen here... 
+    
+    if (strpos($product_get_image, 'placeholder') !== false) {
+        return false;
+    }
+    return $product_get_image; 
+}; 
+         
+// add the filter 
+add_filter( 'woocommerce_cart_item_thumbnail', 'filter_woocommerce_cart_item_thumbnail', 10, 3 ); 
+
+
+/**
+ * @snippet       Hide one shipping option in one zone when Free Shipping is available
+ * @how-to        Watch tutorial @ https://businessbloomer.com/?p=19055
+ * @author        Rodolfo Melogli
+ * @compatible    WooCommerce 3.6.3
+ * @donate $9     https://businessbloomer.com/bloomer-armada/
+ */
+function true_unset_shipping_when_free_is_available_in_zone( $rates, $package ) {
+    // Only unset rates if free_shipping is available
+    if ( isset( $rates['free_shipping:3'] ) ) {
+        unset( $rates['flat_rate:1'] );
+    }     
+        
+    return $rates;
+  
+}
+
+add_filter( 'woocommerce_package_rates', 'true_unset_shipping_when_free_is_available_in_zone', 10, 2 );

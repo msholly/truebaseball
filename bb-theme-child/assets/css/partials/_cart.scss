@@ -59,3 +59,23 @@
         padding-top: 0;
     }
 }
+
+.woocommerce {
+    .woocommerce-table {
+        &.order_details {
+            th, td {
+                border-color: #000 !important;
+            }
+            .wc-item-meta {
+                padding-left: 0;
+                li {
+                    border-right-color: transparent;
+                    float: none;
+                    strong {
+                        float: none;
+                    }
+                }
+            }
+        }
+    }
+}
