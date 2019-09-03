@@ -112,6 +112,17 @@
 
 			<?php endwhile; ?>
 
+            <script>
+                window.addEventListener('message', function(e) {
+                    let msgData = JSON.parse(e.data);
+                    
+                    if (msgData.oliverpos.event == "extensionSendCartData") {
+                        document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                    }
+
+                    console.log("frame page", msgData);
+                }, false);
+            </script>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
