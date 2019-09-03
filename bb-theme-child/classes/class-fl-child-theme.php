@@ -19,21 +19,24 @@ final class FLChildTheme {
 
     static public function enqueue_js()
     {
-      // wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.js', array('jquery'), '1.0.0', true );
-      wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.min.js', array('jquery'), '1.0.0', true );
+
+      // TO DO, CONDITIONAL LOADING BASED ON ENVIRONMENT
+      wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.js', array('jquery'), '1.0.0', true );
+      // wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.min.js', array('jquery'), '1.0.0', true );
 
       wp_localize_script( 'fl-child-theme', 'truefunction', array(
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'siteurl' => get_option('siteurl')
       ));
 
-      wp_enqueue_script( 'fl-child-theme-vendor', FL_CHILD_THEME_URL . '/assets/js/vendor.min.js' );
+      // wp_enqueue_script( 'fl-child-theme-vendor', FL_CHILD_THEME_URL . '/assets/js/vendor.min.js' );
+      wp_enqueue_script( 'fl-child-theme-vendor', FL_CHILD_THEME_URL . '/assets/js/vendor.js' );
 
 	    // wp_enqueue_script( 'fl-child-theme', FL_CHILD_THEME_URL . '/assets/js/custom.min.js' );
       // wp_enqueue_script( 'fl-child-theme', FL_CHILD_THEME_URL . '/assets/js/custom.js', array(), '1.0.0', true );
       wp_enqueue_script( 'fl-child-theme' );
       
-      
+
     }
 
 }
