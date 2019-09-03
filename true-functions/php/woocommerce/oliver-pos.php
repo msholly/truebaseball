@@ -13,6 +13,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Add shipping to notes
         $items = $order->get_items(); 
+        $shipMethod = "Flat Rate";
 
         foreach ( $order->get_items() as $item_id => $item ) {
 
@@ -20,11 +21,11 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             // ChromePhp::log($item->get_product_id());
             if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
                 $shipMethod = "2 Day Shipping";
-            } else if ( $lineItemId == 2496 ) {
+            } 
+            
+            if ( $lineItemId == 2496 ) {
                 $shipMethod = "Next Day Shipping";
-            } else {
-                $shipMethod = "Flat Rate";
-            }
+            } 
 
         }
 
