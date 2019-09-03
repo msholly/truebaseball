@@ -288,7 +288,7 @@ var checkoutData;
   window.addEventListener('message', function (e) {
     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
       // console.log(e.or)
-      if (e.origin !== 'https://true-diamond-science.local') {
+      if (e) {
         var msgData = JSON.parse(e.data);
         console.log(msgData);
 
