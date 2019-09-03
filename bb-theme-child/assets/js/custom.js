@@ -42,7 +42,16 @@ var checkoutData;
       console.log("Location FROM PARAMS");
       console.log(oliverLocation);
       console.log("Register FROM PARAMS");
-      console.log(oliverRegister); // ACF OLIVER
+      console.log(oliverRegister);
+      window.addEventListener('message', function (e) {
+        var msgData = JSON.parse(e.data);
+
+        if (msgData.oliverpos.event == "extensionSendCartData") {
+          document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+        }
+
+        console.log("frame page", msgData);
+      }, false); // ACF OLIVER
 
       var trueTag = Cookies.getJSON('truecustomtags');
 

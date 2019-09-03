@@ -50,6 +50,16 @@ var checkoutData;
 			console.log("Register FROM PARAMS")
 			console.log(oliverRegister)
 	  
+			window.addEventListener('message', function(e) {
+				let msgData = JSON.parse(e.data);
+				
+				if (msgData.oliverpos.event == "extensionSendCartData") {
+					document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+				}
+	
+				console.log("frame page", msgData);
+			}, false);
+			
 			// ACF OLIVER
 			var trueTag = Cookies.getJSON('truecustomtags');
 
