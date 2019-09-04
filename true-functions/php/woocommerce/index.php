@@ -204,10 +204,6 @@ add_filter( 'woocommerce_cart_item_thumbnail', 'filter_woocommerce_cart_item_thu
 
 /**
  * @snippet       Hide one shipping option in one zone when Free Shipping is available
- * @how-to        Watch tutorial @ https://businessbloomer.com/?p=19055
- * @author        Rodolfo Melogli
- * @compatible    WooCommerce 3.6.3
- * @donate $9     https://businessbloomer.com/bloomer-armada/
  */
 function true_unset_shipping_when_free_is_available_in_zone( $rates, $package ) {
     // Only unset rates if free_shipping is available

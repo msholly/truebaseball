@@ -80,15 +80,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="row">
-                        <div class="col-4">
-                            <h3>Player</h3>
-                            <div id="player-name"></div>
-                        </div>
-                    </div> -->
-
-                    <!-- <button href="#" id="send-acf-to-oliver" class="button button-primary button-large">SEND TO OLIVER</button> -->
-
                     <div class="fixed-bottom">
                         <table class="table">
                             <tr>
@@ -98,13 +89,11 @@
                                 </td>
                                 <td>
                                     <h3 class="nomargin text-center">STEP 2</h3>
-                                    <button id="extension_finished" class="button button-secondary button-large" style="display: block;width: 100%;">Extension Finished</button>
+                                    <button id="extension_finished" class="button button-secondary button-large" style="display: block;width: 100%;">Complete Tags</button>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    
-    
 
                     <?php the_content(); ?>
 				
@@ -114,13 +103,16 @@
 
             <script>
                 window.addEventListener('message', function(e) {
-                    let msgData = JSON.parse(e.data);
+                    if (e.origin === "https://sell.oliverpos.com") {
+                        let msgData = JSON.parse(e.data);
                     
-                    if (msgData.oliverpos.event == "extensionSendCartData") {
-                        document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                    }
+                        if (msgData.oliverpos.event == "extensionSendCartData") {
+                            document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                        }
 
-                    console.log("frame page", msgData);
+                        console.log("frame page", msgData);
+                    }
+                    
                 }, false);
             </script>
 		</div><!-- #content -->

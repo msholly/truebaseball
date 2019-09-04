@@ -1,6 +1,6 @@
 "use strict";
 
-var checkoutData;
+var checkoutData, oliverTaxResponse, oliverProductTaxes;
 
 (function ($) {
 
@@ -47,29 +47,36 @@ var checkoutData;
 		}
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
+			$("#extension_finished").addClass("disabled");
+
 			// URL Params for initial data
 			var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
 
 			var oliverEmail = urlParams.get("userEmail");
 			var oliverLocation = urlParams.get("location");
 			var oliverRegister = urlParams.get("register");
-			console.log("EMAIL FROM PARAMS")
-			console.log(oliverEmail)
+			// console.log("EMAIL FROM PARAMS")
+			// console.log(oliverEmail)
 
-			console.log("Location FROM PARAMS")
-			console.log(oliverLocation)
+			// console.log("Location FROM PARAMS")
+			// console.log(oliverLocation)
 
-			console.log("Register FROM PARAMS")
-			console.log(oliverRegister)
+			// console.log("Register FROM PARAMS")
+			// console.log(oliverRegister)
 
 			window.addEventListener('message', function (e) {
-				let msgData = JSON.parse(e.data);
 
-				if (msgData.oliverpos.event == "extensionSendCartData") {
-					document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+				if (e.origin === "https://sell.oliverpos.com") {
+					let msgData = JSON.parse(e.data);
+
+					if (msgData.oliverpos.event == "extensionSendCartData") {
+						document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+					}
+
+					console.log("frame page", msgData);
+
 				}
 
-				console.log("frame page", msgData);
 			}, false);
 
 			// ACF OLIVER
@@ -112,6 +119,7 @@ var checkoutData;
 
 			// OLIVER TEST SINCE NO MESSAGE FROM PARENT
 			if (window.location.hostname === "true-diamond-science.local") {
+				oliverEmail = "Alfredo.Sanchez@truediamondscience.com";
 				checkoutData = {
 					"oliverpos": {
 						"event": "registerExtension"
@@ -120,35 +128,142 @@ var checkoutData;
 						"checkoutData": {
 							"totalTax": "",
 							"cartProducts": [{
-									"amount": 45,
-									"productId": 2414, //2 day ship
+									"amount": 60,
+									"productId": 2496,
 									"variationId": 0
 								},
 								{
-									"amount": 560,
-									"productId": 1352, // 2 bats
-									"variationId": 1358
-								},
-								{
-									"amount": 50,
-									"productId": 2053, //fitting
-									"variationId": 0
+									"amount": 280,
+									"productId": 1166,
+									"variationId": 1265
 								},
 								{
 									"amount": 80,
-									"productId": 2046, // report
+									"productId": 2046,
+									"variationId": 0
+								},
+								{
+									"amount": 50,
+									"productId": 2053,
 									"variationId": 0
 								}
 							],
 							"addressLine1": "8275 Tournament Dr.",
 							"addressLine2": "#200",
-							"city": "",
+							"city": "Memphis",
 							"zip": "38125",
 							"country": "",
 							"state": "TN"
 						}
 					}
 				}
+				// TESTER
+				oliverTaxResponse = {
+					"taxable_amount": 280,
+					"tax_source": "origin",
+					"shipping": 0,
+					"rate": 0.0925,
+					"order_total_amount": 410,
+					"jurisdictions": {
+						"state": "TN",
+						"county": "SHELBY",
+						"country": "US",
+						"city": "MEMPHIS"
+					},
+					"has_nexus": true,
+					"freight_taxable": true,
+					"breakdown": {
+						"taxable_amount": 280,
+						"tax_collectable": 25.9,
+						"state_taxable_amount": 280,
+						"state_tax_rate": 0.07,
+						"state_tax_collectable": 19.6,
+						"special_tax_rate": 0,
+						"special_district_taxable_amount": 0,
+						"special_district_tax_collectable": 0,
+						"shipping": {
+							"taxable_amount": 0,
+							"tax_collectable": 0,
+							"state_taxable_amount": 0,
+							"state_sales_tax_rate": 0.07,
+							"state_amount": 0,
+							"special_taxable_amount": 0,
+							"special_tax_rate": 0,
+							"special_district_amount": 0,
+							"county_taxable_amount": 0,
+							"county_tax_rate": 0.0225,
+							"county_amount": 0,
+							"combined_tax_rate": 0.0925,
+							"city_taxable_amount": 0,
+							"city_tax_rate": 0,
+							"city_amount": 0
+						},
+						"line_items": [{
+								"taxable_amount": 280,
+								"tax_collectable": 25.9,
+								"state_taxable_amount": 280,
+								"state_sales_tax_rate": 0.07,
+								"state_amount": 19.6,
+								"special_tax_rate": 0,
+								"special_district_taxable_amount": 0,
+								"special_district_amount": 0,
+								"id": "1166",
+								"county_taxable_amount": 280,
+								"county_tax_rate": 0.0225,
+								"county_amount": 6.3,
+								"combined_tax_rate": 0.0925,
+								"city_taxable_amount": 0,
+								"city_tax_rate": 0,
+								"city_amount": 0
+							},
+							{
+								"taxable_amount": 0,
+								"tax_collectable": 0,
+								"state_taxable_amount": 0,
+								"state_sales_tax_rate": 0,
+								"state_amount": 0,
+								"special_tax_rate": 0,
+								"special_district_taxable_amount": 0,
+								"special_district_amount": 0,
+								"id": "2046",
+								"county_taxable_amount": 0,
+								"county_tax_rate": 0,
+								"county_amount": 0,
+								"combined_tax_rate": 0,
+								"city_taxable_amount": 0,
+								"city_tax_rate": 0,
+								"city_amount": 0
+							},
+							{
+								"taxable_amount": 0,
+								"tax_collectable": 0,
+								"state_taxable_amount": 0,
+								"state_sales_tax_rate": 0,
+								"state_amount": 0,
+								"special_tax_rate": 0,
+								"special_district_taxable_amount": 0,
+								"special_district_amount": 0,
+								"id": "2053",
+								"county_taxable_amount": 0,
+								"county_tax_rate": 0,
+								"county_amount": 0,
+								"combined_tax_rate": 0,
+								"city_taxable_amount": 0,
+								"city_tax_rate": 0,
+								"city_amount": 0
+							}
+						],
+						"county_taxable_amount": 280,
+						"county_tax_rate": 0.0225,
+						"county_tax_collectable": 6.3,
+						"combined_tax_rate": 0.0925,
+						"city_taxable_amount": 0,
+						"city_tax_rate": 0,
+						"city_tax_collectable": 0
+					},
+					"amount_to_collect": 25.9
+				}
+				
 				calculateOliverTaxes();
 			}
 
@@ -342,18 +457,44 @@ var checkoutData;
 	// OLIVER POC
 	window.addEventListener('message', function (e) {
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-			console.log(e)
-			// if (e.data) {
-			var msgData = JSON.parse(e.data);
-			console.log(msgData)
-			if (msgData.oliverpos.event == "registerExtension") {
-				checkoutData = msgData;
-				calculateOliverTaxes();
-				// document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+			// console.log(e)
+			if (e.origin === "https://sell.oliverpos.com") {
+				var msgData = JSON.parse(e.data);
+				console.log(msgData)
+				if (msgData.oliverpos.event == "registerExtension") {
+					checkoutData = msgData;
+					calculateOliverTaxes();
+					// document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+				}
 			}
-			// }
 		}
 	}, false);
+
+	function mapOliverTaxes() {
+		var taxarr = new Array();
+		var lineItems = oliverTaxResponse.breakdown.line_items;
+		$.each(lineItems, function (i, obj) {
+			var data = {};
+			var origCartData = checkoutData.data.checkoutData.cartProducts;
+
+			$.each(origCartData, function (i, v) {
+
+				if (v.productId == obj.id) {
+
+					data.productId = parseInt(obj.id);
+					data.variationId = v.variationId;
+					data.price = v.amount;
+					data.tax = obj.tax_collectable;
+					taxarr.push(data);
+
+					return false;
+
+				}
+			});
+
+		});
+		oliverProductTaxes = taxarr;
+	}
 
 	function calculateOliverTaxes() {
 
@@ -380,6 +521,7 @@ var checkoutData;
 				},
 				success: function (response) {
 					console.log(response);
+					oliverTaxResponse = response;
 					setTaxUI(response);
 				},
 				error: (error) => {
@@ -401,6 +543,7 @@ var checkoutData;
 		$(".current-taxes p").show();
 		$("#customFeeKey").text(response.jurisdictions.state + " Tax");
 		$("#customFeeAmount").text(response.amount_to_collect);
+		mapOliverTaxes();
 	}
 
 	function bindEvent(element, eventName, eventHandler) {
@@ -556,14 +699,38 @@ var checkoutData;
 				}
 			}
 		}
-		console.log("----- FEE/TAX DATA TO OLIVER EXTENSION -----")
+		console.log("----- FEE DATA TO OLIVER EXTENSION DISABLED-----")
 		console.log(feejsonMsg);
 
-		sendMessage(JSON.stringify(feejsonMsg));
+		// sendMessage(JSON.stringify(feejsonMsg));
+
+		// Custom Taxes Add
+
+
+		var taxjsonMsg = {
+			oliverpos: {
+				event: "updateProductTaxes"
+			},
+			data: {
+				"products": oliverProductTaxes
+			}
+		}
+		console.log("----- TAX DATA TO OLIVER EXTENSION -----")
+		console.log(taxjsonMsg);
+
+		sendMessage(JSON.stringify(taxjsonMsg));
+
+		// MESSAGES SENT TO OLIVER, ALLOW FINISH EXTENSION BUTTON
+		$(this).text("TAGS SAVED");
+		$("#extension_finished").removeClass("disabled");
 	});
 
 	var extensionFinishedButton = document.getElementById('extension_finished');
 	bindEvent(extensionFinishedButton, 'click', function (e) {
+		if ($(this).hasClass("disabled")) {
+			//bail since something is missing or wrong
+			return
+		}
 		var jsonMsg = {
 			oliverpos: {
 				event: "extensionFinished",
@@ -574,6 +741,10 @@ var checkoutData;
 		console.log(jsonMsg);
 
 		sendMessage(JSON.stringify(jsonMsg));
+
+		$(this).text("CHARGE CREDIT CARD NOW");
 	});
+
+
 
 })(jQuery);
