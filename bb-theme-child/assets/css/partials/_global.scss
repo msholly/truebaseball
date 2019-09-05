@@ -75,7 +75,7 @@
 			transition: background 0.3s ease;
 
 			&:hover {
-				background-color: $color--primary;
+				background-color: $color--primary !important;
 				transition: background 0.3s ease;
 				border: 3px solid $color--primary;
 
@@ -118,7 +118,7 @@
 				}
 
 				&:hover {
-					background-color: transparent;
+					background-color: transparent !important;
 					color: #FFF;
 
 					
