@@ -205,7 +205,7 @@ add_filter( 'woocommerce_cart_item_thumbnail', 'filter_woocommerce_cart_item_thu
 /**
  * @snippet       Hide one shipping option in one zone when Free Shipping is available
  */
-function true_unset_shipping_when_free_is_available_in_zone( $rates, $package ) {
+function true_unset_shipping_when_free_is_available_in_zone( $rates ) {
     // Only unset rates if free_shipping is available
     if ( isset( $rates['free_shipping:3'] ) ) {
         unset( $rates['flat_rate:1'] );
@@ -216,3 +216,5 @@ function true_unset_shipping_when_free_is_available_in_zone( $rates, $package ) 
 }
 
 add_filter( 'woocommerce_package_rates', 'true_unset_shipping_when_free_is_available_in_zone', 10, 2 );
+add_filter( 'cfw_get_shipping_checkout_fields', 'true_unset_shipping_when_free_is_available_in_zone', 10, 2 );
+
