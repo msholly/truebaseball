@@ -335,7 +335,7 @@ function tribe_modify_related_posts_args ( $args ) {
 				'compare' => '=',
 			)
         );
-        $args['posts_per_page'] = 6; // Change this to whatever number you'd like. 
+        // $args['posts_per_page'] = 4; // Change this to whatever number you'd like. 
 	}
 
 	return $args;
