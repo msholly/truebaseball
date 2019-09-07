@@ -311,3 +311,33 @@ function cliff_et_force_woo_tix_sold_individually( $sold_individually, $wc_produ
   }
 }
 add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_individually', 10, 2 );
+
+
+/**
+ * Events Calendar Pro: WooCommerce: Using Venues for Related Events.
+ *
+ * The Related Events feature of Events Calendar Pro allows you to display additional 
+ * upcoming events on your single events pages, based on the event category. If you're not 
+ * using event categories or simply find it more useful to show your users other events 
+ * happening at the same venue, this snippet is here to help!
+ *
+ */
+function tribe_modify_related_posts_args ( $args ) {
+	$venue_id = tribe_get_venue_id();
+	
+	if ( $venue_id ) {
+		unset( $args['tax_query'] );
+		$args['meta_query'] = array(
+			'relation' => 'AND',
+			array(
+				'key' => '_EventVenueID',
+				'value' => $venue_id,
+				'compare' => '=',
+			)
+        );
+        $args['posts_per_page'] = 6; // Change this to whatever number you'd like. 
+	}
+
+	return $args;
+}
+add_filter( 'tribe_related_posts_args', 'tribe_modify_related_posts_args' );
