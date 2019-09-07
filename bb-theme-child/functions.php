@@ -322,22 +322,22 @@ add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_ind
  * happening at the same venue, this snippet is here to help!
  *
  */
-function tribe_modify_related_posts_args ( $args ) {
-	$venue_id = tribe_get_venue_id();
+// function tribe_modify_related_posts_args ( $args ) {
+// 	$venue_id = tribe_get_venue_id();
 	
-	if ( $venue_id ) {
-		unset( $args['tax_query'] );
-		$args['meta_query'] = array(
-			'relation' => 'AND',
-			array(
-				'key' => '_EventVenueID',
-				'value' => $venue_id,
-				'compare' => '=',
-			)
-        );
-        // $args['posts_per_page'] = 4; // Change this to whatever number you'd like. 
-	}
+// 	if ( $venue_id ) {
+// 		unset( $args['tax_query'] );
+// 		$args['meta_query'] = array(
+// 			'relation' => 'AND',
+// 			array(
+// 				'key' => '_EventVenueID',
+// 				'value' => $venue_id,
+// 				'compare' => '=',
+// 			)
+//         );
+//         // $args['posts_per_page'] = 4; // Change this to whatever number you'd like. 
+// 	}
 
-	return $args;
-}
-add_filter( 'tribe_related_posts_args', 'tribe_modify_related_posts_args' );
+// 	return $args;
+// }
+// add_filter( 'tribe_related_posts_args', 'tribe_modify_related_posts_args', 10, 1 );
