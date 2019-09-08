@@ -53,6 +53,11 @@ require_once 'php/woocommerce/index.php';
 // For ACF Debuggin
 add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
+// Fix extra spaces in compact event list
+if ( is_single() ) {
+    remove_filter('the_content', 'wpautop');
+}
+
 function true_woocommerce_after_checkout_form () {
     // OBJECT TESTING ONLY
     // $awp_db = get_awf_api(1);
