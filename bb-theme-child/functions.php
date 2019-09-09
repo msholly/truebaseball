@@ -296,18 +296,18 @@ function handsome_bearded_guy_increase_variations_per_page() {
  *
  * @link https://gist.github.com/cliffordp/9a457b724e38b3036f8d48adc90930ed
  */
-function cliff_et_force_woo_tix_sold_individually( $sold_individually, $wc_product_instance ) {
-  if (! class_exists( 'Tribe__Tickets_Plus__Commerce__WooCommerce__Main' ) ) {
-      return $sold_individually;
-  }
-  $wootix = new Tribe__Tickets_Plus__Commerce__WooCommerce__Main;
-  if ( empty( $wc_product_instance->get_id() ) ) {
-      return false;
-  }
-  if ( $wootix->get_event_for_ticket( $wc_product_instance->get_id() ) ) {
-      return true;
-  } else {
-      return $sold_individually;
-  }
-}
-add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_individually', 10, 2 );
+// function cliff_et_force_woo_tix_sold_individually( $sold_individually, $wc_product_instance ) {
+//   if (! class_exists( 'Tribe__Tickets_Plus__Commerce__WooCommerce__Main' ) ) {
+//       return $sold_individually;
+//   }
+//   $wootix = new Tribe__Tickets_Plus__Commerce__WooCommerce__Main;
+//   if ( empty( $wc_product_instance->get_id() ) ) {
+//       return false;
+//   }
+//   if ( $wootix->get_event_for_ticket( $wc_product_instance->get_id() ) ) {
+//       return true;
+//   } else {
+//       return $sold_individually;
+//   }
+// }
+// add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_individually', 10, 2 );
