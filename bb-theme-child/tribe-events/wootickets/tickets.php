@@ -125,7 +125,7 @@ $cart_classes = (array) apply_filters( 'tribe_events_tickets_woo_cart_class', ar
 
 					$input = woocommerce_quantity_input( array(
 						'input_name'  => 'quantity_' . $ticket->ID,
-						'input_value' => 0,
+						'input_value' => 1,
 						'min_value'   => 0,
 						'max_value'   => $max_quantity,
 					), null, false );
