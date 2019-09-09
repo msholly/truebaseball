@@ -80,7 +80,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
 .woocommerce-page .cart_totals .select2-container--default .select2-selection--single .select2-selection__rendered{color:#444 !important}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
-.woocommerce-page ul.products li.product a img{border:1px solid transparent;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
+.woocommerce-page ul.products li.product a img{border:1px solid transparent !important;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
 .woocommerce-page.single-product .fl-module-uabb-image-carousel,.woocommerce-page.single-product .mfp-figure:after{background:linear-gradient(45deg,#000 0,#00152a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#00152a',GradientType=1)}
 .woocommerce-page.single-product .uabb-background-mask{background:transparent}
 .woocommerce-page.single-product .organization-logo img{opacity:.5}
