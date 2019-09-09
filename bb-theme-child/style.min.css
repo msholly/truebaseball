@@ -188,6 +188,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .page-id-426 .results-title-row .uabb-blog-posts .uabb-blog-posts-shadow .uabb-blog-posts-description p{display:inline-block;font-weight:300}
 .ecs-events.compact{margin:0 auto}
 .ecs-events.compact p{display:none}
+.select2-choice{min-width:200px}
 .woocommerce-form-register,.woocommerce-form-login{background-color:#14151a;border:none !important;border-radius:0 !important}
 .woocommerce-MyAccount-navigation{padding:0 20px 0 0}
 .woocommerce-MyAccount-navigation ul li{border:none !important;padding:0;position:relative;font-size:18px}
