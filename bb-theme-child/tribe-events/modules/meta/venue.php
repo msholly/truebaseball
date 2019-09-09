@@ -38,8 +38,8 @@ $website = tribe_get_venue_website_link();
 		<?php endif; ?>
 
         <?php if ( ! empty( $website ) ): ?>
-			<!-- <dt class="tribe-venue-url-label"> <?php esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt> -->
-			<dd class="tribe-venue-url"> <a href="<?php echo $website ?>">Get Directions</a> </dd>
+			<dt class="tribe-venue-url-label"> <?php esc_html_e( 'Get Directions:', 'the-events-calendar' ) ?> </dt>
+			<dd class="tribe-venue-url"> <?php echo $website ?> </dd>
 		<?php endif ?>
 
 		<?php if ( ! empty( $phone ) ): ?>
