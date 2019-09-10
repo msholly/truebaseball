@@ -140,9 +140,8 @@
                         
                         if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
-                            if (checkoutData.length > 0 ) {
-                                calculateOliverTaxes();
-                            }
+                            calculateOliverTaxes();
+                            
                             $("#extension_finished").addClass("disabled");
 
                             // URL Params for initial data
