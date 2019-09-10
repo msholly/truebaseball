@@ -21,7 +21,7 @@ final class FLChildTheme {
     {
 
       // TO DO, CONDITIONAL LOADING BASED ON ENVIRONMENT
-      wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.js', array('jquery'), '1.0.0', true );
+      wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.js', array('jquery'), filemtime( get_stylesheet_directory() . '/assets/js/custom.js' ), true );
       // wp_register_script( "fl-child-theme", FL_CHILD_THEME_URL. '/assets/js/custom.min.js', array('jquery'), '1.0.0', true );
 
       wp_localize_script( 'fl-child-theme', 'truefunction', array(
