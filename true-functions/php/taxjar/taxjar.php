@@ -5,7 +5,7 @@ add_action( 'wp_ajax_get_tax_info', 'true_get_tax_info' );
 
 function true_get_tax_info() {
     $checkoutData = $_REQUEST['checkoutData'];
-    ChromePhp::log($checkoutData);
+    // ChromePhp::log($checkoutData);
 
     try {
         // SET VARIABLES BASED ON SERVER ENV
@@ -27,12 +27,13 @@ function true_get_tax_info() {
         $store_addr = get_option( 'woocommerce_store_address' );
 
         // Cust Information
-        $raw_ship_to_country = $checkoutData['country'];
-        preg_match('#\((.*?)\)#', $raw_ship_to_country, $ship_to_country);
+        // $raw_ship_to_country = $checkoutData['country'];
+        // preg_match('#\((.*?)\)#', $raw_ship_to_country, $ship_to_country);
         // Init variables
         $cart_amount = 0;
         $ship_amount = 0;
         $line_items = $checkoutData['cartProducts'];
+        // ChromePhp::log($line_items);
 
         foreach ($line_items as $item) {  
             
@@ -40,17 +41,18 @@ function true_get_tax_info() {
             if ( $item['productId'] == "2414" ) { // product id of Private 2 Day Ship
                 $ship_amount += $item['amount'];
             } else if ( $item['productId'] == "2496" ) {
-                $cart_amount += $item['amount'];
+                $ship_amount += $item['amount'];
             } else {
 
                 // IF DIGITAL GOODS
                 if ( $item['productId'] == "2053" || $item['productId'] == "2046" ) {
+
                     $lineitems[] = array(
                         'id' => $item['productId'],
-                        'quantity' => 1,
-                        'unit_price' => $item['amount'],
+                        'quantity' => intval($item['quantity']),
+                        'unit_price' => $item['amount'] / $item['quantity'],
+                        'discount' => intval($item['discountAmount']),
                         'product_tax_code' => '19005',
-                        'discount' => 0
                     );
                     $cart_amount += $item['amount'];
 
@@ -58,16 +60,16 @@ function true_get_tax_info() {
                     // ALL ITEMS BESIDES SHIPPING AND DIGITAL 
                     $lineitems[] = array(
                         'id' => $item['productId'],
-                        'quantity' => 1,
-                        'unit_price' => $item['amount'],
-                        'discount' => 0
+                        'quantity' => intval($item['quantity']),
+                        'unit_price' => $item['amount'] / $item['quantity'],
+                        'discount' => intval($item['discountAmount'])
                     );
                     $cart_amount += $item['amount'];
                 }
                 
             }
         }
-        ChromePhp::log($lineitems);
+        // ChromePhp::log($lineitems);
 
         $tax_objects = [
             'from_country' => $store_country_state[0],
@@ -75,7 +77,7 @@ function true_get_tax_info() {
             'from_state' => $store_country_state[1],
             'from_city' => $store_city,
             'from_street' => $store_addr,
-            'to_country' => $ship_to_country[1] ?: 'US',
+            'to_country' => 'US',
             'to_zip' => $checkoutData['zip'],
             'to_state' => $checkoutData['state'],
             'to_city' => $checkoutData['city'],
@@ -95,23 +97,18 @@ function true_get_tax_info() {
             'line_items' => $lineitems
         ];
 
-        ChromePhp::log($tax_objects);
-
-
-
+        // ChromePhp::log($tax_objects);
         $tax = $taxjar->taxForOrder(
             $tax_objects
         );
-        ChromePhp::log("RETURNED TAX INFO");
-        ChromePhp::log($tax);
+        // ChromePhp::log("RETURNED TAX INFO");
+        // ChromePhp::log($tax);
         
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             wp_send_json($tax);
             die();
         }
         else {
-            // TO DO - BUILD FACETWP URL BASED ON PARAMS
-            // wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
             exit();
         }
     
