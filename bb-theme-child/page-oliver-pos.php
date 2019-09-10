@@ -113,7 +113,7 @@
                     if (msgData.oliverpos.event == "registerExtension") {
                         checkoutData = msgData;
                         // appendWebRegisterCartData();
-                        calculateOliverTaxes();
+                        // calculateOliverTaxes();
                         // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
                     }
                 }
@@ -140,6 +140,9 @@
                         
                         if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
+                            if (checkoutData.length > 0 ) {
+                                calculateOliverTaxes();
+                            }
                             $("#extension_finished").addClass("disabled");
 
                             // URL Params for initial data
