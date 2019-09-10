@@ -54,18 +54,16 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
       // console.log(oliverLocation)
       // console.log("Register FROM PARAMS")
       // console.log(oliverRegister)
-
-      window.addEventListener('message', function (e) {
-        if (e.origin === "https://sell.oliverpos.com") {
-          var msgData = JSON.parse(e.data);
-
-          if (msgData.oliverpos.event == "extensionSendCartData") {
-            document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-          }
-
-          console.log("frame page", msgData);
-        }
-      }, false); // ACF OLIVER
+      // window.addEventListener('message', function (e) {
+      // 	if (e.origin === "https://sell.oliverpos.com") {
+      // 		let msgData = JSON.parse(e.data);
+      // 		if (msgData.oliverpos.event == "extensionSendCartData") {
+      // 			document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+      // 		}
+      // 		console.log("frame page", msgData);
+      // 	}
+      // }, false);
+      // ACF OLIVER
 
       var trueTag = Cookies.getJSON('truecustomtags');
 
@@ -443,6 +441,12 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
       }
     }
   }, false);
+  window.addEventListener('load', function (event) {
+    if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+      // invoke the payment toggle function
+      postTogglePaymentButton();
+    }
+  });
 
   function mapOliverTaxes() {
     var taxarr = new Array();
@@ -451,6 +455,7 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
       var data = {};
       var origCartData = checkoutData.data.checkoutData.cartProducts;
       $.each(origCartData, function (i, v) {
+        // IF MATCHING NORMAL LINE ITEMS
         if (v.productId == obj.id) {
           data.amount = v.amount, data.productId = parseInt(obj.id);
           data.variationId = v.variationId;
@@ -688,8 +693,25 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
     console.log("----- FINISH DATA TO OLIVER EXTENSION -----");
     console.log(jsonMsg);
     sendMessage(JSON.stringify(jsonMsg));
-    $(this).text("CHARGE CREDIT CARD NOW");
-  }); // var appendWebRegisterCartData = function() {
+    $(this).text("CHARGE CREDIT CARD NOW"); // invoke the payment toggle function
+
+    postTogglePaymentButton(true);
+  });
+
+  var postTogglePaymentButton = function postTogglePaymentButton() {
+    var flag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var jsonMsg = {
+      oliverpos: {
+        "event": "togglePaymentButtons"
+      },
+      data: {
+        togglePayment: {
+          "flag": flag
+        }
+      }
+    };
+    sendMessage(JSON.stringify(jsonMsg));
+  }; // var appendWebRegisterCartData = function() {
   // 	let listItemsData = checkoutData.data.checkoutData.cartProducts;
   // 	if (typeof listItemsData !== "undefiend") {
   // 		document.getElementById("extensionProductList").innerHTML = " ";
@@ -702,4 +724,5 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
   // 		document.getElementById("extensionProductList").innerHTML = "Data not found!";
   // 	}
   // }
+
 })(jQuery);

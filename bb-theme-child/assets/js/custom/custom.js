@@ -64,20 +64,20 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 			// console.log("Register FROM PARAMS")
 			// console.log(oliverRegister)
 
-			window.addEventListener('message', function (e) {
+			// window.addEventListener('message', function (e) {
 
-				if (e.origin === "https://sell.oliverpos.com") {
-					let msgData = JSON.parse(e.data);
+			// 	if (e.origin === "https://sell.oliverpos.com") {
+			// 		let msgData = JSON.parse(e.data);
 
-					if (msgData.oliverpos.event == "extensionSendCartData") {
-						document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-					}
+			// 		if (msgData.oliverpos.event == "extensionSendCartData") {
+			// 			document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+			// 		}
 
-					console.log("frame page", msgData);
+			// 		console.log("frame page", msgData);
 
-				}
+			// 	}
 
-			}, false);
+			// }, false);
 
 			// ACF OLIVER
 			var trueTag = Cookies.getJSON('truecustomtags');
@@ -122,58 +122,57 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 				oliverEmail = "Alfredo.Sanchez@truediamondscience.com";
 				checkoutData = {
 					"oliverpos": {
-					  "event": "registerExtension"
+						"event": "registerExtension"
 					},
 					"data": {
-					  "checkoutData": {
-						"totalTax": "",
-						"cartProducts": [
-						  {
-							"amount": 80,
-							"productId": 2046,
-							"variationId": 0,
-							"tax": 0,
-							"discountAmount": 0,
-							"quantity": 1,
-							"title": "TRUE Hitting Report"
-						  },
-						  {
-							"amount": 45,
-							"productId": 2414,
-							"variationId": 0,
-							"tax": 0,
-							"discountAmount": 0,
-							"quantity": 1,
-							"title": "2 Day Shipping"
-						  },
-						  {
-							"amount": 50,
-							"productId": 2053,
-							"variationId": 0,
-							"tax": 0,
-							"discountAmount": 0,
-							"quantity": 1,
-							"title": "Fitting"
-						  },
-						  {
-							"amount": 560,
-							"productId": 1310,
-							"variationId": 1486,
-							"tax": 0,
-							"discountAmount": 0,
-							"quantity": 2,
-							"title": "TRUE 2020 T1 USA Youth Bat -10 30.5/20.5 S"
-						  }
-						],
-						"addressLine1": "2780 McDonough St",
-						"addressLine2": "",
-						"city": "Joliet",
-						"zip": "60436",
-						"country": "US",
-						"state": "IL"
-					  }
+						"checkoutData": {
+							"totalTax": "",
+							"cartProducts": [{
+									"amount": 80,
+									"productId": 2046,
+									"variationId": 0,
+									"tax": 0,
+									"discountAmount": 0,
+									"quantity": 1,
+									"title": "TRUE Hitting Report"
+								},
+								{
+									"amount": 45,
+									"productId": 2414,
+									"variationId": 0,
+									"tax": 0,
+									"discountAmount": 0,
+									"quantity": 1,
+									"title": "2 Day Shipping"
+								},
+								{
+									"amount": 50,
+									"productId": 2053,
+									"variationId": 0,
+									"tax": 0,
+									"discountAmount": 0,
+									"quantity": 1,
+									"title": "Fitting"
+								},
+								{
+									"amount": 560,
+									"productId": 1310,
+									"variationId": 1486,
+									"tax": 0,
+									"discountAmount": 0,
+									"quantity": 2,
+									"title": "TRUE 2020 T1 USA Youth Bat -10 30.5/20.5 S"
+								}
+							],
+							"addressLine1": "2780 McDonough St",
+							"addressLine2": "",
+							"city": "Joliet",
+							"zip": "60436",
+							"country": "US",
+							"state": "IL"
+						}
 					}
-				  }
+				}
 				// TESTER
 				// oliverTaxResponse = {
 				// 	"taxable_amount": 280,
@@ -488,6 +487,15 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 		}
 	}, false);
 
+	window.addEventListener('load', (event) => {
+
+		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
+			// invoke the payment toggle function
+			postTogglePaymentButton();
+		}
+
+	});
+
 	function mapOliverTaxes() {
 		var taxarr = new Array();
 		var lineItems = oliverTaxResponse.breakdown.line_items;
@@ -497,20 +505,22 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 
 			$.each(origCartData, function (i, v) {
 
+				// IF MATCHING NORMAL LINE ITEMS
 				if (v.productId == obj.id) {
 					data.amount = v.amount,
-					data.productId = parseInt(obj.id);
+						data.productId = parseInt(obj.id);
 					data.variationId = v.variationId;
 					data.tax = obj.tax_collectable;
 					data.discountAmount = v.discountAmount;
 					data.quantity = v.quantity;
 					data.title = v.title;
-					
+
 					taxarr.push(data);
 
 					return false;
 
 				}
+
 			});
 
 		});
@@ -764,7 +774,25 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 		sendMessage(JSON.stringify(jsonMsg));
 
 		$(this).text("CHARGE CREDIT CARD NOW");
+		
+		// invoke the payment toggle function
+		postTogglePaymentButton(true);
 	});
+
+	var postTogglePaymentButton = function(flag = false) {
+		var jsonMsg = {
+			oliverpos: {
+				"event": "togglePaymentButtons"
+			},
+			data: {
+				togglePayment: {
+					"flag": flag
+				}
+			}
+		}
+
+		sendMessage(JSON.stringify(jsonMsg));
+	}
 
 	// var appendWebRegisterCartData = function() {
 	// 	let listItemsData = checkoutData.data.checkoutData.cartProducts;

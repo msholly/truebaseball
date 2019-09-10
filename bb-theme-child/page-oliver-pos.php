@@ -102,18 +102,18 @@
 			<?php endwhile; ?>
 
             <script>
-                window.addEventListener('message', function(e) {
-                    if (e.origin === "https://sell.oliverpos.com") {
-                        let msgData = JSON.parse(e.data);
+                // window.addEventListener('message', function(e) {
+                //     if (e.origin === "https://sell.oliverpos.com") {
+                //         let msgData = JSON.parse(e.data);
                     
-                        if (msgData.oliverpos.event == "extensionSendCartData") {
-                            document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                        }
+                //         if (msgData.oliverpos.event == "extensionSendCartData") {
+                //             document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                //         }
 
-                        console.log("frame page", msgData);
-                    }
+                //         console.log("frame page", msgData);
+                //     }
                     
-                }, false);
+                // }, false);
             </script>
 		</div><!-- #content -->
 	</div><!-- #primary -->
