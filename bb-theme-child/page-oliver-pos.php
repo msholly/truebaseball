@@ -102,32 +102,31 @@
 			<?php endwhile; ?>
 
             <script>
-            var checkoutData, oliverTaxResponse, oliverProductTaxes;
-
-            // OLIVER POC
-            window.addEventListener('message', function (e) {
-                // console.log(e)
-                if (e.origin === "https://sell.oliverpos.com") {
-                    var msgData = JSON.parse(e.data);
-                    console.log(msgData)
-                    if (msgData.oliverpos.event == "registerExtension") {
-                        checkoutData = msgData;
-                        // appendWebRegisterCartData();
-                        // calculateOliverTaxes();
-                        // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                    }
-                }
-
-            }, false);
-           
-
-            function bindEvent(element, eventName, eventHandler) {
-                element.addEventListener(eventName, eventHandler, false);
-            }
-            </script>
-            <script>
                 "use strict";
 
+                var checkoutData, oliverTaxResponse, oliverProductTaxes;
+
+                // OLIVER POC
+                window.addEventListener('message', function (e) {
+                    // console.log(e)
+                    if (e.origin === "https://sell.oliverpos.com") {
+                        var msgData = JSON.parse(e.data);
+                        console.log(msgData)
+                        if (msgData.oliverpos.event == "registerExtension") {
+                            checkoutData = msgData;
+                            // appendWebRegisterCartData();
+                            // calculateOliverTaxes();
+                            // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                        }
+                    }
+
+                }, false);
+            
+
+                function bindEvent(element, eventName, eventHandler) {
+                    element.addEventListener(eventName, eventHandler, false);
+                }
+                
                 (function ($) {
 
                     var acf_orderType = ".acf-field-5d25148656536";
@@ -141,7 +140,7 @@
                         if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
                             calculateOliverTaxes();
-                            
+
                             $("#extension_finished").addClass("disabled");
 
                             // URL Params for initial data
