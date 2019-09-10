@@ -311,3 +311,15 @@ function handsome_bearded_guy_increase_variations_per_page() {
 //   }
 // }
 // add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_individually', 10, 2 );
+
+
+// Disable autoptimize on pages with the word "test" in the URL
+function my_ao_noptimize() {
+    if (strpos($_SERVER['REQUEST_URI'],'oliver-pos')!==false) {
+        return true;
+    } else {
+        return false;
+    }
+}
+add_filter('autoptimize_filter_noptimize','my_ao_noptimize',10,0);
+

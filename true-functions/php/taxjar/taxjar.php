@@ -39,9 +39,11 @@ function true_get_tax_info() {
             
             // IF SHIPPING
             if ( $item['productId'] == "2414" ) { // product id of Private 2 Day Ship
-                $ship_amount += $item['amount'];
+                // NO TAXES FOR SHIPPING
+                // $ship_amount += $item['amount'];
             } else if ( $item['productId'] == "2496" ) {
-                $ship_amount += $item['amount'];
+                // NO TAXES FOR SHIPPING
+                // $ship_amount += $item['amount'];
             } else {
 
                 // IF DIGITAL GOODS
