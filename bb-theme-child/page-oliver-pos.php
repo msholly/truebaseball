@@ -102,9 +102,32 @@
 			<?php endwhile; ?>
 
             <script>
-                "use strict";
+            var checkoutData, oliverTaxResponse, oliverProductTaxes;
 
-                var checkoutData, oliverTaxResponse, oliverProductTaxes;
+            // OLIVER POC
+            window.addEventListener('message', function (e) {
+                // console.log(e)
+                if (e.origin === "https://sell.oliverpos.com") {
+                    var msgData = JSON.parse(e.data);
+                    console.log(msgData)
+                    if (msgData.oliverpos.event == "registerExtension") {
+                        checkoutData = msgData;
+                        // appendWebRegisterCartData();
+                        calculateOliverTaxes();
+                        // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
+                    }
+                }
+
+            }, false);
+
+            function bindEvent(element, eventName, eventHandler) {
+                    element.addEventListener(eventName, eventHandler, false);
+            }
+            </script>
+
+            
+            <script>
+                "use strict";
 
                 (function ($) {
 
@@ -115,7 +138,6 @@
 
                     jQuery(document).ready(function ($) {
 
-                        
                         if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
                             $("#extension_finished").addClass("disabled");
@@ -412,6 +434,11 @@
 
                     });
 
+                    window.addEventListener('load', (event) => {
+                        // invoke the payment toggle function
+                        postTogglePaymentButton();
+                    });
+
                     function setTicketUI(response) {
                         console.log(response)
                         $(".ticket-data").show();
@@ -541,31 +568,7 @@
                         $('.matchHeight').matchHeight(options);
                     });
 
-                    // OLIVER POC
-                    window.addEventListener('message', function (e) {
-                        if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-                            // console.log(e)
-                            if (e.origin === "https://sell.oliverpos.com") {
-                                var msgData = JSON.parse(e.data);
-                                console.log(msgData)
-                                if (msgData.oliverpos.event == "registerExtension") {
-                                    checkoutData = msgData;
-                                    // appendWebRegisterCartData();
-                                    calculateOliverTaxes();
-                                    // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                                }
-                            }
-                        }
-                    }, false);
-
-                    window.addEventListener('load', (event) => {
-
-                        if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-                            // invoke the payment toggle function
-                            postTogglePaymentButton();
-                        }
-
-                    });
+                    
 
                     function mapOliverTaxes() {
                         var taxarr = new Array();
@@ -648,12 +651,7 @@
                         mapOliverTaxes();
                     }
 
-                    function bindEvent(element, eventName, eventHandler) {
-                        if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-                            element.addEventListener(eventName, eventHandler, false);
-                        }
-
-                    }
+                    
 
                     // Send a message to the parent
                     var sendMessage = function (msg) {
