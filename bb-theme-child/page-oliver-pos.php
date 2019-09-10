@@ -119,13 +119,12 @@
                 }
 
             }, false);
+           
 
             function bindEvent(element, eventName, eventHandler) {
-                    element.addEventListener(eventName, eventHandler, false);
+                element.addEventListener(eventName, eventHandler, false);
             }
             </script>
-
-            
             <script>
                 "use strict";
 
@@ -138,6 +137,7 @@
 
                     jQuery(document).ready(function ($) {
 
+                        
                         if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
                             $("#extension_finished").addClass("disabled");
