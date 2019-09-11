@@ -163,6 +163,7 @@
 		input[type="radio"]:checked+label {
 			padding-left: 30px !important;
 			color: #fff;
+			text-align: center;
 
 			&:before {
 				top: 0;
@@ -185,6 +186,10 @@
 			color: #FFF;
 			font-size: 24px;
 			z-index: 1;
+			@media (max-width: 767px) {
+				display: block;
+				text-align: left;
+			}
 
 			&::before {
 				content: " ";
@@ -203,7 +208,10 @@
 				padding-left: 30px !important;
 				color: #fff;
 				margin-right: 30px;
-
+				@media (max-width: 767px) {
+					margin-right: 0;
+					text-align: center;
+				}
 				&::before {
 					top: 0;
 					width: 100%;
@@ -245,8 +253,16 @@
 				}
 			}
 
-			&.modded:first-child {
-				margin-right: 60px;
+			&.modded {
+				:first-child {
+					// margin-right: 60px;
+					// @media (max-width: 767px) {
+						margin-right: 0;
+					// }
+				}
+				&.checked {
+					text-align: center;
+				}
 			}
 		}
 

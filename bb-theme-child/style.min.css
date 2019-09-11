@@ -168,7 +168,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .page-id-426 .fitting-facets .facetwp-counter,.page-id-426 .fitting-facets .facetwp-overlay{display:none}
 .page-id-426 .fitting-facets input[type="radio"]{position:absolute;opacity:0;z-index:-1}
 .page-id-426 .fitting-facets input[type="radio"]+label::before{border-radius:28px}
-.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff}
+.page-id-426 .fitting-facets input[type="radio"]:checked+label{padding-left:30px !important;color:#fff;text-align:center}
 .page-id-426 .fitting-facets input[type="radio"]:checked+label:before{top:0;width:100%;height:56px;background:#00aeef !important}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio{position:relative;display:inline-block;margin-right:10px;margin-bottom:10px;padding:10px 30px 10px 50px !important;line-height:36px;cursor:pointer;background:none !important;color:#FFF;font-size:24px;z-index:1}
 .page-id-426 .fitting-facets .facetwp-radio::before,.page-id-426 .fitting-facets label.radio::before{content:" ";position:absolute;top:6px;left:0;display:block;width:40px;height:40px;border:2px solid #00aeef;border-radius:28px;z-index:-1}
@@ -179,7 +179,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .page-id-426 .fitting-facets .facetwp-radio.usa,.page-id-426 .fitting-facets .facetwp-radio.tball,.page-id-426 .fitting-facets label.radio.usa,.page-id-426 .fitting-facets label.radio.tball{padding-right:0}
 .page-id-426 .fitting-facets .facetwp-radio.usa img,.page-id-426 .fitting-facets .facetwp-radio.tball img,.page-id-426 .fitting-facets label.radio.usa img,.page-id-426 .fitting-facets label.radio.tball img{max-height:100px}
 .page-id-426 .fitting-facets .facetwp-radio.usa.checked::before,.page-id-426 .fitting-facets .facetwp-radio.tball.checked::before,.page-id-426 .fitting-facets label.radio.usa.checked::before,.page-id-426 .fitting-facets label.radio.tball.checked::before{top:0 !important}
-.page-id-426 .fitting-facets .facetwp-radio.modded:first-child,.page-id-426 .fitting-facets label.radio.modded:first-child{margin-right:60px}
+.page-id-426 .fitting-facets .facetwp-radio.modded :first-child,.page-id-426 .fitting-facets label.radio.modded :first-child{margin-right:0}
+.page-id-426 .fitting-facets .facetwp-radio.modded.checked,.page-id-426 .fitting-facets label.radio.modded.checked{text-align:center}
 .page-id-426 .fitting-facets .facetwp-facet-league .facetwp-radio::before{top:20% !important}
 .page-id-426 .fitting-facets .noUi-connect{background:#00aeef !important}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label{-webkit-transition:.25s all ease;transition:.25s all ease}
@@ -356,6 +357,8 @@ footer .fl-menu-mobile-toggle .fl-menu-mobile-toggle-label{color:#FFF !important
 .fl-page-content .cta-btn.solid a.fl-button,.fl-page-content .cta-btn.solid a.uabb-button,.fl-page-content .cta-btn.solid .tribe-button,.fl-page-content .cta-btn.solid .single_add_to_cart_button{line-height:24px}
 }@media(max-width:768px){.uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
 }@media(max-width:767px){.page-id-426 .loading h1{font-size:40px;margin:0 0 30px}
+.page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio{display:block;text-align:left}
+.page-id-426 .fitting-facets .facetwp-radio.checked,.page-id-426 .fitting-facets label.radio.checked{margin-right:0;text-align:center}
 }@-webkit-keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
 }@keyframes wave{50%{-webkit-transform:scale(0.9);transform:scale(0.9)}
 }
