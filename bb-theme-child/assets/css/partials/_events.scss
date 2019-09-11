@@ -10,6 +10,12 @@
 	min-width: 200px;
 }
 
+.tribe-tickets-meta-label h3 a.open-disclaimer {
+    color: $color--primary;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 	.uabb-ribbon-wrap .uabb-ribbon {
 		width: 100%;
