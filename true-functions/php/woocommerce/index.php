@@ -165,7 +165,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         
         // The text for the note
         // $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
-        $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
+        $note = __('TYPE: ' . $web_order_slug . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
 
         update_field('order_type', $web_order_slug, $order_id);
         
