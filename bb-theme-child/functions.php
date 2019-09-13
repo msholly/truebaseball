@@ -210,15 +210,15 @@ add_shortcode( 'display_attributes', 'woo_attributes_shortcode' );
  * Disable the emoji's
  */
 function disable_emojis() {
-  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-  remove_action( 'wp_print_styles', 'print_emoji_styles' );
-  remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
-  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
-  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-  add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
-  add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+    add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
  }
  add_action( 'init', 'disable_emojis' );
  
@@ -229,11 +229,11 @@ function disable_emojis() {
   * @return array Difference betwen the two arrays
   */
  function disable_emojis_tinymce( $plugins ) {
-  if ( is_array( $plugins ) ) {
-  return array_diff( $plugins, array( 'wpemoji' ) );
-  } else {
-  return array();
-  }
+    if ( is_array( $plugins ) ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+    } else {
+        return array();
+    }
  }
  
  /**
@@ -243,15 +243,15 @@ function disable_emojis() {
   * @param string $relation_type The relation type the URLs are printed for.
   * @return array Difference betwen the two arrays.
   */
- function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
-  if ( 'dns-prefetch' == $relation_type ) {
-  /** This filter is documented in wp-includes/formatting.php */
-  $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
- 
- $urls = array_diff( $urls, array( $emoji_svg_url ) );
-  }
- 
- return $urls;
+function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+    if ( 'dns-prefetch' == $relation_type ) {
+        /** This filter is documented in wp-includes/formatting.php */
+        $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+
+        $urls = array_diff( $urls, array( $emoji_svg_url ) );
+    }
+
+    return $urls;
  }
 
 
@@ -277,9 +277,9 @@ add_filter( 'iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations
  *
  * @return number
  */
-add_filter( 'woocommerce_admin_meta_boxes_variations_per_page', 'handsome_bearded_guy_increase_variations_per_page' );
+add_filter( 'woocommerce_admin_meta_boxes_variations_per_page', 'true_increase_variations_per_page' );
 
-function handsome_bearded_guy_increase_variations_per_page() {
+function true_increase_variations_per_page() {
 	return 50;
 }
 
@@ -313,13 +313,14 @@ function handsome_bearded_guy_increase_variations_per_page() {
 // add_filter( 'woocommerce_is_sold_individually', 'cliff_et_force_woo_tix_sold_individually', 10, 2 );
 
 
-// Disable autoptimize on pages with the word "test" in the URL
-function my_ao_noptimize() {
+// Disable autoptimize on pages with the word "oliver-pos" in the URL
+function true_ao_noptimize() {
     if (strpos($_SERVER['REQUEST_URI'],'oliver-pos')!==false) {
         return true;
     } else {
         return false;
     }
 }
-add_filter('autoptimize_filter_noptimize','my_ao_noptimize',10,0);
+add_filter('autoptimize_filter_noptimize','true_ao_noptimize',10,0);
+
 

@@ -13,33 +13,8 @@
 // include 'php/ChromePhp.php';
 // ChromePhp::log("TEST");
 
-// DOTENV
+// Composer
 require __DIR__ . '/vendor/autoload.php';
-// $dotenv = Dotenv\Dotenv::create(__DIR__);
-// $dotenv->load();
-
-// GET FROM DB
-/**
- * Retrieves a row from the database based on a given row ID.
- *
- * Corresponds to the value of $primary_key.
- *
- * @param  int                    $row_id Row ID.
- * @return array|null|object|void
- */
-function get_awf_api( $row_id ) {
-    global $wpdb;
-    return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}affiliate_wp_rest_consumers WHERE user_id = %s LIMIT 1;", $row_id ) );
-}
-
-function true_get_awp_api_auth () {
-    $awp_db = get_awf_api(1);
-
-    $public_key = $awp_db->public_key;
-    $token = $awp_db->token;
-
-    return "Basic " . base64_encode( "{$public_key}:{$token}" );
-}
 
 // INIT TAXJAR 
 require_once 'php/taxjar/taxjar.php';
@@ -50,15 +25,18 @@ require_once 'php/affiliate-wp/index.php';
 // WOOCOMMERCE EXTENSIONS
 require_once 'php/woocommerce/index.php';
 
-// For ACF Debuggin
-add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
+// TRIBE EVENT EXTENSIONS
+require_once 'php/tribe/events.php';
+
+// For ACF Debuggin - Disable for Performance
+// add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
 // Fix extra spaces in compact event list
 if ( is_single() ) {
     remove_filter('the_content', 'wpautop');
 }
 
-function true_woocommerce_after_checkout_form () {
+// function true_woocommerce_after_checkout_form () {
     // OBJECT TESTING ONLY
     // $awp_db = get_awf_api(1);
     // $affiliateId = 8;
@@ -95,11 +73,9 @@ function true_woocommerce_after_checkout_form () {
     //     true_woo_ticket_checkin(2275);
 
 
-}
+// }
 // add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
-add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
-
-
+// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
 
 
 ?>
