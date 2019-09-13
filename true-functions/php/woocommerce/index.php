@@ -219,3 +219,7 @@ function true_unset_shipping_when_free_is_available_in_zone( $rates ) {
 add_filter( 'woocommerce_package_rates', 'true_unset_shipping_when_free_is_available_in_zone', 10, 2 );
 add_filter( 'cfw_get_shipping_checkout_fields', 'true_unset_shipping_when_free_is_available_in_zone', 10, 2 );
 
+/**
+ * Hides the product's weight and dimension in the single product page.
+ */
+add_filter( 'wc_product_enable_dimensions_display', '__return_false' );
