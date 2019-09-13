@@ -13,18 +13,19 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Add shipping to notes
         $items = $order->get_items(); 
-        $shipMethod = "Flat Rate";
-
+        $shipMethod = 'Free Ground Shipping';
+        $affiliate_login_name = 'N/A';
+        
         foreach ( $order->get_items() as $item_id => $item ) {
 
             $lineItemId = $item->get_product_id();
             // ChromePhp::log($item->get_product_id());
             if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
-                $shipMethod = "2 Day Shipping";
+                $shipMethod = '2 Day Shipping';
             } 
             
             if ( $lineItemId == 2496 ) {
-                $shipMethod = "Next Day Shipping";
+                $shipMethod = 'Next Day Shipping';
             } 
 
         }
@@ -92,7 +93,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $post_url = 'http://staging.true-baseball.flywheelsites.com/wp-json/affwp/v1/referrals/';
             $ssl_verify = false;
 		} else {
-            $post_url = 'https://stage.truediamondscience.com/wp-json/affwp/v1/referrals/';
+            $post_url = 'https://truediamondscience.com/wp-json/affwp/v1/referrals/';
             $ssl_verify = true;
         }
         
@@ -123,12 +124,12 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             if ( 201 === wp_remote_retrieve_response_code( $response ) ) {
                 $body = wp_remote_retrieve_body( $response );
                 ChromePhp::log($body);
-                error_log("REST WORKS!", 0);
+                error_log('REST WORKS!', 0);
 
             } else {
                 // maybe display an error message
-                ChromePhp::log("REST ERROR");
-                error_log("REST ERROR Creating Referral from Oliver POS!", 0);
+                ChromePhp::log('REST ERROR');
+                error_log('REST ERROR Creating Referral from Oliver POS!', 0);
             }
         }
     }
@@ -168,7 +169,7 @@ function true_get_ticket_info() {
     // }
 
     // ChromePhp::log($ticketID);
-    // ChromePhp::log("true_get_ticket_info");
+    // ChromePhp::log('true_get_ticket_info');
     $data = (object) [
         'ticketOrderID' => $ticketOrderID,
         'ticketTotal' => $ticketTotal,

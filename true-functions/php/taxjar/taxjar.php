@@ -21,7 +21,7 @@ function true_get_tax_info() {
 
         // Nexus and ship-to information
         $default_locations = get_option( 'woocommerce_default_country' );
-        $store_country_state = explode(":", $default_locations);
+        $store_country_state = explode(':', $default_locations);
         $store_zip = get_option( 'woocommerce_store_postcode' );
         $store_city = get_option( 'woocommerce_store_city' );
         $store_addr = get_option( 'woocommerce_store_address' );
@@ -38,16 +38,16 @@ function true_get_tax_info() {
         foreach ($line_items as $item) {  
             
             // IF SHIPPING
-            if ( $item['productId'] == "2414" ) { // product id of Private 2 Day Ship
+            if ( $item['productId'] == '2414' ) { // product id of Private 2 Day Ship
                 // NO TAXES FOR SHIPPING
                 // $ship_amount += $item['amount'];
-            } else if ( $item['productId'] == "2496" ) {
+            } else if ( $item['productId'] == '2496' ) {
                 // NO TAXES FOR SHIPPING
                 // $ship_amount += $item['amount'];
             } else {
 
                 // IF DIGITAL GOODS
-                if ( $item['productId'] == "2053" || $item['productId'] == "2046" ) {
+                if ( $item['productId'] == '2053' || $item['productId'] == '2046' ) {
 
                     $lineitems[] = array(
                         'id' => $item['productId'],
@@ -103,7 +103,7 @@ function true_get_tax_info() {
         $tax = $taxjar->taxForOrder(
             $tax_objects
         );
-        // ChromePhp::log("RETURNED TAX INFO");
+        // ChromePhp::log('RETURNED TAX INFO');
         // ChromePhp::log($tax);
         
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

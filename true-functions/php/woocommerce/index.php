@@ -142,8 +142,9 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         // Set Defaults
         $affiliate_login_name = 'N/A';
         $parent_mlm_login_name = 'N/A';
-        $web_order_type = 'Online USD';
-        $web_order_slug = 'ecomm';
+        $event_type = 'ecomm';
+        $customer_note = 'Web Checkout';
+        $oliverTicketOrderID = 'N/A';
 
         if( class_exists( 'Affiliate_WP' ) ) {
             if ($affwp_ref) {
@@ -156,8 +157,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
                 $parent_mlm_info = get_userdata($parent_mlm_id);
                 $parent_mlm_login_name = $parent_mlm_info->user_login;
 
-                $web_order_type = 'Web Affiliate Program';
-                $web_order_slug = 'web';
+                $event_type = 'web';
                 update_field('affiliate', $user_id, $order_id);
                 update_field('sales_rep', $parent_mlm_info->ID, $order_id);
             } 
@@ -165,8 +165,9 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         
         // The text for the note
         // $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
-        $note = __('TYPE: ' . $web_order_slug . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name );
-
+        // $note = __('Web Checkout | TYPE: ' . $web_order_slug . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
+ 
         update_field('order_type', $web_order_slug, $order_id);
         
         // update the customer_note on the order, the WP Post Excerpt
