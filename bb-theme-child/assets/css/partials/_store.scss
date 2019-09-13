@@ -151,15 +151,53 @@
 
 	#reviews {
 
-		.contributions-title,
-		.contributions-form-title,
-		#contributions-list-title {
+		.contributions-title, .woocommerce-Reviews-title {
 			border-bottom: 3px solid #00aeef;
 			padding-bottom: 5px;
 			text-transform: uppercase;
 			margin-bottom: 25px;
 		}
 
+		.contributions-form-title,
+		#contributions-list-title {
+			margin-bottom: 25px;
+		}
+
+		p.stars a {
+			color: $color--primary;
+			font-size: 32px;
+		}
+
+		// Input fields 
+		input[type=text],
+		input[type=tel],
+		input[type=email], textarea {
+			border: 1px solid #fff;
+			border-radius: 0;
+			padding: 10px 15px;
+			color: #fff;
+			width: 100%;
+			display: inline-block;
+			vertical-align: top;
+			outline: none;
+			background: transparent;
+			font-size: 16px;
+
+			&::-webkit-input-placeholder {
+				/* Edge */
+				color: #fff;
+			}
+
+			&:-ms-input-placeholder {
+				/* Internet Explorer 10-11 */
+				color: #fff;
+			}
+
+			&::placeholder {
+				color: #fff;
+			}
+		}
+		
 		// OVERALL RATING MODULE
 		.product-rating {
 			background: #001a24;

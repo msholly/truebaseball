@@ -29,7 +29,8 @@
 		}
 	}
 
-	a.button {
+	a.button,
+	#review_form #respond .form-submit input {
 		background-color: $color--primary;
 		color: #FFF;
 		border: none;
@@ -54,6 +55,12 @@
 				color: #FFF;
 			}
 		}
+	}
+
+	#review_form #respond .form-submit input {
+		padding: 10px 20px;
+		font-size: 16px;
+		text-transform: uppercase;
 	}
 
 	.cta-btn {
@@ -122,7 +129,7 @@
 					background-color: transparent !important;
 					color: #FFF;
 
-					
+
 					.uabb-marketing-buttons-wrap {
 
 						.uabb-marketing-title,
@@ -134,9 +141,11 @@
 				}
 
 			}
+
 			.tribe-button {
 				min-width: 250px;
 				text-transform: uppercase;
+
 				&:hover span {
 					color: $color--primary !important;
 				}
