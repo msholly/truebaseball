@@ -15,6 +15,7 @@ function true_load_module() {
         // Include your custom modules here.
         require_once 'classes/class-fl-page-data-woocommerce.php';
         require_once 'modules/true-technical/true-technical.php';
+        require_once 'modules/true-nonce/true-nonce.php';
     }
 }
 add_action( 'init', 'true_load_module' );
