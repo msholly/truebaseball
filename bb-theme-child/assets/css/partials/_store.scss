@@ -63,6 +63,8 @@
 
 		.organization-logo img {
 			opacity: .5;
+			max-height: 90px;
+			width: auto;
 		}
 
 		.product_meta {
@@ -151,7 +153,8 @@
 
 	#reviews {
 
-		.contributions-title, .woocommerce-Reviews-title {
+		.contributions-title,
+		.woocommerce-Reviews-title {
 			border-bottom: 3px solid #00aeef;
 			padding-bottom: 5px;
 			text-transform: uppercase;
@@ -171,7 +174,8 @@
 		// Input fields 
 		input[type=text],
 		input[type=tel],
-		input[type=email], textarea {
+		input[type=email],
+		textarea {
 			border: 1px solid #fff;
 			border-radius: 0;
 			padding: 10px 15px;
@@ -197,7 +201,7 @@
 				color: #fff;
 			}
 		}
-		
+
 		// OVERALL RATING MODULE
 		.product-rating {
 			background: #001a24;

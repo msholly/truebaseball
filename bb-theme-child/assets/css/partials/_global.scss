@@ -70,7 +70,7 @@
 		.tribe-button,
 		.single_add_to_cart_button,
 		.single_add_to_cart_button.disabled,
-		.wc-product-reviews-pro-form-submit-row button {
+		.fitting-submit button {
 			-ms-transform: skewX(-20deg);
 			-webkit-transform: skewX(-20deg);
 			transform: skewX(-20deg);
@@ -117,7 +117,8 @@
 			a.fl-button,
 			a.uabb-button,
 			.tribe-button,
-			.single_add_to_cart_button {
+			.single_add_to_cart_button,
+			.fitting-submit button {
 				background-color: $color--primary !important;
 
 				/* Small Devices, Tablets */
@@ -331,4 +332,11 @@
 		padding-bottom: 5px !important;
 	}
 
+}
+
+// REMOVE PROMOTER FROM PUBLIC ADMIN BAR
+body.theme-bb-theme {
+	#wp-admin-bar-promoter-admin-bar, #wp-admin-bar-wpseo-menu, #wp-admin-bar-new-content {
+		display: none;
+	}
 }
