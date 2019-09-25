@@ -8,6 +8,7 @@ if ( is_array( $category_list ) ) {
 		$category_slugs[] = ' ' . $category->slug . '_ecs_category';
 	}
 }
+$tickets = Tribe__Tickets__Tickets::get_ticket_counts( get_the_ID() );
 ?>
 <div class="ecs-event<?php echo implode( $category_slugs, '' ) . $featured_class ?>">
 	<div class="date_thumb">
@@ -35,7 +36,7 @@ if ( is_array( $category_list ) ) {
 		<?php endif; ?>
 		<?php if ( in_array( 'date', $contentorder ) and Events_Calendar_Shortcode::isValid( $atts['eventdetails'] ) ): ?>
 			<div class="ecs-date">
-				<?php echo tribe_events_event_schedule_details(); ?>
+				<?php echo tribe_events_event_schedule_details(null, tribe_get_start_date( null, false, 'l' ) . ", "); ?>
 			</div>
 		<?php endif; ?>
 		<?php if ( in_array( 'excerpt', $contentorder ) and Events_Calendar_Shortcode::isValid( $atts['excerpt'] ) ): ?>
@@ -47,7 +48,8 @@ if ( is_array( $category_list ) ) {
 	</div>
     <?php if ( in_array( 'button', $contentorder ) and Events_Calendar_Shortcode::isValid( $atts['button'] ) ): ?>
         <div class="ecs-button">
-            <a href="<?php echo tribe_get_event_link(); ?>" rel="bookmark"><?php echo esc_html( $atts['button'] ); ?></a>
+			<a href="<?php echo tribe_get_event_link(); ?>" rel="bookmark"><?php echo esc_html( $atts['button'] ); ?><br>Only <?php echo $tickets['tickets']['stock']; ?> left!</a>
+			
         </div>
     <?php endif; ?>
 </div>
