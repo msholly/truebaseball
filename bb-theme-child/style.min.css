@@ -140,6 +140,16 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page #reviews #subscribe_to_replies_field .input-checkbox{margin:6px 8px 0 -20px}
 .woocommerce-page #reviews #subscribe_to_replies_field label.checkbox{margin-left:20px}
 .woocommerce-page .woocommerce-customer-details address{border:none !important}
+.woocommerce-order-received .fl-page-content{background:#000}
+.woocommerce-order-received .fl-page-content h1,.woocommerce-order-received .fl-page-content h2{color:#FFF}
+.woocommerce-order-received .fl-page-content p{color:#FFF}
+.woocommerce-order-received .fl-page-content li{color:#FFF}
+.woocommerce-order-received .fl-page-content .woocommerce-thankyou-order-details{background-color:#14151a;border-radius:0;border-color:#14151a}
+.woocommerce-order-received .fl-page-content .woocommerce-thankyou-order-details li{border-color:#14151a}
+.woocommerce-order-received .fl-page-content table.shop_table{background-color:#14151a;border-radius:0;border-color:#14151a;color:#FFF}
+.woocommerce-order-received .fl-page-content table.shop_table li{border-bottom:0}
+.woocommerce-order-received .fl-page-content .woocommerce-columns--addresses .woocommerce-column--billing-address,.woocommerce-order-received .fl-page-content .woocommerce-columns--addresses .woocommerce-column--shipping-address{background-color:#14151a;padding:25px !important}
+.woocommerce-order-received .fl-page-content .woocommerce-columns--addresses .woocommerce-column--billing-address address,.woocommerce-order-received .fl-page-content .woocommerce-columns--addresses .woocommerce-column--shipping-address address{padding:0;color:#FFF}
 .woocommerce-cart .shop_table,.cart_totals .shop_table{border-radius:0 !important;border:none !important;background-color:#14151a !important;margin-bottom:0 !important}
 .woocommerce-cart .shop_table thead th,.cart_totals .shop_table thead th{border-bottom:2px solid #000 !important;padding:10px 10px}
 .woocommerce-cart .shop_table tbody th,.cart_totals .shop_table tbody th{border-bottom:1px solid #000 !important}

@@ -474,3 +474,46 @@
 		}
 	}
 }
+
+.woocommerce-order-received {
+	.fl-page-content {
+		background: #000;
+
+		h1, h2 {
+			color: #FFF
+		}
+		p {
+			color: #FFF;
+		}
+		li {
+			color: #FFF;
+		}
+		.woocommerce-thankyou-order-details {
+			background-color: $on-dark-bg;
+			border-radius: 0;
+			border-color: $on-dark-bg;
+			li {
+				border-color: $on-dark-bg;
+			}
+		}
+		table.shop_table {
+			background-color: $on-dark-bg;
+			border-radius: 0;
+			border-color: $on-dark-bg;
+			color: #FFF;
+			li {
+				border-bottom: none;
+			}
+		}
+		.woocommerce-columns--addresses {
+			.woocommerce-column--billing-address, .woocommerce-column--shipping-address {
+				background-color: $on-dark-bg;
+				padding: 25px !important;
+				address {
+					padding: 0;
+					color: #FFF;
+				}
+			}
+		}
+	}
+}

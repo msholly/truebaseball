@@ -653,7 +653,7 @@
 
                     // Send a message to the parent
                     var sendMessage = function (msg) {
-                        window.parent.postMessage(msg, '*');
+                        window.parent.postMessage(msg, 'https://truediamondscience.com');
                     };
 
                     var customFeeDeleteButtom = document.getElementById('custom_fee_remove_button');
