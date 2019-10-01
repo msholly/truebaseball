@@ -2,18 +2,6 @@
 
 require_once 'oliver-pos.php';
 
-// Add a Woo Product Category on ticket save
-add_action( 'event_tickets_after_save_ticket', 'tribe_events_add_product_category_to_tickets', 10, 4 );
-
-function tribe_events_add_product_category_to_tickets( $event_id, $ticket, $raw_data, $classname ) {
-
-    if ( ! empty( $ticket ) && isset( $ticket->ID ) ) {
-        wp_add_object_terms( $ticket->ID, 'tickets', 'product_cat' );
-    }
-
-}
-
-
 /*
  * Legacy API
  * Add a referanse field to the Order API response.
