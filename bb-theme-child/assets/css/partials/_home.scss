@@ -1,4 +1,14 @@
 body.home {
+
+	@media only screen and (max-width: 768px) {
+		.banner-two-cta {
+			.cta-btn {
+				display: block;
+				margin-top: 15px;
+			}
+		}
+	}
+
 	.lead p {
 		font-size: 18px;
 	}

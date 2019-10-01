@@ -12,7 +12,7 @@ $tickets = Tribe__Tickets__Tickets::get_ticket_counts( get_the_ID() );
 ?>
 <div class="ecs-event<?php echo implode( $category_slugs, '' ) . $featured_class ?>">
 	<div class="date_thumb">
-		<div class="day"><?php echo tribe_get_start_time(null,'g') ?>-<?php echo tribe_get_end_time(null,'g') ?></div>
+		<div class="day"><?php echo tribe_get_start_time(null,'g:i') ?></div>
 		<div class="month"><?php echo tribe_get_start_time(null,'A') ?></div>
 	</div>
 	<?php if ( Events_Calendar_Shortcode::isValid( $atts['thumb'] ) ): ?>

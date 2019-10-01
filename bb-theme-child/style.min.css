@@ -740,6 +740,7 @@ footer #true-affiliates ul li img{height:40px !important;width:40px !important}
 footer .fl-menu-mobile-toggle .hamburger-menu rect{fill:#FFF !important}
 footer .fl-menu-mobile-toggle .fl-menu-mobile-toggle-label{color:#FFF !important}
 .fl-page-content .cta-btn.solid a.fl-button,.fl-page-content .cta-btn.solid a.uabb-button,.fl-page-content .cta-btn.solid .tribe-button,.fl-page-content .cta-btn.solid .single_add_to_cart_button,.fl-page-content .cta-btn.solid .fitting-submit button{line-height:24px}
+body.home .banner-two-cta .cta-btn{display:block;margin-top:15px}
 }@media(max-width:768px){.uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
 }@media(max-width:767px){.page-id-426 .loading h1,.page-template-page-true-fitting .loading h1{font-size:40px;margin:0 0 30px}
 .page-id-426 .fitting-facets .facetwp-radio,.page-id-426 .fitting-facets label.radio,.page-template-page-true-fitting .fitting-facets .facetwp-radio,.page-template-page-true-fitting .fitting-facets label.radio{display:block;text-align:left}
