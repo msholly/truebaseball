@@ -156,7 +156,7 @@ function add_affiliate_info_on_create_order ( $order_id ) {
         // $note = __('Web Checkout | TYPE: ' . $web_order_slug . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
         $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
  
-        update_field('order_type', $web_order_slug, $order_id);
+        update_field('order_type', $event_type, $order_id);
         
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
