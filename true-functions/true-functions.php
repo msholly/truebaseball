@@ -20,10 +20,10 @@ require __DIR__ . '/vendor/autoload.php';
 require_once 'php/taxjar/taxjar.php';
 
 // ADDITIONAL AWP FIELDS
-require_once 'php/affiliate-wp/index.php';
+require_once 'php/affiliate-wp/affiliate-wp.php';
 
 // WOOCOMMERCE EXTENSIONS
-require_once 'php/woocommerce/index.php';
+require_once 'php/woocommerce/woocommerce.php';
 
 // TRIBE EVENT EXTENSIONS
 require_once 'php/tribe/events.php';
