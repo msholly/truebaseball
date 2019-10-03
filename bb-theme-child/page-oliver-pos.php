@@ -17,10 +17,10 @@
                             <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button>
                         </div>
                         <div class="col-3">
-                            <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Reset</button>
+                            <!-- <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Reset</button> -->
                         </div>
                         <div class="col-3">
-                            <button id="custom_fee_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button>
+                            <!-- <button id="custom_fee_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button> -->
                         </div>
                         <div class="col-3">
                             <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button>
@@ -583,6 +583,12 @@
 
                         var msgData = checkoutData;
 
+                        if (oliverTaxResponse) {
+                            // bail if we already have taxes, to limit API usage
+                            console.log("Already have Tax Response")
+                            console.log(oliverTaxResponse)
+                            return
+                        }
                         if (msgData.oliverpos.event == "registerExtension") {
                             console.log(msgData.data.checkoutData)
 
@@ -780,31 +786,34 @@
 
                         sendMessage(JSON.stringify(jsonMsg));
 
-                        // Custom Fee Add
-                        var customFeeKey = $("#customFeeKey").text();
-                        var customFeeAmount = $("#customFeeAmount").text();
-                        var customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
+                        if (ticketCost) {
+                            // Custom Fee Add
+                            var customFeeKey = "Attendee ID: #" + $("#ticket-id").text();
+                            var customFeeAmount = -parseInt($("#ticket-cost").text());
+                            var customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
 
-                        var feejsonMsg = {
-                            oliverpos: {
-                                event: "saveCustomFee"
-                            },
-                            data: {
-                                customFee: {
-                                    "id": customFeeUniqueId,
-                                    "key": customFeeKey,
-                                    "amount": customFeeAmount
+                            var feejsonMsg = {
+                                oliverpos: {
+                                    event: "saveCustomFee"
+                                },
+                                data: {
+                                    customFee: {
+                                        "id": customFeeUniqueId,
+                                        "key": customFeeKey,
+                                        "amount": customFeeAmount
+                                    }
                                 }
                             }
-                        }
-                        console.log("----- FEE DATA TO OLIVER EXTENSION DISABLED-----")
-                        console.log(feejsonMsg);
+                            console.log("----- FEE DATA TO OLIVER EXTENSION DISABLED-----")
+                            console.log(feejsonMsg);
 
-                        // sendMessage(JSON.stringify(feejsonMsg));
+                            
+                            sendMessage(JSON.stringify(feejsonMsg));
+                        }
+                        // end ticket check
+                        
 
                         // Custom Taxes Add
-
-
                         var taxjsonMsg = {
                             oliverpos: {
                                 event: "updateProductTaxes"
