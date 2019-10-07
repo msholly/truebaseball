@@ -142,8 +142,9 @@ function add_affiliate_info_on_create_order ( $order_id ) {
                 $affiliate_email = $affiliate_info->user_email;
                 
                 // MLM PARENT
-                $parent_mlm_id = affwp_mlm_get_parent_affiliate($affwp_ref);
-                $parent_mlm_info = get_userdata($parent_mlm_id);
+                $parent_mlm_affid = affwp_mlm_get_parent_affiliate($affwp_ref);
+                $parent_mlm_wpid = affwp_get_affiliate_user_id( $parent_mlm_affid );
+                $parent_mlm_info = get_userdata($parent_mlm_wpid);
                 $parent_mlm_login_name = $parent_mlm_info->user_login;
 
                 $event_type = 'web';
