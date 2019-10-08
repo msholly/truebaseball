@@ -44,6 +44,9 @@
                 &.product-quantity {
                     input.qty {
                         margin-bottom: 0 !important;
+                        @media (max-width: 768px) {
+                            display: inline-block;
+                        }
                     }
                 }
                 &.actions {
