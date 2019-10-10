@@ -1,13 +1,21 @@
 "use strict";
 
-var checkoutData, oliverTaxResponse, oliverProductTaxes;
-
 (function ($) {
-  var acf_orderType = ".acf-field-5d25148656536";
-  var acf_salesRep = ".acf-field-5d25156b56537";
-  var acf_affiliate = ".acf-field-5d251671a38b3";
-  var acf_ticket = ".acf-field-5d4a0a0c75c12";
   jQuery(document).ready(function ($) {
+    if ($("body").hasClass("page-tribe-attendee-registration")) {
+      makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
+      makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true); // Disclaimer popup via JS
+
+      $(".tribe-ticket .tribe-block__tickets__item__attendee__field__radio").each(function (index) {
+        var str = $('.tribe-tickets-meta-label').text();
+
+        if (str.toLowerCase().indexOf("waiver") >= 0) {
+          var markup = "Did you read and do you accept the <a href='/waiver-and-release-of-liability/' target='_blank' class='open-disclaimer'>Waiver and Release of Liability</a>? <small>(opens in a new tab)</small>";
+          $('.tribe-tickets-meta-label h3').html(markup);
+        }
+      });
+    }
+
     if ($("body").hasClass("single-product")) {
       // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
       $(".single_add_to_cart_button").wrapInner("<span></span>");
@@ -27,7 +35,7 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
 
     if ($("body").hasClass("single-tribe_events")) {
       // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
-      $(".tribe-button").wrapInner("<span></span>").parent().addClass("cta-btn solid text-center"); // ADDS TICKETS REMAINING TO CTA
+      makeCTABtn($(".tribe-button"), true, true); // ADDS TICKETS REMAINING TO CTA
 
       $(".cta-tickets-remaining .uabb-marketing-subheading").text(function () {
         if ($(".available-stock").length) {
@@ -40,6 +48,20 @@ var checkoutData, oliverTaxResponse, oliverProductTaxes;
     if ($("body").hasClass("page-id-671")) {
       $("#affwp-user-login").parent().prepend("<p class='helper'>Please choose a recognizable user name for you or your organization. Do not include any special characters. This CAN NOT be changed later. </p>");
       $("#affwp-register-form legend").after("<p class='helper'>The TRUE Affiliate program is invite only! To apply, you'll need a referral code that is sent to your email. Please enter that below. </p>");
+    }
+
+    function makeCTABtn(element, solid, center) {
+      var action = element.wrapInner("<span></span>").wrap("<div class='cta-btn'></div>");
+
+      if (solid) {
+        action.parent().addClass("solid");
+      }
+
+      if (center) {
+        action.parent().addClass("text-center");
+      }
+
+      return action;
     }
   });
   $(function () {

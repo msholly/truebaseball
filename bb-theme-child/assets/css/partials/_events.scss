@@ -97,6 +97,50 @@
 
 }
 
+.page-tribe-attendee-registration {
+	.fl-page-content {
+		background-color: #000;
+		color: #FFF !important;
+		h1 {
+			color: #FFF;
+		}
+		.tribe-block__tickets__registration__event {
+			border: 1px solid #4a4a4a;
+			.tribe-block__tickets__registration__tickets__header__price, .tribe-block__tickets__registration__tickets__header {
+				color: #FFF;
+			}
+			h2 a {
+				color: $color--primary;
+			}
+			.tribe-block__tickets__registration__status.incomplete {
+				color: rgba(255,255,255,0.8);
+			}
+			.tribe-block__tickets__item__attendee__fields {
+				background-color: #111111;
+				h3, h4, label, .tribe-tickets-meta-label, .tribe-tickets-meta-label h3 {
+					color: #fff;
+				}
+			}
+			input[type=text] {
+				border: 2px solid #00aeef;
+				background: transparent;
+				color: #FFF;
+				font-size: 18px;
+				margin: 0 !important;
+				padding: 30px 20px;
+			}
+			
+		}
+		.tribe-block__tickets__item__attendee__fields__loader {
+			background-color: rgba(0,0,0,0.7)
+		}
+		.tribe-block__tickets__item__attendee__fields__error, .tribe-block__tickets__item__attendee__fields__success {
+			text-align: center
+		}
+		
+	}
+}
+
 @media (max-width: 768px) {
 	.uabb-ribbon-wrap .uabb-ribbon {
 		width: 100%;
