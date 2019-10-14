@@ -17,7 +17,7 @@
                         <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button>
                     </div>
                     <div class="col-3">
-                        <!-- <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Reset</button> -->
+                        <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Ready</button>
                     </div>
                     <div class="col-3">
                         <!-- <button id="custom_fee_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button> -->
@@ -484,7 +484,8 @@
                 }
 
                 function refreshPage() {
-                    location.reload();
+                    // location.reload();
+                    postExtensionReady();
                 }
 
                 function hideOrderType(data) {
