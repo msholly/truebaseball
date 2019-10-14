@@ -486,6 +486,7 @@
                 function refreshPage() {
                     // location.reload();
                     postExtensionReady();
+                    postTogglePaymentButton();
                 }
 
                 function hideOrderType(data) {
