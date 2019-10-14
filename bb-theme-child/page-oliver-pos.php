@@ -17,13 +17,13 @@
                         <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button>
                     </div>
                     <div class="col-3">
-                        <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Ready</button>
+                        <!-- <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Ready</button> -->
                     </div>
                     <div class="col-3">
                         <!-- <button id="custom_fee_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button> -->
                     </div>
                     <div class="col-3">
-                        <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button>
+                        <!-- <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button> -->
                     </div>
                 </div>
 
@@ -33,9 +33,8 @@
                     <div class="col-12">
                         <?php $true_fitting_nonce = wp_create_nonce('true_fitting_form_nonce'); ?>
 
-                        <input type="hidden" id="true_fitting_nonce" name="true_fitting_nonce" value="<?php echo $true_fitting_nonce ?>" />			
-                        <input type="hidden" id="customFeeUniqueId" name="customFeeUniqueId" value="extensionCustomFeeId_<?php echo mt_rand(); ?>" class="inp_cont small" />
-
+                        <input type="hidden" id="true_fitting_nonce" name="true_fitting_nonce" value="<?php echo $true_fitting_nonce ?>" />	
+		
                         <!-- Image loader -->
                         <div id='loader' style='display: none;'>
                             <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/ball-loading.gif" />
@@ -181,7 +180,7 @@
                             '<div class="col-6 current-taxes">' +
                             '<h3>Calculated Taxes</h3>' +
                             '<p>' +
-                            '<span id="customFeeKey"></span>: $<span id="customFeeAmount"><span>' +
+                            '<span id="customTaxKey"></span>: $<span id="customTaxAmount"><span>' +
                             '</p>' +
                             '</div>';
 
@@ -416,7 +415,7 @@
                     $("#clearAllTags").on("click", clearAll);
                     $("#refreshPage").on("click", refreshPage);
 
-                    $("#custom_fee_add_button").on("click", calculateOliverTaxes);
+                    // $("#custom_fee_add_button").on("click", calculateOliverTaxes);
 
                 });
 
@@ -644,8 +643,8 @@
                     $("#customtags_button").removeClass('disabled');
 
                     $(".current-taxes p").show();
-                    $("#customFeeKey").text(response.jurisdictions.state + " Tax");
-                    $("#customFeeAmount").text(response.amount_to_collect);
+                    $("#customTaxKey").text(response.jurisdictions.state + " Tax");
+                    $("#customTaxAmount").text(response.amount_to_collect);
                     mapOliverTaxes();
                 }
 
@@ -678,25 +677,6 @@
                     // window.parent.postMessage(msg, 'https://truediamondscience.com');
                     window.parent.postMessage(msg, '*');
                 };
-
-                var customFeeDeleteButtom = document.getElementById('custom_fee_remove_button');
-                bindEvent(customFeeDeleteButtom, 'click', function(e) {
-                    console.log("DELETE CUSTOM FEE")
-                    let customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
-
-                    var jsonMsg = {
-                        oliverpos: {
-                            event: "deleteCustomFee"
-                        },
-                        data: {
-                            customFee: {
-                                "id": customFeeUniqueId,
-                            }
-                        }
-                    }
-
-                    sendMessage(JSON.stringify(jsonMsg));
-                });
 
                 var customtagsButton = document.getElementById('customtags_button');
                 bindEvent(customtagsButton, 'click', function(e) {
@@ -807,7 +787,6 @@
                         // Custom Fee Add
                         var customFeeKey = "Attendee ID: #" + $("#ticket-id").text();
                         var customFeeAmount = -parseInt($("#ticket-cost").text());
-                        var customFeeUniqueId = document.getElementById("customFeeUniqueId").value;
 
                         var feejsonMsg = {
                             oliverpos: {
@@ -815,7 +794,6 @@
                             },
                             data: {
                                 customFee: {
-                                    "id": customFeeUniqueId,
                                     "key": customFeeKey,
                                     "amount": customFeeAmount
                                 }
