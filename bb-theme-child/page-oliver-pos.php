@@ -198,7 +198,7 @@
                             oliverEmail = "Alfredo.Sanchez@truediamondscience.com";
                             checkoutData = {
                                 "oliverpos": {
-                                    "event": "registerExtension"
+                                    "event": "shareCheckoutData"
                                 },
                                 "data": {
                                     "checkoutData": {
@@ -601,7 +601,7 @@
                         console.log(oliverTaxResponse)
                         return
                     }
-                    if (msgData.oliverpos.event == "registerExtension") {
+                    if (msgData.oliverpos.event == "shareCheckoutData") {
                         console.log(msgData.data.checkoutData)
                         let true_fitting_nonce = document.getElementById("true_fitting_nonce").value;
 
