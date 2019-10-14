@@ -650,7 +650,7 @@
 
                 // OLIVER POC
                 window.addEventListener('message', function(e) {
-                    // console.log(e)
+                    console.log(e)
                     if (e.origin === "https://sell.oliverpos.com") {
                         var msgData = JSON.parse(e.data);
                         console.log(msgData)
