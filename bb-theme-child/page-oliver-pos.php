@@ -656,7 +656,7 @@
                     if (e.origin === "https://sell.oliverpos.com") {
                         var msgData = JSON.parse(e.data);
                         console.log(msgData)
-                        if (msgData.oliverpos.event == "shareCheckoutData") {
+                        if (msgData.oliverpos.event === "shareCheckoutData") {
                             checkoutData = msgData;
                             // appendWebRegisterCartData();
                             calculateOliverTaxes();
