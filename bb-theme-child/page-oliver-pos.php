@@ -656,7 +656,7 @@
                     if (e.origin === "https://sell.oliverpos.com") {
                         var msgData = JSON.parse(e.data);
                         console.log(msgData)
-                        if (msgData.oliverpos.event == "registerExtension") {
+                        if (msgData.oliverpos.event == "shareCheckoutData") {
                             checkoutData = msgData;
                             // appendWebRegisterCartData();
                             calculateOliverTaxes();
@@ -673,6 +673,7 @@
 
                 // Send a message to the parent
                 var sendMessage = function(msg) {
+                    // window.parent.postMessage(msg, 'https://truediamondscience.com');
                     window.parent.postMessage(msg, '*');
                 };
 
