@@ -69,7 +69,7 @@ footer #menu-footer-menu li+li:before{content:"/";display:inline-block;position:
 .fl-page-content [type="radio"]:disabled:checked+span:after{background-color:rgba(0,0,0,0.42);border-color:#949494}
 .fl-page-content .fl-heading-text span{color:#00aeef}
 .fl-page-content .true-border-bottom h1,.fl-page-content .true-border-bottom h2,.fl-page-content .true-border-bottom h3,.fl-page-content .true-border-bottom h4,.fl-page-content .true-border-bottom h5,.fl-page-content .true-border-bottom h6{border-bottom:3px solid #00aeef !important;padding-bottom:5px !important}
-body.theme-bb-theme #wp-admin-bar-promoter-admin-bar,body.theme-bb-theme #wp-admin-bar-wpseo-menu,body.theme-bb-theme #wp-admin-bar-new-content{display:none}
+body.theme-bb-theme #wp-admin-bar-promoter-admin-bar,body.theme-bb-theme #wp-admin-bar-wpseo-menu,body.theme-bb-theme #wp-admin-bar-new-content,body.checkout-wc #wp-admin-bar-promoter-admin-bar,body.checkout-wc #wp-admin-bar-wpseo-menu,body.checkout-wc #wp-admin-bar-new-content{display:none}
 header #menu-main-menu li a,header #menu-main-menu li .fl-has-submenu-container:hover a{text-transform:uppercase;background-color:transparent}
 header #menu-main-menu li a:hover,header #menu-main-menu li .fl-has-submenu-container:hover a:hover{background-color:transparent}
 header #menu-main-menu li a:hover:after,header #menu-main-menu li .fl-has-submenu-container:hover a:hover:after{width:100%;-webkit-transition:width .3s;transition:width .3s}
@@ -260,7 +260,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .main-true-events .ecs-events .ecs-event .ecs-wrap::before{background-color:transparent;content:"";-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
 .main-true-events .ecs-events .ecs-event:hover .ecs-wrap::before{position:absolute;background-color:rgba(0,0,0,0.8);height:100%;width:100%;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
 .page-tribe-attendee-registration .fl-page-content{background-color:#000;color:#FFF !important}
-.page-tribe-attendee-registration .fl-page-content h1{color:#FFF}
+.page-tribe-attendee-registration .fl-page-content h1{color:#FFF;text-align:center}
 .page-tribe-attendee-registration .fl-page-content .tribe-block__tickets__registration__event{border:1px solid #4a4a4a}
 .page-tribe-attendee-registration .fl-page-content .tribe-block__tickets__registration__event .tribe-block__tickets__registration__tickets__header__price,.page-tribe-attendee-registration .fl-page-content .tribe-block__tickets__registration__event .tribe-block__tickets__registration__tickets__header{color:#FFF}
 .page-tribe-attendee-registration .fl-page-content .tribe-block__tickets__registration__event h2 a{color:#00aeef}
