@@ -56,7 +56,7 @@
 
                 <div class="row ticket-data">
                     <div class="col-3">
-                        <h3>TICKET #</h3>
+                        <h3>Attendee ID</h3>
                         <div id="ticket-num" class="merge"></div>
                     </div>
                     <div class="col-3">
@@ -651,16 +651,16 @@
 
                 // OLIVER POC
                 window.addEventListener('message', function(e) {
-                    console.log(e)
+                    // console.log(e)
                     if (e.origin === "https://sell.oliverpos.com") {
                         var msgData = JSON.parse(e.data);
                         console.log(msgData)
-                        console.log(msgData.oliverpos.event === 'shareCheckoutData');
-                        console.log(msgData.oliverpos.event == 'shareCheckoutData');
                         if (msgData.oliverpos.event === 'shareCheckoutData') {
                             checkoutData = msgData;
                             // appendWebRegisterCartData();
-                            calculateOliverTaxes();
+                            if (msgData.data.checkoutData.addressLine1.length > 0) {
+                                calculateOliverTaxes();
+                            }
                             // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
                         }
                     }
