@@ -11,22 +11,47 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
     // IF OLIVER POS
     if (strpos($customer_note, 'POS') !== false) {
 
-        // Add shipping to notes
-        $items = $order->get_items(); 
+        // SET DEFAULTS
+        // $items = $order->get_items(); might not need this
         $shipMethod = 'Free Ground Shipping';
         $affiliate_login_name = 'N/A';
-        
+        $affwp_amount = 0;
+        $ticketID = 'N/A';
+
         foreach ( $order->get_items() as $item_id => $item ) {
 
             $lineItemId = $item->get_product_id();
-            // ChromePhp::log($item->get_product_id());
-            if ( $lineItemId == 2414 ) { // product id of Private 2 Day Ship
-                $shipMethod = '2 Day Shipping';
-            } 
-            
-            if ( $lineItemId == 2496 ) {
-                $shipMethod = 'Next Day Shipping';
-            } 
+
+            // GET Categories
+            $term_list = wp_get_post_terms($lineItemId, 'product_cat', array('fields'=>'ids'));
+            $cat_id = (int)$term_list[0];
+
+            if ($cat_id == 315) {
+                // DETECT SHIPPING 
+                // No Affiliate total for shipping
+                if ($lineItemId == 2414) { // product id of Private 2 Day Ship
+                    $shipMethod = '2 Day Shipping';
+                }
+                if ($lineItemId == 2496) {
+                    $shipMethod = 'Next Day Shipping';
+                }   
+            }
+    
+            if ($cat_id == 41) {
+                // DETECT BATS 10% 
+                // 15% but that's TO DO
+                $affwp_amount += number_format(($item->get_total() * .1));
+            }
+                
+            if ($cat_id == 315) {
+                // FITTING PRODUCTS 5%
+                $affwp_amount += number_format(($item->get_total() * .05));
+            }
+    
+            if ($cat_id == 361) {
+                // GEAR PRODUCTS 5%
+                $affwp_amount += number_format(($item->get_total() * .05));
+            }
 
         }
 
@@ -42,12 +67,18 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
         $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
         $oliverTicketOrderID = $oliver_data_array['wordpress']['data']['ticket']['ticketOrderID'];
-        true_woo_ticket_checkin($oliverTicketID);
 
         // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
-        $affiliate_info = get_userdata($affiliate_wp_userid);
-        $affiliate_login_name = $affiliate_info->user_login;
+        if ($affiliate_wp_userid) {
+            $affiliate_info = get_userdata($affiliate_wp_userid);
+            $affiliate_login_name = $affiliate_info->user_login;
+        }
+
+        if ($oliverTicketOrderID) {
+            true_woo_ticket_checkin($oliverTicketID);
+            $ticketID = $oliverTicketOrderID;
+        }
 
         $sales_rep_info = get_user_by( 'ID', $sales_rep_id ); 
         $sales_rep_login_name = $sales_rep_info->user_login;
@@ -56,7 +87,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
         update_field('event_ticket', $oliverTicketOrderID, $order_id);
-        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $ticketID);
 
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
@@ -84,25 +115,24 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $order->save();
         // END ORDER SAVING
 
-
-        $affiliate_payout = number_format(($order->get_subtotal() * .2));
-        if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
-            $post_url = 'https://true-diamond-science.local/wp-json/affwp/v1/referrals/';
-            $ssl_verify = false;
-		} else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
-            $post_url = 'http://staging.true-baseball.flywheelsites.com/wp-json/affwp/v1/referrals/';
-            $ssl_verify = false;
-		} else {
-            $post_url = 'https://truediamondscience.com/wp-json/affwp/v1/referrals/';
-            $ssl_verify = true;
-        }
-        
         if ( $affiliate_info ) {
+
+            if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+                $post_url = 'https://true-diamond-science.local/wp-json/affwp/v1/referrals/';
+                $ssl_verify = false;
+            } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+                $post_url = 'http://staging.true-baseball.flywheelsites.com/wp-json/affwp/v1/referrals/';
+                $ssl_verify = false;
+            } else {
+                $post_url = 'https://truediamondscience.com/wp-json/affwp/v1/referrals/';
+                $ssl_verify = true;
+            }
+
             // BEGIN AFFILAITE TRACKING
             $request_url = add_query_arg( 
                 array( 
                     'user_id' => $affiliate_info->ID,
-                    'amount' => $affiliate_payout,
+                    'amount' => $affwp_amount,
                     'description' => rawurlencode($note),
                     'reference' => $order_id,
                     'context' => 'woocommerce',
@@ -142,56 +172,67 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 }
 add_action( 'woocommerce_order_status_completed', 'add_affiliate_info_on_oliver_create_order', 20 );
 
-add_action( 'wp_ajax_nopriv_get_ticket_info', 'true_get_ticket_info' );
+// add_action( 'wp_ajax_nopriv_get_ticket_info', 'true_get_ticket_info' );
 add_action( 'wp_ajax_get_ticket_info', 'true_get_ticket_info' );
 
 function true_get_ticket_info() {
-    $ticketOrderID = sanitize_text_field($_REQUEST['ticketOrderID']);
-    $ticketID = sanitize_text_field($_REQUEST['ticketID']);
 
-    // Woo Order Info
-    $order = new WC_Order( $ticketOrderID ); 
+    if( isset( $_GET['true_pos_nonce'] ) && wp_verify_nonce( $_GET['true_pos_nonce'], 'true_pos_form_nonce') ) {
 
-    $ticketTotal = $order->get_total();
-    $ticketOrderStatus = $order->get_status();
+        $ticketOrderID = sanitize_text_field($_GET['ticketOrderID']);
+        $ticketID = sanitize_text_field($_GET['ticketID']);
 
-    // Tribe Ticket Information
-    // $woo_tickets = TribeWooTickets::get_instance();
-    $attendee_metadata = tribe_get_event_meta ( $ticketID );
-    $attendee_info = tribe_tickets_get_attendees( $ticketID );
-    $ticket_event = tribe_events_get_ticket_event( $ticketID );
+        // Woo Order Info
+        $order = new WC_Order( $ticketOrderID ); 
 
-    $event_ids = tribe_tickets_get_event_ids($ticketOrderID);
-    $event_meta = tribe_events_get_event($event_ids[0]);
-    $event_date = tribe_get_start_date($event_ids[0]);
-    // foreach ( $ticket_ids as $ticket_id ) {
-    //     $ticketTitle = get_the_title( $ticket_id );
-    // }
+        $ticketTotal = $order->get_total();
+        $ticketOrderStatus = $order->get_status();
 
-    // ChromePhp::log($ticketID);
-    // ChromePhp::log('true_get_ticket_info');
-    $data = (object) [
-        'ticketOrderID' => $ticketOrderID,
-        'ticketTotal' => $ticketTotal,
-        'ticketOrderStatus' => $ticketOrderStatus,
-        'attendee_metadata' => $attendee_metadata,
-        'attendee_info' => $attendee_info,
-        'ticket_event' => $ticket_event,
-        'event_meta' => $event_meta,
-        'event_date' => $event_date
-    ];
+        // Tribe Ticket Information
+        // $woo_tickets = TribeWooTickets::get_instance();
+        $attendee_metadata = tribe_get_event_meta ( $ticketID );
+        $attendee_info = tribe_tickets_get_attendees( $ticketID );
+        $ticket_event = tribe_events_get_ticket_event( $ticketID );
 
-    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-        wp_send_json($data);
-		die();
-	}
-	else {
-        // TO DO - BUILD FACETWP URL BASED ON PARAMS
-		wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
-		exit();
+        $event_ids = tribe_tickets_get_event_ids($ticketOrderID);
+        $event_meta = tribe_events_get_event($event_ids[0]);
+        $event_date = tribe_get_start_date($event_ids[0]);
+        // foreach ( $ticket_ids as $ticket_id ) {
+        //     $ticketTitle = get_the_title( $ticket_id );
+        // }
+
+        // ChromePhp::log($ticketID);
+        // ChromePhp::log('true_get_ticket_info');
+        $data = (object) [
+            'ticketOrderID' => $ticketOrderID,
+            'ticketTotal' => $ticketTotal,
+            'ticketOrderStatus' => $ticketOrderStatus,
+            'attendee_metadata' => $attendee_metadata,
+            'attendee_info' => $attendee_info,
+            'ticket_event' => $ticket_event,
+            'event_meta' => $event_meta,
+            'event_date' => $event_date
+        ];
+
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            wp_send_json($data);
+            die();
+        }
+        else {
+            // TO DO - BUILD FACETWP URL BASED ON PARAMS
+            wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+            exit();
+        }
+        
+    } else {
+        ChromePhp::log("Bad Nonce");
+        error_log("Bad Oliver Ticket UI Nonce.", 0);
+        wp_die( __( 'Invalid nonce specified', 'TRUE Functions' ), __( 'Error', 'TRUE Functions' ), array(
+            'response' 	=> 403,
+            'back_link' => 'admin.php?page=' . 'TRUE Functions',
+        ) );
     }
-
-
+    
 }
 
 function true_woo_ticket_checkin ( $attendee_id ) {

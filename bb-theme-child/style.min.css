@@ -398,10 +398,13 @@ span.middot{display:inline-block;margin:0 5px}
 .uabb-creative-menu.off-canvas .uabb-off-canvas-menu form .fl-search-input{border:0;border-right:0;border-left:0;border-top:0;background-color:transparent;color:#00aeef;margin:20px 0}
 #oliver-pos #content{padding:10px 0 0 0}
 #oliver-pos #content .row{margin-left:-10px;margin-right:-10px}
-#oliver-pos #content .container-fluid,#oliver-pos #content .col-12,#oliver-pos #content .col-6,#oliver-pos #content .col-4,#oliver-pos #content .col-3{padding:0 10px}
+#oliver-pos #content .container-fluid,#oliver-pos #content .col-12,#oliver-pos #content .col-9,#oliver-pos #content .col-6,#oliver-pos #content .col-4,#oliver-pos #content .col-3{padding:0 10px}
 #oliver-pos #content h3{font-size:15px;font-family:"Roboto Condensed",sans-serif;font-weight:bold;margin:15px 0 0 0}
 #oliver-pos #content h3#event-title{margin-bottom:0}
+#oliver-pos #content .clearAllTags{color:#00aeef;cursor:pointer}
 #oliver-pos #content .alert{margin-top:15px}
+#oliver-pos #content .alert .type{text-transform:uppercase}
+#oliver-pos #content .alert.alert-dismissible .close:hover{background-color:transparent;border:none !important}
 #oliver-pos #content .acf-field .acf-label{margin-bottom:0}
 #oliver-pos #content #acf-field_5d25148656536 option[value=batting_cage],#oliver-pos #content #acf-field_5d25148656536 option[value=web],#oliver-pos #content #acf-field_5d25148656536 option[value=ecomm],#oliver-pos #content #acf-field_5d25148656536 option[value=wholesale],#oliver-pos #content #acf-field_5d25148656536 option[value=closeout],#oliver-pos #content #acf-field_5d25148656536 option[value=influencer]{display:none}
 #oliver-pos #content .savedTag{margin:0}

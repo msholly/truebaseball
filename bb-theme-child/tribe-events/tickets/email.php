@@ -374,6 +374,22 @@
 											<?php
 										}
 										?>
+
+										<table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<td class="ticket-image" valign="top" align="left" width="100%" style="padding-bottom:15px !important;">
+													<img src="https://truediamondscience.com/wp-content/uploads/true-diamond-science-logo-email.png" width="572" alt="TRUE Diamond Science" style="border:0; outline:none; height:auto; max-width:100%; display:block;" />
+												</td>
+											</tr>
+										</table>
+
+										<table class="whiteSpace" border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#f7f7f7; padding: 0 !important; margin:0 !important;">
+													<div style="margin:0; height:30px;"></div>
+												</td>
+											</tr>
+										</table>
 										<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
 											<tr>
 												<td valign="top" align="center" width="100%" style="padding: 0 !important; margin:0 !important;">
@@ -402,7 +418,7 @@
 											<tr>
 												<td class="ticket-details" valign="top" align="left" width="100" style="padding: 0; width:100px; margin:0 !important;">
 													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php esc_html_e( 'Ticket #', 'event-tickets' ); ?></h6>
-													<span style="color:#0a0a0e !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:15px;"><?php echo $ticket['ticket_id']; ?></span>
+													<span style="color:#0a0a0e !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:15px;"><?php echo $ticket['attendee_id']; ?></span>
 												</td>
 												<td class="ticket-details" valign="top" align="left" width="120" style="padding: 0; width:120px; margin:0 !important;">
 													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php esc_html_e( 'Ticket Type', 'event-tickets' ); ?></h6>

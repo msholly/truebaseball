@@ -9,6 +9,7 @@
 
 		.container-fluid,
 		.col-12,
+		.col-9,
 		.col-6,
 		.col-4,
 		.col-3 {
@@ -26,8 +27,22 @@
 			}
 		}
 
+		.clearAllTags {
+			color: $color--primary;
+			cursor: pointer;
+		}
+
 		.alert {
 			margin-top: 15px;
+			.type {
+				text-transform: uppercase;
+			}
+			&.alert-dismissible .close {
+				&:hover {
+					background-color: transparent;
+					border: none !important;
+				}
+			}
 		}
 
 		// TAGS

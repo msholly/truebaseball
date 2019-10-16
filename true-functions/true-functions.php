@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: TRUE Functions
  * Plugin URI: https://architkmedia.com
@@ -32,11 +33,13 @@ require_once 'php/tribe/events.php';
 // add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
 // Fix extra spaces in compact event list
-if ( is_single() ) {
+if (is_single()) {
     remove_filter('the_content', 'wpautop');
 }
 
-// function true_woocommerce_after_checkout_form () {
+// function true_woocommerce_after_checkout_form()
+// {
+
     // OBJECT TESTING ONLY
     // $awp_db = get_awf_api(1);
     // $affiliateId = 8;
@@ -75,7 +78,4 @@ if ( is_single() ) {
 
 // }
 // add_action( 'woocommerce_checkout_before_customer_details', 'true_woocommerce_after_checkout_form' );
-// add_action( 'cfw_checkout_before_form', 'true_woocommerce_after_checkout_form' );
-
-
-?>
+// add_action('cfw_checkout_before_form', 'true_woocommerce_after_checkout_form');
