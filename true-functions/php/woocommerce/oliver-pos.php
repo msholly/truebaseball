@@ -72,7 +72,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
         if ($affiliate_wp_userid) {
             $affiliate_info = get_userdata($affiliate_wp_userid);
-            $affiliate_login_name = $affiliate_info->user_login;
+            $affiliate_email = $affiliate_info->user_email;
         }
 
         if ($oliverTicketOrderID) {
@@ -81,13 +81,13 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         }
 
         $sales_rep_info = get_user_by( 'ID', $sales_rep_id ); 
-        $sales_rep_login_name = $sales_rep_info->user_login;
+        $sales_rep_email = $sales_rep_info->user_email;
 
         update_field('order_type', $event_type, $order_id);
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
         update_field('event_ticket', $oliverTicketOrderID, $order_id);
-        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $ticketID);
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_email . ' | AFFILIATE: ' . $affiliate_email . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $ticketID);
 
         // update the customer_note on the order, the WP Post Excerpt
         $update_excerpt = array(
