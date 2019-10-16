@@ -506,40 +506,41 @@
                         return
                     }
                     if (msgData.oliverpos.event == "shareCheckoutData") {
-                        console.log(checkout)
-                        let true_pos_nonce = document.getElementById("true_pos_nonce").value;
+                        if (checkout.country !== "") {
+                            console.log(checkout)
+                            let true_pos_nonce = document.getElementById("true_pos_nonce").value;
 
-                        var taxdata = {
-                            action: 'get_tax_info',
-                            true_pos_nonce: true_pos_nonce,
-                            checkoutData: checkout
-                        }
-                        $.ajax({
-                            url: truefunction.ajax_url,
-                            type: 'get',
-                            data: taxdata,
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            beforeSend: function() {
-                                console.log("REQUESTING TAX");
-                                $(".current-taxes p").hide();
-                                $("#loader").clone().appendTo(".current-taxes").show();
-                                $("#customtags_button, #custom_tax_add_button").addClass('disabled');
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                oliverTaxResponse = response;
-                                setTaxUI(response);
-                            },
-                            error: (error) => {
-                                showAlert(error.responseText, "danger", error.statusText)
-                                console.log(JSON.stringify(error));
-                            },
-                            complete: function(data) {
-                                $(".current-taxes #loader").remove()
+                            var taxdata = {
+                                action: 'get_tax_info',
+                                true_pos_nonce: true_pos_nonce,
+                                checkoutData: checkout
                             }
-                        });
-
+                            $.ajax({
+                                url: truefunction.ajax_url,
+                                type: 'get',
+                                data: taxdata,
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                beforeSend: function() {
+                                    console.log("REQUESTING TAX");
+                                    $(".current-taxes p").hide();
+                                    $("#loader").clone().appendTo(".current-taxes").show();
+                                    $("#customtags_button, #custom_tax_add_button").addClass('disabled');
+                                },
+                                success: function(response) {
+                                    console.log(response);
+                                    oliverTaxResponse = response;
+                                    setTaxUI(response);
+                                },
+                                error: (error) => {
+                                    showAlert(error.responseText, "danger", error.statusText)
+                                    console.log(JSON.stringify(error));
+                                },
+                                complete: function(data) {
+                                    $(".current-taxes #loader").remove()
+                                }
+                            });
+                        }
                     }
 
 
@@ -791,7 +792,7 @@
                 }
 
                 function showAlert(msg, type, status) {
-                    $('#oliver-msg').removeClass("alert-warning","alert-info","alert-danger")
+                    $('#oliver-msg').removeClass("alert-warning", "alert-info", "alert-danger")
                     $('#oliver-msg .status').text(status + ": ");
                     $('#oliver-msg .msg').text(msg);
                     $('#oliver-msg').addClass("alert-" + type).show();
