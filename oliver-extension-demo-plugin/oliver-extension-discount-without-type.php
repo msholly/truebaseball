@@ -62,17 +62,18 @@
 <body>
     <div class="oliver_from">
        <div>
-            <h1>Client Extension</h1>
+            <h1>Discount Extension</h1>
             <div id="parentData"></div>
 
             <div>
-                <p>Custom Fee Key:</p>
-                <input type="text" id="customFeeKey" name="customFeeKey" class="inp_cont small"/>
+                <p>Discount Key:</p>
+                <input type="text" id="discountKey" name="discountKey" class="inp_cont small"/> 
+                                
 
-                <p>Custom Fee Amount:</p>
-                <input type="number" id="customFeeAmount" name="customFeeAmount" class="inp_cont small" min="1" />
+                <p>Discount Amount:</p>
+                <input type="number" id="discountAmount" name="discountAmount" class="inp_cont small" min="1" step="0.1" />
 
-                <button id="custom_fee_add_button">Push Custom Fee to OliverPOS</button>
+                <button id="discount_add_button">Push Discount to OliverPOS</button>
 
                 <br>
 
@@ -88,15 +89,21 @@
     </div>
 
     <script>
+        var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
         window.addEventListener('load', (event) => {
+
             // invoke the payment toggle function
+            toggleExtensionReady();
             postTogglePaymentButton();
         });
 
         window.addEventListener('message', function(e) {
-            let msgData = JSON.parse(e.data);
-
-            console.log("frame page", msgData)
+            if (e.origin !== oliverExtensionTargetOrigin) {
+                console.log("Invalid origin " + e.origin);
+            } else {
+                let msgData = JSON.parse(e.data);
+                console.log("frame page", msgData)
+            }
         }, false);
 
         function bindEvent(element, eventName, eventHandler) {
@@ -105,29 +112,29 @@
 
         // Send a message to the parent
         var sendMessage = function (msg) {
-            window.parent.postMessage(msg, '*');
+            window.parent.postMessage(msg, oliverExtensionTargetOrigin);
         };
 
         var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
 
         var oliverEmail = urlParams.get("user");
 
-        var customFeeAddButtom = document.getElementById('custom_fee_add_button');
-        bindEvent(customFeeAddButtom, 'click', function (e) {
-            let customFeeKey = document.getElementById("customFeeKey").value;
-            let customFeeAmount = document.getElementById("customFeeAmount").value;
+        var discountAddButtom = document.getElementById('discount_add_button');
+        bindEvent(discountAddButtom, 'click', function (e) {
+            let discountKey = document.getElementById("discountKey").value;
+            let discountAmount = document.getElementById("discountAmount").value;
 
             var jsonMsg = {
                 oliverpos:
                 {
-                    event: "saveCustomFee"
+                    event: "saveDiscount"
                 },
                 data:
                 {
-                    customFee:
+                    discount:
                     {
-                        "key": customFeeKey,
-                        "amount": Math.abs(customFeeAmount)
+                        "key": discountKey,
+                        "amount": Math.abs(discountAmount)
                     }
                 }
             }
@@ -162,6 +169,16 @@
                         "flag": flag
                     }
                 }
+            }
+
+            sendMessage(JSON.stringify(jsonMsg));
+        }
+
+        var toggleExtensionReady = function() {
+            let jsonMsg = {
+                oliverpos: {
+                    "event": "extensionReady"
+                },
             }
 
             sendMessage(JSON.stringify(jsonMsg));

@@ -99,7 +99,7 @@
             <div class="gray-background-Inbox">
                 <p>Custom Fee Amount</p>
                 <div class="gray-background-Inbox_price">
-                    <input type="number" id="customFeeAmount" name="customFeeAmount" placeholder="10" />
+                    <input type="number" id="customFeeAmount" name="customFeeAmount" min="1" placeholder="10" />
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
                     customFee:
                     {
                         "key": customFeeKey,
-                        "amount": customFeeAmount
+                        "amount": Math.abs(customFeeAmount)
                     }
                 }
             }

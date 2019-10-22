@@ -1,3 +1,26 @@
+<?php 
+    $coupons = get_posts(array(
+        'post_type' => 'shop_coupon',
+        'post_status' => array('publish'),
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key'     => 'discount_type',
+                'value'   => 'fixed_cart',
+                'compare' => '=',
+            ),
+            array(
+                'key'     => 'date_expires',
+                'value'   => strtotime(date('Y-m-d')),
+                'compare' => '>=',
+            ),
+        ),
+    ));
+// echo "<pre>";
+// print_r($coupons);
+// exit();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +94,6 @@
             color: #ffffff;
             /*width: 100%;*/
             font-size: 20px;  
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -128,69 +150,73 @@
           overflow: hidden;
           width: 150px;
         }
+
+        .main-wrap-content-list {
+            height: calc(100vh - 70px);
+            overflow-y: scroll;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .main-wrap-content-list table {
+            width: 100%;
+            border-spacing: 0px;
+        }
+        .main-wrap-content-list table th {
+            border-top: 1px solid #c5c5c5;
+        }
+        .main-wrap-content-list table th,
+        .main-wrap-content-list table td {
+            text-align: left;
+            height: 50px;
+            border-bottom: 1px solid #c5c5c5;
+            font-size: 18px;
+            padding: 5px;
+        }
+        .main-wrap-content-list caption {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            padding-bottom:  15px;
+            padding-top:  15px;
+            border-bottom: 1px solid #c5c5c5;
+        }
     </style>
 </head>
 <body style="overflow: hidden; margin: 0px">
 
     <div class="true-diamond-form">
-        <div class="true-diamond-form-scroll overflowscroll">
-           <div class="gray-background-box white-background-box">
-                <div class="gray-background-Inbox gray-background-Inbox-space">
-                    <div>
-                        <p>Affiliate</p>
-                        <div class="gray-background-Inbox_price">
-                            <input id="extensionAffiliate" name="extensionAffiliate" placeholder="Matt Johnson" />
-                        </div>
-                    </div>
-                    <div>
-                        <p>Sales Rep</p>
-                        <div class="gray-background-Inbox_price">
-                            <select id="extensionSalesRep" name="extensionSalesRep">
-                                <option value="user1@test.com">user1@test.com</option>
-                                <option value="salesrep2@test.com">salesrep2@test.com</option>
-                                <option value="user3@test.com">user3@test.com</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Order Type</p>
-                        <div class="gray-background-Inbox_price">
-                            <select id="extensionOrderType" name="extensionOrderType">
-                                <option value="Batting Cage">Batting Cage</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="left-right-spcacer">
-                <div class="gray-background-box">
-                    <div class="gray-background-Inbox">
-                        <p>Ticket Number</p>
-                        <div class="gray-background-Inbox_price">
-                            <input type="text" name="extensionTicketNumber" id="extensionTicketNumber" placeholder="18792398123798" />
-                        </div>
-                    </div>
-                </div>
-                <div class="true-diamond-form-button">
-                    <button class="ply_with_stripe" id="extensionCustomTagsButtone">
-                        Add To Sale
-                    </button>
-                </div>
+        <div class="main-wrap-content-list">
+            <table>
+                <caption>Coupon's</caption>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Code</th>
+                        <th>Amount</th>
+                        <th>Push to Oliver</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <div id="extensionProductList">
+                    <?php 
+                        foreach ($coupons as $key => $coupon) { 
+                                $coupon_id = (int) $coupon->ID;
+                                $coupon_code = get_the_title($coupon_id);
+                                $coupon_amt = get_post_meta($coupon_id, 'coupon_amount', true);
+                            ?>
+                                <tr>
+                                    <td><?php echo $key+1; ?></td>
+                                    <td><?php echo $coupon_code; ?></td>
+                                    <td><?php echo $coupon_amt; ?></td>
+                                    <td style="cursor: pointer;" onclick="pushToOliver(`<?php echo $coupon_code ?>`, `<?php echo $coupon_amt ?>`)">
+                                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDc3LjE3NSA0NzcuMTc1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NzcuMTc1IDQ3Ny4xNzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiBmaWxsPSIjNzM3MzczIj4NCjxnPg0KCTxwYXRoIGQ9Ik0zNjAuNzMxLDIyOS4wNzVsLTIyNS4xLTIyNS4xYy01LjMtNS4zLTEzLjgtNS4zLTE5LjEsMHMtNS4zLDEzLjgsMCwxOS4xbDIxNS41LDIxNS41bC0yMTUuNSwyMTUuNQ0KCQljLTUuMyw1LjMtNS4zLDEzLjgsMCwxOS4xYzIuNiwyLjYsNi4xLDQsOS41LDRjMy40LDAsNi45LTEuMyw5LjUtNGwyMjUuMS0yMjUuMUMzNjUuOTMxLDI0Mi44NzUsMzY1LjkzMSwyMzQuMjc1LDM2MC43MzEsMjI5LjA3NXoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" width="20">
+                                    </td>
+                                </tr>
+                            
+                    <?php } ?>
 
-                    
-
-                </div>
-
-                <div class="true-diamond-form-button">
-                    <button class="ply_with_stripe" id="extensionTaxAddButtom">
-                        Add To Sale
-                    </button>
-                </div>
-
-            </div>
-
+                </tbody>
+            </table>
         </div>
         <div class="true-diamond-form-button">
             <button class="ply_with_stripe" id="extensionFinishedButton">
@@ -208,8 +234,8 @@
 
         window.addEventListener('load', (event) => {
             // invoke the payment toggle function
-            toggleExtensionReady();
             postTogglePaymentButton();
+            toggleExtensionReady();
         });
 
         window.addEventListener('message', function(e) {
@@ -243,32 +269,24 @@
         // var salesPersonEmail = document.getElementById("salesPersonEmail");
         // salesPersonEmail.value = oliverEmail;
 
-        var extensionCustomTagsButtone = document.getElementById('extensionCustomTagsButtone');
-        bindEvent(extensionCustomTagsButtone, 'click', function (e) {
-            var extensionAffiliate = document.getElementById("extensionAffiliate").value;
-            var extensionSalesRep = document.getElementById("extensionSalesRep").value;
-            var extensionOrderType = document.getElementById("extensionOrderType").value;
-            var extensionTicketNumber = document.getElementById("extensionTicketNumber").value;
-
+        function pushToOliver(code, amt) {
             var jsonMsg = {
                 oliverpos:
                 {
-                    "event": "addData"
+                    "event": "addCoupon"
                 },
                 data:
                 {
-                    customTags:
+                    coupon:
                     {
-                        "affiliateID": extensionAffiliate,
-                        "salesRep": extensionSalesRep,
-                        "orderType": extensionOrderType,
-                        "ticketNumber": extensionTicketNumber
+                        "code": code,
+                        "amount": amt,
                     }
                 }
             }
 
             sendMessage(JSON.stringify(jsonMsg));
-        });    
+        }    
 
 
         var extensionFinishedButton = document.getElementById('extensionFinishedButton');
@@ -307,52 +325,6 @@
             sendMessage(JSON.stringify(jsonMsg));
         }
 
-        var appendWebRegisterCartData = function() {
-            let listItemsData = webRegisterCartData.data.checkoutData.cartProducts;
-            if (typeof listItemsData !== "undefiend") {
-                document.getElementById("extensionProductList").innerHTML = " ";
-                let listItemsDataIndex = 1;
-                for (let get_i_data of listItemsData) {
-                    document.getElementById("extensionProductList").innerHTML += '<div class="true-daimond-flex"> <div class="push-top">' + get_i_data.quantity + '</div> <div class="push-top ellipsis" title="' + get_i_data.title + '">' + get_i_data.title + '</div> <div class="push-top">' + get_i_data.amount + '</div> <div class="add_tax_amt"> Add Tax Amount <div class="add_tax_amount"> <input type="text" id="listItemsDataTaxInput-'+listItemsDataIndex+'" value="' + get_i_data.tax + '"> </div> </div> </div>';
-
-                    listItemsDataIndex++;
-                }
-            } else {
-                document.getElementById("extensionProductList").innerHTML = "Data not found!";
-            }
-        }
-
-
-        var calculateExtensionTax = function() {
-            let updateExtensionTaxData = new Array();
-            let listItemsData = webRegisterCartData.data.checkoutData.cartProducts;
-            let listItemsDataIndex = 1;
-           
-            for (let set_i_data of listItemsData) {
-                set_i_data.tax = document.getElementById("listItemsDataTaxInput-" + listItemsDataIndex).value;
-                updateExtensionTaxData.push(set_i_data);
-                listItemsDataIndex++;
-            }
-
-            return updateExtensionTaxData;
-        }
-
-        var extensionTaxAddButtom = document.getElementById('extensionTaxAddButtom');
-        bindEvent(extensionTaxAddButtom, 'click', function (e) {
-            let extensionTaxCalc = calculateExtensionTax();
-            var jsonMsg = {
-                oliverpos:
-                {
-                    event: "updateProductTaxes"
-                },
-                data:
-                {
-                    products: extensionTaxCalc
-                }
-            }
-
-          sendMessage(JSON.stringify(jsonMsg));
-        });
 
         var toggleExtensionReady = function() {
             let jsonMsg = {

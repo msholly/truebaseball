@@ -16,6 +16,11 @@ if ( ! defined( 'OLIVER_EXTENSION_DEMO_PLUGIN' ) ) {
   define( 'OLIVER_EXTENSION_DEMO_PLUGIN', __FILE__ );
 }
 
+// define extension target 
+// $link_array = array('https://sell.creativemaple.ca');
+// define('OLIVER_EXTENSION_TARGET_ORIGIN', 'https://sell.creativemaple.ca'); // for creativemaple
+define('OLIVER_EXTENSION_TARGET_ORIGIN', 'https://sell.oliverpos.com'); // for oliver live
+
 // plugin activation process
 register_activation_hook( OLIVER_EXTENSION_DEMO_PLUGIN, function(){
 	$post_id = wp_insert_post(array(
@@ -64,8 +69,18 @@ if (isset($_GET['oliver-extension-true-diamond-mockup'])) {
 	exit;
 }
 
-if (isset($_GET['oliver-extension-true-diamond-inherit'])) {
-	require_once 'oliver-extension-true-diamond-with-inherited-design.php';
+if (isset($_GET['oliver-extension-true-diamond-coupon'])) {
+	require_once 'oliver-extension-true-diamond-coupon.php';
+	exit;
+}
+
+if (isset($_GET['oliver-extension-discount'])) {
+	require_once 'oliver-extension-discount.php';
+	exit;
+}
+
+if (isset($_GET['oliver-extension-discount-without-type'])) {
+	require_once 'oliver-extension-discount-without-type.php';
 	exit;
 }
 
@@ -99,3 +114,13 @@ add_action( 'tds_neworder', function($data){
 });
 
 // ======================= Action & Filters ============================
+
+function oliver_coupon_init($id) {
+  	echo $id;
+  // if ( class_exists('WC_Coupon') ) {
+    $coupon = new WC_Coupon($id);
+    // some code here
+    return $coupon;;
+  // }
+}
+
