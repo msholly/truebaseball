@@ -35,6 +35,10 @@
 			}
 		}
 
+		.disabled {
+			cursor: not-allowed;
+		}
+
 		.map_canvas { 
 			float: left; 
 			width: 100%; 

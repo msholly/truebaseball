@@ -14,7 +14,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // SET DEFAULTS
         // $items = $order->get_items(); might not need this
         $shipMethod = 'Free Ground Shipping';
-        $affiliate_login_name = 'N/A';
+        $affiliate_email = 'N/A';
         $affwp_amount = 0;
         $ticketID = 'N/A';
 
@@ -63,7 +63,8 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $event_type = $oliver_data_array['wordpress']['data']['customTags']['orderType'];
         $sales_rep_id = $oliver_data_array['wordpress']['data']['customTags']['salesRep'];
         $affiliate_wp_userid = $oliver_data_array['wordpress']['data']['customTags']['affiliateID'];
-
+        $shipTo = $oliver_data_array['wordpress']['data']['customTags']['shipTo'];
+        
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
         $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
         $oliverTicketOrderID = $oliver_data_array['wordpress']['data']['ticket']['ticketOrderID'];
@@ -99,22 +100,16 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Add the note
         $order->add_order_note( $note );
 
-        //// Oliver POS will apply CUSTOMER SHIPPING (if exists) to ORDER SHIPPING automatically
-        //// Oliver POS will always add store address to order Billing, for typical point of sale tax reasons
-
-        //// if not override, (if no CUSTOMER shipping), GET CUSTOMER Billing address, push into ORDER shipping 
-        //// IF overrride, easy its a ORDER Shipping override
-        if ( !$order->has_shipping_address() ) {
-            $order->set_shipping_first_name( $order->get_billing_first_name() );
-            $order->set_shipping_last_name( $order->get_billing_last_name() );
-            $order->set_shipping_company( $order->get_billing_company() );
-            $order->set_shipping_address_1( $order->get_billing_address_1() );
-            $order->set_shipping_address_2( $order->get_billing_address_2() );
-            $order->set_shipping_city( $order->get_billing_city() );
-            $order->set_shipping_state( $order->get_billing_state() );
-            $order->set_shipping_postcode( $order->get_billing_postcode() );
-            $order->set_shipping_country( $order->get_billing_country() );
-        }
+        // Set address based on expected from POS UI
+        $order->set_shipping_first_name( $order->get_billing_first_name() );
+        $order->set_shipping_last_name( $order->get_billing_last_name() );
+        $order->set_shipping_company( $order->get_billing_company() );
+        $order->set_shipping_address_1( $shipTo['shipping_address_1'] );
+        $order->set_shipping_address_2( $shipTo['shipping_address_2'] );
+        $order->set_shipping_city( $shipTo['shipping_city'] );
+        $order->set_shipping_state( $shipTo['shipping_state'] );
+        $order->set_shipping_postcode( $shipTo['shipping_postcode'] );
+        $order->set_shipping_country( $shipTo['shipping_country'] );
 
         // Save the data
         $order->save();

@@ -8,11 +8,41 @@ function true_get_tax_info()
 
     if (isset($_GET['true_pos_nonce']) && wp_verify_nonce($_GET['true_pos_nonce'], 'true_pos_form_nonce')) {
 
-        $checkoutData = $_REQUEST['checkoutData'];
+        $taxjar_api = get_option('woocommerce_taxjar-integration_settings')['api_token'];
+        $taxjar = TaxJar\Client::withApiKey($taxjar_api);
+
+        $checkoutData = $_GET['checkoutData'];
+        $oliverPOSdata = $_GET['oliverPOSdata'];
 
         try {
-            $taxjar_api = get_option('woocommerce_taxjar-integration_settings')['api_token'];
-            $taxjar = TaxJar\Client::withApiKey($taxjar_api);
+            // Send for TaxJar Validation
+            $validatedAddresses = $taxjar->validateAddress([
+                'country' => 'US',
+                'state' => $checkoutData['state'],
+                'zip' => $checkoutData['zip'],
+                'city' => $checkoutData['city'],
+                'street' => $checkoutData['addressLine1']
+            ]);
+            $validated = true;
+            $validatedText = "Found Better Address";
+            $bestAddr = $validatedAddresses[0];
+        } catch (TaxJar\Exception $e) {
+
+            // Set best back to original from request
+            $bestAddr = (object) [
+                'country' => 'US',
+                'state' => $checkoutData['state'],
+                'zip' => $checkoutData['zip'],
+                'city' => $checkoutData['city'],
+                'street' => $checkoutData['addressLine1']
+            ];
+            $validated = false;
+            $validatedText = $e->getMessage();
+            error_log($validatedText, 0);
+        }
+
+
+        try {
 
             // Nexus and ship-to information
             $default_locations = get_option('woocommerce_default_country');
@@ -73,10 +103,10 @@ function true_get_tax_info()
                 'from_city' => $store_city,
                 'from_street' => $store_addr,
                 'to_country' => 'US',
-                'to_zip' => $checkoutData['zip'],
-                'to_state' => $checkoutData['state'],
-                'to_city' => $checkoutData['city'],
-                'to_street' => $checkoutData['addressLine1'],
+                'to_zip' => $bestAddr->zip,
+                'to_state' => $bestAddr->state,
+                'to_city' => $bestAddr->city,
+                'to_street' => $bestAddr->addressLine1,
                 'amount' => $cart_amount,
                 'shipping' => $ship_amount,
                 // 'nexus_addresses' => [
@@ -96,11 +126,28 @@ function true_get_tax_info()
             $tax = $taxjar->taxForOrder(
                 $tax_objects
             );
+
+            $data = (object) [
+                'tax' => $tax,
+                'address' => $bestAddr,
+                'validated' => [
+                    'status' => $validated,
+                    'statusText' => $validatedText
+                ],
+                'original' => $checkoutData,
+                'oliverPOSdata' => $oliverPOSdata
+            ];
             // ChromePhp::log('RETURNED TAX INFO');
-            // ChromePhp::log($tax);
+
+            // Unique log files for each Cashier 
+            list($email_prefix) = explode('@', $data->oliverPOSdata['salesRep']);
+            $logSlug = 'oliver-taxjar-' . strtolower(str_replace('.', '-', $email_prefix));
+
+            $logger = wc_get_logger();
+            $logger->debug( wc_print_r( $data, true ), array( 'source' => $logSlug ) );
 
             if (defined('DOING_AJAX') && DOING_AJAX) {
-                wp_send_json($tax);
+                wp_send_json($data);
                 die();
             } else {
                 exit();

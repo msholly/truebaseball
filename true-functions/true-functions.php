@@ -29,6 +29,9 @@ require_once 'php/woocommerce/woocommerce.php';
 // TRIBE EVENT EXTENSIONS
 require_once 'php/tribe/events.php';
 
+// Simple History Additional Functions
+require_once 'php/simple-history/simple-history.php';
+
 // For ACF Debuggin - Disable for Performance
 // add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
