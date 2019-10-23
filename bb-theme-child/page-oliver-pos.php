@@ -739,7 +739,7 @@
                         // Custom Discount Add
                         var customDiscountKey = "Attendee ID: #" + $("#ticket-id").text();
                         var customDiscountAmount = $("#ticket-cost").text();
-                        var customDiscountType = "number";
+                        // var customDiscountType = "number";
 
                         var discountjsonMsg = {
                             oliverpos: {
@@ -748,7 +748,6 @@
                             data: {
                                 discount: {
                                     "key": customDiscountKey,
-                                    "type": customDiscountType,
                                     "amount": Math.abs(customDiscountAmount)
                                 }
                             }
