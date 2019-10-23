@@ -571,10 +571,7 @@
                         console.log(msgData)
                         if (msgData.oliverpos.event === 'shareCheckoutData') {
                             checkoutData = msgData;
-                            // appendWebRegisterCartData();
-                            setShippingUI();
                             calculateOliverTaxes();
-                            // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
                         }
                     }
 
@@ -1034,21 +1031,6 @@
                         // calculateOliverTaxes();
                     }
                 }
-
-                // var appendWebRegisterCartData = function() {
-                // 	let listItemsData = checkoutData.data.checkoutData.cartProducts;
-                // 	if (typeof listItemsData !== "undefiend") {
-                // 		document.getElementById("extensionProductList").innerHTML = " ";
-                // 		let listItemsDataIndex = 1;
-                // 		for (let get_i_data of listItemsData) {
-                // 			document.getElementById("extensionProductList").innerHTML += '<div class="true-daimond-flex"> <div class="push-top">' + get_i_data.quantity + '</div> <div class="push-top ellipsis" title="' + get_i_data.title + '">' + get_i_data.title + '</div> <div class="push-top">' + get_i_data.amount + '</div> <div class="add_tax_amt"> Add Tax Amount <div class="add_tax_amount"> <input type="text" id="listItemsDataTaxInput-'+listItemsDataIndex+'" value="' + get_i_data.tax + '"> </div> </div> </div>';
-
-                // 			listItemsDataIndex++;
-                // 		}
-                // 	} else {
-                // 		document.getElementById("extensionProductList").innerHTML = "Data not found!";
-                // 	}
-                // }
 
                 $("[data-hide]").on("click", function() {
                     $("." + $(this).attr("data-hide")).css("opacity", "0");
