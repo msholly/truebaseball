@@ -9,24 +9,38 @@
 
 		.container-fluid,
 		.col-12,
-		.col-9,
+		.col-11,.col-10,.col-9,
+		.col-8,.col-7,
 		.col-6,
+		.col-5,
 		.col-4,
-		.col-3 {
+		.col-3,
+		.col-2,
+		.col-1 {
 			padding: 0 10px;
+		}
+
+		.container-fluid .row.address-data {
+			padding-bottom: 130px;
 		}
 
 		h3 {
 			font-size: 15px;
 			font-family: "Roboto Condensed", sans-serif;
 			font-weight: bold;
-			margin: 15px 0 0 0;
+			margin: 5px 0 0 0;
 
 			&#event-title {
 				margin-bottom: 0;
 			}
 		}
 
+		.map_canvas { 
+			float: left; 
+			width: 100%; 
+			height: 400px; 
+			margin: 10px 20px 10px 0;
+		  }
 		.clearAllTags {
 			color: $color--primary;
 			cursor: pointer;
@@ -47,6 +61,7 @@
 
 		// TAGS
 		.acf-field {
+			margin-top: 5px;
 			.acf-label {
 				margin-bottom: 0;
 			}
@@ -93,6 +108,10 @@
 					margin-left: -10px;
 				}
 			}
+		}
+
+		.fixed-bottom {
+			background-color: #FFF;
 		}
 	}
 

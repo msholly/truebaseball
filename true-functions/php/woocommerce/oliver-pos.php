@@ -86,7 +86,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         update_field('order_type', $event_type, $order_id);
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
-        update_field('event_ticket', $oliverTicketOrderID, $order_id);
+        update_field('event_ticket', $oliverTicketID, $order_id);
         $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_email . ' | AFFILIATE: ' . $affiliate_email . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $ticketID);
 
         // update the customer_note on the order, the WP Post Excerpt
@@ -99,6 +99,11 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Add the note
         $order->add_order_note( $note );
 
+        //// Oliver POS will apply CUSTOMER SHIPPING (if exists) to ORDER SHIPPING automatically
+        //// Oliver POS will always add store address to order Billing, for typical point of sale tax reasons
+
+        //// if not override, (if no CUSTOMER shipping), GET CUSTOMER Billing address, push into ORDER shipping 
+        //// IF overrride, easy its a ORDER Shipping override
         if ( !$order->has_shipping_address() ) {
             $order->set_shipping_first_name( $order->get_billing_first_name() );
             $order->set_shipping_last_name( $order->get_billing_last_name() );

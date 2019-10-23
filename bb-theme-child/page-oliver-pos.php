@@ -13,7 +13,7 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-12">
                         <div id="oliver-msg" class="alert alert-dismissible fade show nomargin" role="alert">
                             <strong class="status">Holy guacamole!</strong>
                             <span class="msg">You should check in on some of those fields below.</span>
@@ -22,12 +22,12 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <!-- <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Ready</button> -->
-                        <button id="custom_tax_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button>
-                        <!-- <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button> -->
-                        <!-- <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button> -->
-                    </div>
+                    <!-- <div class="col-3"> -->
+                    <!-- <button id="refreshPage" class="btn btn-dark btn-block btn-lg noradius">Ready</button> -->
+                    <!-- <button id="custom_tax_add_button" class="btn btn-success btn-block btn-lg noradius button-secondary">Recalc Tax</button> -->
+                    <!-- <button id="custom_fee_remove_button" class="btn btn-danger btn-block btn-lg noradius">Delete Tax</button> -->
+                    <!-- <button id="clearAllTags" class="btn btn-block btn-lg noradius color--primary-bg color--white">Clear Tags</button> -->
+                    <!-- </div> -->
                 </div>
 
                 <?php acf_form(); ?>
@@ -85,6 +85,65 @@
                     </div>
                 </div>
 
+                <div class="row address-data">
+                    <div class="col-12">
+                        <h3>Ship To Address</h3>
+                        <div class="original-ship">
+                            <div id="ship-route" class="merge"></div>
+                            <div id="ship-rest" class="merge"></div>
+                            <button id="showShipToOverride" class="btn btn-outline-info btn-block btn-lg noradius">Ship to new address</button>
+                        </div>
+
+                        <div class="auto-complete">
+
+                            <input id="geocomplete-true" type="text" placeholder="Search for an address" autocomplete="new-password">
+                            <!-- <input id="find" type="button" value="find" /> -->
+
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <label>Street Number </label>
+                                    <input id="street_number" name="street_number" type="text" value="" required>
+                                </div>
+                                <div class="col-6">
+                                    <label>Street </label>
+                                    <input id="route" name="route" type="text" value="" required>
+                                </div>
+                                <div class="col-3">
+                                    <label>Apt, Suite</label>
+                                    <input id="subpremise" name="subpremise" type="text" value="">
+                                </div>
+                                <div class="col-4">
+                                    <label>City</label>
+                                    <input id="locality" name="locality" type="text" value="" required>
+                                </div>
+                                <div class="col-2">
+                                    <label>State</label>
+                                    <input id="administrative_area_level_1_short" name="administrative_area_level_1_short" type="text" value="" maxlength="2" required>
+                                </div>
+                                <div class="col-3">
+                                    <label>Postal Code</label>
+                                    <input id="postal_code" name="postal_code" type="text" value="" maxlength="5" required>
+                                </div>
+                                <div class="col-3">
+                                    <label>Country</label>
+                                    <input id="country_short" name="country_short" type="text" value="" maxlength="2" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button id="saveNewShipTo" class="btn btn-dark btn-block btn-lg noradius">Save Address And Calc Taxes</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 map-wrapper">
+                        <h3>Map</h3>
+                        <div class="map_canvas"></div>
+                    </div>
+                </div>
+
                 <div class="fixed-bottom">
                     <table class="table">
                         <tr>
@@ -110,6 +169,22 @@
             "use strict";
 
             var checkoutData, oliverTaxResponse, oliverProductTaxes;
+            var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
+
+            // URL Params for initial data
+            var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
+
+            var oliverEmail = urlParams.get("userEmail");
+            var oliverLocation = urlParams.get("location");
+            var oliverRegister = urlParams.get("register");
+            // console.log("EMAIL FROM PARAMS")
+            // console.log(oliverEmail)
+
+            // console.log("Location FROM PARAMS")
+            // console.log(oliverLocation)
+
+            // console.log("Register FROM PARAMS")
+            // console.log(oliverRegister)
 
             (function($) {
 
@@ -123,132 +198,9 @@
 
                     if ($("body").hasClass("page-template-page-oliver-pos-php")) {
 
-                        $("#extension_finished").addClass("disabled");
-                        $("#oliver-msg").hide();
+                        initPage();
 
-                        // URL Params for initial data
-                        var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
-
-                        var oliverEmail = urlParams.get("userEmail");
-                        var oliverLocation = urlParams.get("location");
-                        var oliverRegister = urlParams.get("register");
-                        console.log("EMAIL FROM PARAMS")
-                        console.log(oliverEmail)
-
-                        console.log("Location FROM PARAMS")
-                        console.log(oliverLocation)
-
-                        console.log("Register FROM PARAMS")
-                        console.log(oliverRegister)
-
-                        // window.addEventListener('message', function (e) {
-
-                        // 	if (e.origin === "https://sell.oliverpos.com") {
-                        // 		let msgData = JSON.parse(e.data);
-
-                        // 		if (msgData.oliverpos.event == "extensionSendCartData") {
-                        // 			document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
-                        // 		}
-
-                        // 		console.log("frame page", msgData);
-
-                        // 	}
-
-                        // }, false);
-
-                        // ACF OLIVER
-                        var trueTag = Cookies.getJSON('truecustomtags');
-
-                        if (trueTag == undefined) {
-                            initCookies();
-                        } else {
-                            if (trueTag.ordertype) {
-                                hideOrderType(trueTag.ordertype);
-                            }
-
-                            if (trueTag.salesRep.length > 0) {
-                                hideSalesRep(trueTag.salesRep);
-                            }
-
-                            if (trueTag.affiliate.length > 0) {
-                                hideAffiliate(trueTag.affiliate);
-                            }
-                        }
-
-                        var taxUImarkup =
-                            '<div class="col-6 current-taxes">' +
-                            '<h3>Calculated Taxes</h3>' +
-                            '<p>' +
-                            '<span id="customTaxKey"></span>: $<span id="customTaxAmount"><span>' +
-                            '</p>' +
-                            '</div>';
-
-                        $('#acf-form').contents().unwrap();
-                        $('.acf-field-select, .acf-field-user').wrap("<div class='col-4'></div>");
-                        $('.acf-field-post-object').wrap("<div class='event-ticket-search col-6'></div>");
-                        $(taxUImarkup).insertAfter('.event-ticket-search');
-
-                        $('.acf-fields').addClass("row")
-                        $('.acf-button, .ticket-data').hide();
-
-                        // OLIVER TEST SINCE NO MESSAGE FROM PARENT
-                        if (window.location.hostname === "true-diamond-science.local") {
-                            oliverEmail = "Alfredo.Sanchez@truediamondscience.com";
-                            checkoutData = {
-                                "oliverpos": {
-                                    "event": "shareCheckoutData"
-                                },
-                                "data": {
-                                    "checkoutData": {
-                                        "totalTax": "",
-                                        "cartProducts": [{
-                                                "amount": 80,
-                                                "productId": 2046,
-                                                "variationId": 0,
-                                                "tax": 0,
-                                                "discountAmount": 0,
-                                                "quantity": 1,
-                                                "title": "TRUE Hitting Report"
-                                            },
-                                            {
-                                                "amount": 45,
-                                                "productId": 2414,
-                                                "variationId": 0,
-                                                "tax": 0,
-                                                "discountAmount": 0,
-                                                "quantity": 1,
-                                                "title": "2 Day Shipping"
-                                            },
-                                            {
-                                                "amount": 50,
-                                                "productId": 2053,
-                                                "variationId": 0,
-                                                "tax": 0,
-                                                "discountAmount": 0,
-                                                "quantity": 1,
-                                                "title": "Fitting"
-                                            },
-                                            {
-                                                "amount": 560,
-                                                "productId": 1310,
-                                                "variationId": 1486,
-                                                "tax": 0,
-                                                "discountAmount": 0,
-                                                "quantity": 2,
-                                                "title": "TRUE 2020 T1 USA Youth Bat -10 30.5/20.5 S"
-                                            }
-                                        ],
-                                        "addressLine1": "2780 McDonough St",
-                                        "addressLine2": "",
-                                        "city": "Joliet",
-                                        "zip": "60436",
-                                        "country": "US",
-                                        "state": "IL"
-                                    }
-                                }
-                            }
-                            calculateOliverTaxes();
-                        }
+                        initGeo();
 
                         // Get Order Info
                         var $eventSelect = $(acf_ticket + " select");
@@ -305,9 +257,11 @@
                     }
 
                     // EXTENSION HELPERS 
-                    $("#refreshPage").on("click", refreshPage);
+                    // $("#refreshPage").on("click", refreshPage);
+                    $("#showShipToOverride").on("click", showShipToOverride);
+                    $("#saveNewShipTo").on("click", saveNewShipTo);
 
-                    $("#custom_tax_add_button").on("click", resetOliverTaxes);
+                    // $("#custom_tax_add_button").on("click", resetOliverTaxes);
 
                 });
 
@@ -316,7 +270,32 @@
                     postExtensionReady();
                     // invoke the payment toggle function
                     postTogglePaymentButton();
+
+                    if (window.location.hostname === "true-diamond-science.local") {
+                        calculateOliverTaxes();
+                    }
                 });
+
+                function saveNewShipTo() {
+                    if ($(this).hasClass("disabled")) {
+                        //bail since something is missing or wrong
+                        return
+                    }
+                    var checkedAddress = checkCheckoutData(getShipToOverride());
+                    console.log("RECALC FOR NEW ADDR")
+                    console.log(checkedAddress)
+                    if (checkedAddress.valid) {
+                        resetOliverTaxes();
+                    }
+
+                }
+
+                function showShipToOverride() {
+                    console.log("Function showShipToOverride")
+                    $(".original-ship").hide();
+                    $(".auto-complete").show();
+                    $("#customtags_button").addClass('disabled');
+                }
 
                 function setTicketUI(response) {
                     console.log(response)
@@ -374,11 +353,11 @@
                     returnCurrentCookie();
                 }
 
-                function refreshPage() {
-                    // location.reload();
-                    postExtensionReady();
-                    postTogglePaymentButton();
-                }
+                // function refreshPage() {
+                //     // location.reload();
+                //     postExtensionReady();
+                //     postTogglePaymentButton();
+                // }
 
                 function hideOrderType(data) {
                     var tag = $(' .tag-ordertype');
@@ -483,21 +462,37 @@
                 }
 
                 function resetOliverTaxes() {
-                    if ($("#custom_tax_add_button").hasClass("disabled")) {
-                        return
-                    }
+                    // if ($("#custom_tax_add_button").hasClass("disabled")) {
+                    //     return
+                    // }
+                    console.log(checkoutData)
+                    var newShipTo = getShipToOverride();
+                    checkoutData.data.checkoutData.addressLine1 = newShipTo.shipping_address_1;
+                    checkoutData.data.checkoutData.addressLine2 = newShipTo.shipping_address_2;
+                    checkoutData.data.checkoutData.city = newShipTo.shipping_city;
+                    checkoutData.data.checkoutData.country = newShipTo.shipping_country;
+                    checkoutData.data.checkoutData.state = newShipTo.shipping_state;
+                    checkoutData.data.checkoutData.zip = newShipTo.shipping_postcode;
+
+                    console.log(checkoutData)
+                    // Clear previous TaxJar Response
                     oliverTaxResponse = null;
-                    postExtensionReady();
+                    // postExtensionReady();
                     calculateOliverTaxes();
                 }
 
                 function calculateOliverTaxes() {
 
                     var msgData = checkoutData;
-                    var checkout = msgData.data.checkoutData;
-                    console.log(msgData);
 
-                    checkCheckoutData(checkout);
+                    var checkedAddress = checkCheckoutData(msgData.data.checkoutData);
+
+                    if (checkedAddress.valid) {
+                        $("#ship-route").text(msgData.data.checkoutData.addressLine1 + " " + msgData.data.checkoutData.addressLine2)
+                        $("#ship-rest").text(msgData.data.checkoutData.city + ", " + msgData.data.checkoutData.state + " " + msgData.data.checkoutData.zip + " " + msgData.data.checkoutData.country)
+                    } else {
+                        showShipToOverride();
+                    }
 
                     if (oliverTaxResponse) {
                         console.log("Already have Tax Response")
@@ -506,14 +501,14 @@
                         return
                     }
                     if (msgData.oliverpos.event == "shareCheckoutData") {
-                        if (checkout.country !== "") {
-                            console.log(checkout)
+                        if (msgData.data.checkoutData.country !== "") {
+                            console.log(msgData.data.checkoutData);
                             let true_pos_nonce = document.getElementById("true_pos_nonce").value;
 
                             var taxdata = {
                                 action: 'get_tax_info',
                                 true_pos_nonce: true_pos_nonce,
-                                checkoutData: checkout
+                                checkoutData: msgData.data.checkoutData
                             }
                             $.ajax({
                                 url: truefunction.ajax_url,
@@ -523,9 +518,10 @@
                                 dataType: "json",
                                 beforeSend: function() {
                                     console.log("REQUESTING TAX");
+                                    console.log(taxdata);
                                     $(".current-taxes p").hide();
                                     $("#loader").clone().appendTo(".current-taxes").show();
-                                    $("#customtags_button, #custom_tax_add_button").addClass('disabled');
+                                    $("#customtags_button").addClass('disabled');
                                 },
                                 success: function(response) {
                                     console.log(response);
@@ -540,6 +536,10 @@
                                     $(".current-taxes #loader").remove()
                                 }
                             });
+                        } else {
+                            $("#customTaxKey").text("Error");
+                            $(".sep").text(": ");
+                            $("#customTaxAmount").text("Not enough address information to calculate taxes. Provide Ship To Address Below.");
                         }
                     }
 
@@ -547,24 +547,32 @@
                 }
 
                 function setTaxUI(response) {
-                    $("#customtags_button, #custom_tax_add_button").removeClass('disabled');
+                    $("#customtags_button").removeClass('disabled');
 
                     $(".current-taxes p").show();
-                    $("#customTaxKey").text(response.jurisdictions.state + " Tax");
+                    if (response.amount_to_collect > 0) {
+                        $("#customTaxKey").text(response.jurisdictions.state + " Tax");
+                        mapOliverTaxes();
+                    } else {
+                        $("#customTaxKey").text($("#administrative_area_level_1_short").val() + " Tax");
+                    }
                     $("#customTaxAmount").text(response.amount_to_collect);
-                    mapOliverTaxes();
-                }
+                    $(".sep").text(": $");
 
+                }
 
                 // OLIVER POC
                 window.addEventListener('message', function(e) {
-                    // console.log(e)
-                    if (e.origin === "https://sell.oliverpos.com") {
+
+                    if (e.origin !== oliverExtensionTargetOrigin) {
+                        console.log("Invalid origin " + e.origin);
+                    } else {
                         var msgData = JSON.parse(e.data);
                         console.log(msgData)
                         if (msgData.oliverpos.event === 'shareCheckoutData') {
                             checkoutData = msgData;
                             // appendWebRegisterCartData();
+                            setShippingUI();
                             calculateOliverTaxes();
                             // document.getElementById('parentData').innerHTML = msgData.data.oliverCartData;
                         }
@@ -572,15 +580,13 @@
 
                 }, false);
 
-
                 function bindEvent(element, eventName, eventHandler) {
                     element.addEventListener(eventName, eventHandler, false);
                 }
 
                 // Send a message to the parent
                 var sendMessage = function(msg) {
-                    // window.parent.postMessage(msg, 'https://truediamondscience.com');
-                    window.parent.postMessage(msg, '*');
+                    window.parent.postMessage(msg, oliverExtensionTargetOrigin);
                 };
 
                 var customtagsButton = document.getElementById('customtags_button');
@@ -662,6 +668,25 @@
 
                     returnCurrentCookie();
 
+                    // GET SHIP TO INFO
+                    var shipTo = getShipToOverride();
+                    if (shipTo.shipping_country === "") {
+                        var shipTo = {
+                            shipping_address_1: checkoutData.data.checkoutData.addressLine1,
+                            shipping_address_2: checkoutData.data.checkoutData.addressLine2,
+                            shipping_city: checkoutData.data.checkoutData.city,
+                            shipping_state: checkoutData.data.checkoutData.state,
+                            shipping_postcode: checkoutData.data.checkoutData.zip,
+                            shipping_country: checkoutData.data.checkoutData.country
+                        }
+                    }
+
+                    var oliverPOS = {
+                        salesRep: oliverEmail,
+                        location: oliverLocation,
+                        register: oliverRegister
+                    }
+
                     var jsonMsg = {
                         oliverpos: {
                             "event": "addData"
@@ -670,7 +695,9 @@
                             customTags: {
                                 "affiliateID": thisAffiliateID,
                                 "salesRep": trueTag.salesRep[0].id,
-                                "orderType": trueTag.ordertypeVal
+                                "orderType": trueTag.ordertypeVal,
+                                "shipTo": shipTo,
+                                "oliverPOS": oliverPOS
                             },
                             ticket: {
                                 "ticketNumber": ticketID,
@@ -688,6 +715,7 @@
                         // Custom Discount Add
                         var customDiscountKey = "Attendee ID: #" + $("#ticket-id").text();
                         var customDiscountAmount = $("#ticket-cost").text();
+                        var customDiscountType = "number";
 
                         var discountjsonMsg = {
                             oliverpos: {
@@ -696,7 +724,8 @@
                             data: {
                                 discount: {
                                     "key": customDiscountKey,
-                                    "amount": customDiscountAmount
+                                    "type": customDiscountType,
+                                    "amount": Math.abs(customDiscountAmount)
                                 }
                             }
                         }
@@ -727,6 +756,7 @@
                     $(this).text("TAGS SAVED");
                     $("#oliver-msg").hide();
                     $("#extension_finished").removeClass("disabled");
+                    // $("#custom_tax_add_button").addClass("disabled");
                 });
 
                 var extensionFinishedButton = document.getElementById('extension_finished');
@@ -746,11 +776,22 @@
 
                     sendMessage(JSON.stringify(jsonMsg));
 
-                    $(this).text("CHARGE CREDIT CARD NOW");
+                    disableExtension();
 
                     // invoke the payment toggle function
                     postTogglePaymentButton(true);
                 });
+
+                function disableExtension() {
+                    $("#extension_finished").text("CHARGE CREDIT CARD NOW");
+                    $("#select2-acf-field_5d4a0a0c75c12-container").select2({
+                        disabled: 'readonly'
+                    })
+                    $('.auto-complete input').each(function() {
+                        $(this).attr('readonly', true);
+                    });
+                    $("#saveNewShipTo,#showShipToOverride").addClass("disabled");
+                }
 
                 var postTogglePaymentButton = function(flag = false) {
                     var jsonMsg = {
@@ -765,6 +806,10 @@
                     }
 
                     sendMessage(JSON.stringify(jsonMsg));
+
+                    var status = flag ? "ENABLED." : "DISABLED.";
+                    console.log("Payment Buttons " + status)
+
                 }
 
                 var postExtensionReady = function() {
@@ -778,62 +823,216 @@
                     sendMessage(JSON.stringify(jsonMsg));
                 }
 
-                // CHECK IF Extension iFrame
-                function iniFrame() {
-                    if (window.location !== window.parent.location) {
+                // Address override
+                function getShipToOverride() {
 
-                        // The page is in an iFrames 
-                        return true
-                    } else {
-
-                        // The page is not in an iFrame 
-                        return false
+                    var shipTo = {
+                        shipping_address_1: $('#street_number').val() + " " + $('#route').val(),
+                        shipping_address_2: $('#subpremise').val(),
+                        shipping_city: $('#locality').val(),
+                        shipping_state: $('#administrative_area_level_1_short').val(),
+                        shipping_postcode: $('#postal_code').val(),
+                        shipping_country: $('#country_short').val()
                     }
+                    return shipTo;
                 }
 
                 function showAlert(msg, type, status) {
-                    $('#oliver-msg').removeClass("alert-warning", "alert-info", "alert-danger")
+                    $('#oliver-msg').removeClass("alert-warning alert-info alert-danger")
                     $('#oliver-msg .status').text(status + ": ");
                     $('#oliver-msg .msg').text(msg);
                     $('#oliver-msg').addClass("alert-" + type).show();
                 }
 
                 function checkCheckoutData(checkout) {
-
-                    var msg, type;
+                    console.log(checkout)
+                    // Returns if address is valid, false is not valid
+                    var msg, type, status, valid;
                     switch (true) {
-                        case checkout.country === "":
-                            msg = "Customer Missing Country.";
+                        case checkout.country === "" || checkout.shipping_country === "":
+                            msg = "Customer Missing Country or No Customer Provided.";
                             status = "Error";
                             type = "danger";
+                            // postTogglePaymentButton();
+                            valid = false;
                             break;
-                        case checkout.addressLine1 === "":
+                        case checkout.addressLine1 === "" || checkout.shipping_address_1 === "":
                             msg = "Customer Missing Address Line 1.";
                             status = "Warning";
                             type = "warning";
+                            valid = false;
                             break;
-                        case checkout.city === "":
+                        case checkout.city === "" || checkout.shipping_city === "":
                             msg = "Customer Missing City.";
                             status = "Warning";
                             type = "warning";
+                            valid = false;
                             break;
-                        case checkout.state === "":
+                        case checkout.state === "" || checkout.shipping_state === "":
                             msg = "Customer Missing State.";
                             status = "Error";
                             type = "danger";
+                            valid = false;
                             break;
-                        case checkout.zip === "":
+                        case checkout.zip === "" || checkout.shipping_postcode === "":
                             msg = "Customer Missing Zip Code.";
                             status = "Warning";
                             type = "warning";
+                            valid = false;
                             break;
                         default:
-                            msg = "Customer Address is set.";
+                            msg = "Customer Address is valid.";
                             status = "Note";
                             type = "info";
+                            valid = true;
                     }
                     showAlert(msg, type, status)
+                    var data = {
+                        msg: msg,
+                        type: type,
+                        status: status,
+                        valid: valid
+                    }
+                    return data;
 
+                }
+
+                function initGeo() {
+
+                    $('.auto-complete, .map-wrapper').hide();
+
+                    $("#geocomplete-true").geocomplete({
+                        map: ".map_canvas",
+                        details: ".auto-complete",
+                        types: ["geocode", "establishment"],
+                        country: 'us'
+                    });
+
+                    $("#geocomplete-true")
+                        .geocomplete()
+                        .bind("geocode:result", function(event, result) {
+                            console.log(result);
+                            $('.map-wrapper').show();
+                        });
+
+                }
+
+                function initPage() {
+                    $("#geocomplete-true").focus(function() {
+                        // Workaround for some script adding old autocomplete attribute of 'off'
+                        $('#geocomplete-true').attr('autocomplete', 'new-password')
+                    });
+
+                    $("#extension_finished").addClass("disabled");
+                    $("#oliver-msg").hide();
+
+                    // ACF OLIVER
+                    var trueTag = Cookies.getJSON('truecustomtags');
+
+                    if (trueTag == undefined) {
+                        initCookies();
+                    } else {
+                        if (trueTag.ordertype) {
+                            hideOrderType(trueTag.ordertype);
+                        }
+
+                        if (trueTag.salesRep.length > 0) {
+                            hideSalesRep(trueTag.salesRep);
+                        }
+
+                        if (trueTag.affiliate.length > 0) {
+                            hideAffiliate(trueTag.affiliate);
+                        }
+                    }
+
+                    var taxUImarkup =
+                        '<div class="col-6 current-taxes">' +
+                        '<h3>Calculated Taxes</h3>' +
+                        '<p>' +
+                        '<span id="customTaxKey"></span><span class="sep"></span><span id="customTaxAmount"><span>' +
+                        '</p>' +
+                        '</div>';
+
+                    $('#acf-form').contents().unwrap();
+                    $('.acf-field-select, .acf-field-user').wrap("<div class='col-4'></div>");
+                    $('.acf-field-post-object').wrap("<div class='event-ticket-search col-6'></div>");
+                    $(taxUImarkup).insertAfter('.event-ticket-search');
+
+                    $('.acf-fields').addClass("row")
+                    $('.acf-button, .ticket-data').hide();
+
+                    // OLIVER TEST SINCE NO MESSAGE FROM PARENT
+                    if (window.location.hostname === "true-diamond-science.local") {
+                        oliverEmail = "contact@mitchellsholly.com";
+                        checkoutData = {
+                            "oliverpos": {
+                                "event": "shareCheckoutData"
+                            },
+                            "data": {
+                                "checkoutData": {
+                                    "totalTax": "",
+                                    "cartProducts": [{
+                                            "amount": 80,
+                                            "productId": 2046,
+                                            "variationId": 0,
+                                            "tax": 0,
+                                            "discountAmount": 0,
+                                            "quantity": 1,
+                                            "title": "TRUE Hitting Report"
+                                        },
+                                        {
+                                            "amount": 45,
+                                            "productId": 2414,
+                                            "variationId": 0,
+                                            "tax": 0,
+                                            "discountAmount": 0,
+                                            "quantity": 1,
+                                            "title": "2 Day Shipping"
+                                        },
+                                        {
+                                            "amount": 50,
+                                            "productId": 2053,
+                                            "variationId": 0,
+                                            "tax": 0,
+                                            "discountAmount": 0,
+                                            "quantity": 1,
+                                            "title": "Fitting"
+                                        },
+                                        {
+                                            "amount": 560,
+                                            "productId": 1310,
+                                            "variationId": 1486,
+                                            "tax": 0,
+                                            "discountAmount": 0,
+                                            "quantity": 2,
+                                            "title": "TRUE 2020 T1 USA Youth Bat -10 30.5/20.5 S"
+                                        }
+                                    ],
+                                    // "addressLine1": "2780 McDonough St",
+                                    // "addressLine2": "",
+                                    // "city": "Joliet",
+                                    // "zip": "60436",
+                                    // "country": "US",
+                                    // "state": "IL"
+
+                                    "addressLine1": "814 littlejohn st",
+                                    "addressLine2": "",
+                                    "city": "Gastonia",
+                                    "zip": "28052",
+                                    "country": "US",
+                                    "state": "NC"
+
+                                    // "addressLine1": "",
+                                    // "addressLine2": "",
+                                    // "city": "",
+                                    // "zip": "",
+                                    // "country": "",
+                                    // "state": ""
+                                }
+                            }
+                        }
+                        // calculateOliverTaxes();
+                    }
                 }
 
                 // var appendWebRegisterCartData = function() {
@@ -852,7 +1051,7 @@
                 // }
 
                 $("[data-hide]").on("click", function() {
-                    $("." + $(this).attr("data-hide")).hide();
+                    $("." + $(this).attr("data-hide")).css("opacity", "0");
                 });
 
 
