@@ -1,4 +1,5 @@
 header {
+
 	#menu-main-menu {
 		li {
 
@@ -52,11 +53,28 @@ header {
 
 	}
 
-	#menu-shop-menu {
-		li.wpmenucartli a.wpmenucart-contents span {
-			display: none !important;
+	@media all and (max-width: 1380px) and (min-width: 993px) {
+		.main-nav-wrapper .fl-module-content {
+			margin-top: 5px;
+			#menu-main-menu {
+				text-align: center;
+				a {
+					padding-bottom: 10px
+				}
+			}
+		}
+		#menu-shop-menu {
+			li.wpmenucartli a.wpmenucart-contents span {
+				display: none !important;
+			}
 		}
 	}
+	@media all and (max-width: 1380px) and (min-width: 1227px) {
+		.main-nav-wrapper .fl-module-content {
+			margin-top: 15px;
+		}
+	}
+
 
 	.wpmenucart-contents::before {
 		display: inline-block;
