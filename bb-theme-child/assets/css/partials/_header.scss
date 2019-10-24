@@ -27,6 +27,11 @@ header {
 							color: #FFF;
 						}
 					}
+					&.current-menu-item {
+						a {
+							color: #FFF;
+						}
+					}
 				}
 			}
 		}
