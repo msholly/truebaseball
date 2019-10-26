@@ -323,4 +323,26 @@ function true_ao_noptimize() {
 }
 add_filter('autoptimize_filter_noptimize','true_ao_noptimize',10,0);
 
+// Adds ORDER ID: and TICKET ID to results, but not search
+function true_acf_extend_search_result( $title, $post, $field, $post_id ) {
+    // add post type to each result
+    $pre = 'Order ID: ';
+    $title = $pre .= $title .= ' | Ticket ID: ' . $post->ID;
+    // ChromePhp::log($post);
+    return $title;
+}
+add_filter( 'acf/fields/post_object/result', 'true_acf_extend_search_result', 10, 4);
 
+
+// function true_acf_extend_search( $args, $field, $post_id ) {
+	
+    // // only show children of the current post being edited
+    // $args['ID'] = $post_id;
+	
+	
+	// return
+    // return $args;
+    
+// }
+// filter for every field
+// add_filter('acf/fields/post_object/query', 'true_acf_extend_search', 10, 3);
