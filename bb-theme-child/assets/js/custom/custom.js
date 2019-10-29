@@ -57,18 +57,21 @@
 
 		// Ninja Forms - Datepicker Customizations
 
-		new(Marionette.Object.extend({
+		if (typeof Marionette !== 'undefined') {
+			new(Marionette.Object.extend({
 
-			initialize: function () {
-				this.listenTo(Backbone.Radio.channel('pikaday'), 'init', this.modifyDatepicker);
-			},
-
-			modifyDatepicker: function (dateObject, fieldModel) {
-				// dateObject.pikaday.setDate( '04/11/2016' );
-				dateObject.pikaday.gotoDate( moment().add(14, 'days').toDate() );
-				dateObject.pikaday.setMinDate( moment().add(14, 'days').toDate() );
-			}
-		}));
+				initialize: function () {
+					this.listenTo(Backbone.Radio.channel('pikaday'), 'init', this.modifyDatepicker);
+				},
+	
+				modifyDatepicker: function (dateObject, fieldModel) {
+					// dateObject.pikaday.setDate( '04/11/2016' );
+					dateObject.pikaday.gotoDate( moment().add(14, 'days').toDate() );
+					dateObject.pikaday.setMinDate( moment().add(14, 'days').toDate() );
+				}
+			}));
+		}
+		
 
 
 
