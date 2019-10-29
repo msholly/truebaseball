@@ -14,3 +14,14 @@ function tribe_events_add_product_category_to_tickets( $event_id, $ticket, $raw_
     }
 
 }
+
+// Register Manage Categories capabilities for User Roles Plugin
+add_filter( 'tribe_events_register_event_cat_type_args', function( $args ) {
+	$args['capabilities'] = [
+		'manage_terms' => 'edit_tribe_events',
+        'edit_terms'   => 'edit_tribe_events',
+        'delete_terms' => 'edit_tribe_events',
+        'assign_terms' => 'edit_tribe_events',
+	];
+	return $args;
+} );
