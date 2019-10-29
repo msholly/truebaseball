@@ -48,7 +48,19 @@
     if ($("body").hasClass("page-id-671")) {
       $("#affwp-user-login").parent().prepend("<p class='helper'>Please choose a recognizable user name for you or your organization. Do not include any special characters. This CAN NOT be changed later. </p>");
       $("#affwp-register-form legend").after("<p class='helper'>The TRUE Affiliate program is invite only! To apply, you'll need a referral code that is sent to your email. Please enter that below. </p>");
-    }
+    } // Ninja Forms - Datepicker Customizations
+
+
+    new (Marionette.Object.extend({
+      initialize: function initialize() {
+        this.listenTo(Backbone.Radio.channel('pikaday'), 'init', this.modifyDatepicker);
+      },
+      modifyDatepicker: function modifyDatepicker(dateObject, fieldModel) {
+        // dateObject.pikaday.setDate( '04/11/2016' );
+        dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
+        dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
+      }
+    }))();
 
     function makeCTABtn(element, solid, center) {
       var action = element.wrapInner("<span></span>").wrap("<div class='cta-btn'></div>");
