@@ -20,6 +20,8 @@ function prefix_wc_api_order_response($order)
     $order['true_meta_affiliate'] = $true_meta_affiliate;
     $order['transaction_id'] = $transaction_id;
 
+    $order['true_meta_attendee'] = tribe_tickets_get_attendees($order['id'], $context = null);
+
     return $order;
 }
 add_filter('woocommerce_api_order_response', 'prefix_wc_api_order_response', 10, 1);
