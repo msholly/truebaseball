@@ -1012,7 +1012,8 @@ body .pika-label {
 }
 
 .nf-form-content hr.ninja-forms-field {
-	padding: 0
+	padding: 0;
+	border-top: 1px solid #3c3c3c;
 }
 
 .nf-form-content input[type=checkbox].ninja-forms-field,

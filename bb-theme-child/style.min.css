@@ -572,7 +572,7 @@ body .pika-label{background:transparent}
 .nf-form-content .listselect-wrap .nf-field-element div,.nf-form-content .ninja-forms-field{font-size:16px;margin:0;padding:12px}
 .nf-form-content .listselect-wrap .nf-field-element div,.nf-form-content input.ninja-forms-field,.nf-form-content select.ninja-forms-field:not([multiple]){height:50px}
 .nf-form-content textarea.ninja-forms-field{height:200px}
-.nf-form-content hr.ninja-forms-field{padding:0}
+.nf-form-content hr.ninja-forms-field{padding:0;border-top:1px solid #3c3c3c}
 .nf-form-content input[type=checkbox].ninja-forms-field,.nf-form-content input[type=radio].ninja-forms-field{height:auto}
 .nf-form-content .listcheckbox-wrap li,.nf-form-content .listradio-wrap li{margin-bottom:12px !important;line-height:0}
 .nf-form-content .nf-product-field span{padding-right:16px}
