@@ -71,7 +71,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
         // Get user's full information
         // $user_id = affwp_get_affiliate_user_id( $affwp_ref ); // If getting affiliate ID (not with Oliver)
-        if ($affiliate_wp_userid) {
+        if ($affiliate_wp_userid != "N/A") {
             $affiliate_info = get_userdata($affiliate_wp_userid);
             $affiliate_email = $affiliate_info->user_email;
         }
@@ -100,9 +100,19 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         // Add the note
         $order->add_order_note( $note );
 
-        // Set address based on expected from POS UI
-        $order->set_shipping_first_name( $order->get_billing_first_name() );
-        $order->set_shipping_last_name( $order->get_billing_last_name() );
+        $cust_first_name = $order->get_billing_first_name();
+        $cust_last_name = $order->get_billing_last_name();
+
+        if (!$cust_first_name) {
+            $cust_first_name = get_user_meta( $order->customer_id, 'first_name', true );
+            $cust_last_name = get_user_meta( $order->customer_id, 'last_name', true );
+            $order->set_billing_first_name( $cust_first_name );
+            $order->set_billing_last_name( $cust_last_name );
+        }
+
+        // Set shipping address based on expected from POS UI
+        $order->set_shipping_first_name( $cust_first_name );
+        $order->set_shipping_last_name( $cust_last_name );
         $order->set_shipping_company( $order->get_billing_company() );
         $order->set_shipping_address_1( $shipTo['shipping_address_1'] );
         $order->set_shipping_address_2( $shipTo['shipping_address_2'] );
