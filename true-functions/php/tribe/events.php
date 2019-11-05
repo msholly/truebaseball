@@ -25,3 +25,10 @@ add_filter( 'tribe_events_register_event_cat_type_args', function( $args ) {
 	];
 	return $args;
 } );
+
+// Set time increment to 20
+add_filter( 'tribe_events_meta_box_timepicker_step', 'tribe_twenty_minute_timepicker' );
+
+function tribe_twenty_minute_timepicker() {
+    return 20;
+}
