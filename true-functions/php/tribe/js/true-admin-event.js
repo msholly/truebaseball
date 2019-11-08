@@ -15,15 +15,24 @@
             $("#saved_ticket-attendee-info").val('3159').change();
         }
 
+        var exists = $('.tagchecklist li:contains("child")').length; // see if element(s) exists that matches by checking length
+        
+        // Run only on child events
         $("#EventStartTime, #EventEndTime").change(function () {
-            var venue = $('#s2id_saved_tribe_venue .select2-chosen').text();
-            var type = " | TRUE Bat Hit+Fit Challenge | ";
-            var start_time = $("#EventStartTime").val();
-            var end_time = $("#EventEndTime").val();
-            var auto_title = venue + type + start_time + ' - ' + end_time;
-            console.log(auto_title)
-            $('#title').val(auto_title).change();
+            if (exists > 0) {
+                var venue = $('#s2id_saved_tribe_venue .select2-chosen').text();
+                var type = " | TRUE Bat Hit+Fit Challenge | ";
+                var start_time = $("#EventStartTime").val();
+                var end_time = $("#EventEndTime").val();
+                var auto_title = venue + type + start_time + ' - ' + end_time;
+                console.log(auto_title)
+                $('#title').val(auto_title).change();
+            }
+
         });
+
+
+
     });
 
 
