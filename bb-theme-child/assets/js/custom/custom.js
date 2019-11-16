@@ -50,8 +50,8 @@
 		}
 
 		// AFFILIATE JOIN FORM
-		if ($("body").hasClass("page-id-671")) {
-			$("#affwp-user-login").parent().prepend("<p class='helper'>Please choose a recognizable user name for you or your organization. Do not include any special characters. This CAN NOT be changed later. </p>");
+		if ($("body").hasClass("page-id-671") || $("body").hasClass("page-id-667")) {
+			$("#affwp-user-login").parent().prepend("<hr><p class='helper'>Please choose a recognizable user name for you or your organization. This will be used in your unique Tracking URL that you will give to your clients. Do not include any special characters. This CAN NOT be changed later. </p><p class='helper'>Example: https://truediamondscience.com/affiliate/battingcage101/ </p>");
 			$("#affwp-register-form legend").after("<p class='helper'>The TRUE Affiliate program is invite only! To apply, you'll need a referral code that is sent to your email. Please enter that below. </p>");
 		}
 

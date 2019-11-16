@@ -23,7 +23,8 @@ function affwp_add_program_field_to_affiliate_registration_form() {
 		<label for="affwp-program">Affiliate Program Type</label>
 		        
         <select name='affwp_program'>
-            <option value='Web Affiliate'>Web Affiliate</option>
+			<option value=''>Choose the type of program you run</option>
+			<option value='Web Affiliate'>Web Affiliate</option>
             <option value='Team or Facility'>Team or Facility</option>
         </select>
 	</p>

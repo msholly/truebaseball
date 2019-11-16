@@ -32,6 +32,9 @@ require_once 'php/tribe/events.php';
 // Simple History Additional Functions
 require_once 'php/simple-history/simple-history.php';
 
+// Fitting Algo Integrations
+require_once 'php/fitting/justBats.php';
+
 // For ACF Debuggin - Disable for Performance
 // add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
 
