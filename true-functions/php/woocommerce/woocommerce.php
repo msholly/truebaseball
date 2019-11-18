@@ -271,3 +271,16 @@ function true_paypal_enable_manager($available_gateways)
     }
     return $available_gateways;
 }
+
+
+function true_add_mailchimp_to_checkoutwc()
+{
+    ?>
+    <p><label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+            <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="mc4wp-subscribe" value="1" />
+            Subscribe to the TRUE Newsletter.
+        </label>
+    </p>
+<?php
+}
+add_action('cfw_checkout_before_payment_method_tab_nav', 'true_add_mailchimp_to_checkoutwc');
