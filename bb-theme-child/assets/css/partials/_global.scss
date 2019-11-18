@@ -439,6 +439,68 @@
 		border-color: $input-disabled-solid-color;
 	}
 
+	/* STANDARD WOO RADIOS */
+	.woocommerce-shipping-methods {
+		li {
+			position: relative;
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+
+			label {
+				display: block;
+				padding: 0 0 0 25px;
+			}
+
+			input {
+				height: 16px;
+				left: 0;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				width: 16px;
+				&:checked+label::after {
+					opacity: 1;
+				}
+				&:checked+label::before {
+					opacity: 0;
+				}
+				&:focus+label::before {
+					box-shadow: 0 0 0 3px #ffbf47;
+					outline: 3px solid transparent;
+					/* For Windows high contrast mode. */
+				}
+			}
+
+			input+label {
+				&:before {
+					border: 2px solid;
+					content: "";
+					height: 16px;
+					left: 0;
+					position: absolute;
+					top: 2px;
+					width: 16px;
+					border-radius: 50%;
+				}
+
+				&:after {
+					content: "";
+					opacity: 0;
+					border: 8px solid $color--primary;
+					border-radius: 50%;
+					position: absolute;
+					left: 0px;
+					top: 2px;
+					transition: opacity 0.2s ease-in-out;
+				}
+			}
+		}
+		@media only screen and (max-width: 768px) {
+			margin-top: 30px !important;
+		}
+	}
+
+
 
 	/* TYPOGRAPHY */
 	.fl-heading-text span {
@@ -458,7 +520,8 @@
 }
 
 // REMOVE PROMOTER FROM PUBLIC ADMIN BAR
-body.theme-bb-theme, body.checkout-wc {
+body.theme-bb-theme,
+body.checkout-wc {
 
 	#wp-admin-bar-promoter-admin-bar,
 	#wp-admin-bar-wpseo-menu,
