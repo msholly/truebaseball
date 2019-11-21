@@ -263,3 +263,16 @@ span.middot {
 .textshadow-white-lg {
 	text-shadow: 2px 2px 0px #fff;
 }
+
+/* Semi-transparent images */
+.opacity-50 img {
+	opacity: .5;
+}
+
+.opacity-60 img {
+	opacity: .6;
+}
+
+.opacity-70 img {
+	opacity: .7;
+}
