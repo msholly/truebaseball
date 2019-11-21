@@ -321,7 +321,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 #affwp-affiliate-dashboard .affwp-tab-content{max-width:1100px;margin:0 auto;padding:35px}
 .color--primary{color:#00aeef !important}
 .color--primary-bg{background-color:#00aeef !important}
-.color--white{color:#FFF}
+.color--white{color:#FFF !important}
 .uppercase,.uppercase .fl-heading{text-transform:uppercase !important}
 .lowercase,.lowercase .fl-heading{text-transform:lowercase !important}
 .capitalize{text-transform:capitalize !important}
