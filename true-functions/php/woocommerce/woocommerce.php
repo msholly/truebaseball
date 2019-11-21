@@ -272,7 +272,7 @@ function true_paypal_enable_manager($available_gateways)
     return $available_gateways;
 }
 
-
+// Add custom mailchimp integration to CheckoutWC
 function true_add_mailchimp_to_checkoutwc()
 {
     ?>
@@ -284,3 +284,7 @@ function true_add_mailchimp_to_checkoutwc()
 <?php
 }
 add_action('cfw_checkout_before_payment_method_tab_nav', 'true_add_mailchimp_to_checkoutwc');
+
+// Deferr Transactional emails to speed checkout
+add_filter( 'woocommerce_defer_transactional_emails', '__return_true' );
+
