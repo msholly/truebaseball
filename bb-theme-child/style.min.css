@@ -120,7 +120,8 @@ body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
 .woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info,.woocommerce-page .woocommerce-notices-wrapper .woocommerce-info,.woocommerce-page .woocommerce-info{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .woocommerce-info.cta-notification{background:#00aeef !important}
-.woocommerce-page .woocommerce-info.cta-notification a{color:#FFF}
+.woocommerce-page .woocommerce-info.cta-notification a{color:#FFF;margin:0}
+.woocommerce-page .woocommerce-info.cta-notification a:hover{color:#FFF}
 .woocommerce-page .woocommerce-error{color:#b84048 !important}
 .woocommerce-page .bat-hero{background-attachment:scroll;background-image:url("assets/img/true-diagram-background.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;background-color:#000}
 .woocommerce-page .cart_totals .select2-container--default .select2-selection--single .select2-selection__rendered{color:#444 !important}
@@ -819,7 +820,8 @@ footer .fl-menu-mobile-toggle .fl-menu-mobile-toggle-label{color:#FFF !important
 .fl-page-content .woocommerce-shipping-methods{margin-top:30px !important}
 body.home .banner-two-cta .cta-btn{display:block;margin-top:15px}
 .woocommerce-cart .shop_table tbody td,.cart_totals .shop_table tbody td{padding-left:10px !important;padding-right:10px !important}
-}@media(max-width:768px){.woocommerce-page .bat-hero .fl-row-content-wrap{background-position:center 70px !important}
+}@media(max-width:768px){.woocommerce-page .woocommerce-info.cta-notification a{margin-top:10px}
+.woocommerce-page .bat-hero .fl-row-content-wrap{background-position:center 70px !important}
 .woocommerce-cart .shop_table tbody td.product-quantity input.qty,.cart_totals .shop_table tbody td.product-quantity input.qty{display:inline-block}
 .uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
 }@media(max-width:767px){.page-id-426 .loading h1,.page-template-page-true-fitting .loading h1{font-size:40px;margin:0 0 30px}
