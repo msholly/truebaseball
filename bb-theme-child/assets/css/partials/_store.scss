@@ -9,6 +9,12 @@
 		color: #FFF;
 	}
 
+	.woocommerce-info.cta-notification {
+		background: $color--primary !important;
+		a {
+			color: #FFF;
+		}
+	}
 	.woocommerce-error {
 		color: #b84048 !important;
 	}

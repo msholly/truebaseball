@@ -20,6 +20,13 @@
 			});
 		}
 
+		if ($("body").hasClass("woocommerce-cart")) {
+			// CTA STYLE FOR BLACK FRIDAY NOTIFICATION
+			$(".woocommerce-info a:contains('GET DEAL')").each(function () {
+				$(this).parent().addClass("cta-notification"); 
+			});
+		}
+
 		if ($("body").hasClass("single-product")) {
 			// ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
 			$(".single_add_to_cart_button").wrapInner("<span></span>");
@@ -63,15 +70,15 @@
 				initialize: function () {
 					this.listenTo(Backbone.Radio.channel('pikaday'), 'init', this.modifyDatepicker);
 				},
-	
+
 				modifyDatepicker: function (dateObject, fieldModel) {
 					// dateObject.pikaday.setDate( '04/11/2016' );
-					dateObject.pikaday.gotoDate( moment().add(14, 'days').toDate() );
-					dateObject.pikaday.setMinDate( moment().add(14, 'days').toDate() );
+					dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
+					dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
 				}
 			}));
 		}
-		
+
 
 
 

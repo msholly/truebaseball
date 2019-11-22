@@ -16,6 +16,13 @@
       });
     }
 
+    if ($("body").hasClass("woocommerce-cart")) {
+      // CTA STYLE FOR BLACK FRIDAY NOTIFICATION
+      $(".woocommerce-info a:contains('GET DEAL')").each(function () {
+        $(this).parent().addClass("cta-notification");
+      });
+    }
+
     if ($("body").hasClass("single-product")) {
       // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
       $(".single_add_to_cart_button").wrapInner("<span></span>");
