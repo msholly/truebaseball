@@ -2,7 +2,7 @@
 
 (function ($) {
   jQuery(document).ready(function ($) {
-    if ($("body").hasClass("page-tribe-attendee-registration")) {
+    if ($("body").hasClass("page-tribe-attendee-registration") || $("body").hasClass("page-template-page-tribe-attendee-registration")) {
       makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
       makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true); // Disclaimer popup via JS
 
