@@ -44,7 +44,7 @@ function true_get_just_bats_url($productId)
 
             // FINAL target
             // https://www.justbats.com/product/true-t1--10-usa-baseball-bat--yb-t1-20-10/32218/?attr=28.5%22|Small%20Grip
-            $full_justbats_url = $base_justbats_url . $slug . '/?attr=' . $bat_length . '%22|' . $bat_grip;
+            $full_justbats_url = $base_justbats_url . $slug . '/?attr=' . $bat_length . '%22--' . $bat_grip;
 
         }
         
