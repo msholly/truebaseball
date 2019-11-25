@@ -589,7 +589,7 @@
                         $("#customTaxKey").text($("#administrative_area_level_1_short").val() + " Tax");
                     }
                     mapOliverTaxes();
-                    $("#customTaxAmount").text(response.amount_to_collect);
+                    $("#customTaxAmount").text(response.amount_to_collect.toFixed(2));
                     $(".sep").text(": $");
 
                 }

@@ -9,8 +9,11 @@
 
 		.container-fluid,
 		.col-12,
-		.col-11,.col-10,.col-9,
-		.col-8,.col-7,
+		.col-11,
+		.col-10,
+		.col-9,
+		.col-8,
+		.col-7,
 		.col-6,
 		.col-5,
 		.col-4,
@@ -39,12 +42,13 @@
 			cursor: not-allowed;
 		}
 
-		.map_canvas { 
-			float: left; 
-			width: 100%; 
-			height: 400px; 
+		.map_canvas {
+			float: left;
+			width: 100%;
+			height: 400px;
 			margin: 10px 20px 10px 0;
-		  }
+		}
+
 		.clearAllTags {
 			color: $color--primary;
 			cursor: pointer;
@@ -52,9 +56,11 @@
 
 		.alert {
 			margin-top: 15px;
+
 			.type {
 				text-transform: uppercase;
 			}
+
 			&.alert-dismissible .close {
 				&:hover {
 					background-color: transparent;
@@ -63,16 +69,27 @@
 			}
 		}
 
+		input[type=text] {
+			margin-bottom: 10px !important;
+		}
+
 		// TAGS
 		.acf-field {
 			margin-top: 5px;
+
 			.acf-label {
 				margin-bottom: 0;
 			}
 		}
 
 		#acf-field_5d25148656536 {
-			option[value=batting_cage], option[value=web], option[value=ecomm], option[value=wholesale], option[value=closeout], option[value=influencer] {
+
+			option[value=batting_cage],
+			option[value=web],
+			option[value=ecomm],
+			option[value=wholesale],
+			option[value=closeout],
+			option[value=influencer] {
 				display: none;
 			}
 		}

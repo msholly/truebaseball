@@ -439,6 +439,7 @@ span.middot{display:inline-block;margin:0 5px}
 #oliver-pos #content .alert{margin-top:15px}
 #oliver-pos #content .alert .type{text-transform:uppercase}
 #oliver-pos #content .alert.alert-dismissible .close:hover{background-color:transparent;border:none !important}
+#oliver-pos #content input[type=text]{margin-bottom:10px !important}
 #oliver-pos #content .acf-field{margin-top:5px}
 #oliver-pos #content .acf-field .acf-label{margin-bottom:0}
 #oliver-pos #content #acf-field_5d25148656536 option[value=batting_cage],#oliver-pos #content #acf-field_5d25148656536 option[value=web],#oliver-pos #content #acf-field_5d25148656536 option[value=ecomm],#oliver-pos #content #acf-field_5d25148656536 option[value=wholesale],#oliver-pos #content #acf-field_5d25148656536 option[value=closeout],#oliver-pos #content #acf-field_5d25148656536 option[value=influencer]{display:none}
