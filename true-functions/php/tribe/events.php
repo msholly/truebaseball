@@ -12,6 +12,8 @@ function tribe_events_add_product_category_to_tickets($event_id, $ticket, $raw_d
 
     if (!empty($ticket) && isset($ticket->ID)) {
         wp_add_object_terms($ticket->ID, 'tickets', 'product_cat');
+        // And set thumbnail for MC Abandoned Cart Automation
+        set_post_thumbnail( $ticket->ID, 2964 );
     }
 }
 
