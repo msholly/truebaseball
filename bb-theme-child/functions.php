@@ -46,21 +46,15 @@ function my_custom_fonts() {
     body.events-cal .ui-autocomplete {
         font-size: 11px !important;
     }
-    .acf-max-width img{
-      max-width: 300px;
-      max-height: 650px;
+    .acf-max-width img {
+        max-width: 300px;
+        max-height: 650px;
+    }
+    .ui-timepicker-wrapper {
+        height: 250px;
     }
   </style>';
 }
-
-
-// THE WEIRD BUG LOADING ADMIN COMMON ON THE FRONT END
-// function project_dequeue_unnecessary_styles() {
-//   wp_dequeue_style( 'common' );
-//   wp_deregister_style( 'common' );
-// }
-// if ( ! is_admin() ) add_action( 'wp_enqueue_scripts', 'project_dequeue_unnecessary_styles' );
-
 
 // Add a Beaver Builder Template to the bottom of the Beaver Builder Theme vertical menu
 add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );

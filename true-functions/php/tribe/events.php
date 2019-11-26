@@ -31,7 +31,7 @@ add_filter('tribe_events_meta_box_timepicker_step', 'tribe_twenty_minute_timepic
 
 function tribe_twenty_minute_timepicker()
 {
-    return 20;
+    return 10;
 }
 
 // Programmatically set Event Information
