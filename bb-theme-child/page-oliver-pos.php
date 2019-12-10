@@ -453,8 +453,8 @@
 
                                 // IF MATCHING NORMAL LINE ITEMS
                                 if (v.productId == obj.id) {
-                                    data.amount = v.amount,
-                                        data.productId = parseInt(obj.id);
+                                    data.amount = v.amount;
+                                    data.productId = parseInt(obj.id);
                                     data.variationId = v.variationId;
                                     data.tax = obj.tax_collectable;
                                     data.discountAmount = v.discountAmount;

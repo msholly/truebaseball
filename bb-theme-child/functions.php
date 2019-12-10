@@ -53,6 +53,7 @@ function my_custom_fonts() {
     .ui-timepicker-wrapper {
         height: 250px;
     }
+    body.role-sales_rep .toplevel_page_vg_sheet_editor_setup,body.role-sales_rep .toplevel_page_wppusher,body.role-sales_rep .menu-icon-tools,body.role-sales_rep .menu-icon-tribe_events li:nth-child(7),body.role-sales_rep .menu-icon-tribe_events li:nth-child(8),body.role-sales_rep #menu-posts-product,body.role-sales_rep #menu-posts-shop_order li:nth-child(4),body.role-sales_rep #toplevel_page_woocommerce,body.role-sales_rep #menu-comments, body.role-sales_rep #vg_sheet_editor_usage_stats{display:none !important}
   </style>';
 }
 

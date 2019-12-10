@@ -1,5 +1,6 @@
 <?php
 
+use function GuzzleHttp\json_encode;
 
 function add_affiliate_info_on_oliver_create_order ( $order_id ) {
 
@@ -26,17 +27,15 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             $term_list = wp_get_post_terms($lineItemId, 'product_cat', array('fields'=>'ids'));
             $cat_id = (int)$term_list[0];
 
-            if ($cat_id == 315) {
-                // DETECT SHIPPING 
-                // No Affiliate total for shipping
-                if ($lineItemId == 2414) { // product id of Private 2 Day Ship
-                    $shipMethod = '2 Day Shipping';
-                }
-                if ($lineItemId == 2496) {
-                    $shipMethod = 'Next Day Shipping';
-                }   
+            // DETECT SHIPPING 
+            // No Affiliate total for shipping
+            if ($lineItemId == 2414) { // product id of Private 2 Day Ship
+                $shipMethod = '2 Day Shipping';
             }
-    
+            if ($lineItemId == 2496) {
+                $shipMethod = 'Next Day Shipping';
+            }   
+            
             if ($cat_id == 41) {
                 // DETECT BATS 10% 
                 // 15% but that's TO DO
@@ -64,6 +63,7 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         $sales_rep_id = $oliver_data_array['wordpress']['data']['customTags']['salesRep'];
         $affiliate_wp_userid = $oliver_data_array['wordpress']['data']['customTags']['affiliateID'];
         $shipTo = $oliver_data_array['wordpress']['data']['customTags']['shipTo'];
+        $oliverAudit = $oliver_data_array['wordpress']['data']['customTags']['oliverPOS'];
         
         // WORKING AUTO CHECK WHEN TICKET IS APPLIED
         $oliverTicketID = $oliver_data_array['wordpress']['data']['ticket']['ticketNumber'];
@@ -88,6 +88,10 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
         update_field('sales_rep', $sales_rep_info->ID, $order_id);
         update_field('affiliate', $affiliate_info->ID, $order_id);
         update_field('event_ticket', $oliverTicketID, $order_id);
+
+        update_field('ship_to', json_encode($shipTo), $order_id);
+        update_field('oliver_audit', json_encode($oliverAudit), $order_id);
+
         $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $sales_rep_email . ' | AFFILIATE: ' . $affiliate_email . ' | SHIPPING: ' . $shipMethod. ' | TICKET ORDER ID: ' . $ticketID);
 
         // update the customer_note on the order, the WP Post Excerpt
