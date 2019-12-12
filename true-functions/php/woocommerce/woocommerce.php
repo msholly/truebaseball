@@ -136,8 +136,8 @@ function add_affiliate_info_on_create_order($order_id)
         $affwp_ref = $_COOKIE['affwp_ref'];
 
         // Set Defaults
-        $affiliate_login_name = 'N/A';
-        $parent_mlm_login_name = 'N/A';
+        $affiliate_email = 'N/A';
+        $parent_mlm_email = 'N/A';
         $event_type = 'ecomm';
         $customer_note = 'Web Checkout';
         $oliverTicketOrderID = 'N/A';
@@ -146,14 +146,14 @@ function add_affiliate_info_on_create_order($order_id)
             if ($affwp_ref) {
                 $user_id = affwp_get_affiliate_user_id($affwp_ref);
                 $affiliate_info = get_userdata($user_id);
-                $affiliate_login_name = $affiliate_info->user_login;
+                // $affiliate_login_name = $affiliate_info->user_login;
                 $affiliate_email = $affiliate_info->user_email;
 
                 // MLM PARENT
                 $parent_mlm_affid = affwp_mlm_get_parent_affiliate($affwp_ref);
                 $parent_mlm_wpid = affwp_get_affiliate_user_id($parent_mlm_affid);
                 $parent_mlm_info = get_userdata($parent_mlm_wpid);
-                $parent_mlm_login_name = $parent_mlm_info->user_login;
+                $parent_mlm_email = $parent_mlm_info->user_email;
 
                 $event_type = 'web';
 
@@ -162,8 +162,8 @@ function add_affiliate_info_on_create_order($order_id)
 
                 if ($email_domain == 'truediamondscience.com') {
                     // Are internal Sales Reps
-                    $parent_mlm_login_name = $affiliate_login_name;
-                    $affiliate_login_name = 'N/A';
+                    $parent_mlm_email = $affiliate_email;
+                    $affiliate_email = 'N/A';
                 }
                 update_field('affiliate', $user_id, $order_id);
                 update_field('sales_rep', $parent_mlm_info->ID, $order_id);
@@ -173,7 +173,7 @@ function add_affiliate_info_on_create_order($order_id)
         // The text for the note
         // $note = __('TYPE: ' . $web_order_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
         // $note = __('Web Checkout | TYPE: ' . $web_order_slug . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod );
-        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $parent_mlm_login_name . ' | AFFILIATE: ' . $affiliate_login_name . ' | SHIPPING: ' . $shipMethod . ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
+        $note = __($customer_note . ' | TYPE: ' . $event_type . ' | SALESREP: ' . $parent_mlm_email . ' | AFFILIATE: ' . $affiliate_email . ' | SHIPPING: ' . $shipMethod . ' | TICKET ORDER ID: ' . $oliverTicketOrderID);
 
         update_field('order_type', $event_type, $order_id);
 
