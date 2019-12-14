@@ -240,8 +240,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .page-id-426 .fitting-facets .noUi-value.noUi-value-horizontal,.page-template-page-true-fitting .fitting-facets .noUi-value.noUi-value-horizontal{padding-top:3px}
 .page-id-426 .fitting-facets #playerAge,.page-template-page-true-fitting .fitting-facets #playerAge{max-width:400px;margin:0 auto}
 .page-id-426 .fitting-facets .input-group,.page-template-page-true-fitting .fitting-facets .input-group{background-color:rgba(255,255,255,0)}
-.page-id-426 .fitting-facets .input-group>.form-control,.page-template-page-true-fitting .fitting-facets .input-group>.form-control{border:2px solid #00aeef;background:transparent;color:#FFF;font-size:18px;margin:0 !important;padding:30px 20px;text-align:center}
-.page-id-426 .fitting-facets .input-group .input-group-addon,.page-template-page-true-fitting .fitting-facets .input-group .input-group-addon{line-height:52px;padding:0 20px;background:#000;font-size:18px;border:4px solid #00aeef;border-left-width:3px}
+.page-id-426 .fitting-facets .input-group>.form-control,.page-template-page-true-fitting .fitting-facets .input-group>.form-control{border:2px solid #00aeef;background:transparent;color:#FFF;font-size:18px;margin:0 !important;text-align:center}
+.page-id-426 .fitting-facets .input-group .input-group-addon,.page-template-page-true-fitting .fitting-facets .input-group .input-group-addon{line-height:38px;padding:0 20px;background:#000;font-size:18px;border:4px solid #00aeef;border-left-width:3px}
 .page-id-426 .fitting-facets label.error,.page-template-page-true-fitting .fitting-facets label.error{text-align:center;width:calc(100% - 60px);padding:10px 0 0 0}
 .page-id-426 .fitting-facets .facetwp-bb-module h4,.page-template-page-true-fitting .fitting-facets .facetwp-bb-module h4{text-transform:uppercase;font-size:30px;font-weight:800;color:#FFF}
 .page-id-426 .fitting-facets .facetwp-counter,.page-id-426 .fitting-facets .facetwp-overlay,.page-template-page-true-fitting .fitting-facets .facetwp-counter,.page-template-page-true-fitting .fitting-facets .facetwp-overlay{display:none}
