@@ -341,3 +341,12 @@ add_filter( 'acf/fields/post_object/result', 'true_acf_extend_search_result', 10
 // }
 // filter for every field
 // add_filter('acf/fields/post_object/query', 'true_acf_extend_search', 10, 3);
+
+/**
+ * @snippet       Add Shipping Note @ Cart Page - WooCommerce
+ */
+add_action( 'woocommerce_cart_totals_before_shipping', 'true_notice_shipping_cart' );
+ 
+function true_notice_shipping_cart() {
+    echo '<p class="allow"><a href="https://truediamondscience.com/holiday-shipping-disclaimers/" class="button wc-forward uppercase" target="_blank">Holiday Shipping Deadlines</a></p>';
+}
