@@ -98,7 +98,6 @@ header .fl-page-nav-search form input.fl-search-input::-webkit-input-placeholder
 header .fl-page-nav-search form input.fl-search-input::-moz-placeholder{color:#FFF}
 header .fl-page-nav-search form input.fl-search-input:-ms-input-placeholder{color:#FFF}
 header .fl-page-nav-search form input.fl-search-input:-moz-placeholder{color:#FFF}
-.inline-countdown .uabb-countdown{text-align:left !important}
 .inline-countdown .uabb-countdown .uabb-countdown-holding{margin-bottom:0}
 .inline-countdown .uabb-countdown .uabb-countdown-holding .uabb-countdown-digit-wrapper{display:inline-block;margin-right:5px}
 .inline-countdown .uabb-countdown .uabb-countdown-holding .uabb-countdown-digit-wrapper h3{margin-bottom:0}
@@ -802,7 +801,8 @@ input[type=checkbox].nf-toggle:checked:before{top:-1px;left:20px;-webkit-transit
 .nf-blue .nf-icons .nf-field-element:before{background:#003866;color:#001c33}
 .nf-blue .nf-help{color:#00aeff}
 @media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
-}@media(min-width:768px){.woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img,.woocommerce-order-details .shop_table tbody td.product-thumbnail img{width:200px;max-width:200px !important}
+}@media(min-width:768px){.inline-countdown .uabb-countdown{text-align:left !important}
+.woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img,.woocommerce-order-details .shop_table tbody td.product-thumbnail img{width:200px;max-width:200px !important}
 .nf-form-wrap .navbar-right .dropdown-menu{right:0;left:auto}
 .nf-form-wrap .navbar-right .dropdown-menu-left{right:auto;left:0}
 }@media only screen and (min-width:992px){header .add-search-icon .fl-module-content .menu{margin-right:30px}
