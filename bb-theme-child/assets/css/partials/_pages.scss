@@ -1,3 +1,32 @@
+.inline-countdown {
+  .uabb-countdown {
+    text-align: left !important;
+    .uabb-countdown-holding {
+      margin-bottom: 0;
+      .uabb-countdown-digit-wrapper {
+        display: inline-block;
+        margin-right: 5px;
+        h3 {
+          margin-bottom: 0;
+        }
+      }
+      .uabb-countdown-unit-names {
+        display: inline-block;
+        
+      }
+      &:after {
+        content: ',';
+        display: inline;
+      }
+      &:last-child:after {
+        content: '';
+      }
+    }
+    
+  }
+}
+
+
 .page-id-5004 {
     .page-title {
         svg {
