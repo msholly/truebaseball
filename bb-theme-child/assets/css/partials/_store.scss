@@ -51,13 +51,27 @@
 		}
 	}
 
-	.uabb-woo-products-grid .uabb-woo-product__column-3 li.product {
-		margin-left: 0;
+	.uabb-woo-products-grid {
+		.uabb-woo-product__column-3 li.product {
+			margin-left: 0;
+		}
+		.uabb-woo-product__column-tablet-2 ul.products li.product {
+			@media (min-width: 768px) {
+				margin-right: 0;
+			}
+			
+		}
 	}
 
-	ul.products li.product a img {
-		border: 1px solid transparent !important;
-		transition: border-color 0.5s ease;
+	ul.products li.product {
+		a img {
+			border: 1px solid transparent !important;
+			transition: border-color 0.5s ease;
+		}
+		.price {
+			font-size: 14px;
+			color: #FFF !important;
+		}
 	}
 
 	&.single-product {

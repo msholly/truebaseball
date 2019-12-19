@@ -133,6 +133,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page .cart_totals .select2-container--default .select2-selection--single .select2-selection__rendered{color:#444 !important}
 .woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-3 li.product{margin-left:0}
 .woocommerce-page ul.products li.product a img{border:1px solid transparent !important;-webkit-transition:border-color .5s ease;transition:border-color .5s ease}
+.woocommerce-page ul.products li.product .price{font-size:14px;color:#FFF !important}
 .woocommerce-page.single-product.product-cat-bats .fl-module-uabb-image-carousel,.woocommerce-page.single-product.product-cat-bats .mfp-figure:after{background:linear-gradient(45deg,#000 0,#00152a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#00152a',GradientType=1)}
 .woocommerce-page.single-product .uabb-background-mask{background:transparent}
 .woocommerce-page.single-product .organization-logo img{opacity:.5;max-height:90px;width:auto}
@@ -802,6 +803,7 @@ input[type=checkbox].nf-toggle:checked:before{top:-1px;left:20px;-webkit-transit
 .nf-blue .nf-help{color:#00aeff}
 @media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
 }@media(min-width:768px){.inline-countdown .uabb-countdown{text-align:left !important}
+.woocommerce-page .uabb-woo-products-grid .uabb-woo-product__column-tablet-2 ul.products li.product{margin-right:0}
 .woocommerce-cart .shop_table tbody td.product-thumbnail img,.cart_totals .shop_table tbody td.product-thumbnail img,.woocommerce-order-details .shop_table tbody td.product-thumbnail img{width:200px;max-width:200px !important}
 .nf-form-wrap .navbar-right .dropdown-menu{right:0;left:auto}
 .nf-form-wrap .navbar-right .dropdown-menu-left{right:auto;left:0}
