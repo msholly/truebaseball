@@ -1,5 +1,12 @@
 .woocommerce-page {
 
+	.sub-title {
+		.woocommerce-breadcrumb {
+			a:hover {
+				color: #FFF !important
+			}
+		}
+	}
 	.woocommerce-message,
 	.cart-empty.woocommerce-info,
 	.woocommerce-notices-wrapper .woocommerce-info,

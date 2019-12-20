@@ -124,6 +124,7 @@ body.home .uabb-subscribe-form input[type=text]::-webkit-input-placeholder,body.
 body.home .uabb-subscribe-form input[type=text]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]:-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]::-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
+.woocommerce-page .sub-title .woocommerce-breadcrumb a:hover{color:#FFF !important}
 .woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info,.woocommerce-page .woocommerce-notices-wrapper .woocommerce-info,.woocommerce-page .woocommerce-info{background-color:#14151a;border:0;color:#FFF}
 .woocommerce-page .woocommerce-info.cta-notification{background:#00aeef !important}
 .woocommerce-page .woocommerce-info.cta-notification a{color:#FFF;margin:0}
