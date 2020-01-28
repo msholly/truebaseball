@@ -204,6 +204,17 @@
 				border-top: 3px solid #00aeef !important;
 			}
 
+			.tribe-tickets__item__attendee__fields {
+				.tribe-ticket {
+					border-top: none;
+					border-right: none;
+					border-bottom: none
+				}
+				label {
+					color: #FFF;
+				}
+			}
+
 			.tribe-tickets__mini-cart {
 				margin-top: 40px !important;
 

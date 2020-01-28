@@ -320,6 +320,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__back__to__cart:before,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__back__to__cart:before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:''}
 .page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__actions,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__actions{margin-top:30px}
 .page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__grid,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__registration__grid{border-top:3px solid #00aeef !important}
+.page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__item__attendee__fields .tribe-ticket,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__item__attendee__fields .tribe-ticket{border-top:0;border-right:0;border-bottom:0}
+.page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__item__attendee__fields label,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__item__attendee__fields label{color:#FFF}
 .page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__mini-cart,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-tickets__mini-cart{margin-top:40px !important}
 .page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-common-form-control-text__input,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-common .tribe-common-form-control-text__input{padding:8px 16px}
 .page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-b1,.page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-b2,.page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event a,.page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event a:hover,.page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-h5,.page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-form-control-radio__label,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-b1,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-b2,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event a,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event a:hover,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-h5,.page-template-page-tribe-attendee-registration .fl-page-content .tribe-tickets__registration .tribe-tickets__registration__event .tribe-common-form-control-radio__label{color:#FFF !important}
@@ -387,6 +389,12 @@ span.middot{display:inline-block;margin:0 5px}
 .topmargin{margin-top:50px !important}
 .bottommargin{margin-bottom:50px !important}
 .clear-bottommargin{margin-bottom:-50px !important}
+.allmargin-xs{margin:15px !important}
+.leftmargin-xs{margin-left:15px !important}
+.rightmargin-xs{margin-right:15px !important}
+.topmargin-xs{margin-top:15px !important}
+.bottommargin-xs{margin-bottom:15px !important}
+.clear-bottommargin-xs{margin-bottom:-15px !important}
 .allmargin-sm{margin:30px !important}
 .leftmargin-sm{margin-left:30px !important}
 .rightmargin-sm{margin-right:30px !important}
