@@ -15,7 +15,15 @@
  *                              'ticket_id'
  *                              'security_code')
  *
- * @version 4.7.6
+ * @since 4.0
+ * @since 4.5.11 Ability to remove display of event date.
+ * @since 4.7.4  Change event date to display by default.
+ *               Display WooCommerce featured image.
+ *               Current ticket action hook before output.
+ * @since 4.7.6  Ability to filter ticket image.
+ * @since 4.10.9 Use function for text.
+ *
+ * @version 4.10.9
  *
  * @var array $tickets An array of tickets in the format documented above.
  */
@@ -221,7 +229,7 @@
 
 	</style>
 </head>
-<body yahoo="fix" alink="#006caa" link="#006caa" text="#000000" bgcolor="#ffffff" style="width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0 auto; padding:20px 0 0 0; background:#ffffff; min-height:1000px;">
+<body yahoo="fix" alink="#006caa" link="#006caa" text="#000000" bgcolor="#f7f7f7" style="width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0 auto; padding:20px 0 0 0; background:#f7f7f7; min-height:1000px;">
 	<div style="margin:0; padding:0; width:100% !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:14px; line-height:145%; text-align:left;">
 		<center>
 			<?php
@@ -235,9 +243,6 @@
 				if ( $count == 2 ) {
 					$break = 'page-break-before:always !important;';
 				}
-
-                // GET ORDER ID 
-                $order_id   = $ticket['order_id'];
 
 				$event      = get_post( $ticket['event_id'] );
 				$header_id  = get_post_meta( $ticket['event_id'], tribe( 'tickets.handler' )->key_image_header, true );
@@ -354,9 +359,9 @@
 							 */
 							do_action( 'tribe_tickets_ticket_email_ticket_top', $ticket );
 							?>
-							<table class="inner-wrapper" border="0" cellpadding="0" cellspacing="0" width="620" bgcolor="#f7f7f7" style="margin:0 auto !important; width:620px; padding:0;">
+							<table class="inner-wrapper" border="0" cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="margin:0 auto !important; width:620px; padding:0;">
 								<tr>
-									<td valign="top" class="ticket-content" align="left" width="580" border="0" cellpadding="20" cellspacing="0" style="padding:20px; background:#f7f7f7;">
+									<td valign="top" class="ticket-content" align="left" width="580" border="0" cellpadding="20" cellspacing="0" style="padding:20px; background:#ffffff; border: 1px solid #dedede; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);">
 										<?php
 										if ( ! empty( $header_img ) ) {
 											$header_width = esc_attr( $header_img[1] );
@@ -374,30 +379,11 @@
 											<?php
 										}
 										?>
-
-										<table border="0" cellpadding="0" cellspacing="0" width="100%">
-											<tr>
-												<td class="ticket-image" valign="top" align="left" width="100%" style="padding-bottom:15px !important;">
-													<img src="https://truediamondscience.com/wp-content/uploads/true-diamond-science-logo-email.png" width="572" alt="TRUE Diamond Science" style="border:0; outline:none; height:auto; max-width:100%; display:block;" />
-												</td>
-											</tr>
-										</table>
-
-										<table class="whiteSpace" border="0" cellpadding="0" cellspacing="0" width="100%">
-											<tr>
-												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#f7f7f7; padding: 0 !important; margin:0 !important;">
-													<div style="margin:0; height:30px;"></div>
-												</td>
-											</tr>
-										</table>
 										<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
 											<tr>
 												<td valign="top" align="center" width="100%" style="padding: 0 !important; margin:0 !important;">
-													<h4 style="color:#0a0a0e; margin:0 !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-style:normal; font-weight:700; font-size:15px; letter-spacing:normal; text-align:left;line-height: 100%;">
-														<span style="color:#0a0a0e !important"><?php echo "ORDER ID: " . $order_id; ?></span>
-													</h4>
-													<h2 style="color:#0a0a0e; margin:0 0 10px 0 !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-style:normal; font-weight:700; font-size:28px; letter-spacing:normal; text-align:left;line-height: 100%;">
-														<a style="color:#0a0a0e !important" href="<?php echo esc_url( $event_link ); ?>"><?php echo $event->post_title; ?></a>
+													<h2 style="color:#00aeef; margin:0 0 10px 0 !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-style:normal; font-weight:700; font-size:28px; letter-spacing:normal; text-align:left;line-height: 100%;">
+														<a style="color:#00aeef !important;font-weight:700" href="<?php echo esc_url( $event_link ); ?>"><?php echo $event->post_title; ?></a>
 													</h2>
 													<?php if ( ! empty( $event_date ) ) : ?>
 														<h4 style="color:#0a0a0e; margin:0 !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-style:normal; font-weight:700; font-size:15px; letter-spacing:normal; text-align:left;line-height: 100%;">
@@ -409,7 +395,7 @@
 										</table>
 										<table class="whiteSpace" border="0" cellpadding="0" cellspacing="0" width="100%">
 											<tr>
-												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#f7f7f7; padding: 0 !important; margin:0 !important;">
+												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#ffffff; padding: 0 !important; margin:0 !important;">
 													<div style="margin:0; height:30px;"></div>
 												</td>
 											</tr>
@@ -417,11 +403,11 @@
 										<table class="ticket-details" border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
 											<tr>
 												<td class="ticket-details" valign="top" align="left" width="100" style="padding: 0; width:100px; margin:0 !important;">
-													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php esc_html_e( 'Ticket #', 'event-tickets' ); ?></h6>
+													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php esc_html_e( 'Ticket ID', 'event-tickets' ); ?></h6>
 													<span style="color:#0a0a0e !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:15px;"><?php echo $ticket['attendee_id']; ?></span>
 												</td>
 												<td class="ticket-details" valign="top" align="left" width="120" style="padding: 0; width:120px; margin:0 !important;">
-													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php esc_html_e( 'Ticket Type', 'event-tickets' ); ?></h6>
+													<h6 style="color:#909090 !important; margin:0 0 10px 0; font-family: 'Helvetica Neue', Helvetica, sans-serif; text-transform:uppercase; font-size:13px; font-weight:700 !important;"><?php echo esc_html( sprintf( _x( '%s Type', 'ticket type email heading', 'event-tickets' ), tribe_get_ticket_label_singular( 'ticket_type_email_heading' ) ) ); ?></h6>
 													<span style="color:#0a0a0e !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:15px;"><?php echo $ticket['ticket_name']; ?></span>
 												</td>
 												<td class="ticket-details" valign="top" align="left" width="120" style="padding: 0 !important; width:120px; margin:0 !important;">
@@ -436,7 +422,7 @@
 										</table>
 										<table class="whiteSpace" border="0" cellpadding="0" cellspacing="0" width="100%">
 											<tr>
-												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#f7f7f7; padding: 0 !important; margin:0 !important;">
+												<td valign="top" align="left" width="100%" height="30" style="height:30px; background:#ffffff; padding: 0 !important; margin:0 !important;">
 													<div style="margin:0; height:30px;"></div>
 												</td>
 											</tr>
@@ -508,7 +494,7 @@
 							<?php do_action( 'tribe_tickets_ticket_email_ticket_bottom', $ticket ); ?>
 							<table class="whiteSpace" border="0" cellpadding="0" cellspacing="0" width="100%">
 								<tr>
-									<td valign="top" align="left" width="100%" height="100" style="height:100px; background:#ffffff; padding: 0 !important; margin:0 !important;">
+									<td valign="top" align="left" width="100%" height="100" style="height:100px; background:#f7f7f7; padding: 0 !important; margin:0 !important;">
 										<div style="margin:0; height:100px;"></div>
 									</td>
 								</tr>

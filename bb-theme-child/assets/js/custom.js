@@ -2,20 +2,20 @@
 
 (function ($) {
   jQuery(document).ready(function ($) {
-    if ($("body").hasClass("page-tribe-attendee-registration") || $("body").hasClass("page-template-page-tribe-attendee-registration")) {
-      makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
-      makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true); // Disclaimer popup via JS
-
-      $(".tribe-ticket .tribe-block__tickets__item__attendee__field__radio").each(function (index) {
-        var str = $('.tribe-tickets-meta-label').text();
-
-        if (str.toLowerCase().indexOf("waiver") >= 0) {
-          var markup = "Did you read and do you accept the <a href='/waiver-and-release-of-liability/' target='_blank' class='open-disclaimer'>Waiver and Release of Liability</a>? <small>(opens in a new tab)</small>";
-          $('.tribe-tickets-meta-label h3').html(markup);
-        }
-      });
-    }
-
+    // if ($("body").hasClass("page-tribe-attendee-registration") || $("body").hasClass("page-template-page-tribe-attendee-registration")) {
+    // console.log("attendee page")
+    // makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
+    // makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true);
+    // Disclaimer popup via JS
+    // $(".tribe-tickets-meta-fieldset__checkbox-radio").each(function (index) {
+    // 	var str = $('.tribe-tickets-meta-label').text();
+    // 	console.log(str)
+    // 	if (str.toLowerCase().indexOf("waiver") >= 0) {
+    // 		var markup = "Did you read and do you accept the <a href='/waiver-and-release-of-liability/' target='_blank' class='open-disclaimer'>Waiver and Release of Liability</a>? <small>(opens in a new tab)</small>";
+    // 		$('.tribe-tickets-meta-label h3').html(markup)
+    // 	}
+    // });
+    // }
     if ($("body").hasClass("woocommerce-cart")) {
       // CTA STYLE FOR BLACK FRIDAY NOTIFICATION
       $(".woocommerce-info a:contains('GET DEAL')").each(function () {

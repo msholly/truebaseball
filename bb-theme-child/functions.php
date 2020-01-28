@@ -350,3 +350,30 @@ add_filter( 'acf/fields/post_object/result', 'true_acf_extend_search_result', 10
 // function true_notice_shipping_cart() {
 //     echo '<p class="allow"><a href="https://truediamondscience.com/holiday-shipping-disclaimers/" class="button wc-forward uppercase" target="_blank">Holiday Shipping Deadlines</a></p>';
 // }
+
+// Adds order ID and true logo to ticket emails
+// @version 4.10.9 of Event Tickets Plus
+function true_tribe_email_header($ticket) { 
+    
+    // GET ORDER ID 
+    $order_id   = $ticket['order_id'];
+    ?>
+    
+    <table class="inner-wrapper" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f7f7f7">
+        <tr>
+            <td class="ticket-image" valign="top" align="center" width="100%" style="padding-bottom:20px !important;">
+                <img src="https://truediamondscience.com/wp-content/uploads/true-diamond-science-logo-email.png" width="572" alt="TRUE Diamond Science" style="border:0; outline:none; height:auto; max-width:100%; display:block;" />
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="620" id="template_header" style="background-color: #00aeef; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, sans-serif; border-radius: 3px 3px 0 0;">
+        <tr>
+            <td id="header_wrapper" style="padding: 36px 48px; display: block;">
+                <h1 style="font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 30px; font-weight: 300; line-height: 150%; margin: 0; text-align: left; text-shadow: 0 1px 0 #33bef2; color: #ffffff;"><?php echo "Order ID: #" . $order_id; ?></h1>
+            </td>
+        </tr>
+    </table>
+    
+    
+<?php }
+add_action( 'tribe_tickets_ticket_email_ticket_top', 'true_tribe_email_header', 30 );
