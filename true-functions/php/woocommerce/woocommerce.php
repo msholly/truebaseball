@@ -191,7 +191,7 @@ function add_affiliate_info_on_create_order($order_id)
         $order->save();
     }
 }
-add_action('woocommerce_new_order', 'add_affiliate_info_on_create_order', 20);
+add_action('woocommerce_checkout_order_processed', 'add_affiliate_info_on_create_order', 20);
 
 
 // define the woocommerce_cart_item_thumbnail callback 
