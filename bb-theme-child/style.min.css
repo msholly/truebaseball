@@ -231,6 +231,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-1,.thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-2{width:48%;max-width:unset;float:left;padding:25px !important;background-color:#14151a}
 .thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-1 h2,.thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-2 h2{font-size:18px}
 .thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-2{float:right}
+.thank-you-bats.thank-you-order-details .order-again{display:none}
 .page-id-426,.page-template-page-true-fitting{background-color:#000}
 .page-id-426 .facetwp-template,.page-id-426 .results-title-row,.page-template-page-true-fitting .facetwp-template,.page-template-page-true-fitting .results-title-row{display:none}
 .page-id-426 .facetwp-template.visible,.page-id-426 .results-title-row.visible,.page-template-page-true-fitting .facetwp-template.visible,.page-template-page-true-fitting .results-title-row.visible{display:block}
