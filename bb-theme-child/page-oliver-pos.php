@@ -171,6 +171,10 @@
         <script>
             var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
         </script>
+
+        <script>
+            console.log(oliverExtensionTargetOrigin);
+        </script>
     </div><!-- #content -->
 </div><!-- #primary -->
 
