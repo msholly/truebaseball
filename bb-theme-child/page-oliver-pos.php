@@ -776,9 +776,9 @@
                         }
                     }
                     console.log(taxjsonMsg);
-                    console.log("^^ NO TAX DATA TO OLIVER EXTENSION ^^")
+                    console.log("^^ TAX DATA TO OLIVER EXTENSION ^^")
 
-                    // sendMessage(JSON.stringify(taxjsonMsg));
+                    sendMessage(JSON.stringify(taxjsonMsg));
 
                     // MESSAGES SENT TO OLIVER, ALLOW FINISH EXTENSION BUTTON
                     $(this).text("TAGS SAVED");
