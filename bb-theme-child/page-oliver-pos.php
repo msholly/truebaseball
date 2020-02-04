@@ -541,9 +541,14 @@
                                 },
                                 success: function(response) {
                                     console.log(response);
-                                    oliverTaxResponse = response.tax;
-                                    setTaxUI(response.tax);
-                                    updateAddress(response);
+                                    if (response != 0) {
+                                        oliverTaxResponse = response.tax;
+                                        setTaxUI(response.tax);
+                                        updateAddress(response);
+                                    } else {
+                                        showAlert("Address error", "danger", "Error")
+                                    }
+                                    
                                 },
                                 error: (error) => {
                                     showAlert(error.responseText, "danger", error.statusText)
