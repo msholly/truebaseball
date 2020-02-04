@@ -40,6 +40,9 @@ final class FLChildTheme {
       if (is_page_template('page-oliver-pos.php')) {
         wp_enqueue_script( 'google-geocode', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAi9OGYa4-u59XxGQCR8xIT2GJDWs9AzMc&libraries=places', array('jquery'), '1.0', true );
         wp_enqueue_script( 'jquery-geocomplete', FL_CHILD_THEME_URL . '/assets/js/map/jquery.geocomplete.min.js', array('jquery'), filemtime( get_stylesheet_directory() . '/assets/js/map/jquery.geocomplete.min.js' ), true );
+        
+        // TO-DO Rename map directory
+        wp_enqueue_script( 'oliver-pos', FL_CHILD_THEME_URL . '/assets/js/map/oliver-pos.js', array('jquery'), filemtime( get_stylesheet_directory() . '/assets/js/map/oliver-pos.js' ), true );
 
       }
       
