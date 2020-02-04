@@ -1,7 +1,7 @@
 "use strict";
 
 var checkoutData, oliverTaxResponse, oliverProductTaxes;
-var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
+// var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
 
 // URL Params for initial data
 // https://truediamondscience.com//oliver-pos/?userEmail%3Dcontact%40mitchellsholly.com%26location%3DTRUE%20Diamond%20Science%26register%3DRegister%20One%20-%20MS%20Dev%26total%3D410
