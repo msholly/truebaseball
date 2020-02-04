@@ -168,7 +168,9 @@
 
         <?php endwhile; ?>
 
-        
+        <script>
+            var oliverExtensionTargetOrigin = '<?php echo OLIVER_EXTENSION_TARGET_ORIGIN; ?>';
+        </script>
     </div><!-- #content -->
 </div><!-- #primary -->
 
