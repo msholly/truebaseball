@@ -18,7 +18,7 @@ function true_get_tax_info()
             // Send for TaxJar Validation
             $validatedAddresses = $taxjar->validateAddress([
                 'country' => 'US',
-                'state' => $checkoutData['state'],
+                'state' => $checkoutData['stateCode'],
                 'zip' => $checkoutData['zip'],
                 'city' => $checkoutData['city'],
                 'street' => $checkoutData['addressLine1']
@@ -31,7 +31,7 @@ function true_get_tax_info()
             // Set best back to original from request
             $bestAddr = (object) [
                 'country' => 'US',
-                'state' => $checkoutData['state'],
+                'state' => $checkoutData['stateCode'],
                 'zip' => $checkoutData['zip'],
                 'city' => $checkoutData['city'],
                 'street' => $checkoutData['addressLine1']
@@ -47,7 +47,7 @@ function true_get_tax_info()
             // Nexus and ship-to information
             $default_locations = get_option('woocommerce_default_country');
             $store_country_state = explode(':', $default_locations);
-            $store_zip = get_option('woocommerce_store_postcode');
+            $store_zip = '60436';
             $store_city = get_option('woocommerce_store_city');
             $store_addr = get_option('woocommerce_store_address');
 
