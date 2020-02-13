@@ -269,9 +269,9 @@ function true_paypal_enable_manager($available_gateways)
     if (isset($available_gateways['cheque']) && !current_user_can('administrator')) {
         unset($available_gateways['cheque']);
     }
-    if (isset($available_gateways['ppec_paypal']) && !current_user_can('administrator')) {
-        unset($available_gateways['ppec_paypal']);
-    }
+    // if (isset($available_gateways['ppec_paypal']) && !current_user_can('administrator')) {
+    //     unset($available_gateways['ppec_paypal']);
+    // }
     return $available_gateways;
 }
 
