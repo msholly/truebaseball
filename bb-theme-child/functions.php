@@ -367,11 +367,11 @@ function true_tribe_email_header($ticket) {
     <table class="inner-wrapper" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f7f7f7">
         <tr>
             <td class="ticket-image" valign="top" align="center" width="100%" style="padding-bottom:20px !important;">
-                <img src="https://truediamondscience.com/wp-content/uploads/true-diamond-science-logo-email.png" width="572" alt="TRUE Diamond Science" style="border:0; outline:none; height:auto; max-width:100%; display:block;" />
+                <img src="https://truediamondscience.com/wp-content/uploads/true-diamond-science-logo-email.png" width="527" alt="TRUE Diamond Science" style="border:0; outline:none; height:auto; max-width:85%; display:block;" />
             </td>
         </tr>
     </table>
-    <table border="0" cellpadding="0" cellspacing="0" width="620" id="template_header" style="background-color: #00aeef; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, sans-serif; border-radius: 3px 3px 0 0;">
+    <table border="0" cellpadding="0" cellspacing="0" width="620" id="template_header" style="width: 620px; background-color: #00aeef; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, sans-serif; border-radius: 3px 3px 0 0;">
         <tr>
             <td id="header_wrapper" style="padding: 36px 48px; display: block;">
                 <h1 style="font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 30px; font-weight: 300; line-height: 150%; margin: 0; text-align: left; text-shadow: 0 1px 0 #33bef2; color: #ffffff;"><?php echo "Order ID: #" . $order_id; ?></h1>

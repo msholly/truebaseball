@@ -230,7 +230,7 @@
 	</style>
 </head>
 <body yahoo="fix" alink="#006caa" link="#006caa" text="#000000" bgcolor="#f7f7f7" style="width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0 auto; padding:20px 0 0 0; background:#f7f7f7; min-height:1000px;">
-	<div style="margin:0; padding:0; width:100% !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:14px; line-height:145%; text-align:left;">
+	<div style="background-color: #f7f7f7; margin:0; padding:70px 0; width:100% !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size:14px; line-height:145%; text-align:left;">
 		<center>
 			<?php
 			do_action( 'tribe_tickets_ticket_email_top' );
