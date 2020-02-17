@@ -9,7 +9,7 @@ require_once 'classes/class-fl-child-theme.php';
 
 // Actions
 add_action('wp_enqueue_scripts', 'FLChildTheme::enqueue_scripts', 1000);
-add_action( 'wp_enqueue_scripts', 'FLChildTheme::enqueue_js' );
+add_action('wp_enqueue_scripts', 'FLChildTheme::enqueue_js');
 
 /**
  * Adding search icon at right side of the menu module
@@ -21,7 +21,7 @@ function frame_add_search_icon_themer_header($module)
 {
     global $woocommerce;
     //* Checking that you are using BB Theme
-    if (! class_exists('FLTheme')) {
+    if (!class_exists('FLTheme')) {
         return;
     }
 
@@ -41,8 +41,9 @@ function frame_add_search_icon_themer_header($module)
 // FIX AFFILIATE SEARCH ON ADMIN 
 add_action('admin_head', 'my_custom_fonts');
 
-function my_custom_fonts() {
-  echo '<style>
+function my_custom_fonts()
+{
+    echo '<style>
     body.events-cal .ui-autocomplete {
         font-size: 11px !important;
     }
@@ -63,8 +64,9 @@ function my_custom_fonts() {
 }
 
 // Add a Beaver Builder Template to the bottom of the Beaver Builder Theme vertical menu
-add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );
-function your_custom_menu_item ( $items, $args ) {
+add_filter('wp_nav_menu_items', 'your_custom_menu_item', 10, 2);
+function your_custom_menu_item($items, $args)
+{
     // if the menu is in fact our mobile main menu
     if ($args->menu == 'mobile-main-menu') {
         // get the content of our Beaver Builder Template
@@ -126,8 +128,8 @@ function your_custom_menu_item ( $items, $args ) {
                 </g>
             </g>
         </svg>' . '</a>';
-        $searchform = '<li>' . get_search_form( false ) . '</li>';
-    	// append the content to the beginning of our menu
+        $searchform = '<li>' . get_search_form(false) . '</li>';
+        // append the content to the beginning of our menu
         $items = $logo .= $searchform .= $items;
     }
     return $items;
@@ -135,140 +137,145 @@ function your_custom_menu_item ( $items, $args ) {
 
 
 // ADD CATEOGRY TO BODY
-add_filter( 'body_class', 'wc_product_cats_css_body_class' );
- 
-function wc_product_cats_css_body_class( $classes ){
-  if( is_singular( 'product' ) ){
-    $custom_terms = get_the_terms(0, 'product_cat');
-    if ($custom_terms) {
-      foreach ($custom_terms as $custom_term) {
-        $classes[] = 'product-cat-' . $custom_term->slug;
-      }
+add_filter('body_class', 'wc_product_cats_css_body_class');
+
+function wc_product_cats_css_body_class($classes)
+{
+    if (is_singular('product')) {
+        $custom_terms = get_the_terms(0, 'product_cat');
+        if ($custom_terms) {
+            foreach ($custom_terms as $custom_term) {
+                $classes[] = 'product-cat-' . $custom_term->slug;
+            }
+        }
     }
-  }
-  return $classes;
+    return $classes;
 }
 
 /**
  * Attributes shortcode callback.
  */
-function woo_attributes_shortcode( $atts ) {
+function woo_attributes_shortcode($atts)
+{
 
-  global $product;
+    global $product;
 
-  if( ! is_object( $product ) || ! $product->has_attributes() ){
-      return;
-  }
+    if (!is_object($product) || !$product->has_attributes()) {
+        return;
+    }
 
-  // parse the shortcode attributes
-  $args = shortcode_atts( array(
-      'attributes' => array_keys( $product->get_attributes() ), // by default show all attributes
-  ), $atts );
+    // parse the shortcode attributes
+    $args = shortcode_atts(array(
+        'attributes' => array_keys($product->get_attributes()), // by default show all attributes
+    ), $atts);
 
-  // is pass an attributes param, turn into array
-  if( is_string( $args['attributes'] ) ){
-      $args['attributes'] = array_map( 'trim', explode( '|' , $args['attributes'] ) );
-  }
+    // is pass an attributes param, turn into array
+    if (is_string($args['attributes'])) {
+        $args['attributes'] = array_map('trim', explode('|', $args['attributes']));
+    }
 
-  // start with a null string because shortcodes need to return not echo a value
-  $html = '';
+    // start with a null string because shortcodes need to return not echo a value
+    $html = '';
 
-  if( ! empty( $args['attributes'] ) ){
+    if (!empty($args['attributes'])) {
 
-      foreach ( $args['attributes'] as $attribute ) {
+        foreach ($args['attributes'] as $attribute) {
 
-          // get the WC-standard attribute taxonomy name
-          $taxonomy = strpos( $attribute, 'pa_' ) === false ? wc_attribute_taxonomy_name( $attribute ) : $attribute;
+            // get the WC-standard attribute taxonomy name
+            $taxonomy = strpos($attribute, 'pa_') === false ? wc_attribute_taxonomy_name($attribute) : $attribute;
 
-          if( taxonomy_is_product_attribute( $taxonomy ) ){
+            if (taxonomy_is_product_attribute($taxonomy)) {
 
-              // Get the attribute label.
-              $attribute_label = wc_attribute_label( $taxonomy );
+                // Get the attribute label.
+                $attribute_label = wc_attribute_label($taxonomy);
 
-              // Build the html string with the label followed by a clickable list of terms.
-              // heads up that in WC2.7 $product->id needs to be $product->get_id()
-              $html .= get_the_term_list( $product->get_id(), $taxonomy, $attribute_label . ': ' , ', ' );                                
-          }
+                // Build the html string with the label followed by a clickable list of terms.
+                // heads up that in WC2.7 $product->id needs to be $product->get_id()
+                $html .= get_the_term_list($product->get_id(), $taxonomy, $attribute_label . ': ', ', ');
+            }
+        }
 
-      }
+        // if we have anything to display, wrap it in a <ul> for proper markup
+        // OR: delete these lines if you only wish to return the <li> elements
+        // if( $html ){
+        //     $html = '<ul class="product-attributes">' . $html . '</ul>';
+        // }
 
-      // if we have anything to display, wrap it in a <ul> for proper markup
-      // OR: delete these lines if you only wish to return the <li> elements
-      // if( $html ){
-      //     $html = '<ul class="product-attributes">' . $html . '</ul>';
-      // }
+    }
 
-  }
-
-  return $html;
+    return $html;
 }
-add_shortcode( 'display_attributes', 'woo_attributes_shortcode' );
+add_shortcode('display_attributes', 'woo_attributes_shortcode');
 
 
 
 /**
  * Disable the emoji's
  */
-function disable_emojis() {
-    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
-    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
-    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
-    add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
- }
- add_action( 'init', 'disable_emojis' );
- 
- /**
-  * Filter function used to remove the tinymce emoji plugin.
-  * 
-  * @param array $plugins 
-  * @return array Difference betwen the two arrays
-  */
- function disable_emojis_tinymce( $plugins ) {
-    if ( is_array( $plugins ) ) {
-        return array_diff( $plugins, array( 'wpemoji' ) );
+function disable_emojis()
+{
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    add_filter('tiny_mce_plugins', 'disable_emojis_tinymce');
+    add_filter('wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2);
+}
+add_action('init', 'disable_emojis');
+
+/**
+ * Filter function used to remove the tinymce emoji plugin.
+ * 
+ * @param array $plugins 
+ * @return array Difference betwen the two arrays
+ */
+function disable_emojis_tinymce($plugins)
+{
+    if (is_array($plugins)) {
+        return array_diff($plugins, array('wpemoji'));
     } else {
         return array();
     }
- }
- 
- /**
-  * Remove emoji CDN hostname from DNS prefetching hints.
-  *
-  * @param array $urls URLs to print for resource hints.
-  * @param string $relation_type The relation type the URLs are printed for.
-  * @return array Difference betwen the two arrays.
-  */
-function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
-    if ( 'dns-prefetch' == $relation_type ) {
-        /** This filter is documented in wp-includes/formatting.php */
-        $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+}
 
-        $urls = array_diff( $urls, array( $emoji_svg_url ) );
+/**
+ * Remove emoji CDN hostname from DNS prefetching hints.
+ *
+ * @param array $urls URLs to print for resource hints.
+ * @param string $relation_type The relation type the URLs are printed for.
+ * @return array Difference betwen the two arrays.
+ */
+function disable_emojis_remove_dns_prefetch($urls, $relation_type)
+{
+    if ('dns-prefetch' == $relation_type) {
+        /** This filter is documented in wp-includes/formatting.php */
+        $emoji_svg_url = apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/');
+
+        $urls = array_diff($urls, array($emoji_svg_url));
     }
 
     return $urls;
- }
+}
 
 
- /**
+/**
  * Add product_brand to taxonomies list for variations.
  * 
  * @param array $taxonomies
  *
  * @return array
  */
-function iconic_add_brands_to_variations( $taxonomies ) {
-	$taxonomies[] = 'length-in';
+function iconic_add_brands_to_variations($taxonomies)
+{
+    $taxonomies[] = 'length-in';
 
-	return $taxonomies;
+    return $taxonomies;
 }
 
-add_filter( 'iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations', 10, 1 );
+add_filter('iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations', 10, 1);
 
 /**
  * Increase page list for variations on product admin.
@@ -277,10 +284,11 @@ add_filter( 'iconic_wssv_variation_taxonomies', 'iconic_add_brands_to_variations
  *
  * @return number
  */
-add_filter( 'woocommerce_admin_meta_boxes_variations_per_page', 'true_increase_variations_per_page' );
+add_filter('woocommerce_admin_meta_boxes_variations_per_page', 'true_increase_variations_per_page');
 
-function true_increase_variations_per_page() {
-	return 50;
+function true_increase_variations_per_page()
+{
+    return 50;
 }
 
 
@@ -314,35 +322,37 @@ function true_increase_variations_per_page() {
 
 
 // Disable autoptimize on pages with the word "oliver-pos" in the URL
-function true_ao_noptimize() {
-    if (strpos($_SERVER['REQUEST_URI'],'oliver-pos')!==false) {
+function true_ao_noptimize()
+{
+    if (strpos($_SERVER['REQUEST_URI'], 'oliver-pos') !== false) {
         return true;
     } else {
         return false;
     }
 }
-add_filter('autoptimize_filter_noptimize','true_ao_noptimize',10,0);
+add_filter('autoptimize_filter_noptimize', 'true_ao_noptimize', 10, 0);
 
 // Adds ORDER ID: and TICKET ID to results, but not search
-function true_acf_extend_search_result( $title, $post, $field, $post_id ) {
+function true_acf_extend_search_result($title, $post, $field, $post_id)
+{
     // add post type to each result
     $pre = 'Order ID: ';
     $title = $pre .= $title .= ' | Ticket ID: ' . $post->ID;
     // ChromePhp::log($post);
     return $title;
 }
-add_filter( 'acf/fields/post_object/result', 'true_acf_extend_search_result', 10, 4);
+add_filter('acf/fields/post_object/result', 'true_acf_extend_search_result', 10, 4);
 
 
 // function true_acf_extend_search( $args, $field, $post_id ) {
-	
-    // // only show children of the current post being edited
-    // $args['ID'] = $post_id;
-	
-	
-	// return
-    // return $args;
-    
+
+// // only show children of the current post being edited
+// $args['ID'] = $post_id;
+
+
+// return
+// return $args;
+
 // }
 // filter for every field
 // add_filter('acf/fields/post_object/query', 'true_acf_extend_search', 10, 3);
@@ -351,19 +361,20 @@ add_filter( 'acf/fields/post_object/result', 'true_acf_extend_search_result', 10
  * @snippet       Add Shipping Note @ Cart Page - WooCommerce
  */
 // add_action( 'woocommerce_cart_totals_before_shipping', 'true_notice_shipping_cart' );
- 
+
 // function true_notice_shipping_cart() {
 //     echo '<p class="allow"><a href="https://truediamondscience.com/holiday-shipping-disclaimers/" class="button wc-forward uppercase" target="_blank">Holiday Shipping Deadlines</a></p>';
 // }
 
 // Adds order ID and true logo to ticket emails
 // @version 4.10.9 of Event Tickets Plus
-function true_tribe_email_header($ticket) { 
-    
+function true_tribe_email_header($ticket)
+{
+
     // GET ORDER ID 
     $order_id   = $ticket['order_id'];
-    ?>
-    
+?>
+
     <table class="inner-wrapper" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f7f7f7">
         <tr>
             <td class="ticket-image" valign="top" align="center" width="100%" style="padding-bottom:20px !important;">
@@ -378,7 +389,36 @@ function true_tribe_email_header($ticket) {
             </td>
         </tr>
     </table>
-    
-    
+
+
 <?php }
-add_action( 'tribe_tickets_ticket_email_ticket_top', 'true_tribe_email_header', 30 );
+add_action('tribe_tickets_ticket_email_ticket_top', 'true_tribe_email_header', 30);
+
+/**
+ * Adds tags to pages, added initially to conditionally load Podium scripts.
+ *
+ * @link https://hamzashatela.com/3-ways-to-add-categories-and-tags-for-wordpress-pages/
+ */
+function add_tags_to_pages()
+{
+    register_taxonomy_for_object_type('post_tag', 'page');
+}
+add_action('init', 'add_tags_to_pages');
+
+/**
+ * Adds data and defer attribute to Poduim
+ *
+ * @link https://wordpress.stackexchange.com/questions/292960/custom-data-id-wp-enqueue-script
+ * @link https://www.minddevelopmentanddesign.com/blog/how-to-defer-parsing-enqueued-javascript-files-wordpress/
+ */
+add_filter('script_loader_tag', 'podium_script_attributes', 10, 3);
+
+function podium_script_attributes($tag, $handle)
+{
+    // change to the registered script handle, e. g. 'jquery'
+    if ('podium-widget' === $handle) {
+        // add attributes of your choice        
+        $tag = '<script defer src="https://connect.podium.com/widget.js#API_TOKEN=d2bc3aa9-67ba-4f2a-9edd-2df4c85ba02e" id="podium-widget" data-api-token="d2bc3aa9-67ba-4f2a-9edd-2df4c85ba02e"></script>';
+    }
+    return $tag;
+}
