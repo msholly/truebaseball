@@ -37,18 +37,32 @@ function add_affiliate_info_on_oliver_create_order ( $order_id ) {
             }   
             
             if ($cat_id == 41) {
-                // DETECT BATS 10% 
-                // 15% but that's TO DO
-                $affwp_amount += number_format(($item->get_total() * .1));
+                // DETECT BATS 20% 
+                $affwp_amount += number_format(($item->get_total() * .2));
             }
                 
             if ($cat_id == 315) {
-                // FITTING PRODUCTS 5%
+                // FITTING PRODUCTS 12.5%
+                $affwp_amount += number_format(($item->get_total() * .125));
+            }
+    
+            if ($cat_id == 362) {
+                // Accessories 5%
                 $affwp_amount += number_format(($item->get_total() * .05));
             }
     
-            if ($cat_id == 361) {
-                // GEAR PRODUCTS 5%
+            if ($cat_id == 363) {
+                // Bat Bags 5%
+                $affwp_amount += number_format(($item->get_total() * .05));
+            }
+    
+            if ($cat_id == 360) {
+                // Batting Gloves 5%
+                $affwp_amount += number_format(($item->get_total() * .05));
+            }
+    
+            if ($cat_id == 359) {
+                // Grips 5%
                 $affwp_amount += number_format(($item->get_total() * .05));
             }
 
