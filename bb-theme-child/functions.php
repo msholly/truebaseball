@@ -422,3 +422,12 @@ function podium_script_attributes($tag, $handle)
     }
     return $tag;
 }
+
+/**
+ * Adds ACF Google Maps API
+ *
+ */
+function true_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyAi9OGYa4-u59XxGQCR8xIT2GJDWs9AzMc');
+}
+add_action('acf/init', 'true_acf_init');
