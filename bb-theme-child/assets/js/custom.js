@@ -40,6 +40,19 @@
       });
     }
 
+    if ($("body").hasClass("product-cat-true-bat-hitfit-challenge")) {
+      makeCTABtn($(".wc-bookings-booking-form-button"), true, true); // Materialize CSS Radio HTML
+
+      var $label = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(1) label');
+      var $input = $label.find('input');
+      $label.html('<span>Yes</span>');
+      $label.prepend($input);
+      var $label = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(2) label');
+      var $input = $label.find('input');
+      $label.html('<span>No</span>');
+      $label.prepend($input);
+    }
+
     if ($("body").hasClass("single-tribe_events")) {
       // ADDS SPAN TO ADD TO CART BUTTONS TO REMOVE THE SKEW CSS
       makeCTABtn($(".tribe-button"), true, true); // ADDS TICKETS REMAINING TO CTA

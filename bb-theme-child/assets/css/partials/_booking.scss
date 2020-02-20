@@ -1,0 +1,269 @@
+.product-cat-true-bat-hitfit-challenge {
+	.fl-page-content {
+		form.cart {
+			.wc-bookings-booking-form {
+				border: 1px solid transparent;
+				padding: 0;
+
+				.ui-widget {
+					font-family: "Roboto Condensed", sans-serif !important;
+				}
+
+				.blockOverlay {
+					background-color: rgba($color: #000000, $alpha: 0.8) !important;
+				}
+
+				.wc_bookings_field_persons {
+					display: none;
+				}
+
+				.wc-bookings-date-picker {
+					padding: 0 0 20px 0;
+
+					.ui-widget-content {
+						background-color: transparent;
+					}
+
+					.ui-datepicker-header {
+						background-color: transparent;
+						background-image: none;
+						border-top: 1px solid transparent;
+					}
+
+					.ui-datepicker-prev,
+					.ui-datepicker-next {
+						background-color: transparent;
+					}
+
+					th {
+						background-color: transparent;
+						border-top-color: transparent;
+
+						span {
+							color: $color--primary;
+							font-weight: 700;
+						}
+					}
+
+					td {
+						background-color: transparent;
+						border-top-color: transparent;
+						border-right-color: transparent;
+
+						.ui-state-default {
+							padding: 15px 0;
+						}
+
+						&.bookable a {
+							background-color: $g !important;
+							transition: background-color 0.5s ease-out;
+
+							&.ui-state-hover {
+								background-color: lighten($color: $g, $amount: 5%) !important;
+							}
+						}
+
+						&.bookable-range .ui-state-default {
+							background-color: $color--primary !important;
+							transition: background-color 0.5s ease-out;
+						}
+
+						.ui-state-active.ui-state-hover {
+							color: #FFF;
+							background-color: lighten($color--primary, 5%) !important;
+						}
+					}
+				}
+
+				.block-picker {
+					li {
+						width: 33.33333333%;
+
+						&:only-child {
+							width: 100%;
+							text-align: center;
+						}
+
+						&:nth-child(odd) {
+							a {
+								background: #0e181b;
+								transition: background-color 0.2s ease-out;
+							}
+
+							a:hover {
+								background-color: $g !important;
+							}
+
+							a:active {
+								color: #B25500;
+							}
+						}
+
+						&:nth-child(even) {
+							a {
+								background: lighten($color: #0e181b, $amount: 2%);
+								transition: background-color 0.2s ease-out;
+							}
+
+							a:hover {
+								background-color: $g !important;
+							}
+
+							a:active {
+								color: #B25500;
+							}
+						}
+
+						a.selected {
+							background-color: $color--primary !important;
+
+							&:hover {
+								background-color: lighten($color--primary, 5%) !important;
+							}
+						}
+					}
+				}
+
+				.wc-bookings-booking-cost {
+					background-color: #0e181b;
+					border-top-color: lighten($color: #0e181b, $amount: 3%);
+					margin: 0;
+				}
+			}
+
+			.wc-pao-addon-container {
+				h3 {
+					font-size: 34px;
+					line-height: 28px;
+					letter-spacing: .05em;
+					text-transform: uppercase;
+					position: relative;
+					padding: 25px 0;
+					text-align: center;
+					margin: 40px 0;
+
+					&:before,
+					&:after {
+						content: "";
+						display: inline-block;
+						height: 2px;
+						max-width: 640px;
+						margin: 0 auto;
+						background: #00aeef;
+						position: absolute;
+						left: 0;
+						right: 0;
+					}
+
+					&:before {
+						top: 0;
+					}
+
+					&:after {
+						bottom: 0;
+					}
+				}
+
+				.pao-desc-link {
+                    color: $color--primary;
+                    text-decoration: underline;
+				}
+
+				label {
+					font-size: 16px;
+
+					.required {
+						color: $color--primary;
+						font-style: normal;
+					}
+				}
+
+				p {
+					padding: 0;
+					margin: 0;
+
+					input[type="text"] {
+						border: 2px solid #00aeef;
+						background: transparent;
+						color: #FFF;
+						font-size: 18px;
+					}
+
+					select {
+						display: block;
+						font-size: 16px;
+						font-family: sans-serif;
+						font-weight: 700;
+						color: #FFF;
+						line-height: 1.3;
+						padding: .6em 1.4em .5em .8em;
+						width: 100%;
+						max-width: 100%;
+						height: 42px;
+						box-sizing: border-box;
+						margin: 0 0 20px 0;
+						border: 2px solid $color--primary;
+						border-radius: 0;
+						box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+						// border-radius: .5em;
+						-moz-appearance: none;
+						-webkit-appearance: none;
+						appearance: none;
+						background-color: transparent;
+						background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+							linear-gradient(to bottom, transparent 0%, transparent 100%) !important;
+						background-repeat: no-repeat, repeat;
+						background-position: right .7em top 50%, 0 0;
+						background-size: .65em auto, 100%;
+					}
+
+					select::-ms-expand {
+						display: none;
+					}
+
+					select:hover {
+						border-color: #888;
+					}
+
+					select:focus {
+						border-color: #aaa;
+						// box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+						// box-shadow: 0 0 0 3px -moz-mac-focusring;
+						color: #FFF;
+						outline: none;
+					}
+
+					select option {
+						font-weight: normal;
+						color: #000 !important;
+					}
+				}
+
+
+			}
+
+			.wc-bookings-booking-form-button {
+				margin-left: 10px;
+				float: none !important;
+				width: 300px;
+
+				&.disabled {
+					background-color: $color--primary !important;
+
+					color: #FFF;
+					opacity: .5 !important;
+
+					span {
+						opacity: 1;
+					}
+				}
+			}
+
+		}
+	}
+
+	#product-addons-total {
+		display: none;
+	}
+
+}

@@ -341,7 +341,7 @@ function true_acf_extend_search_result($title, $post, $field, $post_id)
     // ChromePhp::log($post);
     return $title;
 }
-add_filter('acf/fields/post_object/result', 'true_acf_extend_search_result', 10, 4);
+add_filter('acf/fields/post_object/result/key=field_5d4a0a0c75c12', 'true_acf_extend_search_result', 10, 4);
 
 
 // function true_acf_extend_search( $args, $field, $post_id ) {
