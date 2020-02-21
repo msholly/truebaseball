@@ -49,15 +49,23 @@
             makeCTABtn($(".wc-bookings-booking-form-button"), true, true);
 
             // Materialize CSS Radio HTML
-			var $label = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(1) label');
-            var $input = $label.find('input'); 
-            $label.html('<span>Yes</span>');
-            $label.prepend($input);
+			// var $yesWaiverLabel = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(1) label');
+            // var $yesWaiverinput = $yesWaiverLabel.find('input'); 
+            // $yesWaiverLabel.html('<span>Yes</span>');
+            // $yesWaiverLabel.prepend($yesWaiverinput);
 
-            var $label = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(2) label');
-            var $input = $label.find('input'); 
-            $label.html('<span>No</span>');
-            $label.prepend($input);
+            // var $noWaiverLabel = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(2) label');
+            // var $noWaiverInput = $noWaiverLabel.find('input'); 
+            // $noWaiverLabel.html('<span>No</span>');
+            // $noWaiverLabel.prepend($noWaiverInput);
+
+            $( ".wc-pao-addon-players-league p label, .wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p label" ).each(function( index ) {
+                var text = $(this).text();
+                var input = $(this).children("input").addClass('filled-in');
+                $(this).html('<span>' + text + '</span>');
+                $(this).prepend(input);
+            });
+
 		}
 
 		if ($("body").hasClass("single-tribe_events")) {
