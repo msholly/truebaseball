@@ -13,7 +13,14 @@ function fue_register_venue( $var, $email_data, $fue_email, $queue_item ) {
     if ( isset( $email_data['test'] ) && $email_data['test'] ) {
         $product_id = $queue_item->product_id;
 
-        $product_id = 17794; // test
+        if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+            $product_id = 17794; // test
+        } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+            $product_id = 19381; // test
+        } else {
+            $product_id = 19381; // test
+        }
+        
         $venue_nonformatted = true_get_booking_venue($product_id, null);
         $variables['venue_address_full'] = $venue_nonformatted['address'];
         $variables['venue_phone'] = $venue_nonformatted['phone'];
@@ -54,7 +61,13 @@ function fue_register_organizer( $var, $email_data, $fue_email, $queue_item ) {
         'org_email'	    => ''
     );
     if ( isset( $email_data['test'] ) && $email_data['test'] ) {
-        $product_id = 17794;
+        if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+            $product_id = 17794; // test
+        } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+            $product_id = 19381; // test
+        } else {
+            $product_id = 19381; // test
+        }
         $org_nonformatted = true_get_booking_organizer($product_id);
         $variables['org_name'] = $org_nonformatted['name'];
         $variables['org_phone'] = $org_nonformatted['phone'];
@@ -80,8 +93,16 @@ function fue_register_booking_meta( $var, $email_data, $fue_email, $queue_item )
 	);
 
     if ( isset( $email_data['test'] ) && $email_data['test'] ) {
+        if ( strpos($_SERVER['HTTP_HOST'], 'local') ) {
+            $testbooking_id = '17936'; // test
+        } else if ( strpos($_SERVER['HTTP_HOST'], 'flywheelstaging') ) {
+            $testbooking_id = '19393'; // test
+        } else {
+            $testbooking_id = '19393'; // test
+        }
+
         $meta       = maybe_unserialize( $queue_item->meta );
-        $booking_id = !empty( $meta['booking_id'] ) ? $meta['booking_id'] : '17901';
+        $booking_id = !empty( $meta['booking_id'] ) ? $meta['booking_id'] : $testbooking_id;
 
         $booking = new WC_Booking( $booking_id );
         
