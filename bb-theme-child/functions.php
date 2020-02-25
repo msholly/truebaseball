@@ -326,6 +326,8 @@ function true_ao_noptimize()
 {
     if (strpos($_SERVER['REQUEST_URI'], 'oliver-pos') !== false) {
         return true;
+    } elseif (strpos($_SERVER['REQUEST_URI'], 'true-product/true-bat-hitfit-challenge') !== false) {
+        return true;
     } else {
         return false;
     }
