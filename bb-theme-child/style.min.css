@@ -50,7 +50,7 @@ footer #menu-footer-menu li+li:before{content:"/";display:inline-block;position:
 .fl-page-content .inp-cbx:checked+.cbx span:first-child svg{stroke-dashoffset:0}
 .fl-page-content .inp-cbx:checked+.cbx span:first-child:before{-webkit-transform:scale(3.5);transform:scale(3.5);opacity:0;-webkit-transition:all .6s ease;transition:all .6s ease}
 .fl-page-content [type="radio"]:not(:checked),.fl-page-content [type="radio"]:checked{position:absolute;opacity:0;pointer-events:none}
-.fl-page-content [type="radio"]:not(:checked)+span,.fl-page-content [type="radio"]:checked+span{position:relative;padding-left:35px;cursor:pointer;display:inline-block;height:25px;line-height:25px;font-size:1rem;-webkit-transition:.28s ease;transition:.28s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+.fl-page-content [type="radio"]:not(:checked)+span,.fl-page-content [type="radio"]:checked+span{position:relative;padding-left:35px;cursor:pointer;display:inline-block;height:25px;line-height:25px;font-size:1rem;-webkit-transition:.28s ease;transition:.28s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .fl-page-content [type="radio"]+span:before,.fl-page-content [type="radio"]+span:after{content:'';position:absolute;left:0;top:0;margin:4px;width:16px;height:16px;z-index:0;-webkit-transition:.28s ease;transition:.28s ease}
 .fl-page-content [type="radio"]:not(:checked)+span:before,.fl-page-content [type="radio"]:not(:checked)+span:after,.fl-page-content [type="radio"]:checked+span:before,.fl-page-content [type="radio"]:checked+span:after,.fl-page-content [type="radio"].with-gap:checked+span:before,.fl-page-content [type="radio"].with-gap:checked+span:after{border-radius:50%}
 .fl-page-content [type="radio"]:not(:checked)+span:before,.fl-page-content [type="radio"]:not(:checked)+span:after{border:2px solid #5a5a5a}
@@ -231,6 +231,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce .woocommerce-table.order_details .wc-item-meta{padding-left:0}
 .woocommerce .woocommerce-table.order_details .wc-item-meta li{border-right-color:transparent;float:none}
 .woocommerce .woocommerce-table.order_details .wc-item-meta li strong{float:none}
+.woocommerce-order-received .woocommerce-customer-details address{color:#FFF}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details{width:100%;border-radius:0 !important;border:none !important;background-color:#14151a !important;margin-bottom:25px !important}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details td{vertical-align:middle;padding:10px 10px}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details tfoot{border-top:2px solid #000 !important}
@@ -1215,6 +1216,10 @@ input[type=checkbox].nf-toggle:checked:before{top:-1px;left:20px;-webkit-transit
 .product-cat-true-bat-hitfit-challenge .fl-page-content form.cart .wc-bookings-booking-form-button.disabled{background-color:#00aeef !important;color:#FFF;opacity:.5 !important}
 .product-cat-true-bat-hitfit-challenge .fl-page-content form.cart .wc-bookings-booking-form-button.disabled span{opacity:1}
 .product-cat-true-bat-hitfit-challenge #product-addons-total{display:none}
+.wc-booking-summary{border-radius:0}
+.wc-booking-summary ul.wc-booking-summary-list{padding-left:0}
+.wc-booking-summary ul.wc-booking-summary-list li{display:block;float:none;border-right:0}
+.wc-booking-summary .wc-booking-summary-actions a{font-size:14px !important}
 @media(min-width:500px){.entry .entry-content .tribe-common .tribe-tickets__buy.tribe-common-c-btn,.entry .entry-content .tribe-common .tribe-tickets__submit.tribe-common-c-btn,.tribe-common .tribe-tickets__buy.tribe-common-c-btn,.tribe-common .tribe-tickets__submit.tribe-common-c-btn{margin-left:16px}
 }@media only screen and (min-width:768px){header #menu-main-menu .wpmenucart{display:none}
 }@media(min-width:768px){.inline-countdown .uabb-countdown{text-align:left !important}
@@ -1336,6 +1341,8 @@ body.home .banner-two-cta .cta-btn{display:block;margin-top:15px}
 .woocommerce-page .bat-hero .fl-row-content-wrap{background-position:center 70px !important}
 .woocommerce-cart .shop_table tbody td.product-quantity input.qty,.cart_totals .shop_table tbody td.product-quantity input.qty,.woocommerce-order-details .shop_table tbody td.product-quantity input.qty{display:inline-block}
 .uabb-ribbon-wrap .uabb-ribbon{width:100%;max-width:100%}
+.wc-booking-summary .wc-booking-summary-number span{display:inline-block;float:none;margin:0 20px 0 0}
+.wc-booking-summary ul.wc-booking-summary-list li{padding:0}
 }@media only screen and (max-width:767px){.thank-you-bats.thank-you-order-details .woocommerce-table--order-details .woocommerce-table__product-name img{display:block}
 .thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-1,.thank-you-bats.thank-you-order-details .woocommerce-customer-details .col2-set .col-2{float:none;width:100%}
 }@media(max-width:767px){.page-id-426 .loading h1,.page-template-page-true-fitting .loading h1{font-size:40px;margin:0 0 30px}
