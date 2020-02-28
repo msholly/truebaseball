@@ -322,6 +322,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .tribe-dialog .tribe-dialog__close-button::before{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;font-family:"Font Awesome 5 Free";font-weight:900;content:""}
 .tribe-common div.tribe-dialog{z-index:2 !important}
 .tribe-common .tribe-common-c-btn,.tribe-common .tribe-common-c-btn:focus,.tribe-common .tribe-common-c-btn:hover,.tribe-common a.tribe-common-c-btn:focus,.tribe-common a.tribe-common-c-btn:hover{background-color:#00aeef !important;border-radius:0 !important;text-transform:uppercase}
+.tribe-common .tribe-tickets__notice--error{background-color:#da394d !important}
+.tribe-common .tribe-common-form-control-checkbox__input:checked{background-color:#00aeef !important;border-color:#00aeef !important}
 .tribe-common .tribe-common-form-control-radio__input:checked{background-color:#00aeef !important;border-color:#00aeef !important}
 .tribe-common .tribe-common-form-control-radio__input.ticket-meta{position:relative !important;opacity:1 !important;pointer-events:auto !important}
 .tribe-common .tribe-tickets__item__attendee__fields select{background-image:url(https://truediamondscience.com/wp-content/plugins/event-tickets/src/resources/images/select.png) !important;background-position:100%;background-repeat:no-repeat;background-size:33px 33px}

@@ -129,7 +129,13 @@
 		border-radius: 0 !important;
 		text-transform: uppercase;
 	}
-
+    .tribe-tickets__notice--error {
+        background-color: rgba(218,57,77,1) !important;
+    }
+    .tribe-common-form-control-checkbox__input:checked {
+        background-color: $color--primary !important;
+        border-color: $color--primary !important;
+    }
 	.tribe-common-form-control-radio__input {
 		&:checked {
 			background-color: $color--primary !important;
