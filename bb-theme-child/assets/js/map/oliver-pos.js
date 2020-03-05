@@ -446,6 +446,10 @@ var oliverPOSdata = {
 		if (e.origin !== oliverExtensionTargetOrigin) {
 			console.log("Invalid origin " + e.origin);
 		} else {
+            console.log("Full Event Message");
+            console.log(e)
+            console.log("Data Message");
+            console.log(e.data)
 			var msgData = JSON.parse(e.data);
 			console.log(msgData)
 			if (msgData.oliverpos.event === 'shareCheckoutData') {
