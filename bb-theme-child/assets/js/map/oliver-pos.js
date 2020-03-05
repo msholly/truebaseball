@@ -31,16 +31,18 @@ var oliverPOSdata = {
 	var acf_affiliate = ".acf-field-5d251671a38b3";
     var acf_ticket = ".acf-field-5d4a0a0c75c12";
     
-    var wp_env = 'production';
-    if ( window.location.hostname === 'true-diamond-science.local' ) {
-        wp_env = 'development'
-    } else if ( window.location.hostname === 'staging.true-baseball.flywheelsites.com' ) {
-        wp_env = 'staging'
-    }
-    var bugsnagClient = bugsnag({
-        apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
-        releaseStage: wp_env
-    })
+    if (typeof bugsnag === "function") {
+		var wp_env = 'production';
+		if (window.location.hostname === 'true-diamond-science.local') {
+			wp_env = 'development'
+		} else if (window.location.hostname === 'staging.true-baseball.flywheelsites.com') {
+			wp_env = 'staging'
+		}
+		window.bugsnagClient = bugsnag({
+			apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
+			releaseStage: wp_env
+		})
+	} 
 
 	jQuery(document).ready(function ($) {
 
