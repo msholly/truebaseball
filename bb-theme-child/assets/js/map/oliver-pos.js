@@ -450,12 +450,15 @@ var oliverPOSdata = {
             console.log(e)
             console.log("Data Message");
             console.log(e.data)
-			var msgData = JSON.parse(e.data);
-			console.log(msgData)
-			if (msgData.oliverpos.event === 'shareCheckoutData') {
-				checkoutData = msgData;
-				calculateOliverTaxes();
-			}
+            if (typeof e.data != 'object') {
+                var msgData = JSON.parse(e.data);
+                console.log(msgData)
+                if (msgData.oliverpos.event === 'shareCheckoutData') {
+                    checkoutData = msgData;
+                    calculateOliverTaxes();
+                }
+            }
+			
 		}
 
 	}, false);
