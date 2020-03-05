@@ -2,16 +2,16 @@
 
 (function ($) {
 
-    var wp_env = 'production';
-    if ( window.location.hostname === 'true-diamond-science.local' ) {
-        wp_env = 'development'
-    } else if ( window.location.hostname === 'staging.true-baseball.flywheelsites.com' ) {
-        wp_env = 'staging'
-    }
-    var bugsnagClient = bugsnag({
-        apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
-        releaseStage: wp_env
-    })
+    // var wp_env = 'production';
+    // if ( window.location.hostname === 'true-diamond-science.local' ) {
+    //     wp_env = 'development'
+    // } else if ( window.location.hostname === 'staging.true-baseball.flywheelsites.com' ) {
+    //     wp_env = 'staging'
+    // }
+    // var bugsnagClient = bugsnag({
+    //     apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
+    //     releaseStage: wp_env
+    // })
     
 	jQuery(document).ready(function ($) {
 
