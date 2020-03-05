@@ -291,3 +291,13 @@ add_action('cfw_checkout_before_payment_method_tab_nav', 'true_add_mailchimp_to_
 // Deferr Transactional emails to speed checkout
 add_filter( 'woocommerce_defer_transactional_emails', '__return_true' );
 
+
+// Rename Phone to Mobile
+add_filter( 'cfw_get_shipping_checkout_fields', 'change_shipping_apt_field_label', 100, 1 );
+
+function change_shipping_apt_field_label( $fields ) {
+    $fields[ 'shipping_phone' ][ 'label' ] = 'Mobile Number';
+    $fields[ 'shipping_phone' ][ 'placeholder' ] = 'Mobile Number';
+
+	return $fields;
+}

@@ -37,6 +37,9 @@ final class FLChildTheme
         // wp_enqueue_script( 'fl-child-theme', FL_CHILD_THEME_URL . '/assets/js/custom.js', array(), '1.0.0', true );
         wp_enqueue_script('fl-child-theme');
 
+        // Bugsnag
+        wp_enqueue_script('bugsnag-min', '//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js', array(), null, false);
+
         // Oliver Scripts
         if (is_page_template('page-oliver-pos.php')) {
             wp_enqueue_script('google-geocode', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAi9OGYa4-u59XxGQCR8xIT2GJDWs9AzMc&libraries=places', array('jquery'), '1.0', true);
@@ -49,5 +52,8 @@ final class FLChildTheme
         if (has_tag('podium')) {
             wp_enqueue_script('podium-widget', 'https://connect.podium.com/widget.js#API_TOKEN=d2bc3aa9-67ba-4f2a-9edd-2df4c85ba02e', array(), null, true);
         }
+
+        
+
     }
 }

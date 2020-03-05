@@ -19,6 +19,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 // INIT TAXJAR 
 require_once 'php/taxjar/taxjar.php';
+// C:\Users\msholly\Local Sites\true-diamond-science\app\public\wp-content\plugins\true-functions\vendor\taxjar\taxjar-php\lib\TaxJar.php
+// Guzzle SSL fix, add `'verify' => false` to this->config
 
 // ADDITIONAL AWP FIELDS
 require_once 'php/affiliate-wp/affiliate-wp.php';
@@ -39,6 +41,9 @@ require_once 'php/fitting/baseballMonkey.php';
 // Bookings Extensions
 require_once 'php/bookings/bookings.php';
 require_once 'php/bookings/follow-up-emails.php';
+
+// Bug Snag config
+require_once 'php/bugsnag/bugsnag.php';
 
 // For ACF Debuggin - Disable for Performance
 add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );

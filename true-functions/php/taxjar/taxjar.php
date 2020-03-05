@@ -106,7 +106,7 @@ function true_get_tax_info()
                 'to_zip' => $bestAddr->zip,
                 'to_state' => $bestAddr->state,
                 'to_city' => $bestAddr->city,
-                'to_street' => $bestAddr->addressLine1,
+                'to_street' => $bestAddr->street,
                 'amount' => $cart_amount,
                 'shipping' => $ship_amount,
                 // 'nexus_addresses' => [

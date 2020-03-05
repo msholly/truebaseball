@@ -29,13 +29,24 @@ var oliverPOSdata = {
 	var acf_orderType = ".acf-field-5d25148656536";
 	var acf_salesRep = ".acf-field-5d25156b56537";
 	var acf_affiliate = ".acf-field-5d251671a38b3";
-	var acf_ticket = ".acf-field-5d4a0a0c75c12";
+    var acf_ticket = ".acf-field-5d4a0a0c75c12";
+    
+    var wp_env = 'production';
+    if ( window.location.hostname === 'true-diamond-science.local' ) {
+        wp_env = 'development'
+    } else if ( window.location.hostname === 'staging.true-baseball.flywheelsites.com' ) {
+        wp_env = 'staging'
+    }
+    var bugsnagClient = bugsnag({
+        apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
+        releaseStage: wp_env
+    })
 
 	jQuery(document).ready(function ($) {
 
 
 		if ($("body").hasClass("page-template-page-oliver-pos-php")) {
-
+            
 			initPage();
 
 			initGeo();
@@ -370,14 +381,13 @@ var oliverPOSdata = {
 					},
 					success: function (response) {
 						console.log(response);
-						if (response != 0) {
+						if (response != 0 && response != null) {
 							oliverTaxResponse = response.tax;
 							setTaxUI(response.tax);
-							updateAddress(response);
+                            updateAddress(response);
 						} else {
-							showAlert("Address error", "danger", "Error")
+                            showAlert("Address error", "danger", "Error")
 						}
-
 					},
 					error: (error) => {
 						showAlert(error.responseText, "danger", error.statusText)
@@ -826,7 +836,8 @@ var oliverPOSdata = {
 				},
 				"data": {
 					"checkoutData": {
-						"totalTax": "",
+						"email": "contact@mitchellsholly.com",
+                        "wordpressId": 25,
 						"cartProducts": [{
 								"amount": 80,
 								"productId": 2046,
@@ -864,12 +875,16 @@ var oliverPOSdata = {
 								"title": "TRUE 2020 T1 USA Youth Bat -10 30.5/20.5 S"
 							}
 						],
-						"addressLine1": "2780 McDonough St.",
-						"addressLine2": "",
-						"city": "Joliet",
-						"zip": "60436",
-						"country": "US",
-						"state": "IL"
+						"addressLine1": "44 Calle de Felicidad",
+                        "addressLine2": "",
+                        "city": "Rancho Santa Margarita",
+                        "zip": "92688-2884",
+                        "countryCode": "US",
+                        "country": "US",
+                        "stateCode": "CA",
+                        "state": "CA",
+                        "total": 280,
+                        "_wc_points_redeemed": 0
 
 						// Intentionally wrong for bad address validation handling
 						// "addressLine1": "44 Calle De Felicidad",

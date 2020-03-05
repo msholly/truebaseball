@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Will make the Bookings calender default to the month with the first available booking.
+ */
+add_filter( 'wc_bookings_calendar_default_to_current_date', '__return_false' );
+
+/**
  * Register Shortcode Google Address for Bookings
  */
 

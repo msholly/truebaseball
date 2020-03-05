@@ -2,29 +2,40 @@
 
 (function ($) {
 
+    var wp_env = 'production';
+    if ( window.location.hostname === 'true-diamond-science.local' ) {
+        wp_env = 'development'
+    } else if ( window.location.hostname === 'staging.true-baseball.flywheelsites.com' ) {
+        wp_env = 'staging'
+    }
+    var bugsnagClient = bugsnag({
+        apiKey: 'fee2bdaab28f88256e0c517d91ea1f05',
+        releaseStage: wp_env
+    })
+    
 	jQuery(document).ready(function ($) {
 
 		// if ($("body").hasClass("page-tribe-attendee-registration") || $("body").hasClass("page-template-page-tribe-attendee-registration")) {
-			// console.log("attendee page")
-			// makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
-			// makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true);
+		// console.log("attendee page")
+		// makeCTABtn($(".tribe-block__tickets__item__attendee__fields__form button"), false, true);
+		// makeCTABtn($(".tribe-block__tickets__registration__checkout__submit"), true, true);
 
-			// Disclaimer popup via JS
-			// $(".tribe-tickets-meta-fieldset__checkbox-radio").each(function (index) {
-			// 	var str = $('.tribe-tickets-meta-label').text();
-			// 	console.log(str)
-			// 	if (str.toLowerCase().indexOf("waiver") >= 0) {
-			// 		var markup = "Did you read and do you accept the <a href='/waiver-and-release-of-liability/' target='_blank' class='open-disclaimer'>Waiver and Release of Liability</a>? <small>(opens in a new tab)</small>";
-			// 		$('.tribe-tickets-meta-label h3').html(markup)
-			// 	}
+		// Disclaimer popup via JS
+		// $(".tribe-tickets-meta-fieldset__checkbox-radio").each(function (index) {
+		// 	var str = $('.tribe-tickets-meta-label').text();
+		// 	console.log(str)
+		// 	if (str.toLowerCase().indexOf("waiver") >= 0) {
+		// 		var markup = "Did you read and do you accept the <a href='/waiver-and-release-of-liability/' target='_blank' class='open-disclaimer'>Waiver and Release of Liability</a>? <small>(opens in a new tab)</small>";
+		// 		$('.tribe-tickets-meta-label h3').html(markup)
+		// 	}
 
-			// });
+		// });
 		// }
 
 		if ($("body").hasClass("woocommerce-cart")) {
 			// CTA STYLE FOR BLACK FRIDAY NOTIFICATION
 			$(".woocommerce-info a:contains('GET DEAL')").each(function () {
-				$(this).parent().addClass("cta-notification"); 
+				$(this).parent().addClass("cta-notification");
 			});
 		}
 
@@ -43,28 +54,28 @@
 			$(".uabb-woo-product-category").text(function () {
 				return $(this).text().replace("Bats", "TRUE / 2020");
 			});
-        }
-        
-        if ($("body").hasClass("product-cat-true-bat-hitfit-challenge")) {
-            makeCTABtn($(".wc-bookings-booking-form-button"), true, true);
+		}
 
-            // Materialize CSS Radio HTML
+		if ($("body").hasClass("product-cat-true-bat-hitfit-challenge")) {
+			makeCTABtn($(".wc-bookings-booking-form-button"), true, true);
+
+			// Materialize CSS Radio HTML
 			// var $yesWaiverLabel = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(1) label');
-            // var $yesWaiverinput = $yesWaiverLabel.find('input'); 
-            // $yesWaiverLabel.html('<span>Yes</span>');
-            // $yesWaiverLabel.prepend($yesWaiverinput);
+			// var $yesWaiverinput = $yesWaiverLabel.find('input'); 
+			// $yesWaiverLabel.html('<span>Yes</span>');
+			// $yesWaiverLabel.prepend($yesWaiverinput);
 
-            // var $noWaiverLabel = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(2) label');
-            // var $noWaiverInput = $noWaiverLabel.find('input'); 
-            // $noWaiverLabel.html('<span>No</span>');
-            // $noWaiverLabel.prepend($noWaiverInput);
+			// var $noWaiverLabel = $('.wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p:nth-of-type(2) label');
+			// var $noWaiverInput = $noWaiverLabel.find('input'); 
+			// $noWaiverLabel.html('<span>No</span>');
+			// $noWaiverLabel.prepend($noWaiverInput);
 
-            $( ".wc-pao-addon-players-league p label, .wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p label" ).each(function( index ) {
-                var text = $(this).text();
-                var input = $(this).children("input").addClass('filled-in');
-                $(this).html('<span>' + text + '</span>');
-                $(this).prepend(input);
-            });
+			$(".wc-pao-addon-players-league p label, .wc-pao-addon-did-you-read-and-do-you-accept-the-waiver-and-release-of-liability p label").each(function (index) {
+				var text = $(this).text();
+				var input = $(this).children("input").addClass('filled-in');
+				$(this).html('<span>' + text + '</span>');
+				$(this).prepend(input);
+			});
 
 		}
 
