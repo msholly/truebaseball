@@ -446,10 +446,6 @@ var oliverPOSdata = {
 		if (e.origin !== oliverExtensionTargetOrigin) {
 			console.log("Invalid origin " + e.origin);
 		} else {
-            console.log("Full Event Message");
-            console.log(e)
-            console.log("Data Message");
-            console.log(e.data)
             if (typeof e.data != 'object') {
                 var msgData = JSON.parse(e.data);
                 console.log(msgData)

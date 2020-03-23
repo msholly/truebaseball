@@ -165,6 +165,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page.single-product .matchHeight .fl-module-content,.woocommerce-page.single-product .matchHeight .fl-photo,.woocommerce-page.single-product .matchHeight .fl-photo-content,.woocommerce-page.single-product .matchHeight .fl-photo-content img{max-height:inherit}
 .woocommerce-page.single-product .technical .woocommerce-product-attributes th,.woocommerce-page.single-product .technical .woocommerce-product-attributes td{border-bottom:1px solid #131315}
 .woocommerce-page.single-product .technical .woocommerce-product-attributes .woocommerce-product-attributes-item__label{color:#00aeef;width:35%}
+.woocommerce-page.single-product .woocommerce-product-gallery--with-images .flex-control-thumbs img{border-color:transparent}
+.woocommerce-page.single-product .woocommerce-product-gallery--with-images .woocommerce-product-gallery__image img{border-color:transparent}
 .woocommerce-page #reviews .contributions-title,.woocommerce-page #reviews .woocommerce-Reviews-title{border-bottom:3px solid #00aeef;padding-bottom:5px;text-transform:uppercase;margin-bottom:25px}
 .woocommerce-page #reviews .contributions-form-title,.woocommerce-page #reviews #contributions-list-title{margin-bottom:25px}
 .woocommerce-page #reviews p.stars a{color:#00aeef;font-size:32px}
@@ -375,7 +377,6 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-MyAccount-content table.shop_table thead th{border-bottom:1px solid #e6e6e6}
 .woocommerce-MyAccount-content table.shop_table td{border:0;padding:10px 25px}
 .woocommerce-MyAccount-content mark{color:#000 !important}
-.woocommerce-MyAccount-content .woocommerce-info{color:#000 !important}
 #affwp-register-form,#affwp-login-form{max-width:500px;margin:0 auto;padding:30px}
 #affwp-register-form.affwp-form legend,#affwp-login-form.affwp-form legend{text-transform:uppercase;font-weight:700}
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs{background-color:#00aeef;padding:25px 35px;text-align:center}

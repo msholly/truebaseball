@@ -192,7 +192,18 @@
 					width: 35%;
 				}
 			}
-		}
+        }
+        
+        .woocommerce-product-gallery--with-images {
+            .flex-control-thumbs {
+                img {
+                    border-color: transparent;
+                }
+            }
+            .woocommerce-product-gallery__image img {
+                border-color: transparent;
+            }
+        }
 	}
 
 	#reviews {

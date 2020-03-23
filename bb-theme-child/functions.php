@@ -433,3 +433,21 @@ function true_acf_init() {
     acf_update_setting('google_api_key', 'AIzaSyAi9OGYa4-u59XxGQCR8xIT2GJDWs9AzMc');
 }
 add_action('acf/init', 'true_acf_init');
+
+
+/**
+ * Fixes Blurry Woocommerce images on variant products
+ *
+ */
+
+add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
+    return array(
+        'width' => 270,
+        'height' => 270,
+        'crop' => 0,
+    );
+} );
+
+add_filter( 'woocommerce_gallery_image_size', function( $size ) {
+    return 'full';
+} );
