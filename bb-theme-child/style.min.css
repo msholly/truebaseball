@@ -135,6 +135,7 @@ body.home .uabb-ultb3-box .uabb-ultb3-img{width:100% !important;height:100%;-o-o
 body.home .uabb-subscribe-form input[type=text],body.home .uabb-subscribe-form input[type=tel],body.home .uabb-subscribe-form input[type=email]{border:1px solid #fff;padding:10px 15px;color:#fff;width:100%;display:inline-block;vertical-align:top;outline:0;background:transparent;font-size:16px}
 body.home .uabb-subscribe-form input[type=text]::-webkit-input-placeholder,body.home .uabb-subscribe-form input[type=tel]::-webkit-input-placeholder,body.home .uabb-subscribe-form input[type=email]::-webkit-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]:-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]:-ms-input-placeholder{color:#fff}
+body.home .uabb-subscribe-form input[type=text]::-moz-placeholder,body.home .uabb-subscribe-form input[type=tel]::-moz-placeholder,body.home .uabb-subscribe-form input[type=email]::-moz-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=tel]::-ms-input-placeholder,body.home .uabb-subscribe-form input[type=email]::-ms-input-placeholder{color:#fff}
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
 .woocommerce-page .sub-title .woocommerce-breadcrumb a:hover{color:#FFF !important}
@@ -173,6 +174,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page #reviews input[type=text],.woocommerce-page #reviews input[type=tel],.woocommerce-page #reviews input[type=email],.woocommerce-page #reviews textarea{border:1px solid #fff;border-radius:0;padding:10px 15px;color:#fff;width:100%;display:inline-block;vertical-align:top;outline:0;background:transparent;font-size:16px}
 .woocommerce-page #reviews input[type=text]::-webkit-input-placeholder,.woocommerce-page #reviews input[type=tel]::-webkit-input-placeholder,.woocommerce-page #reviews input[type=email]::-webkit-input-placeholder,.woocommerce-page #reviews textarea::-webkit-input-placeholder{color:#fff}
 .woocommerce-page #reviews input[type=text]:-ms-input-placeholder,.woocommerce-page #reviews input[type=tel]:-ms-input-placeholder,.woocommerce-page #reviews input[type=email]:-ms-input-placeholder,.woocommerce-page #reviews textarea:-ms-input-placeholder{color:#fff}
+.woocommerce-page #reviews input[type=text]::-moz-placeholder,.woocommerce-page #reviews input[type=tel]::-moz-placeholder,.woocommerce-page #reviews input[type=email]::-moz-placeholder,.woocommerce-page #reviews textarea::-moz-placeholder{color:#fff}
 .woocommerce-page #reviews input[type=text]::-ms-input-placeholder,.woocommerce-page #reviews input[type=tel]::-ms-input-placeholder,.woocommerce-page #reviews input[type=email]::-ms-input-placeholder,.woocommerce-page #reviews textarea::-ms-input-placeholder{color:#fff}
 .woocommerce-page #reviews input[type=text]::placeholder,.woocommerce-page #reviews input[type=tel]::placeholder,.woocommerce-page #reviews input[type=email]::placeholder,.woocommerce-page #reviews textarea::placeholder{color:#fff}
 .woocommerce-page #reviews .product-rating{background:#001a24;margin:0 auto 55px 0;padding:18px 23px 17px;position:relative;width:calc(100% - 19px)}
@@ -234,6 +236,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce .woocommerce-table.order_details .wc-item-meta li{border-right-color:transparent;float:none}
 .woocommerce .woocommerce-table.order_details .wc-item-meta li strong{float:none}
 .woocommerce-order-received .woocommerce-customer-details address{color:#FFF}
+.woocommerce-cart .cart-collaterals .cross-sells .products{padding-top:0}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details{width:100%;border-radius:0 !important;border:none !important;background-color:#14151a !important;margin-bottom:25px !important}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details td{vertical-align:middle;padding:10px 10px}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details tfoot{border-top:2px solid #000 !important}
@@ -862,7 +865,7 @@ input[type=checkbox].nf-toggle:checked:before{top:-1px;left:20px;-webkit-transit
 .tribe-common .tribe-common-form-control-slider{line-height:0}
 .tribe-common .tribe-common-form-control-slider__input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;cursor:pointer;display:inline-block;margin:0;padding:0;width:120px;vertical-align:middle}
 .tribe-common .tribe-common-form-control-slider__input::-webkit-slider-runnable-track{border:0;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;-webkit-transition:background-color .2s ease;transition:background-color .2s ease;background-color:#334aff}
-.tribe-common .tribe-common-form-control-slider__input::-moz-range-track{border:0;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;-webkit-transition:background-color .2s ease;transition:background-color .2s ease;background-color:#334aff}
+.tribe-common .tribe-common-form-control-slider__input::-moz-range-track{border:0;border-radius:5px;height:10px;margin:5px 0;padding:0;position:relative;-moz-transition:background-color .2s ease;transition:background-color .2s ease;background-color:#334aff}
 .tribe-common .tribe-common-form-control-slider__input::-ms-track{background-color:transparent;border-color:transparent;border-width:5px 0;color:transparent;height:10px}
 .tribe-common .tribe-common-form-control-slider__input::-ms-fill-lower,.tribe-common .tribe-common-form-control-slider__input::-ms-fill-upper{background-color:#334aff;border-radius:10px}
 .tribe-common .tribe-common-form-control-slider__input::-webkit-slider-thumb{background-color:#fff;border:1px solid #d5d5d5;border-radius:50%;-webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,0.14);box-shadow:0 2px 5px 0 rgba(0,0,0,0.14);height:20px;width:20px;margin-top:-5px;-webkit-appearance:none;appearance:none}
@@ -874,8 +877,10 @@ input[type=checkbox].nf-toggle:checked:before{top:-1px;left:20px;-webkit-transit
 .tribe-common .tribe-common-form-control-text__label{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}
 .tribe-common .tribe-common-form-control-text__input{color:#141827;font-family:Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:16px;line-height:1.62;font-weight:400;border:0;border-bottom:1px solid #d5d5d5;height:auto;padding:12px 28px 12px 0;width:100%}
 .tribe-common .tribe-common-form-control-text__input::-webkit-input-placeholder{color:#727272;font-style:normal}
+.tribe-common .tribe-common-form-control-text__input::-moz-placeholder{color:#727272;font-style:normal}
 .tribe-common .tribe-common-form-control-text__input:-ms-input-placeholder,.tribe-common .tribe-common-form-control-text__input::-ms-input-placeholder{color:#727272;font-style:normal}
 .tribe-common .tribe-common-form-control-text__input::-webkit-input-placeholder{color:#727272;font-style:normal}
+.tribe-common .tribe-common-form-control-text__input::-moz-placeholder{color:#727272;font-style:normal}
 .tribe-common .tribe-common-form-control-text__input:-ms-input-placeholder{color:#727272;font-style:normal}
 .tribe-common .tribe-common-form-control-text__input::-ms-input-placeholder{color:#727272;font-style:normal}
 .tribe-common .tribe-common-form-control-text__input::placeholder{color:#727272;font-style:normal}
