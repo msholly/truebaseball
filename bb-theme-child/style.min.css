@@ -168,6 +168,8 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce-page.single-product .technical .woocommerce-product-attributes .woocommerce-product-attributes-item__label{color:#00aeef;width:35%}
 .woocommerce-page.single-product .woocommerce-product-gallery--with-images .flex-control-thumbs img{border-color:transparent}
 .woocommerce-page.single-product .woocommerce-product-gallery--with-images .woocommerce-product-gallery__image img{border-color:transparent}
+.woocommerce-page.single-product .woocommerce-product-gallery--with-images.woocommerce-product-gallery--columns-4 li:first-child{display:none}
+.woocommerce-page.single-product .woocommerce-product-gallery--with-images.woocommerce-product-gallery--columns-4 li:nth-child(4n+1){clear:none !important}
 .woocommerce-page #reviews .contributions-title,.woocommerce-page #reviews .woocommerce-Reviews-title{border-bottom:3px solid #00aeef;padding-bottom:5px;text-transform:uppercase;margin-bottom:25px}
 .woocommerce-page #reviews .contributions-form-title,.woocommerce-page #reviews #contributions-list-title{margin-bottom:25px}
 .woocommerce-page #reviews p.stars a{color:#00aeef;font-size:32px}

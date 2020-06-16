@@ -199,9 +199,18 @@
                 img {
                     border-color: transparent;
                 }
+                
             }
             .woocommerce-product-gallery__image img {
                 border-color: transparent;
+            }
+            &.woocommerce-product-gallery--columns-4 {
+                li:first-child {
+                    display: none;
+                }
+                li:nth-child(4n+1) {
+                    clear: none !important;
+                }
             }
         }
 	}
