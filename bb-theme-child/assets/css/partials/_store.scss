@@ -68,7 +68,17 @@
 			}
 			
 		}
-	}
+    }
+    
+    .uabb-woo-categories-grid {
+        .uabb-woo-cat__column-3 {
+            .product-category {
+                @media (min-width: 768px) {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 
 	ul.products li.product {
 		a img {
