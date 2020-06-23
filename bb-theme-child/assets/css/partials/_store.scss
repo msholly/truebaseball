@@ -63,7 +63,7 @@
 			margin-left: 0;
 		}
 		.uabb-woo-product__column-tablet-2 ul.products li.product {
-			@media (min-width: 768px) {
+			@media (min-width: 768px) and (max-width: 992px) {
 				margin-right: 0;
 			}
 			
