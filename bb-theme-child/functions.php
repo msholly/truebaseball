@@ -451,3 +451,12 @@ add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
 add_filter( 'woocommerce_gallery_image_size', function( $size ) {
     return 'full';
 } );
+
+/**
+ * @snippet       Add Shipping Note @ CheckoutWP Page - WooCommerce
+ */
+add_action( 'cfw_checkout_after_shipping_methods', 'true_notice_shipping_cart_cutoff' );
+
+function true_notice_shipping_cart_cutoff() {
+    echo '<p style="margin-bottom: 0; font-weight:bold">Please note that orders placed after 10 am CST will not ship until the next business day.</p>';
+}

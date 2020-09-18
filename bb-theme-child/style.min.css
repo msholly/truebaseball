@@ -239,6 +239,7 @@ body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-sub
 .woocommerce .woocommerce-table.order_details .wc-item-meta li strong{float:none}
 .woocommerce-order-received .woocommerce-customer-details address{color:#FFF}
 .woocommerce-cart .cart-collaterals .cross-sells .products{padding-top:0}
+.woocommerce-cart .cart-collaterals .cart_totals table td{padding:10px}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details{width:100%;border-radius:0 !important;border:none !important;background-color:#14151a !important;margin-bottom:25px !important}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details td{vertical-align:middle;padding:10px 10px}
 .thank-you-bats.thank-you-order-details .woocommerce-table--order-details tfoot{border-top:2px solid #000 !important}
