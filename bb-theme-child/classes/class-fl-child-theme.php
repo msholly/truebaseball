@@ -38,7 +38,7 @@ final class FLChildTheme
         wp_enqueue_script('fl-child-theme');
 
         // Bugsnag
-        wp_enqueue_script('bugsnag-min', '//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js', array(), null, false);
+        // wp_enqueue_script('bugsnag-min', '//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js', array(), null, false);
 
         // Oliver Scripts
         if (is_page_template('page-oliver-pos.php')) {

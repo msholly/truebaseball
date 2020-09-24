@@ -336,13 +336,17 @@
 
 	.results-title-row {
 		.uabb-blog-posts {
-			overflow: visible;
-
+            overflow: visible;
+            height: unset !important;
+            .uabb-post-wrapper {
+                position: relative !important;
+            }
 			.uabb-blog-posts-shadow {
 				background: radial-gradient(circle at top center, rgba(74, 74, 74, 1) 0%, rgba(0, 0, 0, 1) 50%);
 				-webkit-box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
 				-moz-box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
 				box-shadow: 0px 10px 10px 0px rgba(0, 174, 239, 1);
+                height: auto !important;
 
 				.uabb-post-heading {
 					padding: 30px 0 50px 0;
@@ -356,10 +360,12 @@
 					img {
 						object-fit: cover;
 						object-position: center;
-						height: 220px;
+                        height: 220px;
+                        width: 500px;
 
 						@media (max-width: 430px) {
-							height: 100px;
+                            height: 100px;
+                            width: 230px;
 						}
 					}
 				}
