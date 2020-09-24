@@ -20,11 +20,11 @@
         // Run only on child events
         $("#EventStartTime, #EventEndTime").change(function () {
             if (exists > 0) {
-                var venue = $('#s2id_saved_tribe_venue .select2-chosen').text();
+                var venue = $('#select2-saved_tribe_venue-container').attr("title");
                 var type = " | TRUE Bat Hit+Fit Challenge | ";
                 var start_time = $("#EventStartTime").val();
                 var end_time = $("#EventEndTime").val();
-                var auto_title = venue + type + start_time + ' - ' + end_time;
+                var auto_title = $.trim(venue) + type + start_time + ' - ' + end_time;
                 console.log(auto_title)
                 $('#title').val(auto_title).change();
             }
