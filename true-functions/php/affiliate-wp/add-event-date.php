@@ -26,7 +26,7 @@ function affwp_add_event_field_to_affiliate_registration_form() {
 	</p>
 	<?php
 }
-add_action( 'affwp_register_fields_before_tos', 'affwp_add_event_field_to_affiliate_registration_form' );
+// add_action( 'affwp_register_fields_before_tos', 'affwp_add_event_field_to_affiliate_registration_form' );
 
 /*
  * Save the event to the affiliate meta after registration
@@ -40,7 +40,7 @@ function affwp_save_affiliate_event( $affiliate_id, $status, $args ) {
 	}
 
 }
-add_action( 'affwp_register_user', 'affwp_save_affiliate_event', 10, 3 );
+// add_action( 'affwp_register_user', 'affwp_save_affiliate_event', 10, 3 );
 
 /*
  * Make event field required during affiliate registration {Remove if it shouldn't be required}
@@ -54,7 +54,7 @@ function affwp_add_event_to_required_fields( $required_fields ) {
 
 	return $required_fields;
 }
-add_filter( 'affwp_register_required_fields', 'affwp_add_event_to_required_fields' );
+// add_filter( 'affwp_register_required_fields', 'affwp_add_event_to_required_fields' );
 
 /*
  * Display the event field in the Profile Settings page in the affiliate dashboard
@@ -73,7 +73,7 @@ function affwp_show_event_in_affiliate_dashboard( $affiliate_id, $affiliate_user
 	<?php
 
 }
-add_action( 'affwp_affiliate_dashboard_before_submit', 'affwp_show_event_in_affiliate_dashboard', 10, 2 );
+// add_action( 'affwp_affiliate_dashboard_before_submit', 'affwp_show_event_in_affiliate_dashboard', 10, 2 );
 
 /*
  * Update the event field from the Profile Settings page in the affiliate dashboard
@@ -95,7 +95,7 @@ function affwp_affiliate_dashboard_update_event( $data ) {
 	}
 
 }
-add_action( 'affwp_update_affiliate_profile_settings', 'affwp_affiliate_dashboard_update_event' );
+// add_action( 'affwp_update_affiliate_profile_settings', 'affwp_affiliate_dashboard_update_event' );
 
 /*
  * Display the event field in the edit affiliate page in the admin dashboard
