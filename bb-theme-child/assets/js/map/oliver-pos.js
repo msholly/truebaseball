@@ -120,7 +120,7 @@ var oliverPOSdata = {
 		console.log("LOAD EVENT LISTENER")
 		postExtensionReady();
 		// invoke the payment toggle function
-		// postTogglePaymentButton();
+		postTogglePaymentButton();
 
 		if (window.location.hostname === "true-diamond-science.local") {
 			calculateOliverTaxes();
@@ -619,10 +619,10 @@ var oliverPOSdata = {
 				"products": oliverProductTaxes
 			}
 		}
-		// console.log(taxjsonMsg);
-		// console.log("^^ TAX DATA TO OLIVER EXTENSION ^^")
+		console.log(taxjsonMsg);
+		console.log("^^ TAX DATA TO OLIVER EXTENSION ^^")
 
-		// sendMessage(JSON.stringify(taxjsonMsg));
+		sendMessage(JSON.stringify(taxjsonMsg));
 
 		// MESSAGES SENT TO OLIVER, ALLOW FINISH EXTENSION BUTTON
 		$(this).text("TAGS SAVED");
