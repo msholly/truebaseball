@@ -140,6 +140,7 @@ body.home .uabb-subscribe-form input[type=text]::-ms-input-placeholder,body.home
 body.home .uabb-subscribe-form input[type=text]::placeholder,body.home .uabb-subscribe-form input[type=tel]::placeholder,body.home .uabb-subscribe-form input[type=email]::placeholder{color:#fff}
 .woocommerce-page .sub-title .woocommerce-breadcrumb a:hover{color:#FFF !important}
 .woocommerce-page .woocommerce-message,.woocommerce-page .cart-empty.woocommerce-info,.woocommerce-page .woocommerce-notices-wrapper .woocommerce-info,.woocommerce-page .woocommerce-info{background-color:#14151a;border:0;color:#FFF}
+.woocommerce-page .fl-theme-builder-woo-notices{background-color:#000;padding:100px 40px 0 40px;max-width:100%}
 .woocommerce-page .woocommerce-info.cta-notification{background:#00aeef !important}
 .woocommerce-page .woocommerce-info.cta-notification a{color:#FFF;margin:0}
 .woocommerce-page .woocommerce-info.cta-notification a:hover{color:#FFF}
