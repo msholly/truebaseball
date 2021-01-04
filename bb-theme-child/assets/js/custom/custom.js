@@ -110,8 +110,8 @@
 
 				modifyDatepicker: function (dateObject, fieldModel) {
 					// dateObject.pikaday.setDate( '04/11/2016' );
-					dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
-					dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
+					// dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
+					// dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
 				}
 			}));
 		}

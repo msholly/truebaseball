@@ -97,10 +97,9 @@
         initialize: function initialize() {
           this.listenTo(Backbone.Radio.channel('pikaday'), 'init', this.modifyDatepicker);
         },
-        modifyDatepicker: function modifyDatepicker(dateObject, fieldModel) {
-          // dateObject.pikaday.setDate( '04/11/2016' );
-          dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
-          dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
+        modifyDatepicker: function modifyDatepicker(dateObject, fieldModel) {// dateObject.pikaday.setDate( '04/11/2016' );
+          // dateObject.pikaday.gotoDate(moment().add(14, 'days').toDate());
+          // dateObject.pikaday.setMinDate(moment().add(14, 'days').toDate());
         }
       }))();
     }
